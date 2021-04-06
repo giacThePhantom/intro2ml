@@ -1,0 +1,92 @@
+\chapter{Machine learning basics}
+
+\section{Introduzione}
+Il machine learning permette ai computer di acquisire conoscenza attraverso algoritmi che imparano e inferiscono dai dati.
+Tale conoscenza viene rappresentata da un modello che viene poi utilizzato su dati futuri.
+
+	\subsection{Processo di learning}
+	Si individua un processo di learning:
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Acquisizione di dati dal mondo reale attraverso sensori.
+			\item Preprocessamento dei dati: eliminazione del rumore, estrazione delle features e normalizzazione.
+			\item Riduzione di dimensionalit\`a attraverso selezione e proiezione di features.
+			\item Learning del modello: classification, regression, clustering e description.
+			\item Test del modello attraverso cross-validation e bootstrap.
+			\item Analisi dei risultati.
+		\end{itemize}
+	\end{multicols}
+
+\section{Dati}
+I dati disponibili ad un algoritmo di machine learning sono tipicamente un insieme di esempi.
+Questi esempi sono tipicamente rappresentati come un array di features, caratteristiche dei dati di interesse per lo studio in atto.
+
+	\subsection{Training e test set}
+	In particolare per questi algoritmi si assume sempre che il training e il test set siano distribuiti secondo variabili indipendenti e identicamente distribuite (\emph{i.i.d})
+	La distribuzione $P_{data}$ \`e tipicamente sconosciuta ma si pu\`o campionare, attraverso un modello probabilistico di learning.
+	In particolare la distribuzione di probabilit\`a di coppie di esempio e label viene detta data generating distribution e sia il training data che il test set sono generati basandosi su di essa.
+
+\section{Task}
+Si intende per task una rappresentazione del tipo di predizione che viene svolta per risolvere un problema su dei dati.
+Viene identificata con un insieme di funzioni che possono potenzialmente risolverla.
+In generale consiste di una funzione che assegna ogni input $x\in\mathcal{X}$ a un output $y\in\mathcal{Y}$:
+$$f:\mathcal{X}\rightarrow\mathcal{Y}\qquad\mathcal{F}_{task}\subset\mathcal{Y^X}$$
+La natura di $\mathcal{X},\mathcal{Y}, \mathcal{F}_{task}$ dipende dal tipo di task.
+
+\section{Tipi di learning}
+
+	\subsection{Supervised learning}
+	Nel supervised learning vengono dati in input a un modello o predittore un insieme di esempi che possiedono una label.
+	Il modello poi impara a creare delle predizioni su un nuovo esempio.
+
+		\subsubsection{Dati}
+		Nel caso del supervised learning i dati creano una distribuzione:
+		$$p_{data}\in\Delta(\mathcal{X}\times\mathcal{Y})$$
+
+		\subsubsection{Classificazione}
+		In un problema di classificazione si trova un insieme finito di label discrete.
+		In particolare dato un training set $\mathcal{T} = \{(x_1, u_1),\dots(x_m, y_m)\}$, si deve imparare una funzione $f$ per predirre $y$ dato $x$.
+		$f$ sar\`a pertanto:
+		$$f:\mathbb{R}^d$$% \rightarrow\{1, 2, \dots, k\}$$
+		Dove $d$ \`e la dimensionalit\`a di $x$ e $k$ il numero di labels distinte.
+
+			\paragraph{Task}
+			Si deve pertanto trovare una funzione $f\in\mathcal{Y^X}$ che assegna ogni input $x\in\mathcal{X}$ a una label discreta.
+
+		\subsubsection{Regression}
+		Un problema di regressione presenta un insieme di label continue.
+		Dato un training set $\mathcal{T}=\{(x_1, y_1),\dots,(x_m,y_m)\}$, si deve imparare una funzione $f$ per predirre $y$ dato $x$.
+		$f$ sar\`a pertanto:
+		$$f:\mathbb{R}^d\rightarrow\mathbb{R}$$
+		Dove $d$ \`e la dimensionalit\`a di $x$.
+
+			\paragraph{Task}
+			Si deve trovare una funzione $f(x)\in\mathcal{Y}$ che assegna ogni input a una label continua.
+
+		\subsubsection{Ranking}
+		Il ranking \`e un tipo particolare di classificazione in cui una label \`e un ranking.
+
+	\subsection{Unsupervised learning}
+	Nel unsupervised learning vengono dati in input a un modello o predittore un insieme di esempi senza label.
+	Il modello impara a creare delle predizioni su un nuovo esempio.
+
+		\subsubsection{Dati}
+		Nel caso del supervised learning i dati creano una distribuzione:
+		$$p_{data}\in\Delta(\mathcal{X})$$
+
+		\subsubsection{Clustering}
+		Nel clustering, data $\mathcal{T}=\{x_1, \dots, x_m\}$ si deve trovare la struttura nascosta che intercorre tra le $x$ o i clusters.
+
+			\paragraph{Task}
+			Si deve trovare una funzione $f\in\mathbb{N}^{\mathcal{X}}$ che assegna ogni input $x\in\mathcal{X}$ a un indice di cluster $f(x)\in\mathbb{N}$.
+			Tutti i punti mappati sullo stesso indice formano un cluster.
+
+		\subsubsection{Dimensionality reduction}
+		Nella dimensionalty reduction si tenta di ridurre il numero di variabili sotto considerazione ottenendo un insieme di variabili principali.
+
+			\paragraph{Task}
+			Si deve trovare una funzione $f\in\mathcal{Y}^\mathcal{X}$ che mappa ogni input di molte dimensioni $x\in\mathcal{X}$ a un output a dimensione minore $f(x)\in\mathcal{Y}$, dove $dim(\mathcal{Y}\ll dim(\mathcal{X})$
+
+	\subsection{Reinforcement learning}
+	Nel reinforcement learning un agente impara dall'ambiente interagendo con esso e ricevendo premi per lo svolgimento di azioni particolari.
+	In particolare, data una sequenza di esempi o stati e una reward dopo il completamento di tale sequenza si impara a predirre l'azione da svolgere per uno stato o esempio individuale.
