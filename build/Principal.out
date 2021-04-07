@@ -9,7 +9,15 @@
 \BOOKMARK [2][-]{subsection.2.1.1}{Processo di learning}{section.2.1}% 9
 \BOOKMARK [1][-]{section.2.2}{Dati}{chapter.2}% 10
 \BOOKMARK [2][-]{subsection.2.2.1}{Training e test set}{section.2.2}% 11
-\BOOKMARK [1][-]{section.2.3}{Tipi di learning}{chapter.2}% 12
-\BOOKMARK [2][-]{subsection.2.3.1}{Supervised learning}{section.2.3}% 13
-\BOOKMARK [2][-]{subsection.2.3.2}{Unsupervised learning}{section.2.3}% 14
-\BOOKMARK [2][-]{subsection.2.3.3}{Reinforcement learning}{section.2.3}% 15
+\BOOKMARK [1][-]{section.2.3}{Task}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.4}{Modello}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.4.1}{Target ideale}{section.2.4}% 14
+\BOOKMARK [2][-]{subsection.2.4.2}{Target feasible}{section.2.4}% 15
+\BOOKMARK [2][-]{subsection.2.4.3}{Target attuale}{section.2.4}% 16
+\BOOKMARK [2][-]{subsection.2.4.4}{Funzione di errore}{section.2.4}% 17
+\BOOKMARK [2][-]{subsection.2.4.5}{Tipi di errore}{section.2.4}% 18
+\BOOKMARK [2][-]{subsection.2.4.6}{Stimare l'errore di generalizzazione}{section.2.4}% 19
+\BOOKMARK [1][-]{section.2.5}{Tipi di learning}{chapter.2}% 20
+\BOOKMARK [2][-]{subsection.2.5.1}{Supervised learning}{section.2.5}% 21
+\BOOKMARK [2][-]{subsection.2.5.2}{Unsupervised learning}{section.2.5}% 22
+\BOOKMARK [2][-]{subsection.2.5.3}{Reinforcement learning}{section.2.5}% 23
