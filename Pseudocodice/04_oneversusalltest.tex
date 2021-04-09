@@ -1,0 +1,24 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{IsNot}{is not}
+\SetKw{Not}{not}
+\SetKw{Return}{Return}
+\SetKwData{Item}{item}
+\SetKwFunction{BinaryTrain}{BinaryTrain}
+\SetKwFunction{Ova}{OneVersusAllTest}
+\SetKwFunction{Max}{max}
+
+\caption{\protect\Ova{$f_1,\dots,f_K$, $\hat{x}$}}
+
+score = $\langle 0,\dots, 0\rangle$		\comment{Inizializza $K$ score a $0$}
+
+\For{$i\ =\ 1$ \To $K$}{
+	y = $f_i(\hat{x})$\;
+	$score_i\ =\ score_i + y$\;
+}
+\Return \Max{score}\;
+
+\end{algorithm}

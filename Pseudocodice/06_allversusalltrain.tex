@@ -1,0 +1,26 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{IsNot}{is not}
+\SetKw{Not}{not}
+\SetKw{Return}{Return}
+\SetKwData{Item}{item}
+\SetKwFunction{BinaryTrain}{BinaryTrain}
+\SetKwFunction{Ava}{AneVersusAllTrain}
+
+\caption{\protect\Ava{$D^{multiclass}$, \protect\BinaryTrain{}}}
+$f_{ij}\ =\ \emptyset,\ \forall 1\le i < j \le K$\;
+\For{$i\ =\ 1$ \To $K\ -\ 1$}{
+	$D^{pos}\ =\ $ all $x\in D^{multiclass}$ labeled $i$\;
+	\For{$j\ =\ j\ +\ 1$ \To $K$}{
+		$D^{neg}\ =$ all $x\in D^{multiclass}$ labeled $j$\;
+		$D^{bin}\ =\ \{(x, +1):x\in D^{pos}\}\cup\{(x,-1):x\in D^{neg}\}$\;
+		$f_{ij}$ = \BinaryTrain{$D^{bin}$}\;
+	}
+}
+
+\Return all $f_{ij}$
+
+\end{algorithm}

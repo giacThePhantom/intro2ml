@@ -1,0 +1,27 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{IsNot}{is not}
+\SetKw{Not}{not}
+\SetKw{Return}{Return}
+\SetKwData{Item}{item}
+\SetKwFunction{BinaryTrain}{BinaryTrain}
+\SetKwFunction{Ava}{AllVersusAllTest}
+\SetKwFunction{Max}{max}
+
+\caption{\protect\Ava{all $f_{ij}$, $\hat{x}$}}
+
+score = $\langle 0,\dots, 0\rangle$		\comment{Inizializza $K$ score a $0$}
+
+\For{$i\ =\ 1$ \To $K\ -\ 1$}{
+	\For{$j\ =\ i\ +\ 1$ \To $K$}{
+		y = $f_{ij}(\hat{x})$\;
+		$score_i\ =\ score_i + y$\;
+		$score_j\ =\ score_j - y$\;
+	}
+}
+\Return \Max{score}\;
+
+\end{algorithm}

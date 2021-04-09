@@ -1,0 +1,22 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{IsNot}{is not}
+\SetKw{Not}{not}
+\SetKw{Return}{Return}
+\SetKwData{Item}{item}
+\SetKwFunction{BinaryTrain}{BinaryTrain}
+\SetKwFunction{Ava}{AllVersusAllTrain}
+\SetKwFunction{Max}{max}
+
+\caption{\protect\Ava{}}
+\For{i = 1 \To number of labels}{
+	\For{j = i + 1 \To number of labels}{
+		train a classifier $F_{ij}$ to distinguish between $label_j$ and $label_i$\;
+		create a dataset with all examples with $label_j$ labeled positive and with $label_i$ negative\;
+		Train classifier $F_{ij}$ su questo sottoinsieme di dati\;
+	}
+}
+\end{algorithm}

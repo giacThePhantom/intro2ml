@@ -1,0 +1,22 @@
+
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{IsNot}{is not}
+\SetKw{Not}{not}
+\SetKw{Return}{Return}
+\SetKwData{Item}{item}
+\SetKwFunction{BinaryTrain}{BinaryTrain}
+\SetKwFunction{Ova}{OneVersusAllTrain}
+
+\caption{\protect\Ova{$D^{multiclass}$, \protect\BinaryTrain{}}}
+
+\For{$i\ =\ 1$ \To $K$}{
+	$D^{bin}$ = relabel $D^{multiclass}$ in modo che $i$ \`e positivo e $\neq i$ \`e negativo\;
+	$f_i$ = \BinaryTrain{$D^{bin}$}\;
+}
+\Return $f_1,\dots, f_K$
+
+\end{algorithm}
