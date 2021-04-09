@@ -21,3 +21,40 @@
 \BOOKMARK [2][-]{subsection.2.5.1}{Supervised learning}{section.2.5}% 21
 \BOOKMARK [2][-]{subsection.2.5.2}{Unsupervised learning}{section.2.5}% 22
 \BOOKMARK [2][-]{subsection.2.5.3}{Reinforcement learning}{section.2.5}% 23
+\BOOKMARK [0][-]{chapter.3}{KNN}{}% 24
+\BOOKMARK [1][-]{section.3.1}{Introduzione}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.2}{Misurare la distanza}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.3}{Decision boundaries}{chapter.3}% 27
+\BOOKMARK [1][-]{section.3.4}{Il ruolo di K}{chapter.3}% 28
+\BOOKMARK [2][-]{subsection.3.4.1}{Underfitting}{section.3.4}% 29
+\BOOKMARK [2][-]{subsection.3.4.2}{Overfitting}{section.3.4}% 30
+\BOOKMARK [1][-]{section.3.5}{Scelta di K}{chapter.3}% 31
+\BOOKMARK [1][-]{section.3.6}{Variaizoni di K}{chapter.3}% 32
+\BOOKMARK [2][-]{subsection.3.6.1}{K-NN pesata}{section.3.6}% 33
+\BOOKMARK [0][-]{chapter.4}{Modelli lineari}{}% 34
+\BOOKMARK [1][-]{section.4.1}{Introduzione}{chapter.4}% 35
+\BOOKMARK [2][-]{subsection.4.1.1}{Bias}{section.4.1}% 36
+\BOOKMARK [1][-]{section.4.2}{Linear separability}{chapter.4}% 37
+\BOOKMARK [2][-]{subsection.4.2.1}{Definire una linea}{section.4.2}% 38
+\BOOKMARK [1][-]{section.4.3}{Definizione di modello lineare}{chapter.4}% 39
+\BOOKMARK [2][-]{subsection.4.3.1}{Training}{section.4.3}% 40
+\BOOKMARK [2][-]{subsection.4.3.2}{Perceptron}{section.4.3}% 41
+\BOOKMARK [0][-]{chapter.5}{Decision Trees}{}% 42
+\BOOKMARK [1][-]{section.5.1}{Struttura}{chapter.5}% 43
+\BOOKMARK [1][-]{section.5.2}{Funzionamento}{chapter.5}% 44
+\BOOKMARK [2][-]{subsection.5.2.1}{Inferenza}{section.5.2}% 45
+\BOOKMARK [1][-]{section.5.3}{Decision trees learning algorithm}{chapter.5}% 46
+\BOOKMARK [2][-]{subsection.5.3.1}{Crescere una foglia}{section.5.3}% 47
+\BOOKMARK [2][-]{subsection.5.3.2}{Crescere un nodo}{section.5.3}% 48
+\BOOKMARK [2][-]{subsection.5.3.3}{Algoritmo}{section.5.3}% 49
+\BOOKMARK [2][-]{subsection.5.3.4}{Split selection}{section.5.3}% 50
+\BOOKMARK [2][-]{subsection.5.3.5}{Predizione delle foglie}{section.5.3}% 51
+\BOOKMARK [1][-]{section.5.4}{Misure di impurit\340 per la classificazione}{chapter.5}% 52
+\BOOKMARK [1][-]{section.5.5}{Misure di impurit\340 per la regressione}{chapter.5}% 53
+\BOOKMARK [1][-]{section.5.6}{Data features e attributi}{chapter.5}% 54
+\BOOKMARK [1][-]{section.5.7}{Funzioni di split o routing}{chapter.5}% 55
+\BOOKMARK [2][-]{subsection.5.7.1}{Features discrete e nominali}{section.5.7}% 56
+\BOOKMARK [2][-]{subsection.5.7.2}{Features ordinali}{section.5.7}% 57
+\BOOKMARK [2][-]{subsection.5.7.3}{Obliquo}{section.5.7}% 58
+\BOOKMARK [1][-]{section.5.8}{Decision trees e overfitting}{chapter.5}% 59
+\BOOKMARK [1][-]{section.5.9}{Random forest}{chapter.5}% 60

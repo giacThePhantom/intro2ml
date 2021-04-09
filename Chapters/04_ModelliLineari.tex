@@ -1,0 +1,54 @@
+\chapter{Modelli lineari}
+
+\section{Introduzione}
+Alcuni approcci del machine learning fanno delle forti assunzioni riguardo i dati.
+Questo avviene in quanto se le assunzioni sono vere si possono raggiungere performance migliori.
+In caso contrario l'approccio pu\`o fallire miseramente.
+Altri approcci che non fanno molte assunzioni riguardo i dati invece permettono di imparare da dati pi\`u vari ma sono pi\`u proni a overfitting e richiedono pi\`u dati di training.
+
+	\subsection{Bias}
+	Il bias di un modello \`e quanto forte le assunzioni del modello sono.
+	I classificatori a low-bias fanno delle assunzioni minime riguardo i dati come \emph{k-NN} (che assume unicamente che la vicinanza \`e correlata alla classe) e \emph{DT}.
+	I classificatori a high-bias fanno assunzioni forti riguardo ai dati.
+
+\section{Linear separability}
+L'assunzione strong-bias dei modelli lineari \`e la linear separability, ovvero che in due dimensioni le classi si possano separare attraverso una linea, mentre in dimensioni maggiori da un hyperplane.
+Un modello lineare \`e pertanto un modello che assume che i dati sono linearmente separabili.
+
+	\subsection{Definire una linea}
+	Ogni coppia di valori $(w_1,w_2)$ definisce una linea attraverso l'origine:
+	$$0=w_1f_1+w_2f_2$$
+	Si pu\`o inoltre vedere il vettore $\overrightarrow{w}=(w_1, w_2)$ come il vettore dei pesi perpendicolare alla linea.
+	Per classificare i punti rispetto alla linea si considera il segno sostituendo i punti a $f_1$ e $f_2$.
+	La positivit\`a o negativit\`a indica il lato della linea.
+	Si pu\`o estendere l'equazione con:
+	$$a=w_1f_1+w_2f_2$$
+	In queto modo la linea interseca l'asse delle $y$ in $a$.
+
+\section{Definizione di modello lineare}
+Si definisce un modello lineare in uno spazio $n$ dimensionale, dove $n$ \`e il numero di features attraverso $n+1$ pesi.
+$$0=b+\sum\limits_{i=1}^nw_if_i$$;
+Si classifica un modello lineare controllando il segno di un vettore $\overrightarrow{f}$ $n$ dimensionale di features.
+
+	\subsection{Training}
+	Il training di un modello lineare avviene online, ovvero a differenza del modo in batch in cui vengono dati i training data come $\{(x_i, y_i):1\le i\le n\}$, i data points arrivano uno alla volta.
+	L'algoritmo allora riceve un esempio $x_i$ senza label, predice la classificazione di questo esempio e confronta la predizione con l'effettivo $y_i$.
+	Infine aggiorna il proprio modello.
+
+	\subsection{Perceptron}
+
+		\subsubsection{Numero di iterazioni}
+		Il numero di iterazioni del perceptron viene deciso in base alla convergenza.
+		Inoltre pu\`o essere limitato in modo da ridurre l'overfitting.
+
+		\subsubsection{Ordine dei campioni}
+		I campioni da considerare nel perceptron sono considerati in ordine casuale.
+
+		\subsubsection{Linear separable sets}
+		Le istanze di training sono lienarmente separabili se esiste un hyperplane che separa le due classi.
+
+		\subsubsection{Algoritmo}
+		\input{Pseudocodice/01_perceptron}
+
+		\subsubsection{Calcolo della predizione}
+		\input{Pseudocodice/02_perceptron_prediction}

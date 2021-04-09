@@ -1,38 +1,80 @@
 \babel@toc {italian}{}
 \babel@toc {italian}{}
-\contentsline {chapter}{\numberline {1}Introduzione}{2}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Definizioni}{2}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Processo}{2}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Il processo di apprendimento}{2}{subsection.1.2.1}%
-\contentsline {section}{\numberline {1.3}Modello}{2}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Deep learning}{3}{section.1.4}%
-\contentsline {chapter}{\numberline {2}Machine learning basics}{4}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Introduzione}{4}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Processo di learning}{4}{subsection.2.1.1}%
-\contentsline {section}{\numberline {2.2}Dati}{4}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Training e test set}{4}{subsection.2.2.1}%
-\contentsline {section}{\numberline {2.3}Task}{5}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Modello}{5}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Target ideale}{5}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Target feasible}{5}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Target attuale}{5}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}Funzione di errore}{6}{subsection.2.4.4}%
-\contentsline {subsection}{\numberline {2.4.5}Tipi di errore}{6}{subsection.2.4.5}%
-\contentsline {subsection}{\numberline {2.4.6}Stimare l'errore di generalizzazione}{6}{subsection.2.4.6}%
-\contentsline {subsubsection}{\numberline {2.4.6.1}Migliorare la generalizzazione}{6}{subsubsection.2.4.6.1}%
-\contentsline {paragraph}{\numberline {2.4.6.1.1}Regolarizzazione}{6}{paragraph.2.4.6.1.1}%
-\contentsline {section}{\numberline {2.5}Tipi di learning}{6}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Supervised learning}{6}{subsection.2.5.1}%
-\contentsline {subsubsection}{\numberline {2.5.1.1}Dati}{7}{subsubsection.2.5.1.1}%
-\contentsline {subsubsection}{\numberline {2.5.1.2}Classificazione}{7}{subsubsection.2.5.1.2}%
-\contentsline {paragraph}{\numberline {2.5.1.2.1}Task}{7}{paragraph.2.5.1.2.1}%
-\contentsline {subsubsection}{\numberline {2.5.1.3}Regression}{7}{subsubsection.2.5.1.3}%
-\contentsline {paragraph}{\numberline {2.5.1.3.1}Task}{7}{paragraph.2.5.1.3.1}%
-\contentsline {subsubsection}{\numberline {2.5.1.4}Ranking}{7}{subsubsection.2.5.1.4}%
-\contentsline {subsection}{\numberline {2.5.2}Unsupervised learning}{7}{subsection.2.5.2}%
-\contentsline {subsubsection}{\numberline {2.5.2.1}Dati}{7}{subsubsection.2.5.2.1}%
-\contentsline {subsubsection}{\numberline {2.5.2.2}Clustering}{7}{subsubsection.2.5.2.2}%
-\contentsline {paragraph}{\numberline {2.5.2.2.1}Task}{8}{paragraph.2.5.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.5.2.3}Dimensionality reduction}{8}{subsubsection.2.5.2.3}%
-\contentsline {paragraph}{\numberline {2.5.2.3.1}Task}{8}{paragraph.2.5.2.3.1}%
-\contentsline {subsection}{\numberline {2.5.3}Reinforcement learning}{8}{subsection.2.5.3}%
+\contentsline {chapter}{\numberline {1}Introduzione}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Definizioni}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Processo}{3}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Il processo di apprendimento}{3}{subsection.1.2.1}%
+\contentsline {section}{\numberline {1.3}Modello}{3}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Deep learning}{4}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Machine learning basics}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introduzione}{5}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Processo di learning}{5}{subsection.2.1.1}%
+\contentsline {section}{\numberline {2.2}Dati}{5}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Training e test set}{5}{subsection.2.2.1}%
+\contentsline {section}{\numberline {2.3}Task}{6}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Modello}{6}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Target ideale}{6}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Target feasible}{6}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Target attuale}{6}{subsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.4.4}Funzione di errore}{7}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.5}Tipi di errore}{7}{subsection.2.4.5}%
+\contentsline {subsection}{\numberline {2.4.6}Stimare l'errore di generalizzazione}{7}{subsection.2.4.6}%
+\contentsline {subsubsection}{\numberline {2.4.6.1}Migliorare la generalizzazione}{7}{subsubsection.2.4.6.1}%
+\contentsline {paragraph}{\numberline {2.4.6.1.1}Regolarizzazione}{7}{paragraph.2.4.6.1.1}%
+\contentsline {section}{\numberline {2.5}Tipi di learning}{7}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Supervised learning}{7}{subsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.1.1}Dati}{8}{subsubsection.2.5.1.1}%
+\contentsline {subsubsection}{\numberline {2.5.1.2}Classificazione}{8}{subsubsection.2.5.1.2}%
+\contentsline {paragraph}{\numberline {2.5.1.2.1}Task}{8}{paragraph.2.5.1.2.1}%
+\contentsline {subsubsection}{\numberline {2.5.1.3}Regression}{8}{subsubsection.2.5.1.3}%
+\contentsline {paragraph}{\numberline {2.5.1.3.1}Task}{8}{paragraph.2.5.1.3.1}%
+\contentsline {subsubsection}{\numberline {2.5.1.4}Ranking}{8}{subsubsection.2.5.1.4}%
+\contentsline {subsection}{\numberline {2.5.2}Unsupervised learning}{8}{subsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.2.1}Dati}{8}{subsubsection.2.5.2.1}%
+\contentsline {subsubsection}{\numberline {2.5.2.2}Clustering}{8}{subsubsection.2.5.2.2}%
+\contentsline {paragraph}{\numberline {2.5.2.2.1}Task}{9}{paragraph.2.5.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.5.2.3}Dimensionality reduction}{9}{subsubsection.2.5.2.3}%
+\contentsline {paragraph}{\numberline {2.5.2.3.1}Task}{9}{paragraph.2.5.2.3.1}%
+\contentsline {subsection}{\numberline {2.5.3}Reinforcement learning}{9}{subsection.2.5.3}%
+\contentsline {chapter}{\numberline {3}KNN}{10}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introduzione}{10}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Misurare la distanza}{10}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Decision boundaries}{10}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Il ruolo di $K$}{10}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Underfitting}{10}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Overfitting}{11}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Scelta di $K$}{11}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Variaizoni di $K$}{11}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}\emph {K-NN} pesata}{11}{subsection.3.6.1}%
+\contentsline {chapter}{\numberline {4}Modelli lineari}{12}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introduzione}{12}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Bias}{12}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Linear separability}{12}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Definire una linea}{12}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}Definizione di modello lineare}{13}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Training}{13}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Perceptron}{13}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}Numero di iterazioni}{13}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}Ordine dei campioni}{13}{subsubsection.4.3.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.3}Linear separable sets}{13}{subsubsection.4.3.2.3}%
+\contentsline {subsubsection}{\numberline {4.3.2.4}Algoritmo}{13}{subsubsection.4.3.2.4}%
+\contentsline {subsubsection}{\numberline {4.3.2.5}Calcolo della predizione}{14}{subsubsection.4.3.2.5}%
+\contentsline {chapter}{\numberline {5}Decision Trees}{15}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Struttura}{15}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Funzionamento}{15}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Inferenza}{15}{subsection.5.2.1}%
+\contentsline {section}{\numberline {5.3}Decision trees learning algorithm}{15}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Crescere una foglia}{16}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Crescere un nodo}{16}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Algoritmo}{17}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Split selection}{17}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}Predizione delle foglie}{17}{subsection.5.3.5}%
+\contentsline {section}{\numberline {5.4}Misure di impurit\`a per la classificazione}{17}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Misure di impurit\`a per la regressione}{18}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Data features e attributi}{18}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Funzioni di split o routing}{18}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Features discrete e nominali}{18}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Features ordinali}{19}{subsection.5.7.2}%
+\contentsline {subsection}{\numberline {5.7.3}Obliquo}{19}{subsection.5.7.3}%
+\contentsline {section}{\numberline {5.8}Decision trees e overfitting}{19}{section.5.8}%
+\contentsline {section}{\numberline {5.9}Random forest}{19}{section.5.9}%

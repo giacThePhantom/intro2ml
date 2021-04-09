@@ -1,0 +1,36 @@
+\chapter{KNN}
+
+\section{Introduzione}
+Si possono considerare gli esempi come punti in uno spazio $n$ dimensionale dove $n$ \`e il numero di features.
+Per classificare un esempio $d$ si pu\`o mettere a $d$ una label uguale a quella dell'esempio pi\`u vicino a $d$ nel training set.
+Questo concetto viene esteso nel $K$-nearest neighbour o \emph{K-NN} in cui per classificare un esempio $d$ si trovano i $k$ esempi pi\`u vicini di $d$ e si sceglie la label in maggior numero tra i $k$ vicini pi\`u prossimi.
+
+\section{Misurare la distanza}
+Misurare la distanza tra due esempi \`e specifico al problema, ma un modo possibile \`e la distanza euclidea:
+$$D(a,b)=\sqrt{(a_1-b_1)^2+\cdots+(a_n-b_n)^2}$$
+
+\section{Decision boundaries}
+I decision boundaries sono posti nello spazio delle features dove la classificazione di un punto o un esempio cambia.
+In particolare \emph{K-NN} definisce dei decision boundaries localmente tra le classi.
+
+\section{Il ruolo di $K$}
+I fattori che determinano la bont\`a di un algoritmo di machine learning sono la sua abilit\`a di minimizzare il training error e minimizzare il gap tra il training error e il test error.
+Questi due fattori corrispondono a underfitting e overfitting.
+
+	\subsection{Underfitting}
+	L'underfitting avviene quando il modello non \`e capace di ottenere un valore di errore abbastanza piccolo sul training set.
+
+	\subsection{Overfitting}
+	L'overfitting avviene quando il gap tra il training error e il test error \`e troppo grande.
+
+\section{Scelta di $K$}
+Il valore di $K$ comprende euristiche comuni come $3, 5, 7$ o un numero dispari per evitare pareggi.
+Pu\`o essere scelto utilizzando dati di sviluppo.
+Per classificare un esempio $d$ si trovano i $k$ vicini pi\`u prossimi di $d$ e si sceglie la classe pi\`u presente nei $k$ scelti.
+
+\section{Variaizoni di $K$}
+Invece di scegliere i $K$ vicini pi\`u prossimi si possono contare tutti gli esempi in una distanza fissata.
+
+	\subsection{\emph{K-NN} pesata}
+	Si pu\`o pesare il voto di tutti gli esempi in modo che esempi pi\`u vicini pesino di pi\`u.
+	Si usa speso qualche tipo di decadimento esponenziale.

@@ -1,0 +1,30 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{IsNot}{is not}
+\SetKw{Not}{not}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{Perceptron}{Perceptron}
+
+\caption{\protect\Perceptron{}}
+
+\Repeat{Convergence}{
+	\ForEach{training example ($f_1, f_2,\dots,f_n, label$)}{
+		\comment{Label = $\pm 1$}
+		$prediction\ =\ b\ +\ \sum\limits_{i=1}^nw_if_i$\;
+		\If{prediction \IsNot label}{
+			\comment{update all the weights}
+			\ForEach{$w_i$}{
+				$w_i\ =\ w_i\ +\ f_i\ *\ label$\;
+				$b\ =\ b\ +\ label$\;
+			}
+		}
+	}
+}\comment{Or some number of iteration}
+
+
+
+\end{algorithm}

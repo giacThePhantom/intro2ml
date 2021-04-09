@@ -1,0 +1,159 @@
+\chapter{Decision Trees}
+
+\section{Struttura}
+Un decision tree \`e un modello di predizione con struttura ad albero.
+\`E composto da nodi terminali o foglie e nodi non terminali.
+I nodi non terminali hanno da due a pi\`u figli e implementando la funzione di routing.
+I nodi foglia non hanno figli e implementano la funzione di predizione.
+Non ci sono cicli e tutti i nodi hanno al massimo un genitore (con esclusione del nodo radice).
+
+\section{Funzionamento}
+Un decision tree prende un input $x\in\mathcal{X}$ e lo routa attraverso i nodi fino a che raggiunge un nodo foglia dove avviene la predizione.
+Ogni nodo non terminale
+$$Node(\phi, t_L, t_R)$$
+Contiene una funzione di routing $\phi\in\{L, R\}^{\mathcal{X}}$, un figlio destro $t_L$ e un figlio sinistro $t_R$.
+Quando $x$ raggiunge il nodo viene spostato sul figlio destro o sinistro in base al valore di $\phi(x)\in\{L,R\}$.
+Ogni nodo foglia
+$$Leaf(h)$$
+Contiene una funzione di predizione $h\in\mathcal{F}_{task}$, tipicamente una costante.
+
+	\subsection{Inferenza}
+	Sia $f_t$ la funzione che ritorna la predizione per l'input $x\in\mathcal{X}$ secondo il decision tree $t$.
+	Questa viene definita come:
+	$$f_t(x)=\begin{cases}h(t)&\mathbf{if} t = Leaf(h)\\
+										 f_{t_{\phi(x)}}(x)&\mathbf{if} t = Node(\phi, t_L, t_R)
+				\end{cases}$$
+
+\section{Decision trees learning algorithm}
+Dato un training set $\mathcal{D}_n = \{z_1,\dots, z_n\}$ si deve trovare $f_{t^*}$ dove:
+$$t^*\in arg\min\limits_{t\in\mathcal{T}} E(f_t;\mathcal{D}_n$$
+Dove $\mathcal{T}$ \`e l'insieme dei decision trees.
+Il problema di ottimizzazione \`e facile se non si impongono constraints, altrimenti potrebbe diventare \emph{NP-hard}.
+Una soluzione pu\`o essere trovata utilizzando una strategia greedy.
+Pertanto si assume:
+$$E(f_t;\mathcal{D}) = \dfrac{1}{|\mathcal{D}|}\sum\limits_{z\in\mathcal{D}}\mathcal{l}(f;z)$$
+Ora fissato un insieme di predizioni di foglie
+$$\mathcal{H}_{leaf}\subset\mathcal{F}_{task}$$
+E fissato un insieme di possibili funzioni di routing o split
+$$\Phi\subset\{L,R\}^\mathcal{X}$$
+La strategia di crescita dell'albero partiziona ricorsivamente il training set e decide se crescere foglie o nodi non terminali.
+
+	\subsection{Crescere una foglia}
+	Sia $\mathcal{D}=\{z_1, \dots, z_m\}$ il training set che raggiunge un nodo.
+	Il predittore di foglia ottimale viene computato come:
+	$$h^*_\mathcal{D}\in arg\min\limits_{h\in\mathcal{H}_{leaf}} E(h; \mathcal{D})$$
+	Il valore di errore ottimale o misura di impurit\`a:
+	$$I(\mathcal{D} = E(h^*_\mathcal{D};\mathcal{D})$$
+	Se si raggiungono dei criteri si cresce una foglia $Leaf(h^*_\mathcal{D})$
+	Esempi di questi criteri sono la purezza $I(\mathcal{D}) < \epsilon$ o la cardinalit\`a minima $|\mathcal{D}|<k$.
+
+	\subsection{Crescere un nodo}
+	Se non si raggiunge il criterio si deve trovare una funzione di split ottimale:
+	$$\phi^*_\mathcal{D}\in arg\min\limits_{\phi\in\Phi}I_\phi(\mathcal{D})$$
+	L'impurit\`a $I_\phi(\mathcal{D})$ di una funzione di split $\phi$ dato il training set $\mathcal{D}$ viene computata nei termini di impurit\`a dei dati splittati:
+	$$I_\phi(\mathcal{D})=\sum\limits_{d\in\{L,R\}}\dfrac{|\mathcal{D}^\phi_d|}{|\mathcal{D}|}I(\mathcal{D}^\phi_d)$$
+	Dove
+	$$\mathcal{D}^\phi_d = \{(x, y)\in\mathcal{D};\phi(x)=d\}$$
+	L'impurit\`a di una funzione di split \`e il pi\`u basso errore di training che pu\`o essere ottenuto da un albero che consiste di una radice e due figlie.
+	Si cresce pertanto un nodo $Node(\phi^*, t_L, t_R)$ dove $\phi^*$ \`e lo split ottimale, mentre $t_L$ e $t_R$ sono ottenuti applicando ricorsivamente l'algoritmo di learning ai training set splits.
+
+	\subsection{Algoritmo}
+		$$Grow(\mathcal{D})=\begin{cases}Leaf(h^*_\mathcal{D}) &raggiunto\ criterio\ di\ stop\\
+			 									 Node(\phi^*_\mathcal{D}, Grow(\mathcal{D}^*_L), Grow(\mathcal{D}^*_R)) &altrimenti
+						\end{cases}$$
+	Dove $\mathcal{D}^*_d=\{(x, y)\in\mathcal{D};\phi^*_\mathcal{D}(x)=d\}$.
+
+	\subsection{Split selection}
+	Tipicamente la migliore funzione di split viene data in termini di minimizzazione dell'impurit\`a dello split, ma altre volte nella massimizzazione del guadagno di informazioni o
+	$$\Delta_\phi(\mathcal{D})=I(\mathcal{D})-I_\phi(\mathcal{D})$$
+	Essendo $\Delta_\phi(\mathcal{D})\ge 0$ per ogni $\phi\in\{L,R\}^{\mathcal{X}}$ e ogni training set $\mathcal{D}\subset\mathcal{X}\times\mathcal{Y}$, l'impurit\`a non aumentera mai per ogni split scelto casualmente.
+
+	\subsection{Predizione delle foglie}
+	La predizione delle foglie fornisce una soluzione a un problema semplificato coinvolgendo solo dati che la raggiungono.
+	Questa soluzione pu\`o essere una funzione arbitraria $h\in\mathcal{F}_{task}$, ma in pratica si restringe a un sottoinsieme di $\mathcal{H}_{leaf}$.
+	Il predittore pi\`u semplice \`e una funzione che ritorna una costante (come una label).
+	L'insieme di tutte le possibili funzioni costanti pu\`o essere scritto come:
+	$$\mathcal{H}_{leaf} = \bigcup\limits_{y\in\mathcal{Y}}\{y\}^{\mathcal{X}}$$
+
+\section{Misure di impurit\`a per la classificazione}
+Si consideri per la classificazione:
+\begin{multicols}{2}
+	$$\mathcal{Y} = \{c_1,\dots,c_k\}$$
+	$$\mathcal{D}\subset\mathcal{X}\times\mathcal{Y}$$
+\end{multicols}
+Sia $\mathcal{D}^y = \{(x, y')\in \mathcal{D}: y = y'\}$, che denota il sottoinsieme di training samples in $\mathcal{D}$ con label $y$.
+Considerando la funzione di errore:
+$$E(f,\mathcal{D}) = \dfrac{1}{|\mathcal{D}|}\sum\limits_{z\in\mathcal{D}}\mathcal{l}(f;z)$$
+Se $\mathcal{l}(f;(x,y))=1_{f(x)\neq y}$ e $\mathcal{H}_{leaf} = \bigcup\limits_y\in\mathcal{Y}\{y\}^\mathcal{X}$ la misura di impurit\`a \`e allora il classification error:
+$$I(\mathcal{D})= 1 -\max\limits_{y\in\mathcal{Y}}\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}$$
+Se invece $\mathcal{l}(f;(x,y))=\sum\limits_{x\in\mathcal{Y}}[f_c(x)-1_{c=y}]^2$ e $\mathcal{H}_{leaf}=\bigcup\limits_{\pi\in\Delta(\mathcal{Y})}\{\pi\}^\mathcal{X}$ allora la misura di impurit\`a \`e l'impurit\`a di Gini:
+$$I(\mathcal{D}) = 1-\sum\limits_{y\in\mathcal{Y}}\biggl(\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}\biggr)^2$$
+Infine se $\mathcal{l}(f;(x,y))=-\log f_y(x)$ e $\mathcal{H}_{leaf} = \bigcup\limits_{\pi\in\Delta(\mathcal{Y})}\{\pi\}^\mathcal{X}$, con una distribuzione costante di label come predizione di foglie, allora la misura di impurit\`a \`e l'entropia:
+$$I(\mathcal{D})=-\sum\limits_{y\in\mathcal{Y}}\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}\log\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}$$
+
+\section{Misure di impurit\`a per la regressione}
+Si consideri per la regressione:
+\begin{multicols}{2}
+	$$\mathcal{Y}\subset\mathbb{R}^d$$
+	$$\mathcal{D}\subset\mathcal{X}\times\mathcal{Y}$$
+\end{multicols}
+Se $\mathcal{l}(f;(x,y))=||f(x)-y||_2$ e $\mathcal{H}_{leaf} = \bigcup\limits_{y\in\mathcal{Y}}\{y\}^\mathcal{X}$ allora la misura di impurit\`a \`e la varianza:
+$$I(\mathcal{D})=\dfrac{1}{|\mathcal{D}|}\sum\limits_{(x,y)\in\mathcal{D}}||x-\mu_\mathcal{D}||^2$$
+Dove $\mu_\mathcal{D} = \frac{1}{\mathcal{D}|}\sum\limits_{(x,y)\in\mathcal{D}}x$
+
+\section{Data features e attributi}
+Un data point $x\in\mathcal{X}$ potrebbe essere $d$ dimensionale con ogni dimensione con tipi di valori eterogenei come discreti o continui e avere un ordinamento o no, rispettivamente ordinali o nominali.
+
+\section{Funzioni di split o routing}
+Il routing o split $\phi\in\{L,R\}^{\mathcal{X}}$ determina se un data point $x\in\mathcal{X}$ deve muoversi a destra o sinistra.
+La possibile funzione di split \`e ristretta in un insieme predefinito $\Phi\subset\{L,R\}^\mathcal{X}$ in base alla natura dello spazio di features.
+La funzione di split prototipica per un input $d$ dimensionale prima seleziona una dimensione e poi applica un criterio di split $1$ dimensionale.
+
+	\subsection{Features discrete e nominali}
+	Si assumano features discrete e nominali con valori in $\mathcal{K}$.
+	La funzione di split pu\`o essere implementata data una partizione di $\mathcal{K}$ in $\mathcal{K}_R$ e $\mathcal{K}_L$:
+	$$\phi(x) = \begin{cases}L &\mathbf{if} x\in\mathcal{K}_L\\
+		 								  R &\mathbf{if} x\in\mathcal{K}_R
+				 \end{cases}$$
+	Trovare lo split ottimale richiede testare $2^{|\mathcal{K}|-1}-1$ bi-partizioni.
+
+	\subsection{Features ordinali}
+	Si assumano features ordinali con valori in $\mathcal{K}$.
+	La funzione di split pu\`o essere implementata dando una soglia $r\in\mathcal{K}$:
+	$$\phi(x) = \begin{cases}L &\mathbf{if} x\le r\\
+		 								  R &\mathbf{if} x>r
+				 \end{cases}$$
+	Se $|\mathcal{K}|\le|\mathcal{D}|$ trovare lo split ottimale richiede il test di $|\mathcal{K}-1$ soglie.
+	Se $|\mathcal{K}>|\mathcal{D}|$ si deve ordinare i valori di input in $\mathcal{D}$ dove $\mathcal{D}$ \`e il training set che raggiunge il nodo e testare $|\mathcal{D}|-1$ soglie.
+
+	\subsection{Obliquo}
+	A volte \`e conveniente fare split considerando pi\`u features alla volta.
+	Tali funzioni lavorano con features continue e sono dette oblique in quanto generano decision boundaries obliqui.
+	Se $x\in\mathbb{R}^d$ allora la funzione di split pu\`o essere implementata dato $w\in\mathbb{R}^d$ e $r\in\mathbb{R}$:
+	$$\phi(x) = \begin{cases}L &\mathbf{if} w^Tx\le r\\
+		 								  R &\mathbf{altimenti}
+			 	\end{cases}$$
+	Si nota come questa funzione sia pi\`u difficile da ottimizzare.
+
+\section{Decision trees e overfitting}
+I decision trees sono modelli non parametrici con una struttura determinata dai dati.
+Per questo sono flessibili e possono facilmente fare fit sul training set, con un alto rischio di overfitting.
+Tecniche standard per migliorare la generalizzazione si applicano ai decision trees:
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Early stopping.
+		\item Regularization.
+		\item Data augmentation.
+		\item Complexity reduction.
+		\item Ensembling.
+	\end{itemize}
+\end{multicols}
+Una tecnica per ridurre la complessit\`a a posteriori \`e detta pruning.
+
+\section{Random forest}
+Le random forest sono ensembles di decision trees.
+Ogni algero \`e tipicamente trained con una versione bootstrapped del training set campionata con sostituzione.
+Le funzioni di split sono ottimizzate su features campionate a caso o completamente a caso (extremely randomized trees).
+Questo aiuta ad ottenere decision trees decorrelati.
+La predizione finale della foresta \`e ottenuta facendo la media delle predizioni per ogni albero nell'ensemble $\mathcal{Q}=\{t_1,\dots,t_T\}$.
+$$f_\mathcal{Q}(x)=\dfrac{1}{T}\sum\limits_{j=1}^Tf_t(x)$$
