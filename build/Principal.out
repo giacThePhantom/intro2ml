@@ -79,3 +79,12 @@
 \BOOKMARK [2][-]{subsection.6.6.1}{Microaveraging}{section.6.6}% 79
 \BOOKMARK [2][-]{subsection.6.6.2}{Macroaveraging}{section.6.6}% 80
 \BOOKMARK [2][-]{subsection.6.6.3}{Confusion matrix}{section.6.6}% 81
+\BOOKMARK [0][-]{chapter.7}{Gradient descent}{}% 82
+\BOOKMARK [1][-]{section.7.1}{Model based machine learning}{chapter.7}% 83
+\BOOKMARK [2][-]{subsection.7.1.1}{Modelli lineari}{section.7.1}% 84
+\BOOKMARK [1][-]{section.7.2}{Loss functions}{chapter.7}% 85
+\BOOKMARK [2][-]{subsection.7.2.1}{Loss 0/1}{section.7.2}% 86
+\BOOKMARK [2][-]{subsection.7.2.2}{Funzioni convesse}{section.7.2}% 87
+\BOOKMARK [2][-]{subsection.7.2.3}{Surrogate loss function}{section.7.2}% 88
+\BOOKMARK [1][-]{section.7.3}{Gradient descent}{chapter.7}% 89
+\BOOKMARK [2][-]{subsection.7.3.1}{Spostamento in direzione della minimizzazione dell'errore}{section.7.3}% 90

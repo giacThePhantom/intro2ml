@@ -101,3 +101,19 @@
 \contentsline {subsection}{\numberline {6.6.1}Microaveraging}{24}{subsection.6.6.1}%
 \contentsline {subsection}{\numberline {6.6.2}Macroaveraging}{24}{subsection.6.6.2}%
 \contentsline {subsection}{\numberline {6.6.3}Confusion matrix}{25}{subsection.6.6.3}%
+\contentsline {chapter}{\numberline {7}Gradient descent}{26}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Model based machine learning}{26}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Modelli lineari}{26}{subsection.7.1.1}%
+\contentsline {subsubsection}{\numberline {7.1.1.1}Notazioni}{26}{subsubsection.7.1.1.1}%
+\contentsline {paragraph}{\numberline {7.1.1.1.1}Funzione indicatrice}{26}{paragraph.7.1.1.1.1}%
+\contentsline {paragraph}{\numberline {7.1.1.1.2}Dot-product}{26}{paragraph.7.1.1.1.2}%
+\contentsline {subsubsection}{\numberline {7.1.1.2}Funzione obiettivo}{27}{subsubsection.7.1.1.2}%
+\contentsline {section}{\numberline {7.2}Loss functions}{27}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Loss $0/1$}{27}{subsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.1.1}Minimizzare la loss $0/1$}{27}{subsubsection.7.2.1.1}%
+\contentsline {subsection}{\numberline {7.2.2}Funzioni convesse}{27}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Surrogate loss function}{27}{subsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.3.1}Alcune surrogate loss function}{27}{subsubsection.7.2.3.1}%
+\contentsline {section}{\numberline {7.3}Gradient descent}{28}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Spostamento in direzione della minimizzazione dell'errore}{28}{subsection.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.1.1}Calcolo dello spostamento per la loss function esponenziale}{28}{subsubsection.7.3.1.1}%

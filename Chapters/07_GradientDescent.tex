@@ -1,0 +1,101 @@
+\chapter{Gradient descent}
+
+\section{Model based machine learning}
+Nel model based machine learning si sceglie un modello definito da un insieme di parametri.
+In particolare si nota come:
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Per i decision trees i parametri sono la struttura dell'albero, quali features ogni nodo divide e le predizioni delle foglie.
+		\item Per il perceptron i parametri sono i pesi e il valore di $b$.
+	\end{itemize}
+\end{multicols}
+Dopo aver scelto il modello si deve scegliere un criterio da ottimizzare o la funzione obiettivo come per esempio il training error.
+Infine si sviluppa un algoritmo di learning che deve cercare di minimizzare il criterio, spesso in maniera euristica.
+
+	\subsection{Modelli lineari}
+	Nei modelli lineari il modello \`e:
+	$$0=b+\sum\limits_{j=1}^mw_jf_j$$
+	Si deve scegliere il criterio da ottimizzare.
+
+		\subsubsection{Notazioni}
+
+			\paragraph{Funzione indicatrice}
+			Una funzione indicatrice trasforma valori di \emph{Vero} e \emph{Falso} in numeri e conte.
+			$$1[x]=\begin{cases}1&\mathbf{if} x = True\\
+										  	0&\textbf{if} x = False
+				 	\end{cases}$$
+
+			\paragraph{Dot-product}
+			Utilizzando una notazione vettoriale si rappresenta un esempio $f_1,\dots,f_m$ come un vettore singolo $\overrightarrow{x}$ in cui $j$ indicizza la feature e $i$ indicizza un dataset di esempi.
+			Si possono rappresentare anche i pesi $w_1,\dots,w_m$ come un vettore $\overrightarrow{w}$.
+			Il dot-product tra due vettori $a$ e $b$ viene definito come:
+			$$a\cdot b = \sum\limits_{j=1}^ma_jb_j$$
+
+		\subsubsection{Funzione obiettivo}
+		Il criterio da ottimizzare o funzione obiettivo pu\`o essere:
+		$$\sum\limits_{i=1}^n1[y_i(w\cdot x_i+b)\le 0]$$
+		Si devono pertanto trovare $w$ e $b$ tali che minimizzano questa funzione, ovvero:
+		$$argmin_{w,b}\sum\limits_{i=1}^n1[y_i(w\cdot x_i+b)\le 0]$$
+
+\section{Loss functions}
+
+	\subsection{Loss $0/1$}
+	Una funzione di loss $0/1$ \`e una funzione nella forma:
+	$$\sum\limits_{i=1}^n1[y_i*w\cdot x_i+b)\le 0]$$
+	Dove tra le quadre si trova se la predizione e la label sono d'accordo, con vero se non lo fanno e tra le tonde la distanza dall'iperpiano, di cui il segno \`e la predizione.
+	Questa funzione ritorna il numero di sbagli.
+
+		\subsubsection{Minimizzare la loss $0/1$}
+		Per minimizzare una funzione $0/1$ si deve, ogni volta cambiare un valore di $w$ in modo che l'esempio \`e corretto o scorretto la perdita aumenta o diminuisce.
+		Si nota come a ogni feature aggiunta si aggiunge una nuova dimensione allo spazio.
+		Il minimo si trova trovando $w$ e $b$ che minimizzano la perdita.
+		Questo \`e un problema \emph{NP-hard}.
+		Sue difficolt\`a comprendono il fatto che piccoli cambi in ogni $w$ possono portare a grandi cambi nella perdita in quanto il cambio non \`e continuo.
+		Ci possono essere molti minimi locali.
+		Ad ogni punto non si hanno informazioni che direzionano verso il minimo.
+		Pertanto si nota come una loss function ideale sia continua e differenziabile in modo da avere un'indicazione verso la direzione di minimizzazione e un unico minimo.
+
+	\subsection{Funzioni convesse}
+	In una funzione convessa il segmento tra qualsiasi due punti della funzione si trova al di sopra della funzione.
+
+	\subsection{Surrogate loss function}
+	Per molte applicazioni si vuole minimizzare la loss $0/1$.
+	Una surrogate loss function \`e una loss function che fornisce un limite superiore alla loss function attuale.
+	Si vuole identificare un surrogato convesso della loss function in modo da facilitarne la minimizzazione.
+	Chiave a una loss function \`e come verifica la differenza tra la label $y$ effettiva e la predizione $y'$.
+
+		\subsubsection{Alcune surrogate loss function}
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item \emph{$01$ loss}: $l(y, y')=1[yy'\le 0]$.
+				\item \emph{Hinge} $l(y,y')=\max(0,1-yy')$.
+				\item Exponential: $l(y,y')=\exp(iyy')$
+				\item \emph{Squared loss}: $l(y,y')=(y-y')^2$.
+			\end{itemize}
+		\end{multicols}
+
+\section{Gradient descent}
+Il gradient descent \`e un modo per trovare il minimo di una funzione: le derivate parziali danno un slope o direzione dove muoversi in tale dimensione.
+Questo approccio consiste di scegliere un punto di partenza e a ripetizione di: scegliere una dimensione e muoversi di una piccola quantit\`a verso il minimo utilizzando la derivata.
+
+	\subsection{Spostamento in direzione della minimizzazione dell'errore}
+	Il movimento in direzione della minimizzazione dell'errore \`e pertanto:
+	$$w_j = w_j - \eta \dfrac{d}{dw_i}loss(w)$$
+	Dove $\eta$ \`e il learning rate.
+
+		\subsubsection{Calcolo dello spostamento per la loss function esponenziale}
+		Si deve pertanto calcolare:
+		\begin{align*}
+			\dfrac{d}{dw_j}loss &=\dfrac{d}{dw_j}\sum\limits_{i=1}^n\exp(-y_i(w\cdot x_i + b))\\=
+												 &=\sum\limits_{i=1}^n\dfrac{d}{dw_j}[-y_i(w\cdot x_i+b)]\exp(-y_i(w\cdot x_i+b))\\
+		\end{align*}
+		Si consideri pertanto ora:
+		\begin{align*}
+			\dfrac{d}{dw_j}[-y_i(w\cdot x_i + b)]&=-\dfrac{d}{dw_j}[-y_i(w\cdot x_i + b)]=\\
+																		&=-\dfrac{d}{dw_j}y_i(w_1x_{i1}+\cdots+w_mx_{im}+b)=\\
+																		&=-y_ix_{ji}
+		\end{align*}
+		Si nota pertanto come:
+		$$\dfrac{d}{dw_j}loss=\sum\limits_{i=1}^n-y_ix_{ij}\exp(-y_i(w\cdot x_i+b))$$
+		Si aggiorna pertanto $w_j$:
+		$$w_j=w_j-\eta\sum\limits_{i=1}^n-y_ix_{ij}\exp(-y_i(w\cdot x_i+b))$$
