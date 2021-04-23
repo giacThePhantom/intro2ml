@@ -88,3 +88,6 @@
 \BOOKMARK [2][-]{subsection.7.2.3}{Surrogate loss function}{section.7.2}% 88
 \BOOKMARK [1][-]{section.7.3}{Gradient descent}{chapter.7}% 89
 \BOOKMARK [2][-]{subsection.7.3.1}{Spostamento in direzione della minimizzazione dell'errore}{section.7.3}% 90
+\BOOKMARK [2][-]{subsection.7.3.2}{Learning algorithm del perceptron}{section.7.3}% 91
+\BOOKMARK [2][-]{subsection.7.3.3}{Costante c}{section.7.3}% 92
+\BOOKMARK [2][-]{subsection.7.3.4}{Gradiente}{section.7.3}% 93

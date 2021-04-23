@@ -99,3 +99,27 @@ Questo approccio consiste di scegliere un punto di partenza e a ripetizione di: 
 		$$\dfrac{d}{dw_j}loss=\sum\limits_{i=1}^n-y_ix_{ij}\exp(-y_i(w\cdot x_i+b))$$
 		Si aggiorna pertanto $w_j$:
 		$$w_j=w_j-\eta\sum\limits_{i=1}^n-y_ix_{ij}\exp(-y_i(w\cdot x_i+b))$$
+		Questo viene fatto per ogni esempio $x_i$.
+
+	\subsection{Learning algorithm del perceptron}
+	Si nota pertanto come considerando il perceptron nell'ambito del gradient descent si aggiorna sempre il vettore dei pesi.
+	\input{Pseudocodice/08_perceptron_gradient_descent}
+	Si noti come in questo caso $\eta$ rappresenta il learning rate, $y_i$ la label e $(w\cdot x_i + b))$ la predizione.
+	Questi generano una costante $c$
+
+	\subsection{Costante $\mathbf{c}$}
+	Nella costante $c$ se label e predizione hanno lo stesso segno quando gli elementi predetti aumentano gli aggiornamenti diventano minori.
+	Se invece sono diversi pi\`u diversi lo sono, maggiore l'aggiornamento.
+
+	\subsection{Gradiente}
+	Il gradiente \`e il vettore delle derivate parziali rispetto a tutte le coordinate dei pesi:
+	$$\nabla L = \biggl[\dfrac{\delta L}{\delta w_1}\cdots\dfrac{\delta L}{\delta w_N}\biggr]$$
+	Ogni derivata parziale misura quanto veloce la perdita cambia in una direzione.
+	Quando il gradiente \`e zero la perdita non sta cambiando in nessuna direzione.
+	\input{Pseudocodice/09_gradient_descent}
+	Nei problemi in cui il problema di ottimizzazione \`e non convesso si trovano dei minimi locali, questi non permettono all'algoritmo di proseguire in quanto non distingue tra minimi locali e minimi globali.
+	Un altro punto \`e un punto a sella, in cui certe direzioni curvano verso l'alto e altre verso il basso.
+	In tali punti il gradiente \`e $0$ e l'algoritmo si blocca.
+	Un modo per uscire da un punto \`a sella \`e spostarsi a lato un po' in modo da uscirne.
+	Si nota come i punti a sella sono molti comuni in alte dimensioni.
+	Il learning rate \`e molto importante in quanto permette di decidere la distanza coperta da uno spostamento determinando velocit\`a di avvicinamento al minimo e precisione dell'algoritmo.
