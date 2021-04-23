@@ -1,0 +1,71 @@
+\chapter{Regularization}
+
+\section{Introduzione}
+Si noti come con il gradient descent si calcola il valore minimo della loss function sul training set.
+Ci si deve pertanto preoccupare del overfitting.
+Il minimo $w$ e $b$ sul training set infatti non sono tipicamente il minimo per il test set.
+Questo problema viene risolto attraverso la regolarizzazione.
+
+\section{Regolarizzatori}
+I regolarizzatori sono criteri addizionali alla loss function in modo da evitare overfitting.
+Prova a mantenere i parametri regolari o normali.
+\`E un bias sul modello che forza che il learning preferisca certi tipi di pesi rispetto agli altri.
+$$argmin_{w,b}\sum\limits_{i=1}^nloss(yyy')+\lambda regularizer(w,b)$$
+Tipicamente non si vogliono pesi molto grandi in quanto un piccolo cambio in una feature potrebbe causare un cambio nella predizione.
+Si potrebbe anche preferire pesi di $0$ per features che non sono utili.
+
+	\subsection{Regolarizzatori comuni}
+
+		\subsubsection{Somma dei pesi}
+		Il regolarizza otre somma dei pesi penalizza di pi\`u piccoli valori e si calcola come:
+		$$r(w,b)=\sum\limits_{w_j}|w_j|$$
+		Si dice anche $1$-norm.
+
+		\subsubsection{Somma quadratica dei pesi}
+		La somma quadratica dei pesi penalizza di pi\`u valori grandi e si calcola come:
+		$$r(w,b)=\sqrt{\sum\limits_{w_j}|w_j|^2}$$
+		Si dice anche $2$-norm.
+
+		\subsubsection{$P$-norm}
+		Si intende per $p$-norm:
+		$$r(w,b)=\sqrt[p]{\sum\limits_{w_j}|w_j|^p}=||w||^p$$
+		Valori pi\`u piccoli di $p$ $<2$ incoraggiano vettori pi\`u sparsi, mentre valori pi\`u grandi scoraggiano pesi pi\`u grandi creando pertanto vettori con pesi pi\`u simili.
+
+\section{Gradient descent e regolarizzazione}
+Si nota come se scelto un modello e dimostrato che $loss+regularizer$ \`e una funzione convessa si pu\`o ancora utilizzare il gradient descent.
+Si nota come per costruzione le $p$-norms sono convesse per $p\ge 1$ e pertanto:
+\begin{align*}
+	\dfrac{d}{dw_j}objective&=\dfrac{d}{dw_j}\sum\limits_{i=1}^n\exp(-y_i(w\cdot x_i + b))+\dfrac{\lambda}{2}||w||^2=\\
+				&\cdot\\
+				&\cdot\\
+				&\cdot\\
+				&=-\sum\limits_{i=1}^ny_ix_{ij}\exp(-y_i(w\cdot x_i+b))+\lambda w_j
+\end{align*}
+Pertanto con il regolarizzatore l'aggornamento \`e
+$$w_j=w_j+\eta y_ix_{ij}\exp(-y_i(w\cdot x_i+b))-\eta\lambda w_j$$
+Si noti pertanto come la regolarizzazione, se $w_i$ \`e positiva la riduce, mentre se \`e negativa lo aumenta muovendo $w_i$ verso lo $0$.
+
+\section{Regolarizzazione con le $p$-norms}
+
+	\subsection{L1}
+	$$w_j = w_j + \eta(lossCorrection - \lambda sign(w_j))$$
+	Popolare in quanto tende a dare soluzioni sparse, ma non \`e differenziabile e lavora unicamente per risolutori a gradient descent.
+		
+	\subsection{L2}
+	$$w_j = w_j + \eta(lossCorrection - \lambda w_j)$$
+	Popolare in quanto per qualche loss function pu\`o essere risolta direttamente.
+
+	\subsection{Lp}
+	$$w_j = w_j + \eta(lossCorrection - \lambda cw_j^{p-1})$$
+	Meno popolare in quanto non riduce i pesi abbastanza.
+
+\section{Metodi di machine learning con regolarizzazione}
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Ordinario: least squares: squared loss.
+		\item Ridge regression: squared loss with L2 regularization
+		\item Lasso regression: squared loss with L1 regularization
+		\item Elastic regression: squared loss with L2 and L1 regularization
+		\item Logistic regression: logistic loss.
+	\end{itemize}
+\end{multicols}
