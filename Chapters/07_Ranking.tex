@@ -1,0 +1,62 @@
+\chapter{Ranking}
+
+\section{Classificazione multiclasse e multilabel}
+Nella classificazione multi classe ogni esempio ha esattamente una label che sono pertanto mutualmente esclusive.
+Nella classificazione multi label ogni esempio ha zero o pi\`u labels, dette anche annotazioni.
+Per svolgere una classficazione multi label basterebbe fare training su un modello per ogni label e applicarli a ogni nuovo esempio, ma ci sono altri metodi pi\`u sofisticati ed efficaci come il joint learning.
+
+\section{Problema del ranking}
+I dati di training sono divisi in $K$ categoria ognuna delle quali corrispondente a un ranking.
+Si deve insegnare a un modello che quando riceve un insieme di esempi li fitti nel ranking corretto o ritorni un ordinamento per questo nuovo esempio.
+
+	\subsection{Preference function}
+	La preference function o binary classifier \`e un'implementazione di ranking.
+	Data una query $q$ e due campioni $x_i$ e $x_j$ il classificatore predice se $x_i$ deve essere preferito a $x_j$ rispetto alla query $q$.
+	Il classificatore prende pertanto due campioni e d\`a in output $1$ se il primo \`e pi\`u alto o $-1$ se \`e pi\`u basso.
+	In questo modo si ottiene una funzione di ordinamento atomica che si pu\`o estendere a diversi esempi.
+
+		\subsubsection{Perceptron}
+		Per implementare questo algoritmo si pu\`o utilizzare il perceptron creando il vettore delle feature combinate dei due esempi:
+		$$f'_i = a_i -b_i$$
+		$$f'_i = \{1\ if\ a_i > b_i,\ 0\ altrimenti\}$$
+		Questa funzione viene sviluppata in maniera dipendente dall'applicazione.
+		Un modo per computare il ranking numerico per i campioni pu\`o essere risolto utilizzando la preference function sommando i valori di ritorno di ogni classificatore e ottenendo uno score per ognuno di essi.
+
+\section{Utilizzo del ranking e della preference function}
+Con gli algoritmi visti precedentemente si potrebbe pesare il ranking di un esempio utilizzando la distanza dagli altri.
+SI possono usare diversi metodi di distanza dati che sono consistenti.
+La distanza a tempo di testing \`e calcolata come la confidenza della predizione del perceptron e d\`a un ordinamento degli esempi.
+In questo modo si ottiene una forma di ranking pi\`u precisa rispetto a quella vista prima.
+Per un algoritmo di ranking sofisticato si devono incorporare queste osservazioni a tempo di training: se un problema ritorna un'alta differenza in preferenza tra due esempi dovrebbe avere un peso pi\`u alto.
+
+\section{Ordinamento e $\mathbf{\omega}$-ranking}
+Nonostante la veloce soluzione dell'ordinamento contro la funzione di preference si pu\`o utilizzarla come funzione di sorting.
+Si definisce un ranking come una funzione $\sigma$ che mappa gli oggetti alla posizione nella lista di ranking desiderata $(1,\dots,M)$.
+Se $\sigma_u < \sigma_v$ allora $u$ \`e preferito a $v$.
+Dati i dati con ranking osservati $\sigma$ l'obiettivo \`e di imparare a predire i ranking per nuovi oggetti $\sigma^*$.
+Si definisce $\sum_M$ l'insieme di tutti gli ordinamenti di ranking in $M$.
+Si vuole modellare il fatto che uno sbaglio su alcune coppie \`e peggiore rispetto ad altre, pertanto si implementa una nuova funzione di errore per questo scopo.
+Si definisce una funzione di costo $\omega$ dove $\omega(i,j)$ \`e il costo di mettere qualcosa nella posizione $j$ quando dovrebbe essere in $i$.
+Tale funzione deve essere:
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Simmetrica: $w(i,j) = w(j,i$.
+		\item Monotona: $i<j<l\lor i>j>k \Rightarrow \omega(i,j) \le \omega(i,k)$.
+		\item Soddisfi la disuguaglianza triangolare: $\omega(i,j)+\omega(j,k) \le \omega(i,k)$.
+	\end{itemize}
+\end{multicols}
+Un esempio potrebbe essere:
+$$\omega(i,j) = \{1\ if\{i,j\} \le K \land i\neq j\ \ 0\ altrimenti\}$$
+Questa viene detta task di $\omega$ ranking.
+Dati:
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Uno spazio di input $\mathcal{X}$.
+		\item Una distribuzione sconosciuta $\mathcal{D}$ su $\mathcal{X}\times\sum_M$.
+		\item Un training set $D$ campionato da $\mathcal{D}$.
+	\end{itemize}
+\end{multicols}
+Si deve computare una funzione $f:\mathcal{X}\rightarrow\sum_M$ che minimizzi:
+$$\mathbb{E}_{(\mathcal{X},\sigma)\sim\mathcal{D}}\biggl[\sum\limits_{u\neq v}[\sigma_u < \sigma_v][\hat{\sigma}_v < \hat{\sigma}_u]\omega(\sigma_u,\sigma_v)\biggr]$$
+A tempo di testing invece di predirre score e poi ordinare la lista come negli algoritmi prima si utilizza un algoritmo di ordinamento utilizzando la funzione imparata come funzione di ordinamento.
+La differenza \`e che qua la funzione di comparazione \`e probabilistica.

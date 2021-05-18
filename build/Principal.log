@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.4.23)  23 APR 2021 13:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.5.6)  18 MAY 2021 17:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -646,7 +646,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box117
 \@float@everytoks=\toks30
 \@floatcapt=\box118
-)) (build/Principal.aux)
+)) (./build/Principal.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
@@ -717,7 +717,7 @@ LaTeX Info: Redefining \ref on input line 9.
 LaTeX Info: Redefining \pageref on input line 9.
 LaTeX Info: Redefining \nameref on input line 9.
 
-(build/Principal.out) (build/Principal.out)
+(./build/Principal.out) (./build/Principal.out)
 \@outlinefile=\write3
 
 (/usr/share/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
@@ -775,17 +775,18 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (build/Principal.toc)
-\tf@toc=\write4
-
-(./Chapters/01_Introduzione.texpdfTeX warning (ext4): destination with the same
- identifier (name{page.1}) has been already used, duplicate ignored
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./build/Principal.tocpdfT
+eX warning (ext4): destination with the same identifier (name{page.1}) has been
+ already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1 \chapter
-            {Introduzione} [1
+l.51 ...berline {4.1.1}Bias}{14}{subsection.4.1.1}
+                                                  % [1
 
-]
+] [2] [3])
+\tf@toc=\write4
+
+(./Chapters/01_Introduzione.tex [4]
 Capitolo 1.
 
 Underfull \hbox (badness 5533) in paragraph at lines 18--19
@@ -797,13 +798,13 @@ Underfull \hbox (badness 5622) in paragraph at lines 21--22
 []\T1/cmr/m/n/10 Test del mo-del-lo: cross-validation e
  []
 
-[2
+[5
 
-]) (./Chapters/02_MLBasic.tex [3]
+]) (./Chapters/02_MLBasic.tex [6]
 Capitolo 2.
-[4
+[7
 
-] [5] [6] [7]) (./Chapters/03_KNN.tex [8]
+] [8] [9] [10]) (./Chapters/03_KNN.tex [11]
 Capitolo 3.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
@@ -813,7 +814,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 16.
 
-[9
+[12
 
 ]
 
@@ -832,9 +833,9 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 31.
 
-) (./Chapters/04_ModelliLineari.tex [10]
+) (./Chapters/04_ModelliLineari.tex [13]
 Capitolo 4.
-[11
+[14
 
 ] (./Pseudocodice/01_perceptron.tex
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
@@ -843,26 +844,26 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ))
-(./Pseudocodice/02_perceptron_prediction.tex [12]))
-(./Chapters/05_DecisionTrees.tex [13pdfTeX warning (ext4): destination with the
- same identifier (name{algocf.}) has been already used, duplicate ignored
+(./Pseudocodice/02_perceptron_prediction.tex)) (./Chapters/05_DecisionTrees.tex
+[15] [16pdfTeX warning (ext4): destination with the same identifier (name{algoc
+f.}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
 l.1 \chapter
-            {Decision Trees}]
+            {Decision Trees}] [17]
 Capitolo 5.
-[14
+[18
 
-] [15]
+] [19]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 12.1638pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[16] [17]) (./Chapters/06_MultiClassClassification.tex [18]
+[20] [21]) (./Chapters/06_MultiClassClassification.tex [22] [23]
 Capitolo 6.
-[19
+[24
 
 ]
 Underfull \hbox (badness 6927) in paragraph at lines 59--60
@@ -880,7 +881,7 @@ the same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.14 ...{\protect\Ova{$f_1,\dots,f_K$, $\hat{x}$}}
-                                                  ) [20]
+                                                  ) [25]
 (./Pseudocodice/05_allversusalltrainingpseudo.texpdfTeX warning (ext4): destina
 tion with the same identifier (name{algocf.}) has been already used, duplicate 
 ignored
@@ -899,17 +900,39 @@ the same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.14 ...ion{\protect\Ava{all $f_{ij}$, $\hat{x}$}}
-                                                  ) [21])
-(./Chapters/07_GradientDescent.tex [22] [23]
+                                                   [26]) [27])
+(./Chapters/07_Ranking.tex [28]
 Capitolo 7.
+[29
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\omega' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 32.
+
+
+Underfull \hbox (badness 7238) in paragraph at lines 45--46
+[]\T1/cmr/m/n/10 Soddisfi la di-su-gua-glian-za trian-go-la-re:
+ []
+
+) (./Chapters/08_GradientDescent.tex [30]
+Capitolo 8.
 
 Overfull \hbox (5.53233pt too wide) in paragraph at lines 29--32
- \T1/cmr/bx/n/10 7.1.1.1.2 Dot-product[] \T1/cmr/m/n/10 Uti-liz-zan-do una no-t
+ \T1/cmr/bx/n/10 8.1.1.1.2 Dot-product[] \T1/cmr/m/n/10 Uti-liz-zan-do una no-t
 a-zio-ne vet-to-ria-le si rap-pre-sen-ta un esem-pio $\OML/cmm/m/it/10 f[]; [] 
 ; f[]$
  []
 
-[24
+[31
 
 ]
 
@@ -920,44 +943,97 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 42.
 
-[25] (./Pseudocodice/08_perceptron_gradient_descent.texpdfTeX warning (ext4): d
-estination with the same identifier (name{algocf.}) has been already used, dupl
-icate ignored
+[32] [33] (./Pseudocodice/08_perceptron_gradient_descent.texpdfTeX warning (ext
+4): destination with the same identifier (name{algocf.}) has been already used,
+ duplicate ignored
 <to be read again> 
                    \relax 
 l.12 \caption{\protect\Perceptron{}}
-                                    ) [26]
+                                    )
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 110.
+(hyperref)                removing `math shift' on input line 125.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 110.
+(hyperref)                removing `math shift' on input line 125.
 
 (./Pseudocodice/09_gradient_descent.texpdfTeX warning (ext4): destination with 
 the same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.14 ...nt{$\mathcal{F}$, $K$, $\eta_1$, $\dots$}}
-                                                  )) [27] (build/Principal.aux)
+                                                  ))
+(./Chapters/09_Regularization.tex [34] [35]
+Capitolo 9.
+[36
 
-Package rerunfilecheck Warning: File `Principal.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
+]
 
-Package rerunfilecheck Info: Checksums for `Principal.out':
-(rerunfilecheck)             Before: 853E300B3F30A07F975380E6D617ED90;6024
-(rerunfilecheck)             After:  45222AF24EA40172D42F35467D08D07F;6238.
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 48.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 48.
+
+[37]) (./Chapters/10_SVM.tex [38]
+Capitolo 10.
+[39
+
+] [40] [41] [42]) (./Chapters/11_NeuralNetworks.tex [43]
+Capitolo 11.
+[44
+
+] [45] [46] [47] [48] (./Pseudocodice/10_BGD.texpdfTeX warning (ext4): destinat
+ion with the same identifier (name{algocf.}) has been already used, duplicate i
+gnored
+<to be read again> 
+                   \relax 
+l.14 \caption{\protect\GradientDescent}
+                                       ) (./Pseudocodice/11_SDG.texpdfTeX warni
+ng (ext4): destination with the same identifier (name{algocf.}) has been alread
+y used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.15 \caption{\protect\GradientDescent}
+                                       ) (./Pseudocodice/12_SDG_momentum.texpdf
+TeX warning (ext4): destination with the same identifier (name{algocf.}) has be
+en already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.14 \caption{\protect\GradientDescent}
+                                       ) [49] (./Pseudocodice/13_Adagrad.texpdf
+TeX warning (ext4): destination with the same identifier (name{algocf.}) has be
+en already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.15 \caption{\protect\GradientDescent}
+                                       ))
+(./Chapters/12_ReinforcementLearning.tex [50]
+Capitolo 12.
+) (./Chapters/13_UnsupervisedLearning.tex [51
+
+]
+Capitolo 13.
+) (./Chapters/14_GenerativeModels.tex [52
+
+]
+Capitolo 14.
+) [53
+
+] (./build/Principal.aux)
+Package rerunfilecheck Info: File `Principal.out' has not changed.
+(rerunfilecheck)             Checksum: BEF8B5CD7448587FF2F2C6168A564542;9701.
  ) 
 Here is how much of TeX's memory you used:
- 16440 strings out of 479383
- 286434 string characters out of 5875830
- 647295 words of memory out of 5000000
- 33047 multiletter control sequences out of 15000+600000
- 431550 words of font info for 100 fonts, out of 8000000 for 9000
+ 16634 strings out of 479383
+ 289657 string characters out of 5875831
+ 651335 words of memory out of 5000000
+ 33112 multiletter control sequences out of 15000+600000
+ 431857 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,19n,87p,372b,849s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,19n,87p,404b,899s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/t
 exmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf-dist/font
 s/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public
@@ -982,10 +1058,10 @@ pe1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-s
 uper/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.p
 fb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/
 texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on build/Principal.pdf (28 pages, 424436 bytes).
+Output written on ./build/Principal.pdf (54 pages, 516840 bytes).
 PDF statistics:
- 689 PDF objects out of 1000 (max. 8388607)
- 625 compressed objects within 7 object streams
- 168 named destinations out of 1000 (max. 500000)
- 721 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1188 PDF objects out of 1200 (max. 8388607)
+ 1094 compressed objects within 11 object streams
+ 264 named destinations out of 1000 (max. 500000)
+ 1129 words of extra memory for PDF output out of 10000 (max. 10000000)
 

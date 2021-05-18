@@ -81,6 +81,7 @@ Dopo aver eseguito tutti i $\frac{K(K-1)}{2}$ classificatori la classe con pi\`u
 	Per ogni coppia di label si addestra un classificatore che le distingue:
 	\input{Pseudocodice/05_allversusalltrainingpseudo}
 
+
 	\subsection{\emph{AVA} classification}
 	Per classificare un esempio $x$ lo si classifica per ogni classificatore $F_{ij}$.
 	Per scegliere la classe finale si pu\`o:
@@ -104,7 +105,7 @@ Dopo aver eseguito tutti i $\frac{K(K-1)}{2}$ classificatori la classe con pi\`u
 \section{Confronto tra \emph{OVA} e \emph{AVA}}
 
 	\subsection{Tempo di training}
-	\emph{AVA} impara pi\`u classificatore ma il training set \`e omlto pi\`u piccolo pertanto tende ad essere pi\`u veloce se le label sono equamente bilanciate.
+	\emph{AVA} impara pi\`u classificatori ma il training set \`e molto pi\`u piccolo pertanto tende ad essere pi\`u veloce se le label sono equamente bilanciate.
 
 	\subsection{Tempo di test}
 	Avendo \emph{AVA} pi\`u classificatori \`e tipicamente pi\`u lenta.
@@ -116,14 +117,20 @@ Dopo aver eseguito tutti i $\frac{K(K-1)}{2}$ classificatori la classe con pi\`u
 Se vengono usati classificatori binari viene tipicamente utilizzata  \emph{OVA}, altrimenti si usa un classificatore che permette label multiple come \emph{DT} o \emph{K-NN}, nonostante altri metodi pi\`u sofisticati siano meglio.
 
 \section{Multiclass evaluation}
+Per computare l'accuratezza nella predizione di una classe $c$ si pu\`o usare la misura di predizione $Pr \frac{TP}{TP+FP}$ dove $TP$ sono le predizioni corrette e $FP$ le predizioni scorrette.
 
 	\subsection{Microaveraging}
 	Nel microaveraging si fa la media sugli esempi.
+	Considerando $n$ classi si calcola come:
+	$$Pr=\dfrac{\sum\limits_{i=1}^nTP_{c_i}}{\sum\limits_{i=1}^n(TP_{c_i}+FP_{c_i})}$$
 
 	\subsection{Macroaveraging}
 	Nel macroaveraging si calcola lo score di valutazione o accuratezza per ogni label e poi si fa la media tra le label.
 	Questo in quanto d\`a pi\`u enfasi a label pi\`u rare e permette un'altra dimensione di analisi.
+	$$Pr=\dfrac{\sum\limits_{c\in C}Pr_c}{|C|}$$
 
 	\subsection{Confusion matrix}
 	La confusion matrix \`e una matrice in cui $(i, j)$ rappresenta il numero di esempi con label $i$ predetti avere label $j$.
 	Viene spesso espressa come percentuale.
+	Nel caso di una classificazione a $k$ classi sar\`a di dimensione $k\times k$.
+	La performance \`e buona nel caso in cui la diagonale presenti le percentuali pi\`u alte.

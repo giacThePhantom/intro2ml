@@ -20,18 +20,18 @@ Contiene una funzione di predizione $h\in\mathcal{F}_{task}$, tipicamente una co
 	\subsection{Inferenza}
 	Sia $f_t$ la funzione che ritorna la predizione per l'input $x\in\mathcal{X}$ secondo il decision tree $t$.
 	Questa viene definita come:
-	$$f_t(x)=\begin{cases}h(t)&\mathbf{if} t = Leaf(h)\\
-										 f_{t_{\phi(x)}}(x)&\mathbf{if} t = Node(\phi, t_L, t_R)
+	$$f_t(x)=\begin{cases}h(t)&\mathbf{if}\ t = Leaf(h)\\
+										 f_{t_{\phi(x)}}(x)&\mathbf{if}\ t = Node(\phi, t_L, t_R)
 				\end{cases}$$
 
 \section{Decision trees learning algorithm}
 Dato un training set $\mathcal{D}_n = \{z_1,\dots, z_n\}$ si deve trovare $f_{t^*}$ dove:
-$$t^*\in arg\min\limits_{t\in\mathcal{T}} E(f_t;\mathcal{D}_n$$
+$$t^*\in arg\min\limits_{t\in\mathcal{T}} E(f_t;\mathcal{D}_n)$$
 Dove $\mathcal{T}$ \`e l'insieme dei decision trees.
 Il problema di ottimizzazione \`e facile se non si impongono constraints, altrimenti potrebbe diventare \emph{NP-hard}.
 Una soluzione pu\`o essere trovata utilizzando una strategia greedy.
 Pertanto si assume:
-$$E(f_t;\mathcal{D}) = \dfrac{1}{|\mathcal{D}|}\sum\limits_{z\in\mathcal{D}}\mathcal{l}(f;z)$$
+$$E(f_t;\mathcal{D}) = \dfrac{1}{|\mathcal{D}|}\sum\limits_{z\in\mathcal{D}}l(f;z)$$
 Ora fissato un insieme di predizioni di foglie
 $$\mathcal{H}_{leaf}\subset\mathcal{F}_{task}$$
 E fissato un insieme di possibili funzioni di routing o split
@@ -43,9 +43,13 @@ La strategia di crescita dell'albero partiziona ricorsivamente il training set e
 	Il predittore di foglia ottimale viene computato come:
 	$$h^*_\mathcal{D}\in arg\min\limits_{h\in\mathcal{H}_{leaf}} E(h; \mathcal{D})$$
 	Il valore di errore ottimale o misura di impurit\`a:
-	$$I(\mathcal{D} = E(h^*_\mathcal{D};\mathcal{D})$$
+	$$I(\mathcal{D}) = E(h^*_\mathcal{D};\mathcal{D})$$
+	Dove $h_\mathcal{D}$ \`e la predizione per il dataset $\mathcal{D}$.
+	L'impurit\`a \`e computata nel nodo in cui arriva il sottoinsieme del dataset originale $\mathcal{D}$.
+	In quel nodo si calcola il numero di errori che si farebbero classificando tutti i dati del sottoinsieme in una singola classe $c$, ripetendo il calcolo per ogni classe.
+	Il numero minimo di errori che fai con una certa classe $c^*$ \`e la misura di impurit\`a del classification error.
 	Se si raggiungono dei criteri si cresce una foglia $Leaf(h^*_\mathcal{D})$
-	Esempi di questi criteri sono la purezza $I(\mathcal{D}) < \epsilon$ o la cardinalit\`a minima $|\mathcal{D}|<k$.
+	Esempi di questi criteri sono la purezza $I(\mathcal{D}) < \epsilon$, la cardinalit\`a minima $|\mathcal{D}|<k$ o un'altezza massima dell'albero.
 
 	\subsection{Crescere un nodo}
 	Se non si raggiunge il criterio si deve trovare una funzione di split ottimale:
@@ -77,29 +81,23 @@ La strategia di crescita dell'albero partiziona ricorsivamente il training set e
 
 \section{Misure di impurit\`a per la classificazione}
 Si consideri per la classificazione:
-\begin{multicols}{2}
-	$$\mathcal{Y} = \{c_1,\dots,c_k\}$$
-	$$\mathcal{D}\subset\mathcal{X}\times\mathcal{Y}$$
-\end{multicols}
+$$\mathcal{Y} = \{c_1,\dots,c_k\}\qquad\qquad\qquad\mathcal{D}\subset\mathcal{X}\times\mathcal{Y}$$
 Sia $\mathcal{D}^y = \{(x, y')\in \mathcal{D}: y = y'\}$, che denota il sottoinsieme di training samples in $\mathcal{D}$ con label $y$.
 Considerando la funzione di errore:
-$$E(f,\mathcal{D}) = \dfrac{1}{|\mathcal{D}|}\sum\limits_{z\in\mathcal{D}}\mathcal{l}(f;z)$$
-Se $\mathcal{l}(f;(x,y))=1_{f(x)\neq y}$ e $\mathcal{H}_{leaf} = \bigcup\limits_y\in\mathcal{Y}\{y\}^\mathcal{X}$ la misura di impurit\`a \`e allora il classification error:
+$$E(f,\mathcal{D}) = \dfrac{1}{|\mathcal{D}|}\sum\limits_{z\in\mathcal{D}}l(f;z)$$
+Se $l(f;(x,y))=1_{f(x)\neq y}$ e $\mathcal{H}_{leaf} = \bigcup\limits_y\in\mathcal{Y}\{y\}^\mathcal{X}$ la misura di impurit\`a \`e allora il classification error:
 $$I(\mathcal{D})= 1 -\max\limits_{y\in\mathcal{Y}}\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}$$
-Se invece $\mathcal{l}(f;(x,y))=\sum\limits_{x\in\mathcal{Y}}[f_c(x)-1_{c=y}]^2$ e $\mathcal{H}_{leaf}=\bigcup\limits_{\pi\in\Delta(\mathcal{Y})}\{\pi\}^\mathcal{X}$ allora la misura di impurit\`a \`e l'impurit\`a di Gini:
+Se invece $l(f;(x,y))=\sum\limits_{x\in\mathcal{Y}}[f_c(x)-1_{c=y}]^2$ e $\mathcal{H}_{leaf}=\bigcup\limits_{\pi\in\Delta(\mathcal{Y})}\{\pi\}^\mathcal{X}$ allora la misura di impurit\`a \`e l'impurit\`a di Gini:
 $$I(\mathcal{D}) = 1-\sum\limits_{y\in\mathcal{Y}}\biggl(\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}\biggr)^2$$
-Infine se $\mathcal{l}(f;(x,y))=-\log f_y(x)$ e $\mathcal{H}_{leaf} = \bigcup\limits_{\pi\in\Delta(\mathcal{Y})}\{\pi\}^\mathcal{X}$, con una distribuzione costante di label come predizione di foglie, allora la misura di impurit\`a \`e l'entropia:
-$$I(\mathcal{D})=-\sum\limits_{y\in\mathcal{Y}}\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}\log\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}$$
+Infine se $l(f;(x,y))=-\log f_y(x)$ e $\mathcal{H}_{leaf} = \bigcup\limits_{\pi\in\Delta(\mathcal{Y})}\{\pi\}^\mathcal{X}$, con una distribuzione costante di label come predizione di foglie, allora la misura di impurit\`a \`e l'entropia:
+$$I(\mathcal{D})=-\sum\limits_{y\in\mathcal{Y}}\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}\log\log\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}$$
 
 \section{Misure di impurit\`a per la regressione}
 Si consideri per la regressione:
-\begin{multicols}{2}
-	$$\mathcal{Y}\subset\mathbb{R}^d$$
-	$$\mathcal{D}\subset\mathcal{X}\times\mathcal{Y}$$
-\end{multicols}
-Se $\mathcal{l}(f;(x,y))=||f(x)-y||_2$ e $\mathcal{H}_{leaf} = \bigcup\limits_{y\in\mathcal{Y}}\{y\}^\mathcal{X}$ allora la misura di impurit\`a \`e la varianza:
+	$$\mathcal{Y}\subset\mathbb{R}^d\qquad\qquad\qquad\mathcal{D}\subset\mathcal{X}\times\mathcal{Y}$$
+Se $l(f;(x,y))=||f(x)-y||_2$ e $\mathcal{H}_{leaf} = \bigcup\limits_{y\in\mathcal{Y}}\{y\}^\mathcal{X}$ allora la misura di impurit\`a \`e la varianza:
 $$I(\mathcal{D})=\dfrac{1}{|\mathcal{D}|}\sum\limits_{(x,y)\in\mathcal{D}}||x-\mu_\mathcal{D}||^2$$
-Dove $\mu_\mathcal{D} = \frac{1}{\mathcal{D}|}\sum\limits_{(x,y)\in\mathcal{D}}x$
+Dove $\mu_\mathcal{D} = \frac{1}{|\mathcal{D}|}\sum\limits_{(x,y)\in\mathcal{D}}x$
 
 \section{Data features e attributi}
 Un data point $x\in\mathcal{X}$ potrebbe essere $d$ dimensionale con ogni dimensione con tipi di valori eterogenei come discreti o continui e avere un ordinamento o no, rispettivamente ordinali o nominali.
@@ -123,8 +121,8 @@ La funzione di split prototipica per un input $d$ dimensionale prima seleziona u
 	$$\phi(x) = \begin{cases}L &\mathbf{if} x\le r\\
 		 								  R &\mathbf{if} x>r
 				 \end{cases}$$
-	Se $|\mathcal{K}|\le|\mathcal{D}|$ trovare lo split ottimale richiede il test di $|\mathcal{K}-1$ soglie.
-	Se $|\mathcal{K}>|\mathcal{D}|$ si deve ordinare i valori di input in $\mathcal{D}$ dove $\mathcal{D}$ \`e il training set che raggiunge il nodo e testare $|\mathcal{D}|-1$ soglie.
+	Se $|\mathcal{K}|\le|\mathcal{D}|$ trovare lo split ottimale richiede il test di $|\mathcal{K}|-1$ soglie.
+	Se $|\mathcal{K}|>|\mathcal{D}|$ si deve ordinare i valori di input in $\mathcal{D}$ dove $\mathcal{D}$ \`e il training set che raggiunge il nodo e testare $|\mathcal{D}|-1$ soglie.
 
 	\subsection{Obliquo}
 	A volte \`e conveniente fare split considerando pi\`u features alla volta.
@@ -157,3 +155,7 @@ Le funzioni di split sono ottimizzate su features campionate a caso o completame
 Questo aiuta ad ottenere decision trees decorrelati.
 La predizione finale della foresta \`e ottenuta facendo la media delle predizioni per ogni albero nell'ensemble $\mathcal{Q}=\{t_1,\dots,t_T\}$.
 $$f_\mathcal{Q}(x)=\dfrac{1}{T}\sum\limits_{j=1}^Tf_t(x)$$
+
+\section{Confronto con KNN}
+Si nota come a differenza dei decision trees KNN non richiede nessun training, ma la classificazione \`e pi\`u veloce per i decision trees in quanto KNN per ogni esempio deve calcolare $k$ distanze.
+A differenza di KNN che tratta tutte le features in maniera uguale i decision trees permettono una selezione delle features pi\`u importanti facendo scelte pesate.

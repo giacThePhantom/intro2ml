@@ -10,14 +10,14 @@ Questo problema viene risolto attraverso la regolarizzazione.
 I regolarizzatori sono criteri addizionali alla loss function in modo da evitare overfitting.
 Prova a mantenere i parametri regolari o normali.
 \`E un bias sul modello che forza che il learning preferisca certi tipi di pesi rispetto agli altri.
-$$argmin_{w,b}\sum\limits_{i=1}^nloss(yyy')+\lambda regularizer(w,b)$$
+$$argmin_{w,b}\sum\limits_{i=1}^nloss(yy')+\lambda regularizer(w,b)$$
 Tipicamente non si vogliono pesi molto grandi in quanto un piccolo cambio in una feature potrebbe causare un cambio nella predizione.
 Si potrebbe anche preferire pesi di $0$ per features che non sono utili.
 
 	\subsection{Regolarizzatori comuni}
 
 		\subsubsection{Somma dei pesi}
-		Il regolarizza otre somma dei pesi penalizza di pi\`u piccoli valori e si calcola come:
+		Il regolarizzatore somma dei pesi penalizza di pi\`u piccoli valori e si calcola come:
 		$$r(w,b)=\sum\limits_{w_j}|w_j|$$
 		Si dice anche $1$-norm.
 
@@ -50,7 +50,7 @@ Si noti pertanto come la regolarizzazione, se $w_i$ \`e positiva la riduce, ment
 	\subsection{L1}
 	$$w_j = w_j + \eta(lossCorrection - \lambda sign(w_j))$$
 	Popolare in quanto tende a dare soluzioni sparse, ma non \`e differenziabile e lavora unicamente per risolutori a gradient descent.
-		
+
 	\subsection{L2}
 	$$w_j = w_j + \eta(lossCorrection - \lambda w_j)$$
 	Popolare in quanto per qualche loss function pu\`o essere risolta direttamente.
