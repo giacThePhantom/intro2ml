@@ -1,1 +1,65 @@
 \chapter{Reinforcement learning}
+
+\section{Introduzione}
+L'idea del Reinforcement learning \`e che si ha un agente e un ambiente: l'agente svolge azioni che cambiano l'ambiente e conseguentemente l'ambiente ritorna all'agente delle rewards.
+Questa idea viene presa dalle strategie di animali:
+\begin{itemize}
+	\item L'ambiente si trova in uno stato $s$.
+	\item L'agente svolge un'azione.
+	\item L'azione modifica l'ambiente.
+	\item L'ambiente ritorna una reward all'agente e il nuovo stato $s'$.
+\end{itemize}
+
+	\subsection{Policy}
+	L'agente tenta di imparare una policy o un mapping da stati a azioni in modo da massimizzare la reward data dall'ambiente.
+
+\section{Markov decision process (MDP)}
+MDP utilizza l'assuzione di Markov in cui uno stato al tempo $t$ dipende solo dallo stato precedente $s(t-1)$ e dall'azione precedente $a(t-1)$ per trovare una policy.
+QUesto utilizza l'equazione di Bellman e la programmazione dinamica.
+L'obiettivo \`e trovare una policy, una mappa che ritorna tutte le azioni ottimali di ogni stato sul nostro ambiente.
+
+	\subsection{Componenti}
+	\begin{itemize}
+		\item Stati $s_i$ che iniziano con uno stato $s_0$.
+		\item Azioni $a$.
+		\item Modello di transizione $P(s'|s,a)$, secondo l'assunzione di Markov la probabilit\`a di arrivare a $s'$ da $s$ dipende solo da $s$ e non da nessuna delle azioni passate o stati passati.
+		\item Reward function $r(s)$.
+		\item Policy $\pi(s)$, l'azione che un agente svolge in ogni stato dato.
+	\end{itemize}
+	Si nota come una MDP \`e definita dalla tupla $(S, A, R, P, y)$, dove $S$ \`e l'insieme degli stati possibili, $A$ l'insieme delle azioni possibili, $R$ la distribuzione delle reward dato uno stato, $P$ la probabilit\`a di transizion o la distribuzione rispetto al prossimo stato dato $(stato, azione)$ e $y$ il discount factor.
+	La reward viene utilizzata per ottenere la policy migliore.
+	L'obiettivo \`e pertanto di trovare la policy ottimale.
+
+	\subsection{Ambienti stocastici}
+	MDP viene utilizzata tipicamente negli ambienti stocastici, pertanto lo stato a tempo $t+1$ non \`e deterministico quando si conosce lo stato $s_t$ e l'azione $a_t:s_{t+1}$ viene estratta dalla probabilit\`a di transizione e deriva da un processo stocastico.
+
+	\subsection{MDP loop}
+	\begin{itemize}
+		\item A tempo $t=0$ l'ambiente si campiona nello stato iniziale $s_0\sim p(s_0)$.
+		\item Si ripete:
+			\begin{itemize}
+				\item L'agente seleziona l'azione $a_i$.
+				\item L'ambiente campiona la reward $r_t\sim R(,|s_t, a_t)$.
+				\item L'ambiente campiona il prossimo stato $s_{t+1}\sim P(.|s_t, a_t)$
+				\item L'agente riceve la reward $r_t$ e lo stato successivo $s_{t+1}$.
+			\end{itemize}
+	\end{itemize}
+
+	\subsection{Policy}
+	La policy $\pi(s)$ \`e la funzione da $S$ ad $A$ che specifica quale azione prendere in ogni stato.
+	Si deve trovare la policy $\pi^*$ che massimizza cumulative discounted rewards.
+	La reward viene data dalla funzione
+	$$R:(stato, azione)\rightarrow reward$$
+
+		\subsubsection{Cumulative discounted reward}
+		Si supponga di avere una policy $\pi$ in uno stato di inizio $s_0$ che porta a una sequenza $s_0,\dots, s_n$.
+		La cumulative reward della sequenza \`e:
+		$$\sum\limits_{t\ge 0} r(s_t)$$
+		\`E pertanto la somma delle reward di una serie di stati.
+		Quella discounted \`e una cumulative reward che d\`a un peso a diverse reward in base al tempo dello step:
+		$$\sum\limits_{t\ge 0} y^tr(s_t)\qquad\ where\ 0 < y\le 1$$
+		Il discount factor \`e un modo di pesare l'importanza dei primi passi o dei passi futuri in accordo con il valore di $y^t$.
+		Minore \`e minore l'importanza di reward future e l'agente tende a concentrarsi su azioni che portano a reward immediate.
+		Questa strategia aiuta gli algoritmi a convergere.
+
+\section{Confronto tra reinforcement learning e supervised learning}

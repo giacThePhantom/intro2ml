@@ -136,6 +136,22 @@
 \BOOKMARK [2][-]{subsection.11.4.2}{L'architettura}{section.11.4}% 136
 \BOOKMARK [2][-]{subsection.11.4.3}{Backpropagation}{section.11.4}% 137
 \BOOKMARK [2][-]{subsection.11.4.4}{Scelta di un ottimizzatore}{section.11.4}% 138
-\BOOKMARK [0][-]{chapter.12}{Reinforcement learning}{}% 139
-\BOOKMARK [0][-]{chapter.13}{Unsupervised Learning}{}% 140
-\BOOKMARK [0][-]{chapter.14}{Generative Models}{}% 141
+\BOOKMARK [1][-]{section.11.5}{Convolutional Neural Netowrks \(CNN\)}{chapter.11}% 139
+\BOOKMARK [2][-]{subsection.11.5.1}{Convolution}{section.11.5}% 140
+\BOOKMARK [1][-]{section.11.6}{Convolutional Neural Netowrks \(CNN\)}{chapter.11}% 141
+\BOOKMARK [2][-]{subsection.11.6.1}{Convolution}{section.11.6}% 142
+\BOOKMARK [2][-]{subsection.11.6.2}{Definizione di una CNN}{section.11.6}% 143
+\BOOKMARK [2][-]{subsection.11.6.3}{Operazione di convolution}{section.11.6}% 144
+\BOOKMARK [2][-]{subsection.11.6.4}{Non linearity}{section.11.6}% 145
+\BOOKMARK [2][-]{subsection.11.6.5}{Pooling}{section.11.6}% 146
+\BOOKMARK [0][-]{chapter.12}{Reinforcement learning}{}% 147
+\BOOKMARK [1][-]{section.12.1}{Introduzione}{chapter.12}% 148
+\BOOKMARK [2][-]{subsection.12.1.1}{Policy}{section.12.1}% 149
+\BOOKMARK [1][-]{section.12.2}{Markov decision process \(MDP\)}{chapter.12}% 150
+\BOOKMARK [2][-]{subsection.12.2.1}{Componenti}{section.12.2}% 151
+\BOOKMARK [2][-]{subsection.12.2.2}{Ambienti stocastici}{section.12.2}% 152
+\BOOKMARK [2][-]{subsection.12.2.3}{MDP loop}{section.12.2}% 153
+\BOOKMARK [2][-]{subsection.12.2.4}{Policy}{section.12.2}% 154
+\BOOKMARK [1][-]{section.12.3}{Confronto tra reinforcement learning e supervised learning}{chapter.12}% 155
+\BOOKMARK [0][-]{chapter.13}{Unsupervised Learning}{}% 156
+\BOOKMARK [0][-]{chapter.14}{Generative Models}{}% 157
