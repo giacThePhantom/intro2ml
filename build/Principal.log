@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.5.6)  19 MAY 2021 00:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.5.6)  19 MAY 2021 13:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -780,7 +780,7 @@ eX warning (ext4): destination with the same identifier (name{page.1}) has been
  already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.51 ...berline {4.1.1}Bias}{14}{subsection.4.1.1}
+l.51 ...berline {4.1.1}Bias}{11}{subsection.4.1.1}
                                                   % [1
 
 ] [2] [3])
@@ -1014,23 +1014,23 @@ l.15 \caption{\protect\GradientDescent}
 Capitolo 12.
 [53
 
-]) (./Chapters/13_UnsupervisedLearning.tex [54] [55]
+] [54] [55] [56] [57]) (./Chapters/13_UnsupervisedLearning.tex [58]
 Capitolo 13.
-) (./Chapters/14_GenerativeModels.tex [56
+) (./Chapters/14_GenerativeModels.tex [59
 
 ]
 Capitolo 14.
-) [57
+) [60
 
 ] (./build/Principal.aux)
 Package rerunfilecheck Info: File `Principal.out' has not changed.
-(rerunfilecheck)             Checksum: BC03B0F001F467B4F9722763ECE56495;10891.
+(rerunfilecheck)             Checksum: 0B07E3A164C574C3C28D07AC6F4E8004;11378.
  ) 
 Here is how much of TeX's memory you used:
- 16671 strings out of 479383
- 290233 string characters out of 5875831
- 651351 words of memory out of 5000000
- 33128 multiletter control sequences out of 15000+600000
+ 16702 strings out of 479383
+ 290651 string characters out of 5875831
+ 651357 words of memory out of 5000000
+ 33134 multiletter control sequences out of 15000+600000
  431857 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,19n,87p,404b,899s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1058,10 +1058,10 @@ pe1/public/cm-super/sfrm0900.pfb></usr/share/texmf-dist/fonts/type1/public/cm-s
 uper/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.p
 fb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/
 texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on ./build/Principal.pdf (58 pages, 527914 bytes).
+Output written on ./build/Principal.pdf (61 pages, 543435 bytes).
 PDF statistics:
- 1291 PDF objects out of 1440 (max. 8388607)
- 1192 compressed objects within 12 object streams
- 285 named destinations out of 1000 (max. 500000)
- 1257 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1356 PDF objects out of 1440 (max. 8388607)
+ 1253 compressed objects within 13 object streams
+ 310 named destinations out of 1000 (max. 500000)
+ 1305 words of extra memory for PDF output out of 10000 (max. 10000000)
 
