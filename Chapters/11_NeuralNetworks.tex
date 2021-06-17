@@ -1,0 +1,222 @@
+\chapter{Neural Networks}
+
+\section{Introduzione}
+\`E stato visto come il perceptron pu\`o imparare un modello lineare utilizzando la funzione attivatrice e il peso degli input.
+Funzioni attivatrici tradizionali sono non lineari come la sigmoide $h(x) = \frac{1}{1+e^{-x}}$ e la tangente iperbolica $h(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}$, mentre funzioni attivatrici pi\`u moderne sono la rectified linear unit \emph{ReLU}: $h(x) = \max(0,x)$ e la Leaky ReLU $h(x) = \max(\alpha x,x)$ con $\alpha$ costante piccola.
+
+\section{Il perceptron multilayer}
+L'idea del multilayer perceptron \`e di connettere un grande numero di perceptron creando layers che sono densamente connessi tra di loro.
+Questa struttura presenta un input layer, hidden layers e un output layer.
+Questa composizione di perceptron causa una composizione di funzioni non lineari.
+
+	\subsection{Feed forward NN}
+	Si intende per feed forward NN una rete neurale in cui l'informazione fluisce dall'input all'output passando in un DAG.
+	Si nota un singolo processamento tra I/) che avviene in ogni singolo neurone simile a come avviene in un perceptron normale.
+	I nodi ora sono connessi e l'output di uno di essi \`e l'input degli altri.
+	La NN pu\`o computare una o pi\`u funzioni non lineari componendo funzioni algebriche implementate nella forma di connessioni, pesi e bias dei layer hidden e output.
+	Gli hidden layer sono una rappresentazione intermedia con diversi gradi di complessit\`a.
+
+		\subsubsection{Nodo}
+		Un nodo riceve in input un insieme di output di altri nodi $\theta_n$ che vengono calcoalti in $Z=\sum\limits_i \theta_ix_i+\theta0$ e passati alla funzione soglia $h(Z)$.
+		Considerando ora un layer si hanno multipli $Z$ e i calcoli vanno replicati su pi\`u canali di output in cui ogni canale ha il proprio insieme di pesi e bias.
+		Inoltre ogni output ha un insieme di pesi $\theta_{i,j}$ e il bias $\theta_{0,j}$.
+
+		\subsubsection{Single layer NN}
+		In una single layer NN ogni neurone in un layer $n$ computa la sua attivazione utilizzando:
+		\begin{itemize}
+			\item L'attivazione di tutti i neuroni del layer $n-1$ con gli insiemi di pesi e bias.
+			\item La funzione di threshold.
+		\end{itemize}
+		\`E comune usare nelle NN la stessa attivazione per tutti gli hidden layer ma diversa per gli output.
+
+		\subsubsection{Training backpropagation}
+		Si nota come non si pu\`o utilizzare il metodo di learning del perceptron in quanto gli hidden layer non hanno informazioni riguardo gli output desiderati e pertanto non sanno come modificare i propri pesi.
+		Il problema viene risolto attraverso la backpropagation, un modo efficiente di computare gradienti per aggiornare i pesi in tutti i layer delle NN.
+		\begin{itemize}
+			\item Si fa forward propagation si sommano gli input, si produce l'attivazione, feed-forward e si ottiene l'output.
+			\item Si stima l'errore comparando la predizione e le label reali.
+			\item La backpropagation invia il segnale d'errore indietro all'intera architettura della NN per aggiornare i propri pesi.
+		\end{itemize}
+		Inviare l'errore all'indietro permette di aggiornare i pesi attraverso una formula di ottimizzazione o obiettivo simile a quelle gi\`a viste:
+		$$\sum_i L(y_i, f(x_i, \Theta))$$
+		Dove si prova a minimizzare l'errore minimizzando $\Theta$ che rappresenta i parametri della NN.
+		Per fare backpropagation si deve computare il gradiente: dati il training set si vuole imparare tutti i pesi della rete per minimizzare la loss function.
+		Si \`e liberi nella scelta della loss function.
+		Si possono aggiornare i pesi con il gradient descent e la backpropagation \`e la tecnica che permette di computare efficientemente il gradiente per ogni nodo.
+
+\section{Second AI winter}
+Anche con la backpropagation le reti neurali hanno grandi problemi:
+\begin{itemize}
+	\item Molti layer rendono le NN prone a fare overfitting.
+	\item Vanishing gradient: il gradiente continua a diventare sempre pi\`u piccolo mentre si fa backpropagation rendendo impossibile aggiornare i pesi.
+\end{itemize}
+Inoltre non si trovavano dataset abbastanza grandi e l'hardware non era abbastanza potente.
+Questo ha causato una diffusione di SVM in quanto hanno accuratezza simile, possiedono molto meno euristiche e parametri e hanno una prova di generalizzazione.
+Nel $2006$ grazie a un nuovo modo di inizializzare i pesi: si fa training di ogni layer attraverso unsupervised learning e si fa fine-tuning su di es attraverso un round di supervised learning.
+Una NN \`e pertanto una composizione di moduli in cui si imparano un insieme di pesi insieme che sono anche le features.
+I deep model sono i migliori in quanto si hanno molti dati e potenza di calcolo.
+
+\section{Feed Forward Networks}
+Una FFNN viene usata per approssimare una funzione $f^*:X\rightarrow Y$ dove $f^*$ \`e il classificatore ottimale.
+Le FFNN devono definire una mappatura parametrica $y = f(x,\theta)$ in modo da ottenere una buona classificazione.
+Ogni layer viene rappresentato da una certa funzione e la composizione delle funzioni pu\`o essere rappresentata da un DAG.
+La profondit\`a della rete \`e il numero di layer, mentre la larghezza di un layer \`e il numero di perceptron.
+In quanto viene implementata una funzione complessa non si pu\`o garantire sia convessa e pertanto che si arrivi alla convergenza.
+Per applicare il gradient descent si deve specificare un modello o architettura, una funzione di costo loss e la struttura del layer di output.
+
+	\subsection{Funzione di costo}
+	La funzione di costo deve calcolare la discrepanza tra la predizione e le labels reali.
+	Le loss gi\`a viste vanno bene per le NN.
+	Il meccanismo di classificazione pi\`u comune consiste nel convertire gli output della rete in probabilit\`a di appartenere a una classe.
+	La normalizzazione a una probabilit\`a \`e ottenuta attraverso softmax: ogni classe ottiene un voto dal layer di output e con log normalization questi sono pesati e trasformati in probabilit\`a.
+	La loss function pi\`u comune con softmax \`e la cross-entropy loss function:
+	$$\mathcal{L} = - \sum\limits_k y_k\log(S(l_k)) = -\log(S(l))$$
+	In cui si compara la label con il log di softmax.
+	La combinazione di loss e output \`e basata sulla comparazione del vettore delle probabilit\`a con il vettore di label per ogni campbione.
+	La scelta della loss \`e correlata alla scelta dell'output layer.
+	Un'altra opzione possibile \`e di applicare pesi e bieas all'output con un output layer lineare:
+	$$y = W^Tf+b = \sum\limits_jw_jf_j + b$$
+	Dove $y$ \`e l'output, $W$ il vettore dei pesi $f$ il vettore di features e $b$ il bias.
+	Non satura e questo \`e un bene in quanto mantiene il gradiente lontano da $0$.
+	I linear output layer producono probabilit\`a log non normalizzate.
+	IN caso della classificazione la scelta di output tipica \`e softmax che trasforma l'output in probabilit\`a normalizzate:
+	$$softmax(z_i) = \frac{\exp(z_i)}{\sum\limits_j\exp(z_j)}$$
+	Nel caso delle hidden unit queste prendono un input $x$, computano una trasformazione $z = W^Tx+b$, applicano una funzione $h(z)$ non lineare e producono l'output.
+	La scelta di $h()$ \`e artigianale e la pi\`u utilizzata \`e la ReLU:
+	$$h(z) = \max(0,z)$$
+	IL suo gradiente \`e $0$ o $1$, ottimo per l'ottimizzazione in quanto il calcolo \`e molto semplice e annulla il problema dei gradienti piccoli.
+	Non \`e derivabile in $0$ pertanto si sceglie a caso.
+	Diverse variazioni di ReLU risolvono il problmea che quando il gradiente diventa $0$ il neurone muore, ma hanno il problema di saturazione.
+
+	\subsection{L'architettura}
+	Scegliere l'architettura consiste nel scegliere il numero e le dimensioni dei layer.
+	La maggior parte delle volte si segue un'euristica, ma si trova un teorema: una rete a $2$ layer con linear output con squashing (riduce l'output a un range ristretto) non lineare nelle hidden unit pu\`o approssimare ogni funzione continua su dominio compatto a una ccuratezza arvitraria.
+	Questo implica che a prescindere dalla funzione che si vuole imparare si sa che un large MLP rappresenter\`a questa funzione, ma non garantisce che l'algoritmo sar\`a in grado di impararla in quanto deve gestire ottimizzazione e overfitting.
+	Gli esperimenti notano come \`e meglio creare reti profonde rispetto a larghe.
+
+	\subsection{Backpropagation}
+	La backpropagation avviene dopo aver ottenuto l'output da un input $x$ e aver computato l'errore e un costo scalare dipendenti dalla loss function.
+	Si usa il costo per computare un gradiente della perdita con rispetto ai pesi e si aggiornano con il gradient descent per ogni layer attraverso backpropagation.
+	IN modo da usare il gradient descent si devono computare tutte le derivate degli errori per tutti i pesi nella rete.
+	Dal training data non si sa cosa le unit\`a nascoste dovrebbero fare ma si pu\`o computare quanto veloce l'errore cambia cambiando un'attivit\`a nascosta.
+	Per farlo si calcolano le derivate degli errori con rispetto alle attivit\`a nascosta.
+	Ogni unit\`a nascosta pu\`o avere effetto su molte unit\`a di output e avere effetti separati sull'errore.
+	Si dovrebbero combinare questi effetti.
+	Si possono computare le derivate degli errori efficientemente con una regola ricorsiva e quando si hanno le derivate degli errori per queste attivit\`a nascoste \`e facile avere le derivate degli errori per i pesi che vanno all'interno.
+	Calcolo dell'output:
+	$$\hat{y}(x;w) = f\biggl(\sum\limits_{j = 1}^m w^{(2)}_j h\biggl(\sum\limits_{i = 1}^d w_{ij}^{(1)}x_i + w_{0j}\biggr)+w_0^{(2)}\biggr)$$
+	Calcolo dell'errore della rete su un training set:
+	$$L(X;w) = \sum\limits_{i=1}^N\frac{1}{2}(y_i-\hat{y}(x_i;w))^2$$
+	Qui si comparano le predizioni con la label reali attraverso la squared loss.
+	Per utilizzare il gradient descent si deve computare la derivata della loss con rispetto ai pesi per ogni nodo.
+	Per calcolare la derivata della loss dell'output layer in caso \`e lineare:
+	$$\frac{dL(x_i)}{dw_j}=(\hat{y}_i-y_i)x_{ij}$$
+	Nel terzo passaggio si vuole computare il gradient descent per tutte le unit\`a nascoste della rete.
+	Si deve computare pertanto la derivata della perdita con rispetto ai pesi.
+	Si consideri $t\in T$ il livello corrente, $s\in S$ quello seguente e $j\in J$ quello precedente.
+	L'obettivo \`e la derivate della loss function con rispetto ai pesi che arrivano dall'unit\`a precedente in un'unit\`a $t$ del livello corrente
+	$$\frac{dL}{dw_{jt}}$$
+	Si devinisce l'attivazione $a_t$ l'input della funzione di attivazione di un'unit\`a di livello $t$, la somma di $w_{jt}\times z_j$ dove $z_j$ \`e l'output della funzione di attivazione della $j$-esemia unit\`a:
+	$$a_t = \sum_j w_{jt}z_j$$
+	Si nota come al loss $L$ dipende da $w_{jt}$ solo attraverso l'attivazione $a_t$, pertanto si manipola la formula in modo da computare la derivata della loss con rispetto di $a_t$:
+	$$\frac{dL}{dw_{jt}} = \frac{dL}{da_t}\frac{da_t}{dw_{jt}}$$
+	Si nota come $\frac{da_t}{dw_{jt}} = z_j$, pertanto:
+	$$\frac{dL}{dw_{jt}} = \frac{dL}{da_t}z_j$$
+	Il termine a destra viene detto errore locale ed \`e quello computato, mentre la prima frazione del termine destro viene detta $\delta_t$:
+	$$\frac{dK}{dw_jt} = \delta_tz_j$$
+	Si ha ora una relazione ricorsiva che permette di calcolare $\delta_t$ dato un livello successivo $S$ e tutte le sue unit\`a nascoste $s$ \`e:
+	$$\delta_t = \sum\limits_{s\in S} \frac{dL}{da_s}\frac{da_s}{da_t}$$
+	Si nota come il primo termine nella somma \`e $\delta_s$, il termine ricorsivo.
+	Nella seconda invece $a_s$ \`e l'input della funzione attivatrice di $s\in S$, ovvero:
+	$$a_s = \sum\limits_{t:t\rightarrow s}w_{ts}h(a_t)$$
+	$w_{ts}$ \`e il peso del link di un nodo $t$ di $T$ a un nodo $s$ di $S$.
+	Pertanto se si vuole computare l'attivazione di una unit\`a specifica $s$ da $S$ si deve moltiplicare l'output di attivazione $h(a_t) = z_t$ volte il peso del link da $t$ a $s$ per tutte le unit\`a di $T$.
+	In quanto si ha $\frac{d a_s}{da_t}$, l'operatore di derivazione ha effetto solo su $h(a_t)$ in quanto i pesi sono costanti in rispetto di $a_t$, pertanto:
+	$$\frac{da_s}{da_t} = h'(a_t)\sum\limits_{t:t\rightarrow s}w_{ts}$$
+	Si unisce questo nel modello ricorsivo e si ottiene la formula:
+	$$\delta_t = \sum\limits_{s\in S} \frac{dL}{da_s}\frac{da_s}{da_t} = h'(a_t)\sum\limits_{t':t'\rightarrow s}w_{t's}\delta_s$$
+	In questa formula $t'$ \`e ogni nodo di $T$ connesso con il nodo $s$.
+	Ora si ha una formula che permette di computare il gradiente per tutte le unit\`a nascoste di tuti i layer.
+	Si necessita pertanto ora di un caso migliore.
+	In quanto questo inizia al layer di output si deve calcolare $\delta$ a tale layer.
+	Quando si ha una funzione di output lineare il termine \`e la differenza tra la predizione e la label corretta:
+	$$\delta_{out} = \hat{y}- y$$
+	Ora con questi elementi si computa il gradiente e si applica il gradient descent.
+	Si hanno due regole per aggiornare i pesi, una per il layer di output e una per i layer nascosti.
+	Quando si calcola $\delta_j$ la derivata della loss function \`e importante in quanto se arriva troppo vicina a $0$ si arriva a un problema di saturazione fermando l'aggiornamento dei pesi.
+	In caso al rete abbia pi\`u di un output si ripete il processo per ogni output.
+
+	\subsection{Scelta di un ottimizzatore}
+	Il gradient descent trova l'insieme di parametri che rendono la loss il pi\`u piccola possibile e i cambi di parametri dipendono sul gradiente della loss con rispetto dei pesi della rete.
+	Si analizzano altri miglioramenti come Stochastic gradient descent.
+	Il gradient descent Nelle reti neurali pu\`o essere calcolato in diversi modi.
+
+		\subsubsection{Batch Gradient Descent (BGD)}
+		In BGD i gradienti sono computati su ogni update per l'intero training con un alto costo computazionale ma garantendo una grande stabilit\`a nella stima del gradiente.
+		Il learning rate $\varepsilon_k$ pu\`o cambiare nel tempo.
+		\input{Pseudocodice/10_BGD}
+
+		\subsubsection{Stochastic gradient descent (SDG)}
+		In SDG si computa il gradiente solo su un campione e non sull'intero training set in modo da ottenere performance migliori.
+		\input{Pseudocodice/11_SDG}
+
+		\subsubsection{Minibatches}
+		Le minibatches risvono il problema di SDG rispetto ai dati rumorosi e permettono una parallelizzazione rispetto alle minibatches.
+		Sono tipicamente di dimensione $2^n$ per le propriet\`a di calcolo della GPU.
+
+		\subsubsection{Momento}
+		Un problema di BGD e SGD \`e il fatto che minimizzano l'errore in molto tempo.
+		Una soluzione diversa \`e data dalla tecnica del momento, che introduce un vettore velocit\`a $v$ di aggiornamenti, una media con decay esponenziale per i gradienti utilizzato per aggiornare i pesi.
+		Introduce un vettore momento che regola il trade-off tra il gradiente allo step corrente e quelle vecchie.
+		\input{Pseudocodice/12_SDG_momentum}
+
+		\subsubsection{Adaptive learning rate method}
+		Alcune volte \`e bene usare un learning rate diverso per ogni peso.
+		Un metodo che lo implementa \`e Adagrad o adaptive gradient optimizer.
+		Questo fa downscale un parametro del modello della radice della somma dei quadrati dei valori storici, in questo modo parametri con una grande derivata parziale hanno learning rate che si abbassano rapidametne.
+		Si adatta al learning rate dei parametri svolgendo aggiornamenti minori associati con feature che pi\`u frequenti e grandi per feature meno frequenti.
+		Utile per gestire dati sparsi.
+		\input{Pseudocodice/13_Adagrad}
+
+\section{Convolutional Neural Netowrks (CNN)}
+Un tipo di FFNN sono le CNN.
+
+	\subsection{Convolution}
+	La convolution avviene quando un filtro, una piccola matrice, viene applicata a una matrice pi\`u grande, poi delle operazioni vengono svolte con il filtro ottenendo una nuova matrice.
+	L'idea della convolution nasce dal fatto che l'occhio umano processa le immagini in livelli, in cui ogni livello \`e specializzato in certe features e pi\`u profondo il layer, pi\`u complesse le target features.
+	La corteccia dell'occhio contiene un complesso ordinamento\section{Convolutional Neural Netowrks (CNN)}
+	Un tipo di FFNN sono le CNN.
+	Queste sono molto utili quando l'obiettivo non \`e la classificazione: ottengono grandi risultati in region extraction, feature detection, semantic segmentation e structured regression.
+
+		\subsection{Convolution}
+		La convolution avviene quando un filtro, una piccola matrice, viene applicata a una matrice pi\`u grande, poi delle operazioni vengono svolte con il filtro ottenendo una nuova matrice.
+		L'idea della convolution nasce dal fatto che l'occhio umano processa le immagini in livelli, in cui ogni livello \`e specializzato in certe features e pi\`u profondo il layer, pi\`u complesse le target features.
+		La corteccia dell'occhio contiene un complesso ordinamento di cellule, sensibili a piccole regioni del campo visivo detto receptive field.
+		Queste cellule agiscono come filtri locali sull'input space e sono ben definite per sfruttare la correlazione locale in immagini naturali.
+		Le cellule semplici rispondono a pattern specifici simili a separazioni nel receptive field, mentre le complesse hanno un receptive field maggiori e sono invarianti locali della posizione del pattern.
+		Il filtraggio che si volge nelle CNN tenta di emulare questi calcoli specializzati.
+		La convolution \`e un operazioni di filtraggio general purpose per le immagini.
+		Una matrice kernel viene applicata a un'immagine determinando il calore di un pixel centrale aggiungevo ad esso i valori pesati dei suoi vicini.
+		L'output \`e una nuova immagine filtrata.
+
+		\subsection{Definizione di una CNN}
+		Si definisce una CNN come una FFNN con struttura di connessione specializzata, dove layer di basso livello estraggono features locali e quelli di alto livello estraggono pattern globali.
+		Ci sono tre tipi di layer nelle CNN:
+		\begin{itemize}
+			\item Convolution: questa operazione viene svolta shiftando la matrice di kernel sul dato originale utilizzandola come filtro.
+			\item Non-linearity: utilizza una funzione non lineare di attivazione come filtro.
+			\item Pooling: l'idea dietro il pooling \`e quella di ridurre la dimensione della feature map.
+		\end{itemize}
+
+		\subsection{Operazione di convolution}
+		Un layer convolutional consiste di una serie di filtri.
+		Ogni filtro copre una piccola parte dei dati di input o receptive field.
+		Ogni filtro \`e convolved attraverso la dimensione degli input data, producendo una mappa di feature multi-dimensionale.
+		La rete impara filtri specifici che si attivano quando trovano feature specifiche a una posizione particolare dell'input.
+
+		\subsection{Non linearity}
+		$$y_{i,j} = f(a_{i,j})\ dove\ f(a)= sigmoid(a)$$
+
+		\subsection{Pooling}
+		Il pooling riduce la dimensione dell'input attraverso filtri.
+		L'output avr\`a la dimensione dei filtri.

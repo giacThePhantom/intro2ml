@@ -1,0 +1,27 @@
+\begin{algorithm}
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{IsNot}{is not}
+\SetKw{Not}{not}
+\SetKw{Return}{return}
+\SetKw{Require}{return}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{GradientDescent}{Stochastic Gradient Descent with momentum}
+
+\caption{\protect\GradientDescent}
+	\Require : Learning rate $\varepsilon_k$\;
+	\Require : Momentum parameter $\alpha$\;
+	\Require : Initial Parameter $\theta$\;
+	\Require : Initial velocity $v$\;
+	\While{stopping criteria not met}{
+		\comment{Compute gradient estimate over sample example ($x^{(i)}, y^{(i)}$) from training set}
+		g = $+\nabla_\theta\sum_i L(f(x^{(i)};\theta),y^{(i)}$\;
+		\comment{Compute velocity update}
+		$v = \alpha v - \varepsilon_k g$\;
+		\comment{Apply update}
+		$\theta = \theta -\varepsilon_k g$\;
+	}
+\end{algorithm}

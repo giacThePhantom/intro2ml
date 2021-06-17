@@ -21,8 +21,8 @@ Infine si sviluppa un algoritmo di learning che deve cercare di minimizzare il c
 
 			\paragraph{Funzione indicatrice}
 			Una funzione indicatrice trasforma valori di \emph{Vero} e \emph{Falso} in numeri e conte.
-			$$1[x]=\begin{cases}1&\mathbf{if} x = True\\
-										  	0&\textbf{if} x = False
+			$$1[x]=\begin{cases}1&\mathbf{if}\ x = True\\
+										  	0&\textbf{if}\ x = False
 				 	\end{cases}$$
 
 			\paragraph{Dot-product}
@@ -55,6 +55,14 @@ Infine si sviluppa un algoritmo di learning che deve cercare di minimizzare il c
 		Ad ogni punto non si hanno informazioni che direzionano verso il minimo.
 		Pertanto si nota come una loss function ideale sia continua e differenziabile in modo da avere un'indicazione verso la direzione di minimizzazione e un unico minimo.
 
+			\paragraph{Loss function ideale}
+			Una loss function ideale dovrebbe essere:
+			\begin{itemize}
+				\item Continua in modo da ottenere informazioni riguardo la direzione della minimizzazione.
+				\item Avere un solo minimo.
+				\item Misurare la distanza tra la predizione reale e quella predetta.
+			\end{itemize}
+
 	\subsection{Funzioni convesse}
 	In una funzione convessa il segmento tra qualsiasi due punti della funzione si trova al di sopra della funzione.
 
@@ -69,7 +77,7 @@ Infine si sviluppa un algoritmo di learning che deve cercare di minimizzare il c
 			\begin{itemize}
 				\item \emph{$01$ loss}: $l(y, y')=1[yy'\le 0]$.
 				\item \emph{Hinge} $l(y,y')=\max(0,1-yy')$.
-				\item Exponential: $l(y,y')=\exp(iyy')$
+				\item Exponential: $l(y,y')=\exp(-yy')$
 				\item \emph{Squared loss}: $l(y,y')=(y-y')^2$.
 			\end{itemize}
 		\end{multicols}
@@ -77,6 +85,13 @@ Infine si sviluppa un algoritmo di learning che deve cercare di minimizzare il c
 \section{Gradient descent}
 Il gradient descent \`e un modo per trovare il minimo di una funzione: le derivate parziali danno un slope o direzione dove muoversi in tale dimensione.
 Questo approccio consiste di scegliere un punto di partenza e a ripetizione di: scegliere una dimensione e muoversi di una piccola quantit\`a verso il minimo utilizzando la derivata.
+Pertanto si:
+\begin{itemize}
+	\item Sceglie un punto di inizio $w$.
+	\item Sceglie una dimensione.
+	\item si muove di una piccola quantit\`a verso la diminuzione della loss utilizzando la derivata.
+\end{itemize}
+Questo ciclo si ripete fino a che la loss non diminuisce in nessuna dimensione.
 
 	\subsection{Spostamento in direzione della minimizzazione dell'errore}
 	Il movimento in direzione della minimizzazione dell'errore \`e pertanto:

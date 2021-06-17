@@ -36,7 +36,7 @@ La natura di $\mathcal{X},\mathcal{Y}, \mathcal{F}_{task}$ dipende dal tipo di t
 \section{Modello}
 Un modello \`e un programma per risolvere un problema.
 \`E cio\`e l'implementazione di una funzione $f\in\mathcal{F}_{task}$ che pu\`o essere computata.
-UN insieme di modelli formano uno spazio di ipotesi:
+Un insieme di modelli formano uno spazio di ipotesi:
 $$\mathcal{H}\subset\mathcal{F}_{task}$$
 L'algoritmo cerca una soluzione nello spazio di ipotesi.
 
@@ -44,7 +44,7 @@ L'algoritmo cerca una soluzione nello spazio di ipotesi.
 	Il target ideale del modello \`e quello di minimizzare una funzione di errore (generalizzazione)
 	$$E(f;P_{data})$$
 	Questa funzione determina quanto bene una soluzione $f\in\mathcal{F}_{task}$ fitta dei dati.
-	Guida perrtanto la selezione della migliore soluzione in $\mathcal{F}_{task}$.
+	Guida pertanto la selezione della migliore soluzione in $\mathcal{F}_{task}$.
 	Pertanto:
 	$$f^*\in arg\min\limits_{f\in\mathcal{F}_{task}}E(f;P_{data})$$
 
@@ -65,16 +65,17 @@ L'algoritmo cerca una soluzione nello spazio di ipotesi.
 	$E(f;P_{data})$ \`e il training error.
 
 	\subsection{Funzione di errore}
-	Le funzioni di generalizzazione e di training error possono essere scritte in termini di una pointwise loss $\mathcal{l}(f;z)$ che misura l'errore che avviene a $f$ su un esempio di training $z$.
-	$$E(f;P_{data})=\mathbb{E}_{z\sim P_{data}}[\mathcal{l}(f;z)]$$
-	$$E(f;\mathcal{D}_n)=\dfrac{1}{n}\sum\limits_{i=1}^n\mathcal{l}(f;z_i)$$
+	Le funzioni di generalizzazione e di training error possono essere scritte in termini di una pointwise loss $l(f;z)$ che misura l'errore che avviene a $f$ su un esempio di training $z$.
+	$$E(f;P_{data})=\mathbb{E}_{z\sim P_{data}}[l(f;z)]$$
+	$$E(f;\mathcal{D}_n)=\dfrac{1}{n}\sum\limits_{i=1}^nl(f;z_i)$$
 	Si nota pertanto come l'algoritmo di learning risolve il problema di ottimizzazione con target:
 	$$f^*_\mathcal{H}(\mathcal{D}_n)$$
 
 	\subsection{Tipi di errore}
 	\begin{multicols}{2}
 		\begin{itemize}
-			\item Overfitting.
+			\item Underfitting il modello non fitta sui dati di training, avviene per mancanza di dati.
+			\item Overfitting quando i training data sono rumorosi e il modello li fitta perfettamente, ma impara un modello che si adatta solo su di essi e non fitta dati dal mondo reale.
 			\item Estimation error, indotto imparando da un campione di dati.
 			\item Approximation error, indotto dallo spazio di ipotesi $\mathcal{H}$.
 			\item Irreducible error a causa della variabilit\`a intrinseca.
@@ -82,7 +83,8 @@ L'algoritmo cerca una soluzione nello spazio di ipotesi.
 	\end{multicols}
 
 	\subsection{Stimare l'errore di generalizzazione}
-	L'errore di geenralizzazione pu\`o essere stimati utilizzando diversi insiemi di training, validation e test.
+	L'errore di geenralizzazione pu\`o essere stimato utilizzando diversi insiemi di training, validation e test.
+	Si usa il training set per fare training di un modello, quello di validazione per valutarlo e sistemare i suoi iperparametri e dopo di quello si sceglie il modello migliore che si misura attraverso le performance sul test set.
 
 		\subsubsection{Migliorare la generalizzazione}
 		La generalizzazione pu\`o essere migliorata:
@@ -119,7 +121,7 @@ L'algoritmo cerca una soluzione nello spazio di ipotesi.
 		In un problema di classificazione si trova un insieme finito di label discrete.
 		In particolare dato un training set $\mathcal{T} = \{(x_1, u_1),\dots(x_m, y_m)\}$, si deve imparare una funzione $f$ per predirre $y$ dato $x$.
 		$f$ sar\`a pertanto:
-		$$f:\mathbb{R}^d$$% \rightarrow\{1, 2, \dots, k\}$$
+		$$f:\mathbb{R}^d \rightarrow\{1, 2, \dots, k\}$$
 		Dove $d$ \`e la dimensionalit\`a di $x$ e $k$ il numero di labels distinte.
 
 			\paragraph{Task}
