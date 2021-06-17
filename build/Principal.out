@@ -91,3 +91,19 @@
 \BOOKMARK [2][-]{subsection.7.3.2}{Learning algorithm del perceptron}{section.7.3}% 91
 \BOOKMARK [2][-]{subsection.7.3.3}{Costante c}{section.7.3}% 92
 \BOOKMARK [2][-]{subsection.7.3.4}{Gradiente}{section.7.3}% 93
+\BOOKMARK [0][-]{chapter.8}{Regularization}{}% 94
+\BOOKMARK [1][-]{section.8.1}{Introduzione}{chapter.8}% 95
+\BOOKMARK [1][-]{section.8.2}{Regolarizzatori}{chapter.8}% 96
+\BOOKMARK [2][-]{subsection.8.2.1}{Regolarizzatori comuni}{section.8.2}% 97
+\BOOKMARK [1][-]{section.8.3}{Gradient descent e regolarizzazione}{chapter.8}% 98
+\BOOKMARK [1][-]{section.8.4}{Regolarizzazione con le p-norms}{chapter.8}% 99
+\BOOKMARK [2][-]{subsection.8.4.1}{L1}{section.8.4}% 100
+\BOOKMARK [2][-]{subsection.8.4.2}{L2}{section.8.4}% 101
+\BOOKMARK [2][-]{subsection.8.4.3}{Lp}{section.8.4}% 102
+\BOOKMARK [1][-]{section.8.5}{Metodi di machine learning con regolarizzazione}{chapter.8}% 103
+\BOOKMARK [0][-]{chapter.9}{Support vector machines}{}% 104
+\BOOKMARK [1][-]{section.9.1}{Introduzione}{chapter.9}% 105
+\BOOKMARK [2][-]{subsection.9.1.1}{Perceptron}{section.9.1}% 106
+\BOOKMARK [1][-]{section.9.2}{Support vectors}{chapter.9}% 107
+\BOOKMARK [2][-]{subsection.9.2.1}{Large margin classifiers}{section.9.2}% 108
+\BOOKMARK [2][-]{subsection.9.2.2}{Support vector machine problem o soft margin calssification}{section.9.2}% 109
