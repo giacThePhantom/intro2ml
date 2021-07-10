@@ -172,3 +172,39 @@ Esistono diversi tipi di modello:
 	\subsection{Reinforcement learning}
 	Nel reinforcement learning un agente impara dall'ambiente interagendo con esso e ricevendo premi per lo svolgimento di azioni particolari.
 	In particolare, data una sequenza di esempi o stati e una reward dopo il completamento di tale sequenza si impara a predirre l'azione da svolgere per uno stato o esempio individuale.
+
+\section{Polynomial curve fitting}
+
+	\subsection{Dati}
+	L'insieme dei dati $\mathcal{D}_n$ consiste di coppie:
+	$$\mathcal{D}_n = \{(x_1, y_1),\dots,(x_n,y_n)\}$$
+	I dati sono generati dalla funzione $\sin(2\pi x)$ con del rumore.
+	Il training set consiste di $10$ punti: $n = 10$.
+
+	\subsection{Modello e spazio di ipotesi}
+	Il modello per il polynomial curve fitting \`e:
+	$$f_w(x) = \sum\limits_{j = 0}^M w_jx^j$$
+	\`E parametrico, dove i parametri sono $\{w_0,\dots, w_,\}$.
+	Lo spazio di ipotesi per $M\in\mathbb{N}$ fissato \`e:
+	$$\mathcal{H}_M = \{f_w:w\in\mathbb{R}^M\}$$
+
+	\subsection{Error function}
+	La funzione di errore per il polynomial curve fitting consiste della media tra le distanze quadratiche tra la predizione effettuata e l'effettiva label.
+	La pointwise loss:
+	$$l(f;(x_i,y_i)) = [f(x_i) - y_i]^2$$
+	La funzione di errore \`e pertanto:
+	$$E(f;\mathcal{D}_n) = \mathbb{E}(l(f;(x_i,y_i))) = \frac{1}{n}\sum\limits_{i=1}^n[f(x_i)-y_i]^2$$
+
+	\subsection{Funzione obiettivo}
+	Si ricordi che la funzione obiettivo \`e:
+	$$f^*_{\mathcal{H}_M}(\mathcal{D}_n)\in\arg\min\limits_{f\in\mathcal{H}_M}E(f;\mathcal{D}_n)$$
+	Equivalente rispetto a $f_{w^*}$ dove:
+	$$w^*\in\arg\min\limits_{w\in\mathbb{R}^M}\frac{1}{n}\sum\limits_{i=1}^n[f_w(x_i)-y_i]^2$$
+	Si noti come questa richieda la risoluzione di un sistema lineare di equazioni.
+	Il cambiamento di $M$ influisce grandemente sull'accuratezza della predizione, andando a determinare casi di overfitting o underfitting.
+	Con questo caso particolare si trova la soluzione migliore con $M=3$.
+
+	\subsection{Regolarizzazione}
+	Il polynomial curve fitting si regolarizza penalizzando i polinomi con grandi coefficienti:
+	$$E_{reg}(f_w;\mathcal{D}_n) = \frac{1}{n}\sum\limits_{i=1}^n[f_w(x_i)-y_i]^2 + \frac{\lambda}{n}||w||^2$$
+	Dove $||w||^2 = \sum\limits_{i = 1}^n w_i^2$.
