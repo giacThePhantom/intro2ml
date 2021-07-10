@@ -3,7 +3,7 @@
 \section{Struttura}
 Un decision tree \`e un modello di predizione con struttura ad albero.
 \`E composto da nodi terminali o foglie e nodi non terminali.
-I nodi non terminali hanno da due a pi\`u figli e implementando la funzione di routing.
+I nodi non terminali hanno da due a pi\`u figli e implementano la funzione di routing.
 I nodi foglia non hanno figli e implementano la funzione di predizione.
 Non ci sono cicli e tutti i nodi hanno al massimo un genitore (con esclusione del nodo radice).
 
@@ -90,7 +90,7 @@ $$I(\mathcal{D})= 1 -\max\limits_{y\in\mathcal{Y}}\dfrac{|\mathcal{D}^y|}{|\math
 Se invece $l(f;(x,y))=\sum\limits_{x\in\mathcal{Y}}[f_c(x)-1_{c=y}]^2$ e $\mathcal{H}_{leaf}=\bigcup\limits_{\pi\in\Delta(\mathcal{Y})}\{\pi\}^\mathcal{X}$ allora la misura di impurit\`a \`e l'impurit\`a di Gini:
 $$I(\mathcal{D}) = 1-\sum\limits_{y\in\mathcal{Y}}\biggl(\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}\biggr)^2$$
 Infine se $l(f;(x,y))=-\log f_y(x)$ e $\mathcal{H}_{leaf} = \bigcup\limits_{\pi\in\Delta(\mathcal{Y})}\{\pi\}^\mathcal{X}$, con una distribuzione costante di label come predizione di foglie, allora la misura di impurit\`a \`e l'entropia:
-$$I(\mathcal{D})=-\sum\limits_{y\in\mathcal{Y}}\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}\log\log\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}$$
+$$I(\mathcal{D})=-\sum\limits_{y\in\mathcal{Y}}\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}\log\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}$$
 
 \section{Misure di impurit\`a per la regressione}
 Si consideri per la regressione:
@@ -150,7 +150,7 @@ Una tecnica per ridurre la complessit\`a a posteriori \`e detta pruning.
 
 \section{Random forest}
 Le random forest sono ensembles di decision trees.
-Ogni algero \`e tipicamente trained con una versione bootstrapped del training set campionata con sostituzione.
+Ogni albero \`e tipicamente trained con una versione bootstrapped del training set campionata con sostituzione.
 Le funzioni di split sono ottimizzate su features campionate a caso o completamente a caso (extremely randomized trees).
 Questo aiuta ad ottenere decision trees decorrelati.
 La predizione finale della foresta \`e ottenuta facendo la media delle predizioni per ogni albero nell'ensemble $\mathcal{Q}=\{t_1,\dots,t_T\}$.
