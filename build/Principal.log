@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.23)  10 JUL 2021 23:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.23)  10 JUL 2021 23:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -797,7 +797,7 @@ eX warning (ext4): destination with the same identifier (name{page.1}) has been
  already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.51 ... {3.4.2}Overfitting}{11}{subsection.3.4.2}
+l.51 ... {3.4.2}Overfitting}{15}{subsection.3.4.2}
                                                   % [1
 
 ] [2] [3] [4])
@@ -863,26 +863,17 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
 (/usr/share/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ))
-(./Pseudocodice/02_perceptron_prediction.tex)) (./Chapters/05_DecisionTrees.tex
-[17] [18pdfTeX warning (ext4): destination with the same identifier (name{algoc
-f.}) has been already used, duplicate ignored
+(./Pseudocodice/02_perceptron_prediction.tex) [17])
+(./Chapters/05_DecisionTrees.tex [18pdfTeX warning (ext4): destination with the
+ same identifier (name{algocf.}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   
 l.1 \chapter
-            {Decision Trees}] [19]
+            {Decision Trees}]
 Capitolo 5.
-[20
+[19
 
-] [21]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.1638pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.1638pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-0.1638pt}.
-
-[22]
+] [20]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 12.1638pt, for example:
@@ -891,9 +882,18 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-0.1638pt}.
 
-[23]) (./Chapters/06_MultiClassClassification.tex [24] [25]
+[21]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 12.1638pt, for example:
+(fancyhdr)                \setlength{\headheight}{12.1638pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-0.1638pt}.
+
+[22]) (./Chapters/06_MultiClassClassification.tex [23] [24]
 Capitolo 6.
-[26
+[25
 
 ]
 Underfull \hbox (badness 6927) in paragraph at lines 59--60
@@ -904,23 +904,29 @@ Underfull \hbox (badness 6927) in paragraph at lines 59--60
  the same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.14 ...$D^{multiclass}$, \protect\BinaryTrain{}}}
+l.13 ...$D^{multiclass}$, \protect\BinaryTrain{}}}
                                                   )
 (./Pseudocodice/04_oneversusalltest.texpdfTeX warning (ext4): destination with 
 the same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.14 ...{\protect\Ova{$f_1,\dots,f_K$, $\hat{x}$}}
-                                                  ) [27]
+                                                  ) [26]
 (./Pseudocodice/05_allversusalltrainingpseudo.texpdfTeX warning (ext4): destina
 tion with the same identifier (name{algocf.}) has been already used, duplicate 
 ignored
 <to be read again> 
                    \relax 
 l.14 \caption{\protect\Ava{}}
-                             ) (./Pseudocodice/06_allversusalltrain.texpdfTeX w
-arning (ext4): destination with the same identifier (name{algocf.}) has been al
-ready used, duplicate ignored
+                             
+Overfull \hbox (292.92847pt too wide) in paragraph at lines 81--22
+\T1/cmr/m/n/10 Per ogni cop-pia di la-bel si ad-de-stra un clas-si-fi-ca-to-re 
+che le di-stin-gue: []$[]$ 
+ []
+
+) (./Pseudocodice/06_allversusalltrain.texpdfTeX warning (ext4): destination wi
+th the same identifier (name{algocf.}) has been already used, duplicate ignored
+
 <to be read again> 
                    \relax 
 l.13 ...$D^{multiclass}$, \protect\BinaryTrain{}}}
@@ -930,10 +936,10 @@ the same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.14 ...ion{\protect\Ava{all $f_{ij}$, $\hat{x}$}}
-                                                   [28]) [29])
-(./Chapters/07_Ranking.tex [30]
+                                                  ) [27] [28])
+(./Chapters/07_Ranking.tex [29]
 Capitolo 7.
-[31
+[30
 
 ]
 
@@ -953,7 +959,7 @@ Underfull \hbox (badness 7238) in paragraph at lines 45--46
 []\T1/cmr/m/n/10 Soddisfi la di-su-gua-glian-za trian-go-la-re:
  []
 
-) (./Chapters/08_GradientDescent.tex [32]
+) (./Chapters/08_GradientDescent.tex [31]
 Capitolo 8.
 
 Overfull \hbox (5.53233pt too wide) in paragraph at lines 29--32
@@ -962,7 +968,7 @@ a-zio-ne vet-to-ria-le si rap-pre-sen-ta un esem-pio $\OML/cmm/m/it/10 f[]; []
 ; f[]$
  []
 
-[33
+[32
 
 ]
 
@@ -973,13 +979,18 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 42.
 
-[34] [35] (./Pseudocodice/08_perceptron_gradient_descent.texpdfTeX warning (ext
+[33] [34] (./Pseudocodice/08_perceptron_gradient_descent.texpdfTeX warning (ext
 4): destination with the same identifier (name{algocf.}) has been already used,
  duplicate ignored
 <to be read again> 
                    \relax 
 l.12 \caption{\protect\Perceptron{}}
-                                    )
+                                    
+Overfull \hbox (79.4158pt too wide) in paragraph at lines 120--27
+\T1/cmr/m/n/10 il vet-to-re dei pe-si. []$[]$ 
+ []
+
+)
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 125.
@@ -992,11 +1003,16 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 the same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.14 ...nt{$\mathcal{F}$, $K$, $\eta_1$, $\dots$}}
-                                                  ))
-(./Chapters/09_Regularization.tex [36] [37]
+l.13 ...nt{$\mathcal{F}$, $K$, $\eta_1$, $\dots$}}
+                                                  
+Overfull \hbox (238.71024pt too wide) in paragraph at lines 131--19
+\T1/cmr/m/n/10 ze-ro la per-di-ta non sta cam-bian-do in nes-su-na di-re-zio-ne
+. []$[]$ 
+ []
+
+) [35]) (./Chapters/09_Regularization.tex [36]
 Capitolo 9.
-[38
+[37
 
 ]
 
@@ -1007,56 +1023,68 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 48.
 
-[39]) (./Chapters/10_SVM.tex [40]
+[38]) (./Chapters/10_SVM.tex [39]
 Capitolo 10.
-[41
+[40
 
-] [42] [43] [44]) (./Chapters/11_NeuralNetworks.tex [45]
+] [41] [42] [43]) (./Chapters/11_NeuralNetworks.tex [44]
 Capitolo 11.
-[46
+[45
 
-] [47] [48] [49] [50] (./Pseudocodice/10_BGD.texpdfTeX warning (ext4): destinat
+] [46] [47] [48] [49] (./Pseudocodice/10_BGD.texpdfTeX warning (ext4): destinat
 ion with the same identifier (name{algocf.}) has been already used, duplicate i
 gnored
 <to be read again> 
                    \relax 
 l.14 \caption{\protect\GradientDescent}
-                                       ) (./Pseudocodice/11_SDG.texpdfTeX warni
-ng (ext4): destination with the same identifier (name{algocf.}) has been alread
-y used, duplicate ignored
+                                       
+Overfull \hbox (49.33981pt too wide) in paragraph at lines 155--23
+\T1/cmr/m/n/10 nel tem-po. []$[]$ 
+ []
+
+) (./Pseudocodice/11_SDG.texpdfTeX warning (ext4): destination with the same id
+entifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.15 \caption{\protect\GradientDescent}
-                                       ) (./Pseudocodice/12_SDG_momentum.texpdf
+l.14 \caption{\protect\GradientDescent}
+                                       
+Overfull \hbox (96.35611pt too wide) in paragraph at lines 160--23
+\T1/cmr/m/n/10 per-for-man-ce mi-glio-ri. []$[]$ 
+ []
+
+) (./Pseudocodice/12_SDG_momentum.texpdfTeX warning (ext4): destination with th
+e same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.14 \caption{\protect\GradientDescent}
+                                       ) [50] (./Pseudocodice/13_Adagrad.texpdf
 TeX warning (ext4): destination with the same identifier (name{algocf.}) has be
 en already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.14 \caption{\protect\GradientDescent}
-                                       ) [51] (./Pseudocodice/13_Adagrad.texpdf
-TeX warning (ext4): destination with the same identifier (name{algocf.}) has be
-en already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.15 \caption{\protect\GradientDescent}
-                                       ) [52] [53])
-(./Chapters/12_ReinforcementLearning.tex [54]
+                                       
+Overfull \hbox (98.4667pt too wide) in paragraph at lines 174--27
+\T1/cmr/m/n/10 per ge-sti-re da-ti spar-si. []$[]$ 
+ []
+
+) [51]) (./Chapters/12_ReinforcementLearning.tex [52] [53]
 Capitolo 12.
-[55
+[54
 
-] [56] [57] [58] [59]) (./Chapters/13_UnsupervisedLearning.tex [60]
+] [55] [56] [57] [58]) (./Chapters/13_UnsupervisedLearning.tex [59]
 Capitolo 13.
-[61
+[60
 
-] [62] [63] [64] [65] [66]) [67] (./build/Principal.aux)
+] [61] [62] [63] [64] [65]) [66] (./build/Principal.aux)
 Package rerunfilecheck Info: File `Principal.out' has not changed.
 (rerunfilecheck)             Checksum: E0B4190A0AEC2C64D1D2425B962238FB;28704.
  ) 
 Here is how much of TeX's memory you used:
- 19494 strings out of 478994
- 328395 string characters out of 5864751
+ 19478 strings out of 478994
+ 328138 string characters out of 5864751
  678820 words of memory out of 5000000
- 36250 multiletter control sequences out of 15000+600000
+ 36247 multiletter control sequences out of 15000+600000
  431857 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  88i,19n,91p,414b,911s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1085,10 +1113,10 @@ ts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public
 000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/s
 hare/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist
 /fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on ./build/Principal.pdf (68 pages, 584116 bytes).
+Output written on ./build/Principal.pdf (67 pages, 584539 bytes).
 PDF statistics:
- 1510 PDF objects out of 1728 (max. 8388607)
- 1398 compressed objects within 14 object streams
- 353 named destinations out of 1000 (max. 500000)
+ 1492 PDF objects out of 1728 (max. 8388607)
+ 1381 compressed objects within 14 object streams
+ 340 named destinations out of 1000 (max. 500000)
  1457 words of extra memory for PDF output out of 10000 (max. 10000000)
 
