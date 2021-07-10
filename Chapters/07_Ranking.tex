@@ -24,7 +24,7 @@ Si deve insegnare a un modello che quando riceve un insieme di esempi li fitti n
 
 \section{Utilizzo del ranking e della preference function}
 Con gli algoritmi visti precedentemente si potrebbe pesare il ranking di un esempio utilizzando la distanza dagli altri.
-SI possono usare diversi metodi di distanza dati che sono consistenti.
+Si possono usare diversi metodi di distanza dati che sono consistenti.
 La distanza a tempo di testing \`e calcolata come la confidenza della predizione del perceptron e d\`a un ordinamento degli esempi.
 In questo modo si ottiene una forma di ranking pi\`u precisa rispetto a quella vista prima.
 Per un algoritmo di ranking sofisticato si devono incorporare queste osservazioni a tempo di training: se un problema ritorna un'alta differenza in preferenza tra due esempi dovrebbe avere un peso pi\`u alto.
@@ -40,7 +40,7 @@ Si definisce una funzione di costo $\omega$ dove $\omega(i,j)$ \`e il costo di m
 Tale funzione deve essere:
 \begin{multicols}{2}
 	\begin{itemize}
-		\item Simmetrica: $w(i,j) = w(j,i$.
+		\item Simmetrica: $w(i,j) = w(j,i)$.
 		\item Monotona: $i<j<l\lor i>j>k \Rightarrow \omega(i,j) \le \omega(i,k)$.
 		\item Soddisfi la disuguaglianza triangolare: $\omega(i,j)+\omega(j,k) \le \omega(i,k)$.
 	\end{itemize}

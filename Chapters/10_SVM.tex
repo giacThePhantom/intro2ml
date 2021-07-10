@@ -55,7 +55,7 @@ La funzione da ottimizzare diventa pertanto:
 $$||w||^2+\mathcal{C}\sum_i\zeta_i\qquad subject\ to\qquad y_i(wx_i+b)\ge 1 -\zeta_i\forall i$$
 Con il costraint $\zeta_i\ge 0\forall i$.
 Si nota come $\zeta_i$ sono le slack variables e se ne trova una per ogni esempio nel dataset e sono utilizzate per correggere classificazioni sbagliate, ma poi il loro peso \`e aggiunto alla funzione obiettivo.
-SI vuole pertanto trovare un trade-off tra minimizzare il quadrato della norma di $w$ e il valore di penalit\`a dato dalla slack variable.
+Si vuole pertanto trovare un trade-off tra minimizzare il quadrato della norma di $w$ e il valore di penalit\`a dato dalla slack variable.
 La somma di $\zeta_i$ misura la tolleranza agli errori.
 Si nota come:
 \begin{multicols}{2}
@@ -73,8 +73,8 @@ SI nota come questo \`e ancora un problema di ottimizzazione quadratica con cost
 	Per tutti gli esempi correttamente classificati al di fuori del margine il valore dovr\`a essere $0$.
 	Per gli esempi correttamente classificati all'interno del margine sar\`a la distanza dal punto e la linea del margine, che pu\`o essere calcolata come $1-(valore\ della\ funzione\ di\ decision)$, un valore compreso tra $0$ e $1$, in particolare:
 	$$\zeta_i = 1 - y_i(wx_i+b)$$
-	I dati classificati con errore il valore \`e dato dalla somma della distanza dall'iperpiano pi\`u la distanza dal maargine, con la stessa formula come nel caso precedente.
-	Si riassumne la formula in:
+	I dati classificati con errore il valore \`e dato dalla somma della distanza dall'iperpiano pi\`u la distanza dal margine, con la stessa formula come nel caso precedente.
+	Si riassume la formula in:
 	$$\zeta_i = \max(0,1-yy')$$
 	Che si nota che \`e la hinge loss function.
 	Trasformando la funzione obiettivo di un SVM in una funzione di hinge loss si trasforma il problema in uncostrained in quanto entrami i costraint sono tenuti in considerazione dalla funzione.
@@ -97,7 +97,7 @@ Il problema \`e pertanto massimizzare $Q(a)$, un problema di ottimizzazione quad
 Un buon risolutore scalabile \`e $SM)$.
 Una volta risolto il dual problem e ottenuto tutti i valori di $a_i$ posso computare $w$ e $b$:
 $$w=\sum a_iy_ix_i$$
-$$b = y_k - \sum a_iy_i^Tx_k$$
+$$b = y_k - \sum a_iy_ix^Tx_k$$
 Per ogni $a_k>0$.
 Pertanto la funzione classificatrice \`e:
 $$f(x) = \sum(a_iy_ix_i^Tx)+b$$
@@ -138,7 +138,13 @@ In quanto $x$ compare solo nel dot product nella funzione di predizione e di ott
 				In questo caso ogni punto \`e mappato a una funzione gaussiana e $\phi(x)$ ha infinite dimensioni.
 				La combinazione delle funzioni per i support vectors \`e il separatore.
 		\end{itemize}
-		Lo spazio a maggiore dimensioni ha una idmensionalit\`a $d$ intrinseca ma il separatore lineare in esso corrisponde a un separatore non lineare nello spazio originale.
+		Lo spazio a maggiore dimensioni ha una dimensionalit\`a $d$ intrinseca ma il separatore lineare in esso corrisponde a un separatore non lineare nello spazio originale.
+
+			\paragraph{Teorema di Mercer}
+			\begin{itemize}
+				\item Ogni funzione simmetrica semi positiva \`e un kernel.
+				\item Le funzioni semi-positive simmetriche corrispondono a una matrice di Gram semi-positiva definita
+			\end{itemize}
 
 		\subsubsection{Soluzione del problema scelto il kernel}
 		Una volta scelto il kernel il problema diventa trovare $a_1,\dots,a_n$ tali che:

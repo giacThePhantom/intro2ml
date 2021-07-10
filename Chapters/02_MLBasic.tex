@@ -39,6 +39,13 @@ Un modello \`e un programma per risolvere un problema.
 Un insieme di modelli formano uno spazio di ipotesi:
 $$\mathcal{H}\subset\mathcal{F}_{task}$$
 L'algoritmo cerca una soluzione nello spazio di ipotesi.
+Esistono diversi tipi di modello:
+\begin{multicols}{2}
+	\begin{itemize}
+		\item Generativi e discriminativi.
+		\item Parametrici e non parametrici.
+	\end{itemize}
+\end{multicols}
 
 	\subsection{Target ideale}
 	Il target ideale del modello \`e quello di minimizzare una funzione di errore (generalizzazione)
@@ -157,10 +164,10 @@ L'algoritmo cerca una soluzione nello spazio di ipotesi.
 			Tutti i punti mappati sullo stesso indice formano un cluster.
 
 		\subsubsection{Dimensionality reduction}
-		Nella dimensionalty reduction si tenta di ridurre il numero di variabili sotto considerazione ottenendo un insieme di variabili principali.
+		Nella dimensionality reduction si tenta di ridurre il numero di variabili sotto considerazione ottenendo un insieme di variabili principali.
 
 			\paragraph{Task}
-			Si deve trovare una funzione $f\in\mathcal{Y}^\mathcal{X}$ che mappa ogni input di molte dimensioni $x\in\mathcal{X}$ a un output a dimensione minore $f(x)\in\mathcal{Y}$, dove $dim(\mathcal{Y}\ll dim(\mathcal{X})$
+			Si deve trovare una funzione $f\in\mathcal{Y}^\mathcal{X}$ che mappa ogni input di molte dimensioni $x\in\mathcal{X}$ a un output a dimensione minore $f(x)\in\mathcal{Y}$, dove $dim(\mathcal{Y})\ll dim(\mathcal{X})$
 
 	\subsection{Reinforcement learning}
 	Nel reinforcement learning un agente impara dall'ambiente interagendo con esso e ricevendo premi per lo svolgimento di azioni particolari.

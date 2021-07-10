@@ -161,6 +161,7 @@
 \contentsline {subsection}{\numberline {10.5.2}Identificare i support vector}{43}{subsection.10.5.2}%
 \contentsline {subsection}{\numberline {10.5.3}Utilizzo di SVN in maniera non lineare}{43}{subsection.10.5.3}%
 \contentsline {subsubsection}{\numberline {10.5.3.1}Kernel function}{44}{subsubsection.10.5.3.1}%
+\contentsline {paragraph}{\numberline {10.5.3.1.1}Teorema di Mercer}{44}{paragraph.10.5.3.1.1}%
 \contentsline {subsubsection}{\numberline {10.5.3.2}Soluzione del problema scelto il kernel}{44}{subsubsection.10.5.3.2}%
 \contentsline {chapter}{\numberline {11}Neural Networks}{45}{chapter.11}%
 \contentsline {section}{\numberline {11.1}Introduzione}{45}{section.11.1}%
