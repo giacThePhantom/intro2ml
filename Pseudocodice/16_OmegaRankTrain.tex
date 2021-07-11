@@ -1,0 +1,30 @@
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{IsNot}{is not}
+\SetKw{Is}{is}
+\SetKw{Not}{not}
+\SetKw{Return}{return}
+\SetKw{And}{and}
+\SetKw{Require}{return}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{BinaryTrain}{BinaryTrain}
+\SetKwFunction{NRT}{OmegaRankTest}
+\SetKwFunction{Argsort}{ArgSort}
+\SetKwFunction{Sign}{Sign}
+
+\caption{\protect\NRT{$D^{rank}$, $\omega$, \protect\BinaryTrain}}
+$D^{bin} = []$
+\For{all $(x,\sigma)\in D^{rank}$}{
+	\For{all $u\neq v$}{
+		$y =$ \Sign{$\sigma^v$, $\sigma_u$}\;
+		$w = w(\sigma_u, \sigma_v)$\;
+		$D^{bin} = D^{bin}\oplus(y, w, x_{uv})$\;
+	}
+}
+\Return \BinaryTrain{$D^{bin}$}
+\end{algorithm}

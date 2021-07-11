@@ -1,0 +1,27 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{IsNot}{is not}
+\SetKw{Is}{is}
+\SetKw{Not}{not}
+\SetKw{Return}{return}
+\SetKw{And}{and}
+\SetKw{Require}{return}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{BinaryTrain}{BinaryTrain}
+\SetKwFunction{NRT}{NaiveRankTrain}
+
+\caption{\protect\NRT{RankingData, \protect\BinaryTrain}}
+$D = []$\;
+\For{$n = 1$ \To $N$}{
+	\For{all $i,j = 1$ to $M$ \And $i\neq j$}{
+		\If{$i$ \Is prefered to $j$ on query $n$}{
+			$D = D\oplus (x_{nij},-1)$
+		}
+	}
+}
+\Return \BinaryTrain{D}
+\end{algorithm}

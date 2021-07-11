@@ -1,0 +1,42 @@
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetKwComment{comment}{$\%$}{}
+\SetKw{Int}{int}
+\SetKw{To}{to}
+\SetKw{IsNot}{is not}
+\SetKw{Is}{is}
+\SetKw{Not}{not}
+\SetKw{Return}{return}
+\SetKw{And}{and}
+\SetKw{Or}{or}
+\SetKw{Require}{return}
+\SetKwData{Item}{item}
+\SetKwFunction{Min}{min}
+\SetKwFunction{BinaryTrain}{BinaryTrain}
+\SetKwFunction{NRT}{OmegaRankTest}
+\SetKwFunction{Argsort}{ArgSort}
+
+\caption{\protect\NRT{$f$, $\hat{x}$, obj}}
+\If{obj contains $0$ \Or $1$ elements}{
+	\Return obj
+}
+\Else{
+	$p = $randomply chosen object in obj\;
+	$left = []$\;
+	$right = []$\;
+	\For{all $u\in obj\backslash\{p\}$}{
+		$\hat{y} = f(x_{up})$\;
+		\If{uniform random variable $< \hat{y}$}{
+			$left = left\oplus u$\;
+		}
+		\Else{
+			$right = right\oplus u$\;
+		}
+	}
+	$left = $\NRT{$f$, $\hat{x}$, $left$}\;
+	$right = $\NRT{$f$, $\hat{x}$, $right$}\;
+	\Return $left\oplus\langle p \rangle\oplus right$\;
+}
+
+
+\end{algorithm}

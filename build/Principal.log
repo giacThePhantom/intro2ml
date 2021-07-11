@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.23)  10 JUL 2021 23:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.23)  11 JUL 2021 16:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -797,7 +797,7 @@ eX warning (ext4): destination with the same identifier (name{page.1}) has been
  already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.51 ... {3.4.2}Overfitting}{15}{subsection.3.4.2}
+l.51 ... {3.4.2}Overfitting}{11}{subsection.3.4.2}
                                                   % [1
 
 ] [2] [3] [4])
@@ -918,15 +918,9 @@ ignored
 <to be read again> 
                    \relax 
 l.14 \caption{\protect\Ava{}}
-                             
-Overfull \hbox (292.92847pt too wide) in paragraph at lines 81--22
-\T1/cmr/m/n/10 Per ogni cop-pia di la-bel si ad-de-stra un clas-si-fi-ca-to-re 
-che le di-stin-gue: []$[]$ 
- []
-
-) (./Pseudocodice/06_allversusalltrain.texpdfTeX warning (ext4): destination wi
-th the same identifier (name{algocf.}) has been already used, duplicate ignored
-
+                             ) (./Pseudocodice/06_allversusalltrain.texpdfTeX w
+arning (ext4): destination with the same identifier (name{algocf.}) has been al
+ready used, duplicate ignored
 <to be read again> 
                    \relax 
 l.13 ...$D^{multiclass}$, \protect\BinaryTrain{}}}
@@ -941,25 +935,48 @@ l.14 ...ion{\protect\Ava{all $f_{ij}$, $\hat{x}$}}
 Capitolo 7.
 [30
 
-]
+] (./Pseudocodice/14_NaiveRankTrain.texpdfTeX warning (ext4): destination with 
+the same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.17 ...ct\NRT{RankingData, \protect\BinaryTrain}}
+                                                  )
+(./Pseudocodice/15_NaiveRankTest.texpdfTeX warning (ext4): destination with the
+ same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.18 \caption{\protect\NRT{$f$, $\hat{x}$}}
+                                           )
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 32.
+(hyperref)                removing `math shift' on input line 46.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\omega' on input line 32.
+(hyperref)                removing `\omega' on input line 46.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 32.
+(hyperref)                removing `math shift' on input line 46.
 
-
-Underfull \hbox (badness 7238) in paragraph at lines 45--46
+[31]
+Underfull \hbox (badness 7238) in paragraph at lines 59--60
 []\T1/cmr/m/n/10 Soddisfi la di-su-gua-glian-za trian-go-la-re:
  []
 
-) (./Chapters/08_GradientDescent.tex [31]
+(./Pseudocodice/16_OmegaRankTrain.texpdfTeX warning (ext4): destination with th
+e same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.20 ...^{rank}$, $\omega$, \protect\BinaryTrain}}
+                                                  ) [32]
+(./Pseudocodice/17_OmegaRankTest.texpdfTeX warning (ext4): destination with the
+ same identifier (name{algocf.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.19 \caption{\protect\NRT{$f$, $\hat{x}$, obj}}
+                                                ))
+(./Chapters/08_GradientDescent.tex [33]
 Capitolo 8.
 
 Overfull \hbox (5.53233pt too wide) in paragraph at lines 29--32
@@ -968,7 +985,7 @@ a-zio-ne vet-to-ria-le si rap-pre-sen-ta un esem-pio $\OML/cmm/m/it/10 f[]; []
 ; f[]$
  []
 
-[32
+[34
 
 ]
 
@@ -979,7 +996,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 42.
 
-[33] [34] (./Pseudocodice/08_perceptron_gradient_descent.texpdfTeX warning (ext
+[35] [36] (./Pseudocodice/08_perceptron_gradient_descent.texpdfTeX warning (ext
 4): destination with the same identifier (name{algocf.}) has been already used,
  duplicate ignored
 <to be read again> 
@@ -1010,9 +1027,9 @@ Overfull \hbox (238.71024pt too wide) in paragraph at lines 131--19
 . []$[]$ 
  []
 
-) [35]) (./Chapters/09_Regularization.tex [36]
+) [37]) (./Chapters/09_Regularization.tex [38]
 Capitolo 9.
-[37
+[39
 
 ]
 
@@ -1023,15 +1040,15 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 48.
 
-[38]) (./Chapters/10_SVM.tex [39]
+[40]) (./Chapters/10_SVM.tex [41]
 Capitolo 10.
-[40
+[42
 
-] [41] [42] [43]) (./Chapters/11_NeuralNetworks.tex [44]
+] [43] [44] [45]) (./Chapters/11_NeuralNetworks.tex [46]
 Capitolo 11.
-[45
+[47
 
-] [46] [47] [48] [49] (./Pseudocodice/10_BGD.texpdfTeX warning (ext4): destinat
+] [48] [49] [50] [51] (./Pseudocodice/10_BGD.texpdfTeX warning (ext4): destinat
 ion with the same identifier (name{algocf.}) has been already used, duplicate i
 gnored
 <to be read again> 
@@ -1057,7 +1074,7 @@ e same identifier (name{algocf.}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.14 \caption{\protect\GradientDescent}
-                                       ) [50] (./Pseudocodice/13_Adagrad.texpdf
+                                       ) [52] (./Pseudocodice/13_Adagrad.texpdf
 TeX warning (ext4): destination with the same identifier (name{algocf.}) has be
 en already used, duplicate ignored
 <to be read again> 
@@ -1068,23 +1085,23 @@ Overfull \hbox (98.4667pt too wide) in paragraph at lines 174--27
 \T1/cmr/m/n/10 per ge-sti-re da-ti spar-si. []$[]$ 
  []
 
-) [51]) (./Chapters/12_ReinforcementLearning.tex [52] [53]
+) [53]) (./Chapters/12_ReinforcementLearning.tex [54] [55]
 Capitolo 12.
-[54
+[56
 
-] [55] [56] [57] [58]) (./Chapters/13_UnsupervisedLearning.tex [59]
+] [57] [58] [59] [60]) (./Chapters/13_UnsupervisedLearning.tex [61]
 Capitolo 13.
-[60
+[62
 
-] [61] [62] [63] [64] [65]) [66] (./build/Principal.aux)
+] [63] [64] [65] [66] [67]) [68] (./build/Principal.aux)
 Package rerunfilecheck Info: File `Principal.out' has not changed.
-(rerunfilecheck)             Checksum: E0B4190A0AEC2C64D1D2425B962238FB;28704.
+(rerunfilecheck)             Checksum: 8D0B64EF95641A92DF219D6B75C2354B;29409.
  ) 
 Here is how much of TeX's memory you used:
- 19478 strings out of 478994
- 328138 string characters out of 5864751
- 678820 words of memory out of 5000000
- 36247 multiletter control sequences out of 15000+600000
+ 19525 strings out of 478994
+ 328951 string characters out of 5864751
+ 678826 words of memory out of 5000000
+ 36268 multiletter control sequences out of 15000+600000
  431857 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  88i,19n,91p,414b,911s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1113,10 +1130,10 @@ ts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public
 000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/s
 hare/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist
 /fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on ./build/Principal.pdf (67 pages, 584517 bytes).
+Output written on ./build/Principal.pdf (69 pages, 591339 bytes).
 PDF statistics:
- 1492 PDF objects out of 1728 (max. 8388607)
- 1381 compressed objects within 14 object streams
- 340 named destinations out of 1000 (max. 500000)
- 1457 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1539 PDF objects out of 1728 (max. 8388607)
+ 1425 compressed objects within 15 object streams
+ 354 named destinations out of 1000 (max. 500000)
+ 1505 words of extra memory for PDF output out of 10000 (max. 10000000)
 

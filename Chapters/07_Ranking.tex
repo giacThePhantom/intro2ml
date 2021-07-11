@@ -18,7 +18,7 @@ Si deve insegnare a un modello che quando riceve un insieme di esempi li fitti n
 		\subsubsection{Perceptron}
 		Per implementare questo algoritmo si pu\`o utilizzare il perceptron creando il vettore delle feature combinate dei due esempi:
 		$$f'_i = a_i -b_i$$
-		$$f'_i = \{1\ if\ a_i > b_i,\ 0\ altrimenti\}$$
+		$$f'_i = \begin{cases}1\ if\ a_i > b_i\\0\ altrimenti\end{cases}$$
 		Questa funzione viene sviluppata in maniera dipendente dall'applicazione.
 		Un modo per computare il ranking numerico per i campioni pu\`o essere risolto utilizzando la preference function sommando i valori di ritorno di ogni classificatore e ottenendo uno score per ognuno di essi.
 
@@ -28,6 +28,20 @@ Si possono usare diversi metodi di distanza dati che sono consistenti.
 La distanza a tempo di testing \`e calcolata come la confidenza della predizione del perceptron e d\`a un ordinamento degli esempi.
 In questo modo si ottiene una forma di ranking pi\`u precisa rispetto a quella vista prima.
 Per un algoritmo di ranking sofisticato si devono incorporare queste osservazioni a tempo di training: se un problema ritorna un'alta differenza in preferenza tra due esempi dovrebbe avere un peso pi\`u alto.
+
+\section{Naive Ranking}
+
+	\subsection{Training}
+	\input{Pseudocodice/14_NaiveRankTrain}
+
+	\subsection{Testing}
+	\input{Pseudocodice/15_NaiveRankTest}
+
+\section{Bipartite ranking}
+Gli algoritmi di ranking bipartito risalgono problemi in cui si tenta di predire una risposta binaria.
+L'obiettivo \`e di assicurare che tutti gli esempi rilevanti si trovano prima di quelli irrilevanti.
+Non si trova un ordinamento tra esempi rilevanti.
+
 
 \section{Ordinamento e $\mathbf{\omega}$-ranking}
 Nonostante la veloce soluzione dell'ordinamento contro la funzione di preference si pu\`o utilizzarla come funzione di sorting.
@@ -46,7 +60,7 @@ Tale funzione deve essere:
 	\end{itemize}
 \end{multicols}
 Un esempio potrebbe essere:
-$$\omega(i,j) = \{1\ if\{i,j\} \le K \land i\neq j\ \ 0\ altrimenti\}$$
+$$\omega(i,j) = \begin{cases}1\ if\{i,j\} \le K \land i\neq j\\ 0\ altrimenti\end{cases}$$
 Questa viene detta task di $\omega$ ranking.
 Dati:
 \begin{multicols}{2}
@@ -58,5 +72,17 @@ Dati:
 \end{multicols}
 Si deve computare una funzione $f:\mathcal{X}\rightarrow\sum_M$ che minimizzi:
 $$\mathbb{E}_{(\mathcal{X},\sigma)\sim\mathcal{D}}\biggl[\sum\limits_{u\neq v}[\sigma_u < \sigma_v][\hat{\sigma}_v < \hat{\sigma}_u]\omega(\sigma_u,\sigma_v)\biggr]$$
-A tempo di testing invece di predirre score e poi ordinare la lista come negli algoritmi prima si utilizza un algoritmo di ordinamento utilizzando la funzione imparata come funzione di ordinamento.
-La differenza \`e che qua la funzione di comparazione \`e probabilistica.
+Dove $\hat{\sigma} = f(x)$.
+
+	\subsection{Testing}
+	A tempo di testing invece di predirre score e poi ordinare la lista come negli algoritmi prima si utilizza un algoritmo di ordinamento utilizzando la funzione imparata come funzione di ordinamento.
+	In pratica ad ogni passo si sceglie un pivot $p$ e ogni oggetto $u$ viene confrontato con $p$ utilizzando la funzione imparata e ordinato a destra o a sinistra.
+	La differenza \`e che qua la funzione di comparazione \`e probabilistica.
+
+	\subsection{Implementazione}
+
+		\subsubsection{Algoritmo di train}
+		\input{Pseudocodice/16_OmegaRankTrain}
+
+		\subsubsection{Algoritmo di test}
+		\input{Pseudocodice/17_OmegaRankTest}
