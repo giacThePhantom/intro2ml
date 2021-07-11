@@ -16,8 +16,8 @@
 	\Require : Initial Parameter $\theta$\;
 	\While{stopping criteria not met}{
 		\comment{Compute gradient estimate over $N$ examples}
-		g = $+\frac{1}{N}\nabla_\theta\sum_i L(f(x^{(i)};\theta),y^{(i)}$\;
+		$\hat{g} = +\frac{1}{N}\nabla_\theta\sum_i L(f(x^{(i)};\theta),y^{(i)})$\;
 		\comment{Apply update}
-		$\theta = \theta -\varepsilon_k g$\;
+		$\theta = \theta -\varepsilon_k \hat{g}$\;
 	}
 \end{algorithm}

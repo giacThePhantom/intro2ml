@@ -18,10 +18,10 @@
 	\Require : Initial velocity $v$\;
 	\While{stopping criteria not met}{
 		\comment{Compute gradient estimate over sample example ($x^{(i)}, y^{(i)}$) from training set}
-		g = $+\nabla_\theta\sum_i L(f(x^{(i)};\theta),y^{(i)}$\;
+		$\hat{g} = +\nabla_\theta\sum_i L(f(x^{(i)};\theta),y^{(i)})$\;
 		\comment{Compute velocity update}
-		$v = \alpha v - \varepsilon_k g$\;
+		$v = \alpha v - \varepsilon_k \hat{g}$\;
 		\comment{Apply update}
-		$\theta = \theta -\varepsilon_k g$\;
+		$\theta = v$\;
 	}
 \end{algorithm}

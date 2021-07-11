@@ -4,178 +4,276 @@
 \`E stato visto come il perceptron pu\`o imparare un modello lineare utilizzando la funzione attivatrice e il peso degli input.
 Funzioni attivatrici tradizionali sono non lineari come la sigmoide $h(x) = \frac{1}{1+e^{-x}}$ e la tangente iperbolica $h(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}$, mentre funzioni attivatrici pi\`u moderne sono la rectified linear unit \emph{ReLU}: $h(x) = \max(0,x)$ e la Leaky ReLU $h(x) = \max(\alpha x,x)$ con $\alpha$ costante piccola.
 
-\section{Il perceptron multilayer}
-L'idea del multilayer perceptron \`e di connettere un grande numero di perceptron creando layers che sono densamente connessi tra di loro.
-Questa struttura presenta un input layer, hidden layers e un output layer.
-Questa composizione di perceptron causa una composizione di funzioni non lineari.
+	\subsection{Perceptron}
+	Il perceptron si pu\`o considerare come un neurone artificiale, una funzione non lineare parametrizzata con un range di output ristretto:
+	$$\hat{y} = h\bigl(\sum\limits_i\theta_ix_i\bigr) = h(\theta^Tx)$$
 
-	\subsection{Feed forward NN}
-	Si intende per feed forward NN una rete neurale in cui l'informazione fluisce dall'input all'output passando in un DAG.
-	Si nota un singolo processamento tra I/) che avviene in ogni singolo neurone simile a come avviene in un perceptron normale.
-	I nodi ora sono connessi e l'output di uno di essi \`e l'input degli altri.
-	La NN pu\`o computare una o pi\`u funzioni non lineari componendo funzioni algebriche implementate nella forma di connessioni, pesi e bias dei layer hidden e output.
-	Gli hidden layer sono una rappresentazione intermedia con diversi gradi di complessit\`a.
+		\subsubsection{Rosemblatt}
+		Nel $1958$ Rosemblatt considera il perceptron come una macchina per la classificazione lineare: si imparano i pesi e si considera il bias: un peso per input, si moltiplicano i pesi con gli input rispettivi e si aggiunge il bias.
+		Se il risultato \`e pi\`u grande di una threshold si ritorna $1$, altrimenti $0$.
 
-		\subsubsection{Nodo}
-		Un nodo riceve in input un insieme di output di altri nodi $\theta_n$ che vengono calcoalti in $Z=\sum\limits_i \theta_ix_i+\theta0$ e passati alla funzione soglia $h(Z)$.
-		Considerando ora un layer si hanno multipli $Z$ e i calcoli vanno replicati su pi\`u canali di output in cui ogni canale ha il proprio insieme di pesi e bias.
-		Inoltre ogni output ha un insieme di pesi $\theta_{i,j}$ e il bias $\theta_{0,j}$.
+	\subsection{Multi layer perceptron}
+	Il perceptron presenta diverse limitazioni: non \`e in grado di risolvere problemi non linearmente separabili come quello dello \emph{XOR}.
+	Per superare questo problema Minsky e Papert nel $1969$ sviluppano il multi-layer perceptron \emph{MLP}.
+	Questi sono neuroni artificiali densamente connessi che realizzano composizioni di funzioni non lineari utilizzati per la classificazione e regressioni.
+	Sono composti da un input layer, diversi hidden layer e un output layer.
+	L'informazione viene propagata dall'input all'output senza cicli: l'\emph{MLP} \`e un directed acyclic graph \emph{DAG}.
+	La computazione viene svolta dalla composizione di un numero di funzioni algebriche implementate dalle connessioni, pesi e biases dei layer di output e nascosti.
+	Gli hidden layer computano delle rappresentazioni intermedie.
 
-		\subsubsection{Single layer NN}
-		In una single layer NN ogni neurone in un layer $n$ computa la sua attivazione utilizzando:
+		\subsubsection{Single layer neural network}
+		In una single layer neural network il primo layer $(1)$ riceve i dati dall'input e li passa a un layer nascosto $(2)$, che a sua volta li passa all'output: $\hat{y}_k$:
 		\begin{itemize}
-			\item L'attivazione di tutti i neuroni del layer $n-1$ con gli insiemi di pesi e bias.
-			\item La funzione di threshold.
-		\end{itemize}
-		\`E comune usare nelle NN la stessa attivazione per tutti gli hidden layer ma diversa per gli output.
+			\item[$(1)$] $z_j = \sum\limits_i\theta^{(1)}_{i,j}x_i + \theta_{0,j}^{(1)}$.
+			\item[$(2)$] $\hat{y}_k = h\bigl(\sum\limits_i\theta^{(2)}_{i,j}h(z_i)+\theta^{(2)}_{0,j}i\bigr)$.
+			\end{itemize}
 
-		\subsubsection{Training backpropagation}
-		Si nota come non si pu\`o utilizzare il metodo di learning del perceptron in quanto gli hidden layer non hanno informazioni riguardo gli output desiderati e pertanto non sanno come modificare i propri pesi.
-		Il problema viene risolto attraverso la backpropagation, un modo efficiente di computare gradienti per aggiornare i pesi in tutti i layer delle NN.
+	\subsection{First AI winter}
+	Il first AI winter nasce in quanto si rende difficile fare del training su un \emph{MLP}: non ci si pu\`o applicare la regola del perceptron in quanto si aspetta di conoscere il target desiderato.
+	Per gli hidden layer infatti \`e impossibile conoscere il target desiderato.
+
+		\subsubsection{Backpropagation}
+		Il problema del training del \emph{MLP} viene risolto attraverso la backpropagation nel $1986$, che permette pertanto il learning di \emph{MLP} per funzioni complicate.
+		Algoritmi efficienti permettono di processare grandi training sets e permettono architetture complesse di neural networks.
+		Tutt'oggi si trova al nucleo del training delle reti neurali.
+		Il training pertanto consiste di tre passaggi:
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item Forward propagation: si sommano gli input, si produce attivazione e si fa feed-forward.
+				\item Si stima l'errore.
+				\item Si propaga all'indietro il segnale di errore e lo si usa per aggiornare i pesi.
+			\end{itemize}
+		\end{multicols}
+		Il learning diventa un problema di ottimizzazione, in cui dati i training samples $T=\{(x_1,y_1),\dots,(x_N,y_N)\}$ si devono aggiustare tutti i pesi della rete $\Theta$ in modo che una funzione di costo sia minimizzata:
+		$$\min_\Theta\sum\limits_i L(y_i, f(x_i,\Theta))$$
+		Si deve pertanto scegliere la loss function, aggiornare i pesi di ogni layer con il gradient descent e usare la backpropagation del segnale di errore per computare il gradiente efficientemente.
+
+		\subsubsection{CNN e LSTM}
+		La backpropagation permette importanti sviluppi nel campo come le convolutional neural networks e le recurrent long-short term memory networks negli anni $90$.
+
+	\subsection{Second AI winter}
+	Si nota come queste reti neurali non possono sfruttare molti layer a causa di overfitting e del vanishing gradient: la moltiplicazione di piccoli numeri nel training causa a questi di diventare sempre pi\`u piccoli fino a renderli non significativi.
+	Inoltre non si disponeva della capacit\`a computazionale necessaria e mancavano grandi dataset annotati.
+
+		\subsubsection{SVM e metodi di kernel}
+		A causa di questi problemi diventano popolari le Kernel machines come gli SVM in quanto riuscivano ad ottenere accuratezze simili alle reti neurali, possedevano meno euristiche e parametri e una prova di generalizzazione.
+
+	\subsection{Deep learning revolution}
+	Nel $2006$ si utilizza un nuovo modo per inizializzare i pesi: ogni layer viene trainato singolarmente attraverso unupervised training come contrastive divergence e i pesi si sistemano con un round di supervised learning.
+	Nasce cos\`i alexnet, una rete CNN simile a LeNet ma trainata con due GPU e con migliorie tecniche come ReLU, dropout e data augmentation.
+
+	\subsection{Caratteristiche del deep learning}
+	Si nota come il deep learning, a differenza del machine learning tradizionale non richiede la creazione di feature a tavolino: la loro estrazione avviene infatti negli hidden layers.
+	Si nota pertanto come una rete neurale \`e una composizione di moduli, funzioni connesse gerarchicamente con parametri $\Theta$.
+
+\section{Feedforward networks}
+Nelle reti feed forward la funzione $f$ \`e la composizione di multiple funzioni:
+$$f(x) = f^{(n)}(\dots(f^{(1)}*x)\dots)$$
+L'obiettivo \`e quello di approssimare una funzione sconosciuta ideale $f^*:\mathcal{X}\rightarrow\mathcal{Y}$, in cui il modello ideale \`e $y = f^*(x)$.
+Per queste reti si definisce una mappatura parametrica $y = f(x,\theta)$ e si imparano i parametri per trovare una buona approssimazione di $f^*$ dai sample disponibili.
+L'informazione fluisce dall'input, verso computazioni intermedie e si produce l'ouput.
+La composizione delle funzioni pu\`o essere descritta come un \emph{DAG}, in cui la profondit\`a \`e il massimo $i$ nella catena di composizione delle funzioni.
+Il layer finale viene chiamato layer di output.
+
+	\subsection{Training}
+	Per il training si deve ottimizzare $\theta$ per portare $f(x,\theta)$ il pi\`u vicino possibile a $f^*(x)$.
+	Questa viene valutata a diverse istanze di $x$ di training data, che specifica solamente l'output dei layer finali.
+	L'output dei layer intermedi non viene specificato, da cui il nome hidden layers.
+	Questo \`e simile a progettare una macchina basata su gradient descent: il problema diventa non convesso e non c'\`e garanzia di convergenza.
+	In particolare per applicare il gradient descent si deve specificare un modello, una funzione di costo e la rappresentazione dell'output.
+
+	\subsection{Scelte di modellamento}
+	Per modellare una feedforward network si devono scegliere:
+	\begin{multicols}{2}
 		\begin{itemize}
-			\item Si fa forward propagation si sommano gli input, si produce l'attivazione, feed-forward e si ottiene l'output.
-			\item Si stima l'errore comparando la predizione e le label reali.
-			\item La backpropagation invia il segnale d'errore indietro all'intera architettura della NN per aggiornare i propri pesi.
+			\item Funzione di costo.
+			\item Forma dell'output.
+			\item Funzione di attivazione.
+			\item Architettura.
+			\item Ottimizzatore.
 		\end{itemize}
-		Inviare l'errore all'indietro permette di aggiornare i pesi attraverso una formula di ottimizzazione o obiettivo simile a quelle gi\`a viste:
-		$$\sum_i L(y_i, f(x_i, \Theta))$$
-		Dove si prova a minimizzare l'errore minimizzando $\Theta$ che rappresenta i parametri della NN.
-		Per fare backpropagation si deve computare il gradiente: dati il training set si vuole imparare tutti i pesi della rete per minimizzare la loss function.
-		Si \`e liberi nella scelta della loss function.
-		Si possono aggiornare i pesi con il gradient descent e la backpropagation \`e la tecnica che permette di computare efficientemente il gradiente per ogni nodo.
+	\end{multicols}
 
-\section{Second AI winter}
-Anche con la backpropagation le reti neurali hanno grandi problemi:
-\begin{itemize}
-	\item Molti layer rendono le NN prone a fare overfitting.
-	\item Vanishing gradient: il gradiente continua a diventare sempre pi\`u piccolo mentre si fa backpropagation rendendo impossibile aggiornare i pesi.
-\end{itemize}
-Inoltre non si trovavano dataset abbastanza grandi e l'hardware non era abbastanza potente.
-Questo ha causato una diffusione di SVM in quanto hanno accuratezza simile, possiedono molto meno euristiche e parametri e hanno una prova di generalizzazione.
-Nel $2006$ grazie a un nuovo modo di inizializzare i pesi: si fa training di ogni layer attraverso unsupervised learning e si fa fine-tuning su di es attraverso un round di supervised learning.
-Una NN \`e pertanto una composizione di moduli in cui si imparano un insieme di pesi insieme che sono anche le features.
-I deep model sono i migliori in quanto si hanno molti dati e potenza di calcolo.
+		\subsubsection{Funzione di costo}
+		La funzione di costo dice quanto la rete si composta bene rispetto ai training data:
+		$$\mathcal{L}(w) = distance(f_\theta(x), y)$$
+		Calcola ovvero la discrepanza tra la predizione e la label effettiva,
+		Si possono applicare loss gi\`a viste e tipicamente si converte l'output in probabilit\`a come attraverso softmax.
 
-\section{Feed Forward Networks}
-Una FFNN viene usata per approssimare una funzione $f^*:X\rightarrow Y$ dove $f^*$ \`e il classificatore ottimale.
-Le FFNN devono definire una mappatura parametrica $y = f(x,\theta)$ in modo da ottenere una buona classificazione.
-Ogni layer viene rappresentato da una certa funzione e la composizione delle funzioni pu\`o essere rappresentata da un DAG.
-La profondit\`a della rete \`e il numero di layer, mentre la larghezza di un layer \`e il numero di perceptron.
-In quanto viene implementata una funzione complessa non si pu\`o garantire sia convessa e pertanto che si arrivi alla convergenza.
-Per applicare il gradient descent si deve specificare un modello o architettura, una funzione di costo loss e la struttura del layer di output.
+			\paragraph{Cross-entropy}
+			La cross-entropy loss \`e la loss function pi\`u comune applicata con softmax:
+			$$\mathcal{L}_i = -\sum\limits_ky_y\log(S(l_k)) = \log(S(l))$$
 
-	\subsection{Funzione di costo}
-	La funzione di costo deve calcolare la discrepanza tra la predizione e le labels reali.
-	Le loss gi\`a viste vanno bene per le NN.
-	Il meccanismo di classificazione pi\`u comune consiste nel convertire gli output della rete in probabilit\`a di appartenere a una classe.
-	La normalizzazione a una probabilit\`a \`e ottenuta attraverso softmax: ogni classe ottiene un voto dal layer di output e con log normalization questi sono pesati e trasformati in probabilit\`a.
-	La loss function pi\`u comune con softmax \`e la cross-entropy loss function:
-	$$\mathcal{L} = - \sum\limits_k y_k\log(S(l_k)) = -\log(S(l))$$
-	In cui si compara la label con il log di softmax.
-	La combinazione di loss e output \`e basata sulla comparazione del vettore delle probabilit\`a con il vettore di label per ogni campbione.
-	La scelta della loss \`e correlata alla scelta dell'output layer.
-	Un'altra opzione possibile \`e di applicare pesi e bieas all'output con un output layer lineare:
-	$$y = W^Tf+b = \sum\limits_jw_jf_j + b$$
-	Dove $y$ \`e l'output, $W$ il vettore dei pesi $f$ il vettore di features e $b$ il bias.
-	Non satura e questo \`e un bene in quanto mantiene il gradiente lontano da $0$.
-	I linear output layer producono probabilit\`a log non normalizzate.
-	IN caso della classificazione la scelta di output tipica \`e softmax che trasforma l'output in probabilit\`a normalizzate:
-	$$softmax(z_i) = \frac{\exp(z_i)}{\sum\limits_j\exp(z_j)}$$
-	Nel caso delle hidden unit queste prendono un input $x$, computano una trasformazione $z = W^Tx+b$, applicano una funzione $h(z)$ non lineare e producono l'output.
-	La scelta di $h()$ \`e artigianale e la pi\`u utilizzata \`e la ReLU:
-	$$h(z) = \max(0,z)$$
-	IL suo gradiente \`e $0$ o $1$, ottimo per l'ottimizzazione in quanto il calcolo \`e molto semplice e annulla il problema dei gradienti piccoli.
-	Non \`e derivabile in $0$ pertanto si sceglie a caso.
-	Diverse variazioni di ReLU risolvono il problmea che quando il gradiente diventa $0$ il neurone muore, ma hanno il problema di saturazione.
+		\subsubsection{Output layers}
+		Si nota come la scelta della loss function sia correlata alla scelta dell'unit\`a di output.
 
-	\subsection{L'architettura}
-	Scegliere l'architettura consiste nel scegliere il numero e le dimensioni dei layer.
-	La maggior parte delle volte si segue un'euristica, ma si trova un teorema: una rete a $2$ layer con linear output con squashing (riduce l'output a un range ristretto) non lineare nelle hidden unit pu\`o approssimare ogni funzione continua su dominio compatto a una ccuratezza arvitraria.
-	Questo implica che a prescindere dalla funzione che si vuole imparare si sa che un large MLP rappresenter\`a questa funzione, ma non garantisce che l'algoritmo sar\`a in grado di impararla in quanto deve gestire ottimizzazione e overfitting.
-	Gli esperimenti notano come \`e meglio creare reti profonde rispetto a larghe.
+			\paragraph{Linear}
+			Data una feature $h$ un unit\`a di un layer di output lineari d\`a:
+			$$\hat{y} = W^Th+b$$
+			Questi unit\`a non si saturano (mantiene il gradiente lontano da $0$), offrono poca difficolt\`a agli algoritmi basati sull'ottimizzazione del gradiente.
+			Si nota come un output del modello vicino a $0$ \`e problematico.
+
+			\paragraph{Softmax}
+			Softmax permette di produrre probabilit\`a normalizzate nell'output layer, pertanto produce:
+			$$S(l_i) = \frac{e^{l_i}}{\sum\limits_ke^{l_k}}$$
+
+		\subsubsection{Hidden units}
+		All'interno di una hidden unit si accetta un input $x$, si computa una trasformazione affine: $z = w^Tx+b$, si applica element-wise una funzione non lineare $h(z)$ e si ottiene l'output $h(z)$.
+		La scelta da compiere si basa su quale $h$ utilizzare.
+
+			\paragraph{Rectified linear units (RELU)}
+			Una RELU presenta un gradiente di $0$ o $1$, facile da ottimizzare simile alle unit\`a linari.
+			D\`a gradienti grandi e consistenti quando attiva, ma non \`e sempre differenziabile, risolvibile attraverso una derivata da un lato a $z=0$.
+			Ne esistono diverse varianti che risolvono il problema che l'unit\`a muore quando il gradiente \`e $0$:
+			\begin{multicols}{2}
+				\begin{itemize}
+					\item ReLu: $y_i = 0$ per $x < 0$ o $y_i = x_i$ per $x >0$.
+					\item Leaky Relu: $y_i = a_ix_i$ per $x < 0$ o $y_i = x_i$ per $x >0$.
+					\item Randomized Leaky Relu: $y_{ji} = a_{ji}x_{ji}$ per $x < 0$ o $y_{ji} = x_{j}i$ per $x >0$.
+				\end{itemize}
+			\end{multicols}
+
+			\paragraph{Sigmoid e Tanh}
+			Questi due tipi di hidden unit riducono il tipo di non linearit\`a restringendo l'outpu ai range $[0,1]$ e $[-1,1]$.
+			Si saturano lungo la maggior parte del dominio e sono fortemente sensibili unicamente quando l'input \`e pi\`u vicino a $0$.
+			La saturazione rende l'apprendimento basato sul gradienet pi\`u difficile.
+			\begin{multicols}{2}
+				\begin{itemize}
+					\item Sigmoide: $h(x) = \frac{1}{1+e^{-x}}$.
+					\item Tangente iperbolica: $h(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}$.
+				\end{itemize}
+			\end{multicols}
+
+		\subsubsection{Architettura}
+		La decisione rispetto alla profondit\`a e larghezza di una rete neurale si basa principalmente su risultati empirici.
+		Un risultato teorico da parte di Cybenko $1989$: reti a $2$-layer con output lineari con del squashing non-linearity nelle hidden-unit possono approssimare ogni funzione continua su dominio compatto ad accuratezza arbitraria.
+		Questo risultato \`e valido anche per funzioni non lineari.
+		Questo implica che per ogni funzione che si cerca di imparare, un grande \emph{MLP} \`e in grado di impararla.
+		Nonostante questo non \`e garantici che l'algoritmo di training sia capace di imparare tale funzione.
 
 	\subsection{Backpropagation}
-	La backpropagation avviene dopo aver ottenuto l'output da un input $x$ e aver computato l'errore e un costo scalare dipendenti dalla loss function.
-	Si usa il costo per computare un gradiente della perdita con rispetto ai pesi e si aggiornano con il gradient descent per ogni layer attraverso backpropagation.
-	IN modo da usare il gradient descent si devono computare tutte le derivate degli errori per tutti i pesi nella rete.
-	Dal training data non si sa cosa le unit\`a nascoste dovrebbero fare ma si pu\`o computare quanto veloce l'errore cambia cambiando un'attivit\`a nascosta.
-	Per farlo si calcolano le derivate degli errori con rispetto alle attivit\`a nascosta.
-	Ogni unit\`a nascosta pu\`o avere effetto su molte unit\`a di output e avere effetti separati sull'errore.
-	Si dovrebbero combinare questi effetti.
-	Si possono computare le derivate degli errori efficientemente con una regola ricorsiva e quando si hanno le derivate degli errori per queste attivit\`a nascoste \`e facile avere le derivate degli errori per i pesi che vanno all'interno.
-	Calcolo dell'output:
-	$$\hat{y}(x;w) = f\biggl(\sum\limits_{j = 1}^m w^{(2)}_j h\biggl(\sum\limits_{i = 1}^d w_{ij}^{(1)}x_i + w_{0j}\biggr)+w_0^{(2)}\biggr)$$
-	Calcolo dell'errore della rete su un training set:
-	$$L(X;w) = \sum\limits_{i=1}^N\frac{1}{2}(y_i-\hat{y}(x_i;w))^2$$
-	Qui si comparano le predizioni con la label reali attraverso la squared loss.
-	Per utilizzare il gradient descent si deve computare la derivata della loss con rispetto ai pesi per ogni nodo.
-	Per calcolare la derivata della loss dell'output layer in caso \`e lineare:
-	$$\frac{dL(x_i)}{dw_j}=(\hat{y}_i-y_i)x_{ij}$$
-	Nel terzo passaggio si vuole computare il gradient descent per tutte le unit\`a nascoste della rete.
-	Si deve computare pertanto la derivata della perdita con rispetto ai pesi.
-	Si consideri $t\in T$ il livello corrente, $s\in S$ quello seguente e $j\in J$ quello precedente.
-	L'obettivo \`e la derivate della loss function con rispetto ai pesi che arrivano dall'unit\`a precedente in un'unit\`a $t$ del livello corrente
-	$$\frac{dL}{dw_{jt}}$$
-	Si devinisce l'attivazione $a_t$ l'input della funzione di attivazione di un'unit\`a di livello $t$, la somma di $w_{jt}\times z_j$ dove $z_j$ \`e l'output della funzione di attivazione della $j$-esemia unit\`a:
-	$$a_t = \sum_j w_{jt}z_j$$
-	Si nota come al loss $L$ dipende da $w_{jt}$ solo attraverso l'attivazione $a_t$, pertanto si manipola la formula in modo da computare la derivata della loss con rispetto di $a_t$:
-	$$\frac{dL}{dw_{jt}} = \frac{dL}{da_t}\frac{da_t}{dw_{jt}}$$
-	Si nota come $\frac{da_t}{dw_{jt}} = z_j$, pertanto:
-	$$\frac{dL}{dw_{jt}} = \frac{dL}{da_t}z_j$$
-	Il termine a destra viene detto errore locale ed \`e quello computato, mentre la prima frazione del termine destro viene detta $\delta_t$:
-	$$\frac{dK}{dw_jt} = \delta_tz_j$$
-	Si ha ora una relazione ricorsiva che permette di calcolare $\delta_t$ dato un livello successivo $S$ e tutte le sue unit\`a nascoste $s$ \`e:
-	$$\delta_t = \sum\limits_{s\in S} \frac{dL}{da_s}\frac{da_s}{da_t}$$
-	Si nota come il primo termine nella somma \`e $\delta_s$, il termine ricorsivo.
-	Nella seconda invece $a_s$ \`e l'input della funzione attivatrice di $s\in S$, ovvero:
-	$$a_s = \sum\limits_{t:t\rightarrow s}w_{ts}h(a_t)$$
-	$w_{ts}$ \`e il peso del link di un nodo $t$ di $T$ a un nodo $s$ di $S$.
-	Pertanto se si vuole computare l'attivazione di una unit\`a specifica $s$ da $S$ si deve moltiplicare l'output di attivazione $h(a_t) = z_t$ volte il peso del link da $t$ a $s$ per tutte le unit\`a di $T$.
-	In quanto si ha $\frac{d a_s}{da_t}$, l'operatore di derivazione ha effetto solo su $h(a_t)$ in quanto i pesi sono costanti in rispetto di $a_t$, pertanto:
-	$$\frac{da_s}{da_t} = h'(a_t)\sum\limits_{t:t\rightarrow s}w_{ts}$$
-	Si unisce questo nel modello ricorsivo e si ottiene la formula:
-	$$\delta_t = \sum\limits_{s\in S} \frac{dL}{da_s}\frac{da_s}{da_t} = h'(a_t)\sum\limits_{t':t'\rightarrow s}w_{t's}\delta_s$$
-	In questa formula $t'$ \`e ogni nodo di $T$ connesso con il nodo $s$.
-	Ora si ha una formula che permette di computare il gradiente per tutte le unit\`a nascoste di tuti i layer.
-	Si necessita pertanto ora di un caso migliore.
-	In quanto questo inizia al layer di output si deve calcolare $\delta$ a tale layer.
-	Quando si ha una funzione di output lineare il termine \`e la differenza tra la predizione e la label corretta:
-	$$\delta_{out} = \hat{y}- y$$
-	Ora con questi elementi si computa il gradiente e si applica il gradient descent.
-	Si hanno due regole per aggiornare i pesi, una per il layer di output e una per i layer nascosti.
-	Quando si calcola $\delta_j$ la derivata della loss function \`e importante in quanto se arriva troppo vicina a $0$ si arriva a un problema di saturazione fermando l'aggiornamento dei pesi.
-	In caso al rete abbia pi\`u di un output si ripete il processo per ogni output.
+	La backpropagation \`e il modo in cui la rete impara i propri pesi.
+	Consiste di tre passaggi:
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item Feedforward propagation: si accetta l'input $x$, si passa attraverso stages intermedi e si ottiene l'output.
+			\item Si usa l'output computato per computare un costo scalare dipendente dalla loss function.
+			\item La backpropagation permette all'informazione di fluire all'indietro dal costo per computare il gradiente.
+		\end{enumerate}
+	\end{multicols}
+	Si utilizza il gradient descent: si necessitano le derivate degil errori per ogni peso nella rete:
+	$$w^{(i)}_{jk} := w^{(i)}_{jk} - \nu\frac{\partial L}{\partial w^{(i)}_{jk}}$$
+	Dai training data non si conosce cosa dovrebbero fare gli hidden layers, ma si pu\`o computare quanto velocemente l'errore cambia cambiando la loro attivit\`a: si usano le derivate dell'errore con rispetto alle sue attivit\`a.
+	Ogni hidden unit pu\`o avere effetto su diverse unit\`a di output e effetti separati sull'errore che vengono combinati.
+	Si pu\`o calcolare la derivata di queste unit\`a efficentemente: una volta che si ha la derivata delle attivit\`a nascoste \`e facile ottenere l'errore per i pesi che arrivano.
+
+		\subsubsection{Operazione di feedforward}
+		Dall'input all'output:
+		$$\hat{y}(x;w) = f\bigl(\sum\limits_{i=1}^mw_j^{(l)}h\bigl(\cdots h\bigl(\sum\limits_{i = 1}^dw_{ij}^{(1)}x_i + w_{0j}^{(1)}\bigr)\cdots\bigr) + w_0^{(l)}\bigr)$$
+
+		\subsubsection{Computare l'errore e train}
+		L'errore della rete sul training set:
+		$$L(X;w) = \sum\limits_{i=1}^N\frac{1}{2}(y_i-\hat{y}(x_i;w))^2$$
+		Non ha una soluzione di forma causa, si utilizza il gradient descent.
+		Si deve calcolare la derivata di $L$ su un singolo esempio.
+		Si pu\`o considerare un modello lineare semplice con output $\hat{y} = \sum\limits_jw_jx_{ij}$:
+		$$\frac{\partial L(X_i)}{\partial w_j} = (\hat{y}_i -y_i)x_{ij}$$
+
+		\subsubsection{Backpropagation}
+		L'unit\`a di attivazione generale in una rete multilayer:
+		$$z_t = h\bigl(\sum\limits_jw_{jt}z_j\bigr)$$
+		La forkard propagation calcola per ogni unit\`a $a_t = \sum\limits_j w_{jt}z_j$.
+		Dove $a_t$ \`e l'input della funzione di attivazione di un'unit\`a di livello $t$.
+		Ora
+		$$\frac{\partial L}{\partial w_{jt}} = \frac{\partial L}{\partial a_t}z_j$$
+		Sia $\partial a_t = \delta_t$ e l'unit\`a di output con attivazione lineare $\delta_t = \hat{y} -t$.
+		L'unit\`a hidde $t$ che manda l'output all'unit\`a $S$:
+		\begin{align*}
+			\delta_t &= \sum\limits_{s\in S} = \sum\limits_{s\in S}\frac{\partial L}{\partial a_s}\frac{\partial a_s}{\partial a_t}=\\
+			&= h'(a_t)\sum\limits_{s\in s} w_{ts}\delta_s
+		\end{align*}
+
+		\subsubsection{Esempio}
+		Sia l'output $f(a) = a$ e l'hidden: $h(a) = tanh(a) = \frac{e^a-e^{-a}}{e^a+e^{-a}}$, ora $h'(a) = 1-h(a)^2$.
+		Dato $x$, il feedforward inputs:
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item Input to hidden $a_j = \sum\limits_{i = 0}^d w_{ij}^{(1)}x_i$.
+				\item Hidden input $z_j = tanh(a_j)$.
+				\item Net output $\hat{y} = a = \sum\limits_{i = 0}^m w_j^{(2)} z_j$.
+			\end{itemize}
+		\end{multicols}
+		L'errore sull'esempio $x$ \`e $L= \frac{1}{2}(y-\hat{y})^2$ e l'unit\`a di output: $\delta = \frac{\partial L}{\partial a} = y - \hat{y}$.
+		Si computa $\delta$ per le unit\`a hidden:
+		$$\delta_j = (1-z_y)^2w_j^{(2)}\delta$$
+		Le derivate con rispetto ai pesi:
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $\frac{\partial L}{\partial w_{ij}^{(1)}} = \delta_jx_i$.
+				\item $\frac{\partial L}{\partial w_j^{(2)}} = \delta z_j$.
+			\end{itemize}
+		\end{multicols}
+		E si aggiornano i pesi:
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item $w_j = w_j - \nu \delta z_j$.
+				\item $w_{ij}^{(1)} = w_{ij}^{(1)} - \nu \delta_jx_i$.
+			\end{itemize}
+		\end{multicols}
+
+			\paragraph{Output multidimensionale}
+			Per l'output multidmensionale la loss sull'esempio \`e:
+			$$\frac{1}{2}\sum\limits_{k = 1}^K(y_k-\hat{y}_k)^2$$
+			Per ogni unit\`a di output: $\delta_k = y_k 0 \hat{y}_k$.
+			Per l'unit\`a hidden $j$:
+			$$\delta_j = (1-z_j)^2\sum\limits_{k=1}^Lw_{jk}^{(2)}\delta_k$$
+
+
+
+
+
+
+
 
 	\subsection{Scelta di un ottimizzatore}
-	Il gradient descent trova l'insieme di parametri che rendono la loss il pi\`u piccola possibile e i cambi di parametri dipendono sul gradiente della loss con rispetto dei pesi della rete.
+	Il gradient \`e il vettore delle derivate parziali con rispetto di tutte le coordinate dei pesi:
+	$$\nabla_w L = \bigl[\frac{\partial L}{\partial w_1}, \cdots, \frac{\partial L}{\partial w_N}\bigr]$$
+	Ogni derivata parziale misura quanto velocemente la loss cambia in una direzione.
+	Quando il gradiente \`e zero, la loss non cambia in nessuna direzione.
+	D\`a problemi nei saddle points e nei local minima.
+	Il gradient descent trova pertanto l'insieme di parametri che rendono la loss il pi\`u piccola possibile.
+	I cambi nei parametri dipendono dal gradiente della loss con rispetto dei pesi della rete.
+	La backpropagation \`e il metodo per computare i gradienti.
 	Si analizzano altri miglioramenti come Stochastic gradient descent.
 	Il gradient descent Nelle reti neurali pu\`o essere calcolato in diversi modi.
 
 		\subsubsection{Batch Gradient Descent (BGD)}
 		In BGD i gradienti sono computati su ogni update per l'intero training con un alto costo computazionale ma garantendo una grande stabilit\`a nella stima del gradiente.
-		Il learning rate $\varepsilon_k$ pu\`o cambiare nel tempo.
+		Il learning rate $\varepsilon_k$ pu\`o cambiare nel tempo.\\
 		\input{Pseudocodice/10_BGD}
 
 		\subsubsection{Stochastic gradient descent (SDG)}
 		In SDG si computa il gradiente solo su un campione e non sull'intero training set in modo da ottenere performance migliori.
+		Il learning rate cambia ad ogni passo, tipicamente decade linearmente.
 		\input{Pseudocodice/11_SDG}
 
 		\subsubsection{Minibatches}
-		Le minibatches risvono il problema di SDG rispetto ai dati rumorosi e permettono una parallelizzazione rispetto alle minibatches.
+		Le minibatches risolvono il problema di SDK rispetto ai dati rumorosi.
+		Il tempo di computazione per aggiornamento non dipende dal numero di esempi di training $N$, permettendo la creazione di minibatches pi\`u grandi che vengono computate parallelamente.
 		Sono tipicamente di dimensione $2^n$ per le propriet\`a di calcolo della GPU.
 
 		\subsubsection{Momento}
 		Un problema di BGD e SGD \`e il fatto che minimizzano l'errore in molto tempo.
 		Una soluzione diversa \`e data dalla tecnica del momento, che introduce un vettore velocit\`a $v$ di aggiornamenti, una media con decay esponenziale per i gradienti utilizzato per aggiornare i pesi.
-		Introduce un vettore momento che regola il trade-off tra il gradiente allo step corrente e quelle vecchie.
+		Introduce un vettore momento che regola il trade-off tra il gradiente allo step corrente e quelle vecchie.\\
 		\input{Pseudocodice/12_SDG_momentum}
 
 		\subsubsection{Adaptive learning rate method}
 		Alcune volte \`e bene usare un learning rate diverso per ogni peso.
 		Un metodo che lo implementa \`e Adagrad o adaptive gradient optimizer.
-		Questo fa downscale un parametro del modello della radice della somma dei quadrati dei valori storici, in questo modo parametri con una grande derivata parziale hanno learning rate che si abbassano rapidametne.
+		Questo fa downscale di un parametro del modello della radice della somma dei quadrati dei valori storici, in questo modo parametri con una grande derivata parziale hanno learning rate che si abbassano rapidamente
 		Si adatta al learning rate dei parametri svolgendo aggiornamenti minori associati con feature che pi\`u frequenti e grandi per feature meno frequenti.
-		Utile per gestire dati sparsi.
+		Utile per gestire dati sparsi.\\
 		\input{Pseudocodice/13_Adagrad}
 
 \section{Convolutional Neural Netowrks (CNN)}

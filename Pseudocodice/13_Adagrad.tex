@@ -17,11 +17,11 @@
 	r = 0\;
 	\While{stopping criteria not met}{
 		\comment{Compute gradient estimate over sample example ($x^{(i)}, y^{(i)}$) from training set}
-		g = $+\nabla_\theta\sum_i L(f(x^{(i)};\theta),y^{(i)}$\;
+		$\hat{g} = +\nabla_\theta\sum_i L(f(x^{(i)};\theta),y^{(i)})$\;
 		\comment{Compute velocity update}
-		r = r + $f\circ g$
+		r = r + $f\circ \hat{g}$
 		\comment{Compute update}
-		$\Delta\theta = -\frac{\varepsilon_k}{\delta+\sqrt{r}}\circ g$\;
+		$\Delta\theta = -\frac{\varepsilon_k}{\delta+\sqrt{r}}\circ i\hat{g}$\;
 		$\theta = \theta +\Delta\theta$\;
 	}
 \end{algorithm}
