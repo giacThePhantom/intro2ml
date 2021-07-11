@@ -11,7 +11,7 @@
 \SetKwFunction{GradientDescent}{GradientDescent}
 
 \caption{\protect\GradientDescent{$\mathcal{F}$, $K$, $\eta_1$, $\dots$}}
-	$z^{(0)}\ \rightarrow <0,0,\dots,0$\comment{Inizializza la variabile da ottimizzare}
+$z^{(0)}\ \rightarrow \langle0,0,\dots,0\rangle$\comment{Inizializza la variabile da ottimizzare}
 	\For{$k = 1$ \To $K$}{
 		$g^{(k)}\ \rightarrow\ \nabla_z\mathcal{F}|_{z^{(k-1)}}$\comment{Computa il gradiente nella posizione corrente}
 		$z^{(k)} \rightarrow z^{(k-1)} - \eta^{(k)}g^{(k)}$\comment{scendi il gradiente}
