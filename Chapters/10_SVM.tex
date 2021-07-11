@@ -16,7 +16,7 @@ Inoltre quando i dati non sono linearmente separabili questa variabilit\`a aumen
 \section{Margini}
 I margini di un iperpiano sono la distanza dal punto pi\`u vicino.
 Maggiore il margine meglio l'iperpiano separa le classi.
-Il fatto che il modello trovato da una SVM ha il maggior margine possibile aumenta l'abilit\`a di generalizzazioen del modello.
+Il fatto che il modello trovato da una SVM ha il maggior margine possibile aumenta l'abilit\`a di generalizzazione del modello.
 
 	\subsection{Support vectors}
 	I support vectors sono i data points pi\`u vicini al margine.
@@ -39,7 +39,7 @@ L'errore viene tenuto basso dal fatto di avere tutti i data point al di fuori da
 	$$\dfrac{1}{||w||}$$
 	Tenendo d'occhio l'errore.
 	Si vuole pertanto avere il vettore di pesi minore possibile $w$.
-	$c=1$ \`e un'assunzione che si fa in quanto altrimenti si starebbe imparando una versione scalata dello stesso problema (spiegazione nelle slides).
+	$c=1$ \`e un'assunzione che si fa in quanto altrimenti si starebbe imparando una versione scalata dello stesso problema in quanto per ogni support vector $c = w\cdot x_i +b = 1$.
 	In realt\`a si tenta di minimizzare:
 	$$||w||^2 = \sqrt{\sum\limits_{j\in I}|w_j|^2}$$
 	Soggetto a $y_i(wx_i+b) \ge 1$.
@@ -66,7 +66,7 @@ Si nota come:
 	\end{itemize}
 \end{multicols}
 I valori di $\zeta_i$ sono imparati insieme a $w$ e $b$.
-SI nota come questo \`e ancora un problema di ottimizzazione quadratica con costraint lineari, ma il numero di calcoli con un training set medio grande \`e molto elevato.
+Si nota come questo \`e ancora un problema di ottimizzazione quadratica con costraint lineari, ma il numero di calcoli con un training set medio grande \`e molto elevato.
 
 	\subsection{Risolvere il problema delle SVM}
 	Data la soluzione ottimale $(w,b)$ si pu\`o calcolare la slack penalty per ogni punto.
@@ -116,15 +116,15 @@ In quanto $x$ compare solo nel dot product nella funzione di predizione e di ott
 	Con entrambi gli approcci si impara un iperpiano che separa i datapoints e in entrambi solo i data points rilevanti per la prediction function sono i support vector.
 
 	\subsection{Identificare i support vector}
-	I support vector sono identificati dagli algoritmi di ottimizzazione quadratica come i training point cono non zero lagrangian multipliers $a_i$ in quanto i training point appaiono unicamente all'interno prodotti interni, pertanto non li necessito ma solo i loro dot-product.
+	I support vector sono identificati dagli algoritmi di ottimizzazione quadratica come i training point con non zero lagrangian multipliers $a_i$ in quanto i training point appaiono unicamente all'interno prodotti interni, pertanto non li necessito ma solo i loro dot-product.
 
 	\subsection{Utilizzo di SVN in maniera non lineare}
 	Se i dati non sono linearmente separabili si possono portare a uno spazio a dimensioni maggiori rendendoli lineramente separabili.
-	Lo spazio delle features originali pu\`o essere sempre mappato a uno spazio di features con dimessone maggiore dove il training set \`e separabile.
+	Lo spazio delle features originali pu\`o essere sempre mappato a uno spazio di features con dimensione maggiore dove il training set \`e separabile.
 	Il problema di ottimizzazione e la funzione di predizione dipendono solo dal prodotto dei vettori di features degli esempi.
 	Il classificatore lineare dipende sul prodotto interno di questi vettori:
 	$$K_{linear}(x_i,x_j) = x_i^Tx_j$$
-	Se ogni data point \`e mappato in uno spazio con maggiore dimensione attraverso una qualche trasformazeion$\phi:x\rightarrow\phi(x)$, il prodotto interno diventa:
+	Se ogni data point \`e mappato in uno spazio con maggiore dimensione attraverso una qualche trasformazione $\phi:x\rightarrow\phi(x)$, il prodotto interno diventa:
 	$$K_{for\ function\ \phi}(x_i,x_J)= \phi(x_i)^T\phi(x_j)$$
 
 		\subsubsection{Kernel function}
