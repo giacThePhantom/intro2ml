@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.23)  12 JUL 2021 01:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2021.5.23)  12 JUL 2021 01:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1071,24 +1071,24 @@ ready used, duplicate ignored
 <to be read again> 
                    \relax 
 l.14 \caption{\protect\GradientDescent}
-                                       ) [54] [55])
-(./Chapters/12_ReinforcementLearning.tex [56]
+                                       ) [54] [55] [56])
+(./Chapters/12_ReinforcementLearning.tex [57]
 Capitolo 12.
-[57
+[58
 
-] [58] [59] [60] [61]) (./Chapters/13_UnsupervisedLearning.tex [62]
+] [59] [60] [61] [62]) (./Chapters/13_UnsupervisedLearning.tex [63]
 Capitolo 13.
-[63
+[64
 
-] [64] [65] [66] [67] [68]) [69] (./build/Principal.aux)
+] [65] [66] [67] [68] [69]) [70] (./build/Principal.aux)
 Package rerunfilecheck Info: File `Principal.out' has not changed.
-(rerunfilecheck)             Checksum: 2FF579A1EC84496C681C5E8AC8D44879;29945.
+(rerunfilecheck)             Checksum: 6F3286E77520B2C86651E294A854382A;30071.
  ) 
 Here is how much of TeX's memory you used:
- 19551 strings out of 478994
- 329447 string characters out of 5864751
+ 19563 strings out of 478994
+ 329635 string characters out of 5864751
  678826 words of memory out of 5000000
- 36271 multiletter control sequences out of 15000+600000
+ 36273 multiletter control sequences out of 15000+600000
  431857 words of font info for 101 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  88i,19n,91p,414b,911s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1117,10 +1117,10 @@ ts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public
 000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/s
 hare/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist
 /fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on ./build/Principal.pdf (70 pages, 596396 bytes).
+Output written on ./build/Principal.pdf (71 pages, 600983 bytes).
 PDF statistics:
- 1582 PDF objects out of 1728 (max. 8388607)
- 1467 compressed objects within 15 object streams
- 377 named destinations out of 1000 (max. 500000)
- 1529 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1605 PDF objects out of 1728 (max. 8388607)
+ 1489 compressed objects within 15 object streams
+ 387 named destinations out of 1000 (max. 500000)
+ 1545 words of extra memory for PDF output out of 10000 (max. 10000000)
 

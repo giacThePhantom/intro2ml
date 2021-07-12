@@ -276,45 +276,117 @@ Il layer finale viene chiamato layer di output.
 		Utile per gestire dati sparsi.\\
 		\input{Pseudocodice/13_Adagrad}
 
-\section{Convolutional Neural Netowrks (CNN)}
-Un tipo di FFNN sono le CNN.
+\section{Convolutional Neural Netwoks (CNN)}
+Le convolutional neural networks sono un tipo di feedforward neural networks.
+Queste gestiscono molto bene uno spazio di input localmente strutturato, spazialmente o temporalmente.
+Sono inoltre molto utili quando l'obiettivo non \`e la classificazione: ottengono grandi risultati in region extraction, feature detection, semantic segmentation e structured regression.
+In particolare le CNN imparano una gerarchia di features: ognuno dei layer estrae delle features dall'output del layer precedente.
+Tutti i layer vengono trainati insieme.
+Si definiscono CNN le reti che usano la convolution al posto di una moltiplicazione tra matrici generica in almeno uno dei loro livelli.
+Si definisce convolution:
+$$S(i, j) = (I\cdot K)(i,j) = \sum\limits_M\sum\limits_NI(m,n(K(i-m,j-n)$$
 
-	\subsection{Convolution}
-	La convolution avviene quando un filtro, una piccola matrice, viene applicata a una matrice pi\`u grande, poi delle operazioni vengono svolte con il filtro ottenendo una nuova matrice.
-	L'idea della convolution nasce dal fatto che l'occhio umano processa le immagini in livelli, in cui ogni livello \`e specializzato in certe features e pi\`u profondo il layer, pi\`u complesse le target features.
-	La corteccia dell'occhio contiene un complesso ordinamento\section{Convolutional Neural Netowrks (CNN)}
-	Un tipo di FFNN sono le CNN.
-	Queste sono molto utili quando l'obiettivo non \`e la classificazione: ottengono grandi risultati in region extraction, feature detection, semantic segmentation e structured regression.
-
-		\subsection{Convolution}
-		La convolution avviene quando un filtro, una piccola matrice, viene applicata a una matrice pi\`u grande, poi delle operazioni vengono svolte con il filtro ottenendo una nuova matrice.
-		L'idea della convolution nasce dal fatto che l'occhio umano processa le immagini in livelli, in cui ogni livello \`e specializzato in certe features e pi\`u profondo il layer, pi\`u complesse le target features.
-		La corteccia dell'occhio contiene un complesso ordinamento di cellule, sensibili a piccole regioni del campo visivo detto receptive field.
-		Queste cellule agiscono come filtri locali sull'input space e sono ben definite per sfruttare la correlazione locale in immagini naturali.
-		Le cellule semplici rispondono a pattern specifici simili a separazioni nel receptive field, mentre le complesse hanno un receptive field maggiori e sono invarianti locali della posizione del pattern.
-		Il filtraggio che si volge nelle CNN tenta di emulare questi calcoli specializzati.
-		La convolution \`e un operazioni di filtraggio general purpose per le immagini.
-		Una matrice kernel viene applicata a un'immagine determinando il calore di un pixel centrale aggiungevo ad esso i valori pesati dei suoi vicini.
-		L'output \`e una nuova immagine filtrata.
-
-		\subsection{Definizione di una CNN}
-		Si definisce una CNN come una FFNN con struttura di connessione specializzata, dove layer di basso livello estraggono features locali e quelli di alto livello estraggono pattern globali.
-		Ci sono tre tipi di layer nelle CNN:
+	\subsection{Origini}
+	Questo tipo di reti \`e stato ispirato dalla corteccia visiva dei mammiferi: questa contiene un ordinamento di cellule sensibili a piccole sotto regioni del campo visivo, dette campo recettivo.
+	Queste cellule si comportano come filtri locali sullo spazio di input e sfruttano la correlazione spaziale presente in immagini naturali.
+	Esistono due tipi di cellule:
+	\begin{multicols}{2}
 		\begin{itemize}
-			\item Convolution: questa operazione viene svolta shiftando la matrice di kernel sul dato originale utilizzandola come filtro.
-			\item Non-linearity: utilizza una funzione non lineare di attivazione come filtro.
-			\item Pooling: l'idea dietro il pooling \`e quella di ridurre la dimensione della feature map.
+			\item Cellule semplici: rispondono al massimo a pattern simili a lati nel loro campo recettivo.
+			\item Cellule complesse: hanno campi recettivi pi\`u ampi e sono invarianti localmente rispetto alla posizione esatta del pattern.
 		\end{itemize}
+	\end{multicols}
+	In conclusione la convolution \`e un operazione di filtraggio generale per le immagini.
+	Si applica una matrice kernel a un'immagine e lavora determinando il valore di un pixel centrale aggiungendo i valori pesati dei suoi vicini.
+	L'output \`e pertanto una nuova immagine modificata.
+	Pu\`o esser utilizzato per lisciare, rendere pi\`u nitida un'immagine.
+	Si nota come quest'operazione \`e commutativa.
 
-		\subsection{Operazione di convolution}
-		Un layer convolutional consiste di una serie di filtri.
-		Ogni filtro copre una piccola parte dei dati di input o receptive field.
-		Ogni filtro \`e convolved attraverso la dimensione degli input data, producendo una mappa di feature multi-dimensionale.
-		La rete impara filtri specifici che si attivano quando trovano feature specifiche a una posizione particolare dell'input.
+	\subsection{Architettura}
+	Le CNN sono pertanto delle feedforward neural networks con una struttura di connettivit\`a specializzata.
+	Impilano diversi layer di feature extractors:
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Low-level layers estraggono feature locali.
+			\item High-level layer imparano pattern globali.
+		\end{itemize}
+	\end{multicols}
+	Tipicamente i layer di CNN trasformano la matrice di input in una predazione della classe di output.
+	Ci sono tre tipi di operazioni distinte:
+	\begin{multicols}{3}
+		\begin{enumerate}
+			\item Convolution.
+			\item Non-linearity.
+			\item Pooling.
+		\end{enumerate}
+	\end{multicols}
 
-		\subsection{Non linearity}
-		$$y_{i,j} = f(a_{i,j})\ dove\ f(a)= sigmoid(a)$$
+		\subsubsection{Convolutional layers}
+		I convolutional layers sono il nucleo di una CNN, consistono di un insieme di filtri, ognuno dei quali copre una piccola porzione spaziale dei dati di input o campo recettivo.
+		Ogni filtro viene convoluto attraverso la dimensione dei dati di input, producendo una mappa di feature multidimensionale.
+		La rete impara i filtri che si attivano quando trovano uno specifico tipo di feature a una certa posizione spaziale nell'input.
 
-		\subsection{Pooling}
-		Il pooling riduce la dimensione dell'input attraverso filtri.
-		L'output avr\`a la dimensione dei filtri.
+		\subsubsection{Non linearity}
+		La non linearity aumenta la non linearity dell'intera architettura senza avere effetto sui campi recettivi del livello di convolution.
+		$$y_{i,j} = f(a_{i.l})$$
+		Per esempio $f(a) = [a]_+$ o $f(a) = sigmoid(a)$.
+
+		\subsubsection{Pooling}
+		Il pooling riduce la dimensione spaziale della rappresentazione riducendo la quantit\`a di parametri e la computazione della rete, controllando l'overffitting.
+		$$x_{i,j} = \max\limits_{|k|<\tau, |l|<\tau}y_i - k_{ij} - l$$
+		Inoltre fornisce invarianza rispetto alle traslazioni.
+
+		\subsubsection{Esempi di architetture}
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item LeNet.
+				\item AlexNet.
+				\item VGG.
+				\item GoogleNet.
+				\item ResNet.
+			\end{itemize}
+		\end{multicols}
+
+	\subsection{Conclusione}
+	Le CNN a differenza delle feedforward vanilla presentano un ordinamento spaziale: ad ogni layer le unit\`a sono organizzate in griglie a $2D$, le feature maps.
+	Ognuna di esse \`e il risultato di una convoluzione.
+	Lo stesso filtro convoluzionale \`e applicato ad ogni locazione.
+	I pesi sono diversi attraverso le feature maps.
+	Una unit\`a a una particolare locazione sulla griglia pu\`o solo ricever l'input da unit\`a a una locazione simile al livello inferiore.
+	Si necessita di dati con labels ed \`e flessibile a molte applicazioni.
+
+\section{Altre reti neurali}
+Esistono diversi modelli di reti neurali per diverse necessit\`a.
+In particolare fino ad ora si \`e discusso su problemi di predizione in cui si hanno input e output di dimensione fissa.
+Ci sono casi di sequential prediction tasks in cui l'input o l'output sono sequenze di lunghezza variabile.
+Si usano per esempio nella predizione dei frame video. Questi si risolvono attraverso recurrent neural networks.
+
+	\subsection{Recurrent neural networks}
+	Nelle recurrent networks input precedenti vengono utilizzati per influenzare le decisioni su input successivi.
+	Questo si ottiene attraverso dei layer ricorsivi, in cui la rappresentazione nascosta al tempo $t$:
+	$$h_t = f_w(x_t, h_{t-1})$$
+	Si nota come la funzione di $W$ dipende sia dall'input $t$ che dallo stato precedente.
+	In particolare si nota come considerando una visione ``svolta'' dei layer ricorsivi si possono mappare diversi input a diversi output in relazione:
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item One-to-one.
+			\item One-to-many
+			\item Many-to-one.
+			\item Many-to-many.
+		\end{itemize}
+	\end{multicols}
+
+	\subsection{Autoencoders}
+	Gli autoencoders sono un esempio di unsupervised learning.
+	Sono simili a feedforward neural networks.
+	Il loro scopo \`e quello di comprimere automaticamente dell'informazione.
+	Hanno una forma a clessidra in cui i layer in mezzo sono quelli pi\`u piccoli (chokepoint della rete).
+	Tutto quello che si trova fino alla met\`a \`e l'encoder, quello dopo il decoder.
+	La rete si addestra attraverso backpropagation e l'errore \`e la differenza tra l'output e l'input.
+	Possono essere costruiti simmetricamente anche rispetto ai pesi.
+	Lo scopo \`e pertanto impara una rappresentazione a meno dimensioni del training data.
+	L'encoder \`e passato da essere un linear + nonlinearity come sigmoid, a un deep, fully connected a ReLu con CNN.
+	$z$ nel mezzo \`e pi\`u piccolo di $x$: si svolge una dimensionality reduction.
+	Le feature dovrebbero catturare fattori significativi di variazioni nel dato.
+	Un esempio per capire la differenza tra output e input \`e la L2 loss function $||x-\hat{x}||^2$.
+	Dopo il training si scarta il decoder e l'encoder pu\`o essere utilizzato per inizializzare un modello supervised che permette un fine-tuning insieme al classificatore.
