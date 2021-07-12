@@ -85,7 +85,7 @@ $$\mathcal{Y} = \{c_1,\dots,c_k\}\qquad\qquad\qquad\mathcal{D}\subset\mathcal{X}
 Sia $\mathcal{D}^y = \{(x, y')\in \mathcal{D}: y = y'\}$, che denota il sottoinsieme di training samples in $\mathcal{D}$ con label $y$.
 Considerando la funzione di errore:
 $$E(f,\mathcal{D}) = \dfrac{1}{|\mathcal{D}|}\sum\limits_{z\in\mathcal{D}}l(f;z)$$
-Se $l(f;(x,y))=1_{f(x)\neq y}$ e $\mathcal{H}_{leaf} = \bigcup\limits_y\in\mathcal{Y}\{y\}^\mathcal{X}$ la misura di impurit\`a \`e allora il classification error:
+Se $l(f;(x,y))=1_{f(x)\neq y}$ e $\mathcal{H}_{leaf} = \bigcup\limits_{y\in\mathcal{Y}}\{y\}^\mathcal{X}$ la misura di impurit\`a \`e allora il classification error:
 $$I(\mathcal{D})= 1 -\max\limits_{y\in\mathcal{Y}}\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}$$
 Se invece $l(f;(x,y))=\sum\limits_{x\in\mathcal{Y}}[f_c(x)-1_{c=y}]^2$ e $\mathcal{H}_{leaf}=\bigcup\limits_{\pi\in\Delta(\mathcal{Y})}\{\pi\}^\mathcal{X}$ allora la misura di impurit\`a \`e l'impurit\`a di Gini:
 $$I(\mathcal{D}) = 1-\sum\limits_{y\in\mathcal{Y}}\biggl(\dfrac{|\mathcal{D}^y|}{|\mathcal{D}|}\biggr)^2$$
@@ -95,7 +95,7 @@ $$I(\mathcal{D})=-\sum\limits_{y\in\mathcal{Y}}\dfrac{|\mathcal{D}^y|}{|\mathcal
 \section{Misure di impurit\`a per la regressione}
 Si consideri per la regressione:
 	$$\mathcal{Y}\subset\mathbb{R}^d\qquad\qquad\qquad\mathcal{D}\subset\mathcal{X}\times\mathcal{Y}$$
-Se $l(f;(x,y))=||f(x)-y||_2$ e $\mathcal{H}_{leaf} = \bigcup\limits_{y\in\mathcal{Y}}\{y\}^\mathcal{X}$ allora la misura di impurit\`a \`e la varianza:
+Se $l(f;(x,y))=||f(x)-y||^2$ e $\mathcal{H}_{leaf} = \bigcup\limits_{y\in\mathcal{Y}}\{y\}^\mathcal{X}$ allora la misura di impurit\`a \`e la varianza:
 $$I(\mathcal{D})=\dfrac{1}{|\mathcal{D}|}\sum\limits_{(x,y)\in\mathcal{D}}||x-\mu_\mathcal{D}||^2$$
 Dove $\mu_\mathcal{D} = \frac{1}{|\mathcal{D}|}\sum\limits_{(x,y)\in\mathcal{D}}x$
 
