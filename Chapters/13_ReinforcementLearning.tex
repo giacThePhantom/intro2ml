@@ -15,7 +15,7 @@ Questa idea viene presa dalle strategie di animali:
 
 \section{Markov decision process (MDP)}
 MDP utilizza l'assuzione di Markov in cui uno stato al tempo $t$ dipende solo dallo stato precedente $s(t-1)$ e dall'azione precedente $a(t-1)$ per trovare una policy.
-QUesto utilizza l'equazione di Bellman e la programmazione dinamica.
+Questo utilizza l'equazione di Bellman e la programmazione dinamica.
 L'obiettivo \`e trovare una policy, una mappa che ritorna tutte le azioni ottimali di ogni stato sul nostro ambiente.
 
 	\subsection{Componenti}
@@ -26,7 +26,7 @@ L'obiettivo \`e trovare una policy, una mappa che ritorna tutte le azioni ottima
 		\item Reward function $r(s)$.
 		\item Policy $\pi(s)$, l'azione che un agente svolge in ogni stato dato.
 	\end{itemize}
-	Si nota come una MDP \`e definita dalla tupla $(S, A, R, P, y)$, dove $S$ \`e l'insieme degli stati possibili, $A$ l'insieme delle azioni possibili, $R$ la distribuzione delle reward dato uno stato, $P$ la probabilit\`a di transizion o la distribuzione rispetto al prossimo stato dato $(stato, azione)$ e $y$ il discount factor.
+	Si nota come una MDP \`e definita dalla tupla $(S, A, R, P, y)$, dove $S$ \`e l'insieme degli stati possibili, $A$ l'insieme delle azioni possibili, $R$ la distribuzione delle reward dato uno stato, $P$ la probabilit\`a di transizione o la distribuzione rispetto al prossimo stato dato $(stato, azione)$ e $y$ il discount factor.
 	La reward viene utilizzata per ottenere la policy migliore.
 	L'obiettivo \`e pertanto di trovare la policy ottimale.
 
@@ -39,8 +39,8 @@ L'obiettivo \`e trovare una policy, una mappa che ritorna tutte le azioni ottima
 		\item Si ripete:
 			\begin{itemize}
 				\item L'agente seleziona l'azione $a_i$.
-				\item L'ambiente campiona la reward $r_t\sim R(,|s_t, a_t)$.
-				\item L'ambiente campiona il prossimo stato $s_{t+1}\sim P(.|s_t, a_t)$
+				\item L'ambiente campiona la reward $r_t\sim R(\cdot|s_t, a_t)$.
+				\item L'ambiente campiona il prossimo stato $s_{t+1}\sim P(\cdot|s_t, a_t)$
 				\item L'agente riceve la reward $r_t$ e lo stato successivo $s_{t+1}$.
 			\end{itemize}
 	\end{itemize}
@@ -92,6 +92,8 @@ Per RL si trovano due approcci principali:
 	\item Metodi basati sul valore: una value function $V(s)$ viene introdotta e l'agente vuole masssimizzarla.
 		La value di ogni stato \`e la quanit\`a totale di reward un agente pu\`o aspettarsi di collezionare rispetto al futuro cominciando da uno stato dato.
 	\item Metodo basato sulla policy: si definisce una policy da ottimizzare correttamente, questa definisce come l'agente si comporta nella forma di distribuzione di probabilit\`a tra le azioni da svolgere in uno stato dato.
+		Una policy stocastica d\`a la distribuzione di probabilit\`a su azioni diverse: $\pi_\theta(s,a)\approx P(a|s)$.
+
 \end{itemize}
 
 	\subsection{Value based methods}
@@ -110,7 +112,7 @@ Per RL si trovano due approcci principali:
 		\subsubsection{Q value function}
 		Invece di gestire con la value function si utilizza la $Q$-value function che lavora con uno stato $s$, una azione $a$ e una policy $\pi$.
 		Viene definita come:
-		$$Q^pi(s,a) = \mathbb{E}\biggl[\sum\limits_{t\ge 0} y^tr(s_t)|s_0 = s,a_0 = a\pi\biggr]$$
+		$$Q^\pi(s,a) = \mathbb{E}\biggl[\sum\limits_{t\ge 0} y^tr(s_t)|s_0 = s,a_0 = a\pi\biggr]$$
 		Il valore ottimale di $Q$ dice quando \`e buona una coppia stato azione:
 		$$Q^*(s,a) =\max_\pi\mathbb{E}\biggl[\sum\limits_{t\ge 0} y^tr(s_t)|s_0 = s,a_0 = a\pi\biggr]$$
 		La Q value ottimale viene usata per computare la policy ottimale:
@@ -124,18 +126,32 @@ Per RL si trovano due approcci principali:
 		Per calcolare il valore $Q$ dello stato corrente si deve calcolare il valore $Q$ degli stati vicini e cos\`i via con ricorsione.
 
 		\subsubsection{Algoritmo Q-learning}
+		Lo scopo di questo algoritom \`e che la matrice di value $R$ \`e conosciuta unicamente all'ambiente e l'agente deve impararla con l'esperienza.
+		L'agente possiede una matrice $Q$ che codifica stato, azione e rewards, ma \`e inizializzata a $0$ e diventa $R$ attraverso l'esperienza.
+		La policy si ottiene attraverso questa matrice.
 		\begin{enumerate}
-			\item Poni stato corrente uguale a stato iniziale.
-			\item Dallo stato corrente trova l'azione con il valore $Q$ pi\`u alto.
-			\item Poni stato corrente uguale al prossimo stato scelto in $2$.
-			\item Ripeti $2$ e $3$ fino a che lo stato corrente \`e uguale allo stato obiettivo.
+			\item Inizializza la matrice $Q$ con zero.
+			\item Seleziona uno stato iniziale casuale.
+			\item Per ogni episodio (insieme di azioni che parte dallo stato iniziale e arriva allo stato finale.
+			\item Mentre lo stato non \`e lo stato obiettivo.
+			\item Seleziona una possibile azione casuale per lo stato corrente.
+			\item Utilizzando l'azione considera arrivare allo stato prossimo.
+			\item Ottieni il valore di $Q$ massimo per il prossimo stato.
+			\item $Q^*(s,a) = R(s,a)+y\max\limits_a[Q^*(s',a')]$.
+		\end{enumerate}
+		Per trovare la policy ottimale:
+		\begin{enumerate}
+			\item Si pone lo stato corrente a quello iniziale.
+			\item Dallo stato corrente si trova l'azione con il maggiore $Q$ value.
+			\item Si pone lo stato corrente al prossimo.
+			\item Si ripetono i passi $2$ e $3$ fino a che si raggiunge lo stato obiettivo.
 		\end{enumerate}
 
 		\subsubsection{Deep Q learning}
 		L'equazione di Bellman pu\`o pertanto essere usate per imparare tabelle $Q$ per ritornare la policy ottimale.
 		Nel mondo reale per\`o gli stati e le rewards possono essere troppo grandi per essere calcolate completamente.
 		Per questa ragione viene introdotto un algoritmo di deep $Q$ learning che sfrutta l'idea di approssimare $Q$ utilizzando una funzione parametrica trainata da una NN.
-		SI pu\`o approssimare $Q$ a
+		Si pu\`o approssimare $Q$ a
 		$$Q^*(s,a) \approx Q_w(s,a)$$
 		In quanto $Q_w$ \`e una funzione dei pesi $w$ si pu\`o trainare una N per approssimare $Q_w$.
 		Ad ogni interazione del training si aggiornano i parametri $w$ del modello per avvicinare $Q$ a $y$:
@@ -161,7 +177,7 @@ Per RL si trovano due approcci principali:
 	L'obiettivo dei PGM \`e di definire parametri che influenzano la policy $\pi$ e di impararli direttamente.
 	Questa \`e la soluzione pi\`u semplice nel caso in cui si abbia uno spazio degli stati grande e continuo.
 	L'idea \`e di utilizzare deep neural network per imparare la policy.
-	SI deve pertanto imparare una funzione che ritorna la distribuzione di probabilit\`a di azioni rispetto allo stato corrente:
+	Si deve pertanto imparare una funzione che ritorna la distribuzione di probabilit\`a di azioni rispetto allo stato corrente:
 	$$\pi_\theta(s,a)\approx P(s)$$
 	Si noti come questa ha un significato diverso rispetto ai value-based method: \`e una probabilit\`a di azioni rispetto agli stati, non una funzione da azioni a stati.
 	In questo caso non si hanno le labels in modo da dare feedback alla NN attraverso backpropagation e viene usata la reward.
@@ -181,7 +197,7 @@ Per RL si trovano due approcci principali:
 	$$\log p(\tau,\theta) = \sum\limits_{t\ge 0} [\log \pi_\theta(s_t,a_t) + \log P(s_{t+1}|s_t,a_t)]$$
 	E
 	$$\nabla_\theta \log p(\tau,\theta) = \sum\limits_{t\ge 0}\nabla_\theta \log\pi_\theta(s_t,a_t)$$
-	In questo modo si pu\`o computare il gradiente senza conoscere la probabilit\`a di transizione.
+	In questo modo si pu\`o computare il gradiente senza conoscere la probabilit\`a di transizione $p$.
 	$$\nabla_\theta J(\theta) = \mathbb{E}_\tau\biggl[\biggl(\sum\limits_{t\ge 0}y^tr_t\biggr)\biggl(\sum\limits_{t\ge 0}\nabla_\theta\log\pi_\theta(s_t,a_t)\biggr)\biggr]$$
 	Si pu\`o inoltre evitare di computare tutte le traiettorie possibili e usare unicametne un'approssimazione stocastica a $N$ traiettorie.
 	$$\nabla_\theta J(\theta) \approx \dfrac{1}{N}\sum\limits_{i=1}^n\biggl(\sum\limits_{t = 0}^{T_i}y^tr_{i,t}\biggr)\biggl(\sum\limits_{t= 0}^{T_i}\nabla_\theta\log\pi_\theta(s_{i,t},a_{i,t})\biggr)$$
@@ -191,11 +207,11 @@ Per RL si trovano due approcci principali:
 		\begin{enumerate}
 			\item Campiona $N$ traiettorie $\tau_i$ utilizzando la policy corrente $\pi_\theta$.
 			\item Stima il gradiente di policy $\nabla_\theta J(\theta)$.
-			\item Aggiorna i parametri attraverso gradient descent: $\theta = \theta + \eta\nabla_\theta J(\theta)$.
+			\item Aggiorna i parametri attraverso gradient ascent $\theta = \theta + \eta\nabla_\theta J(\theta)$.
 		\end{enumerate}
 
 		\subsubsection{Single step reinforce}
-		Single step reinforce \`e una variante del reinforce ce stima il gradiente unicamente su uno step e non sull'intera traiettoria:
+		Single step reinforce \`e una variante del reinforce che stima il gradiente unicamente su uno step e non sull'intera traiettoria:
 		\begin{enumerate}
 			\item In uno stato $s$ campiona l'azione $a$ utilizzando la policy corrente $\pi_\theta$ e si osserva la reward $r$.
 			\item Stima il gradiente $\nabla_\theta J(\theta)\sim r\nabla_\theta\log\pi_\theta(s,a)$
