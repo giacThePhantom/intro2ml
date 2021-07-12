@@ -223,11 +223,8 @@
 \contentsline {subsubsection}{\numberline {11.3.2.4}Esempi di architetture}{56}{subsubsection.11.3.2.4}%
 \contentsline {subsection}{\numberline {11.3.3}Conclusione}{56}{subsection.11.3.3}%
 \contentsline {section}{\numberline {11.4}Altre reti neurali}{56}{section.11.4}%
-\contentsline {subsection}{\numberline {11.4.1}Convolution}{56}{subsection.11.4.1}%
-\contentsline {subsection}{\numberline {11.4.2}Definizione di una CNN}{57}{subsection.11.4.2}%
-\contentsline {subsection}{\numberline {11.4.3}Operazione di convolution}{57}{subsection.11.4.3}%
-\contentsline {subsection}{\numberline {11.4.4}Non linearity}{57}{subsection.11.4.4}%
-\contentsline {subsection}{\numberline {11.4.5}Pooling}{57}{subsection.11.4.5}%
+\contentsline {subsection}{\numberline {11.4.1}Recurrent neural networks}{56}{subsection.11.4.1}%
+\contentsline {subsection}{\numberline {11.4.2}Autoencoders}{57}{subsection.11.4.2}%
 \contentsline {chapter}{\numberline {12}Reinforcement learning}{58}{chapter.12}%
 \contentsline {section}{\numberline {12.1}Introduzione}{58}{section.12.1}%
 \contentsline {subsection}{\numberline {12.1.1}Policy}{58}{subsection.12.1.1}%
