@@ -156,6 +156,119 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 	Questo algoritmo ha una convergenza garantita in quanto migliora strettamente la assignment di cluster e siccome sono finiti a un certo punto converge per forza.
 	Non \`e comunque garantito trovi il minimo in quanto \`e un problema NP-hard anche sul piano.
 	\`E sensibile alla scala delle features.
+
+		\subsubsection{Distanza}
+		La distanza euclidea:
+		$$d(x,y) = \sqrt{\sum\limits_{i=1}^n(x_i-y_i)^2}$$
+		Non \`e sempre una buona scelta: per esempio, nel fare clustering di documenti si sceglie una feature per ogni parola e il valore \`e il numero di volte che tale parola compare.
+		Si nota come qui due distribuzioni possono avere una grande distanza ma distribuzioni simili.
+
+			\paragraph{Cosine similarity}
+			Per risolvere questo problema si utilizza la cosine similarity:
+			$$sim(x,y( = \frac{X\cdot y}{|x||y|} = \frac{x}{|x|}\cdot\frac{y}{|y|} = \frac{\sum\limits_{i = 1}^n x_iy_i}{\sqrt{\sum\limits_{i = 1}^n x_i^2}\sqrt{\sum\limits_{i = 1}^ny_i^2}}$$
+			Questa \`e correlata con l'angolo tra due vettori.
+			Varia tra $o$ e $1$.
+			\`E buona per dati di testo e molti altri.
+			Di facile computazione in quanto si possono considerare solo features con valori non zero in entrambi gli esempi.
+			La cosine distance:
+			$$d(x,y) = 1-sim(x,y)$$
+
+		\subsubsection{Propriet\`a di K-means}
+
+			\paragraph{Convergenza}
+			L'algoritmo \`e garantito che converga in quanto migliora strettamente l'obiettivo se c'\`e almeno un cambio di cluster e l'insieme delle partizioni \`e finito.
+			Questo avviene in quanto durante il primo step di assignment ogni altro assignment causerebbe una loss maggiore e durante la computazione del centroide la media di un insieme di valori minimizza l'errore quadratico.
+
+			\paragraph{Minimo}
+			Non \`e garantito che trovi il minimo globale ma uno locale.
+			Questo avviene in quanto tipicamente la loss function \`e non convessa.
+
+			\paragraph{Selezione dei centroidi}
+			I risultati possono variare enormemente sulla scelta dei centroidi con random seed selection: alcuni possono causare povera convergenza o convergenza a cluster sub-ottimali.
+			Alcune euristiche comuni sono:
+			\begin{multicols}{2}
+				\begin{itemize}
+					\item Punti casuali nello spazio.
+					\item Esempi scelti casualmente.
+					\item Punti meno simili a ogni centro esistente.
+					\item Si provano diversi punti di inizio.
+					\item Si inizializza con i risultati di un altro metodo di clustering.
+				\end{itemize}
+			\end{multicols}
+
+	\subsection{Problematiche del clustering}
+	Il clustering presenta diverse problematiche:
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Rappresentazione di un esempio per il cluster.
+			\item Simiglianza e distanza tra esempi.
+			\item Clustering piatto o gerarchico.
+			\item Numero di cluster fisso o data driven.
+		\end{itemize}
+	\end{multicols}
+
+	\subsection{Algoritmi di clustering}
+
+		\subsubsection{Flat algorithms}
+		Tipicamente iniziano con un partizionamento causale parziale che viene raffinato iterativamente.
+		Sono per esempio K means, model based e spectral.
+
+		\subsubsection{Hierarchical algorithms}
+		Si dividono in agglomerativi bottom-up o divisivi top-down.
+
+		\subsubsection{Hard clustering}
+		Nell'hard clustering ogni esempio appartiene esattamente ad un cluster.
+
+		\subsubsection{Soft clustering}
+		Nel soft clustering ogni esempio pu\`o appartenere a pi\`u di un cluster.
+		\`E pertanto probalistico.
+
+	\subsection{EM clustering}
+	Si nota come il K-means clustering assume sempre dei cluster circolari.
+	Per questo EM clustering assume che i dati vengano da un'insieme di gaussiane: sono cos\`i ellittici.
+	Ogni dato viene assegnato a un cluster con una certa probabilit\`a: soft clustering.
+	\`E molto simile a un alto livello a K-means: itera tra assigning points e ricalcolando i centri dei cluster.
+	Le differenze principali sono che si assumano cluster ellittici e che sia un algoritmo di soft-clustering.
+	Pertanto si inizia con dei centri di cluster iniziale, successivamente si assegnano soft points ad ogni cluster calcolando $p(\theta_c|x)$ la probabilit\`a che ognuno di essi appartenga a un cluster.
+	Si ricalcolano i centri del cluster con nuovi parametri $\theta_c$, la massima probabilit\`a dei centri dati il corrente soft clustering.
+	I centri ottengono una contribuzione pesata dai punti.
+
+		\subsubsection{Mixture of Gaussians}
+		In una dimensione una gaussiana:
+		$$f(x;\sigma;\mu) = \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
+		In $m$ dimensioni invece:
+		$$N[x;\mu;\Sigma] = \frac{1}{(2\pi)^{\frac{d}{2}}\sqrt{det(\Sigma)}}e^{[-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)]}$$
+		Si impara pertanto la media di ogni cluster o suo centro e la matrice di covarianza, ovvero quanto si disperde, la forma del contorno.
+
+		\subsubsection{Soft cluster poins}
+		Si assegna soft ogni punto a ogni cluster calcolando $p(\theta_c|x)$ o la probabilit\`a di ogni punto di appartenere al cluster.
+		Si utilizza l'equazione della Gaussiana per ogni cluster normalizzata per creare una probabilit\`a.
+
+		\subsubsection{Ricalcolo dei centri}
+		Si calcolano nuovi parametri di cluster $\theta_c$.
+		Il maximum likelihood cluster center dati il soft clustering corrente.
+		Questo si fa fittando una gaussiana.
+
+			\paragraph{Fit di una gaussiana}
+			Si fa calcolando la media $\mu$ e la varianza $\sigma$ dei dati.
+
+		\subsubsection{Conclusione}
+		EM clustering sta per expectation maximization.
+		Per expectation si intende dato il modello corrente, si trova le probabilit\`a aspettate dei data points ad ogni cluster.
+		La massimizzazione \`e dato l'assignment probabilistico di tutti i punti la stima del nuovo modello $\theta_c$.
+		Come $k$-means \`e garantito che converga ad un ottimo locale, \`e un algoritmo general purpose per fare training di un modello senza labels.
+
+	\subsection{Altri algoritmi di clustering}
+	K-means e EM-clustering non possono gestire tutte le task di clustering.
+	In particolare non possono gestire dati non distribuiti secondo una gaussiana, soffrono dello stesso problema dei modelli lineari in quanto non sono in grado di prendere decisioni locali.
+
+		\subsubsection{Spectral clustering}
+		Nello spectral clustering avviene una partizione a grafo: si definisce una matrice di somiglianza e si taglia il grafo.
+
+		\subsubsection{Clustering gerarchico}
+		Il clustering gerarchico produce un insieme di cluster nested organizzati come un albero gerarchico detto dendrogram.
+		Viene tipicamente utilizzato per i profili genici.
+
 \section{Density estimation}
 
 	\subsection{Task}
@@ -165,69 +278,104 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 
 	\subsection{Generative model}
 	I generative model risolvono la task della density estimation.
+	Sono modelli statistici della distribuzione dei dati sull'input $p_x$ o di una joint distribution sulla coppia di input label $p_{XY}$ dipendente dalla disponibilit\`a dei dati obiettivo.
+	La loro abilit\`a principale \`e di generare nuovi dati dalle distribuzioni osservate.
 
-		\subsubsection{Modelli generativi e discriminativi}
-		I modelli generativi sono modelli statistici della distribuzione dei dati sull'input $p_x$ o di una joint distribution sulla coppia di input label $p_{XY}$.
-		La loro abilit\`a principale \`e di generare nuovi dati dalle distribuzioni osservate.
-		I modelli discriminativi incece sono modelli statistici della distribuzione di probabilit\`a condizionale $p_{Y|X}$ del target dato l'obiettivo.
-		Tipicamente svolgono una task di classificazione come SVM, decision trees e classificatori KNN.
-		Un modello discriminativo pu\`o essere costruito da uno generativo attraverso la regola di Bayes ma non viceversa:
-		$$p_{Y|X}(x) = \dfrac{p_{XY}(x,y)}{\sum\limits_{y'}p_{XY}(x,y')p_X(x)}$$
+	\subsection{Modelli discriminativi}
+	I modelli discriminativi sono modelli statistici della distribuzione di probabilit\`a condizionale $p_{Y|X}$ del target dato l'input.
+	Tipicamente svolgono una task di classificazione come SVM, decision trees e classificatori KNN.
+	Un modello discriminativo pu\`o essere costruito da uno generativo attraverso la regola di Bayes ma non viceversa:
+	$$p_{Y|X}(x) = \dfrac{p_{XY}(x,y)}{\sum\limits_{y'}p_{XY}(x,y')p_X(x)}$$
 
-		\subsubsection{Tipi di density estimation}
-		Per entrambi i modi si trovano due tipi della task:
-		\begin{itemize}
-			\item Supervised: $Z\in X\times Y$.
-			\item Unsupervised $Z\in X$.
-		\end{itemize}
+	\subsection{Tipi di density estimation}
+	Per entrambi i modi si trovano due tipi della task:
+	\begin{itemize}
+		\item Supervised: $Z\in X\times Y$.
+		\item Unsupervised $Z\in X$.
+	\end{itemize}
 
-			\paragraph{Explicit density estimation}
-			Si deve trovare una distribuzione di probabilit\`a $f\in \Delta(Z)$ che fitta i dati $z\in Z$ dove $z$ \`e campionato da una distribuzione di dati sconosciuta $p_{data}\in\Delta(Z)$.
+		\subsubsection{Explicit density estimation}
+		Si deve trovare una distribuzione di probabilit\`a $f\in \Delta(Z)$ che fitta i dati $z\in Z$ dove $z$ \`e campionato da una distribuzione di dati sconosciuta $p_{data}\in\Delta(Z)$.
 
-			\paragraph{Implicit density estimation}
-			Si vuole trovare una funzione $f\in Z^\Omega$ che genera i dati $f(\omega)\in Z$ da un input $\omega$ campionato da una distribuzione predefinita $p_\omega\in\Delta(\Omega)$ in modo che la distribuzione del campione generato fitta la distribuzione sconosciuta $p_{data}\in\Delta(Z)$.
-			Non si stima la probabilit\`a $\omega$ ma ci si concentra unicamente sul riprodurre i dati con la stessa distribuzione di quella sconosciuta originaria.
+		\subsubsection{Implicit density estimation}
+		Si vuole trovare una funzione $f\in Z^\Omega$ che genera i dati $f(\omega)\in Z$ da un input $\omega$ campionato da una distribuzione predefinita $p_\omega\in\Delta(\Omega)$ in modo che la distribuzione del campione generato fitta la distribuzione sconosciuta $p_{data}\in\Delta(Z)$.
+		Non si stima la probabilit\`a $\omega$ ma ci si concentra unicamente sul riprodurre i dati con la stessa distribuzione di quella sconosciuta originaria.
 
 		\subsubsection{Obiettivo per i modelli generativi}
-		Si deve definire uno spazio di ipotesi $H\subset \Delta(Z)$, consiste di un insieme di distribuzioni di probabilit\`a che possono essere definite esplicitamente o implicitamente.
+		Si deve definire uno spazio di ipotesi $H\subset \Delta(Z)$, consiste di un insieme di modelli che possono rappresentare distribuzioni di probabilit\`a definite esplicitamente o implicitamente.
 		Si definisce una misura di divergenza $d\in R_+^{\Delta(Z)\times\Delta(Z)}$ tra le distribuzione di probabilit\`a in $\Delta(Z)$ e si usa la divergenza di Kullback-Leibler.
 		La divergenza \`e $0$ se due distribuzioni hanno un match, altrimenti \`e negativa.
 		L'algoritmo tenta di trovare $q^*\in H$ che ha un fit migliore sui dati distribuiti secondo $p_{data}$ dove il best fit \`e quello con la divergenza minore.
 		$$q^*\in arg\min\limits_{q\in\mathcal{H}}d(p_{data},q)$$
 		Si assumer\`a che la distribuzione dei dati \`e solo su $X$ con unsupervised learning, ma il trasporto a supervised \`e banale.
 
-		\subsubsection{Variational AutoEncode (VAE)}
-		Un autoencoder \`e un modo per comprimere dati ad alta dimensione in una rappresentazione a meno dimensioni: dimensionality reduction.
-		Un encoder mappa i dati di input $x$ a una rappresentazione compressa $\omega$.
-		La rappresentazione conserva fattori significativi nella variazione dei dati come in PCA.
+	\subsection{Variational AutoEncode (VAE)}
+	Un autoencoder \`e un modo per comprimere dati ad alta dimensione in una rappresentazione a meno dimensioni: dimensionality reduction.
+	Un encoder mappa i dati di input $x$ a una rappresentazione compressa $\omega$.
+	La rappresentazione conserva fattori significativi nella variazione dei dati come in PCA.
+
+		\subsubsection{Training}
 		Un encoder viene trainato creando un decoder che mappa la rappresentazione di $\omega$ indietro nel dominio di input portando a una ricostruzione $\hat{x}$.
 		Pertanto l'encoder autoencoda il proprio input.
 		L'obiettivo \`e quello di minimizzare la divergenza tra l'input $x$ e la sua ricostruzione $\hat{x}$ che porta all'algoritmo di training verso la minima perdita di informazione durante la fase di encoding.
 		Dopo il training il decoder non \`e pi\`u necessario in quanto \`e funzionale solo per stimare l'encoder.
 		L'encoder invece pu\`o essere utile per diverse tasks, per esempio per inizializzare o precomputare le caratteristiche per supervised models.
+
+		\subsubsection{Generare dati con il decoder}
 		Il decoder potrebbe essere usato per generare nuovi dati ma non li generer\`a secondo $p_{data}$ in quanto niente lo obbliga.
 		Se si genera un input a caso $\omega$ non si \`e sicuri che $\omega$ \`e una combinazione che verrebbe ordinata dalla distribuzione dei dati.
 		La soluzione a questo problema sarebbe di avere una distribuzione a priori $\Omega$ che ci dice la probabilit\`a di campionare ogni $\omega$ dallo spazio encodato.
 		Il decoder poi sarebbe capace di tradurre la distribuzione $\Omega$ nella distribuzione di dati in $X$.
-		In termini formali il decoder: $q_\theta(x|\omega)$ \`e una distribuzione di probabilit\`a $x$ per ogni valore $\omega$.
-		La probabilit\`a a priori \`e $p_\omega$
-		Si pu\`o ottenere un'aspettativa marginalizzata
-		$$q_\theta(x) = \mathbb{E}_{\omega\sim p_\omega}[q_\theta(x|\omega)]$$
-		Successivamente si pone come obiettivo modificare il parametro $\theta$ per minimizzare la divergenza tra la distribuzione dei dati e $q_\theta$:
-		$$\theta^*\in arg\min\limits_{\theta\in\Omega}d(q_\theta,p_{data})$$
-		Si utilizza KL-divergence.
-		\`E non negativa e $0$ se $p$ e $q$ sono la stessa distribuzione.
-		$$d_{KL}(p,q) = \mathbb{E}_{x\sim p}\bigl[\log\frac{p(x)}{q(x)}\bigr]$$
-		Analizzando la divergenza si vede che il suo calcolo \`e intrattabile a causa del valore atteso.
-		Si pu\`o approssimare il valore atteso attraverso stochastic gradient descent.
-		Queste stime sono comunque dipendenti da $\omega$ e questo le rende grandemente biased.
-		Si introduce pertanto un nuovo termine $q_\phi(x)\in\Delta(\Omega)$.
-		Viene usato per calcolare due termini: un recostruction term e un regolarizzatore.
-		Questi due possono essere usati per calcolare stime del gradiente non biased con rispetto a $\theta$ e $\omega$.
-		Se si assume che il encoder e il decoder sono modellati per ritornare dati con la probabilit\`a modellata gaussiana (???? inserire)
+
+			\paragraph{Training del decoder}
+			In termini formali il decoder: $q_\theta(x|\omega)$ \`e una distribuzione di probabilit\`a $x$ per ogni valore $\omega$.
+			La probabilit\`a a priori \`e $p_\omega$
+			Si pu\`o ottenere un'aspettativa marginalizzata
+			$$q_\theta(x) = \mathbb{E}_{\omega\sim p_\omega}[q_\theta(x|\omega)]$$
+			Successivamente si pone come obiettivo modificare il parametro $\theta$ per minimizzare la divergenza tra la distribuzione dei dati e $q_\theta$:
+			$$\theta^*\in arg\min\limits_{\theta\in\Theta}d(q_\theta,p_{data})$$
+			Si utilizza KL-divergence.
+			\`E non negativa e $0$ se $p$ e $q$ sono la stessa distribuzione.
+			$$d_{KL}(p,q) = \mathbb{E}_{x\sim p}\bigl[\log\frac{p(x)}{q(x)}\bigr]$$
+
+			\paragraph{Intrattabilit\`a}
+			Analizzando la divergenza si vede che il suo calcolo \`e intrattabile a causa del valore atteso:
+			\begin{align*}
+				d_{KL}(p_{data}, q_\theta) &= \mathbb{E}_{x\sim p_{data}}\bigl[\log\frac{p_{data}(x)}{q_\theta(x)}\bigr]=\\
+																	 & = -\mathbb{E}_{x\sim p_{data}}[\log q_\theta(x)] + const=\\
+																	 &= -\mathbb{E}_{x\sim p_{data}}[\log\mathbb{E}_{\omega\sim p_\omega} [q_\theta(x|\omega)]]+const
+			\end{align*}
+			Si pu\`o approssimare il valore atteso attraverso stochastic gradient descent.
+			\begin{align*}
+				\frac{d}{d\theta}d_{KL}(p_{data},q_\theta) &= -\frac{d}{d\theta}\mathbb{E}_{x\sim p_{data}}[\log\mathbb{E}_{\omega\sim p_\omega}[q_\theta(x|\omega)]=\\
+																									 & = -\mathbb{E}_{x\sim p_{data}}\bigl[\frac{d}{d\theta}\log\mathbb{E}_{\omega\sim p_\omega}[q_\theta(x|\omega)]\bigr]=\\
+																									 & = - \mathbb{E}_{x\sim p_{data}}\biggl[\dfrac{\frac{d}{d\theta}\mathbb{E}_{\omega\sim p_\omega}[q_\theta(x|\omega)]}{\mathbb{E}_{\omega\sim p_\omega}[q_\theta(x|\omega)]}\biggr]=\\
+																									 & = - \mathbb{E}_{x\sim p_{data}}\mathbb{E}_{\omega\sim p_\omega}\biggl[\dfrac{\frac{d}{d\theta}q_\theta(x|\omega)}{\mathbb{E}_{\omega\sim p_\omega}[q_\theta(x|\omega)]}\biggr]
+			\end{align*}
+			Queste stime sono comunque dipendenti da $\omega$ e questo le rende biased e ancora intrattabili.
+
+			\paragraph{Variational bound}
+			Si introduce pertanto un nuovo termine $q_\psi(x)\in\Delta(\Omega)$.
+			Viene usato per calcolare due termini: un recostruction term e un regolarizzatore.
+			Ora in particolare si nota come:
+			\begin{align*}
+				\log\mathbb{E}_{\omega\sim p_\omega} [q_\theta(x|\omega)] &= \log\mathbb{E}_{\omega\sim q_\psi(\cdot|x)}\bigl[q_\theta(x|\omega)\frac{p_w(w)}{q_\psi(\omega|x)}\bigr]\ge\\
+																																	&\ge \mathbb{E}_{\omega\sim q_\psi(\cdot|x)}\bigl[\log\bigl(q_\theta(x|\omega)\frac{p_\omega(\omega)}{q_\psi(\omega|x)}\bigr)\bigr]=\\
+																																	&=\mathbb{E}_{\omega\sim q_\psi(\cdot|x)}[\log q_\theta(x|\omega)] - d_{KL}(q_\psi(\omega|x), p_w)
+			\end{align*}
+			Dove il primo termine della sottrazione \`e il ricostruttore e il secondo il regolarizzatore.
+			Si nota come il ricostrutture \`e ancora di intrattabile computazione ma pu\`o essere facile ottenere delle stime del gradiente non biased con rispetto di $\theta$ e $\psi$.
+			Il regolarizzatore pu\`o avere una soluzione con forma chiusa utilizzando una distribuzione gaussiana.
+
+			\paragraph{Training in pratica}
+			Viene campionato un sample $x$ da $p_{data}$.
+			QUesto viene passato dal decoder $q_\psi$ che produce una media $\mu_{\omega|x}$ e una covarianza $\Sigma_{\omega|x}$ utilizzati per costruire una gaussiana utilizzata per costruire il regularization term e il sample $\omega$.
+			$\omega$ \`e l'input del decode $q_\theta$ che produce una media $\mu_{x|\omega}$ e una covarianza $\Sigma_{x|\omega}$, utilizzati per costruire una gaussiana, che insieme ad $x$ costruisce il reconstruction term.
+			Il reconstruction e il regularization term vengono usati per computare il variational lower bound loss, con il secondo come $P_\omega = N(0,1)$, di normale standard e questo viene usato per aggiornare $\theta$ e $\psi$.
 
 		\subsubsection{VAE condizionale}
-		Si assuma di avere un informazione $y\in\mathcal{Y}$ e si vuole generare nuovi dati sull'infomrazione.
+		Si assuma di avere un informazione $y\in\mathcal{Y}$ e si vuole generare nuovi dati sull'informazione.
+		Denota una distribuzione si probabilit\`a di encoding.
 		Si modifica il encoder e il decoder per prendere le informazioni in input ottenendo
 		$$q_\phi(\omega|x,y)$$
 		$$q_\theta(\omega|x,y)$$
@@ -242,37 +390,84 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 
 	\subsection{Generative adversarial Networks (GAN)}
 	Le GAN permettono di stimare la densit\`a implicitamente.
-	SI assuma di avere una densit\`a a priori $p_\omega\in\Delta(\Omega)$ e un generatore o decoder $g_\theta\in X^\omega$ che genera i data points in $X$ dato un random point da $\Omega$.
+	Si assuma di avere una densit\`a a priori $p_\omega\in\Delta(\Omega)$ e un generatore o decoder $g_\theta\in X^\Omega$ che genera i data points in $X$ dato un random point da $\Omega$.
 	Il generatore campiona direttametne dalla distribuzione implicita che non si conosce.
 	La densit\`a \`e indotta da $p_\omega$ e il generatore $g_\theta$ \`e dato da $q_\theta(x) = \mathbb{E}_{\omega\sim p_\omega}\delta[g_\theta(\omega) - x]$ dove $\delta$ \`e la funzione delta di Dirac.
 	L'obiettivo di GAN \`e trovare $\theta^*$ tale che $q_{\theta^*}$ che fitta meglio la distribuzione $p_{data}$ sotto la divergenza di Jensen-Shannon $d_{jS}$:
 	$$\theta^*\in arg\min\limits_{\theta} d_{JS}(p_{data},q_\theta)$$
 	Dove:
-	$$d_{JS} = \frac{1}{2}d_{KL}\bigl(p,\frac{p+q}{w}\bigr)+\frac{1}{2}d_{KL}\bigl(q,\frac{p+q}{2}\bigr)$$
+	$$d_{JS}(p,q) = \frac{1}{2}d_{KL}\bigl(p,\frac{p+q}{2}\bigr)+\frac{1}{2}d_{KL}\bigl(q,\frac{p+q}{2}\bigr)$$
 	Che \`e chiaramente intrattabile da computare in quanto richiama la convergenza $KL$.
-	Con dei passaggi matematici si arriva a una forma equivalent che porta a un problema di minimizzazione nella forma:
-	$$\theta^*\in arg\min\limits_\theta\{\mathbb{E}_{x\sim p_{data}}[\log t_\phi(x)] + \mathbb{E}_{x\sim q_\theta}[\log(1-t_\theta(x))]\}$$
-		In cui $t_\phi(x)$ \`e un classificatore detto discriminatore per i data point in $X$ che predice se un data point $x$ viene da $p$ o $q$.
-		Si pu\`o imparare $t_\phi(x)$  per risolvere il problema di minmax.
-		Anche in questa forma \`e intrattabile in quanto dipende dalla densit\`a specifica di $q_\theta$ ma si pu\`o sostituire con $g_\theta$:
+	Lo stesso vale per il gradiente.
+
+		\subsubsection{Forma equivalente della divergenza JS}
+		\begin{align*}
+			d_{JS}(p,q) &= \frac{1}{2}d_{KL}\bigl(p, \frac{p+q}{2}\bigr) + \frac{1}{2}d_{KL}\bigl(q, \frac{p+q}{2}\bigr)=\\
+									&=\frac{1}{2}\mathbb{E}_{x\sim p}\bigl[\log\frac{2p(x)}{p(x)+q(x)}]\bigr]+\frac{1}{2}\mathbb{E}_{x\sim q}\bigl[\log\frac{2q(x)}{p(x)+q(x)}\bigr]=\\
+									&=\frac{1}{2}\mathbb{E}_{x\sim p}\bigl[\log\frac{p(x)}{p(x)+q(x)}]\bigr]+\frac{1}{2}\mathbb{E}_{x\sim q}\bigl[\log\frac{q(x)}{p(x)+q(x)}\bigr] + \log(2)=\\
+									&=\log(2)+\frac{1}{2}\max\limits_t\{\mathbb{E}_{x\sim p}[\log t(x)]+\mathbb{E}_{x\sim q}[\log(1-t(x))]\}
+		\end{align*}
+		Si deve pertanto imparare $t(x)$, un binary classifier che predice se $x$ deriva da $p$ o $q$.
+
+		\subsubsection{Obiettivo della GAN}
+		Sia $t_\varphi$ un classificatore o discriminatore per i data points in $\mathcal{X}$.
+		Allora si trova il limite inferiore sull'obiettivo:
+		\begin{align*}
+			d_{JS}(p_{data}, q_\theta) &= \log(2) + \frac{1}{2}\max\limits_t\{\mathbb{E}_{x\sim p_{data}}[\log t(x)] + \mathbb{E}_{x\sim q_\theta}[\log(1-t(x))]\}\ge\\
+																 &= \log(2) + \frac{1}{2}\max\limits_\varphi\{\mathbb{E}_{x\sim p_{data}}[\log t_\varphi(x)] + \mathbb{E}_{x\sim q_\theta}[\log(1-t_\varphi(x))]\}
+		\end{align*}
+		Si possono ignorare $\frac{1}{2}$ e $\log(2)$ in quanto non cambiano il minimo.
+		Si deve pertanto minimizzare per ottenere il parametro del geenratore $\theta^*$:
+		$$\theta^*\in arg\min\limits_\theta\max\limits_\varphi\{\mathbb{E}_{x\sim p_{data}}[\log t_\phi(x)] + \mathbb{E}_{x\sim q_\theta}[\log(1-t_\theta(x))]\}$$
+		Anche in questa forma \`e intrattabile in quanto dipende dalla densit\`a specifica di $q_\theta$, ma:
+		\begin{align*}
+			\mathbb{E}_{x\sim q_\theta}[f(x)] &= \int q_\theta(x)f(x)dx = \iint\delta[g_\theta(\omega)-x]p_\omega(\omega)d\omega f(x)dx=\\
+																				& = \iint\delta[g_\theta(\omega)-x]f(x)dxp_\omega d\omega = \int f(g_\theta(\omega))p_\omega(\omega)d\omega = \\
+																				&= \mathbb{E}_{\omega\sim p_\omega}[f(g_\theta(\omega))]
+		\end{align*}
+		Da cui si pu\`o sostituire con $g_\theta$:
 		$$\theta^*\in arg\min\limits_{\theta}\{\mathbb{E}_{x\sim p_{data}}[\log t_\phi(x)]+\mathbb{E}_{\omega\sim p_\omega}[\log(1-t_\phi(g_\theta(\omega)))]\}$$
 
-	\subsection{Game theoretic interpretation}
-	Questo pu\`o essere visto come un gioco a due giocatori in cui il giocatore 1 o il generatore tenta di generare i dati che non possono essere distinte dai dati veri.
-	Il giocatore 2 \`e il discriminatore che cerca di indovinare se l'input viene dalla vera distribuzione o \`e falso.
-	Il payoff \`e preso con segno positivo per il discriminatore e negativo per il generatore.
-	Pertanto \`e descritto come un gioco non cooperativo a due giocatori e zero somma.
-	Il payoff \`e pertanto:
-	$$V(\theta,\phi) = \mathbb{E}_{x\sim p_{data}}[\log t_\phi(x)]+\mathbb{E}_{x\sim p_\omega}[\log(1-t_\phi(g_\theta(\omega)))]$$
-	Si pu`\o pertanto scrivere il problema di minmax come:
-	$$\theta^*\in V(\theta,\phi)$$
-	IL gradiente del obiettivo del GAN rispetto ai parametri del generatore $\theta$ $\frac{d}{d\theta}V(\theta,\phi)$ e richiede la risoluzione del problema di massimizzazione con rispetto al parametro del discriminatore $\phi$.
-	Questo dovrebbe essere proibitivo computazionalmente.
-	IN pratica si alterna uno step di update per il generatore dopo $k$ update per il discriminatore, senza garanzia di convergenza.
+		\subsubsection{Game theoretic interpretation}
+		Questo pu\`o essere visto come un gioco a due giocatori in cui il giocatore 1 o il generatore tenta di generare i dati che non possono essere distinte dai dati veri.
+		Il giocatore 2 \`e il discriminatore che cerca di indovinare se l'input viene dalla vera distribuzione o \`e falso.
+		Il payoff \`e preso con segno positivo per il discriminatore e negativo per il generatore.
+		Pertanto \`e descritto come un gioco non cooperativo a due giocatori e zero somma.
+		Il payoff \`e pertanto:
+		$$V(\theta,\varphi) = \mathbb{E}_{x\sim p_{data}}[\log t_\varphi(x)]+\mathbb{E}_{x\sim p_\omega}[\log(1-t_\varphi(g_\theta(\omega)))]$$
+		Si pu\`o pertanto scrivere il problema di minmax come:
+		$$\theta^*\in V(\theta,\varphi)$$
 
-	\subsection{Problemi con GAN}
-	\begin{itemize}
-		\item Training stability: i parametri oscillano e non convergono.
-		\item Mode collapse: il generatore potrebbe imparare a perfezionare pochi esempi dal training set e riprodurre solo quegli esempi per vincere sempre.
-		\item Vanishing gradient: se il discriminatore \`e molto brao e lascia il generatore con poco gradiente per imparare.
-	\end{itemize}
+		\subsubsection{Ottimizzazione}
+		Il gradiente del obiettivo del GAN rispetto ai parametri del generatore $\theta$ $\frac{\partial}{\partial\theta}\max_\varphi V(\theta,\varphi)$ e richiede la risoluzione del problema di massimizzazione con rispetto al parametro del discriminatore $\varphi$.
+		Questo dovrebbe essere proibitivo computazionalmente.
+		IN pratica si alterna uno step di update per il generatore dopo $k$ update per il discriminatore, senza garanzia di convergenza.
+
+			\paragraph{Esempio con vanilla SGD}
+			\begin{multicols}{2}
+				\begin{itemize}
+					\item Il discriminatore si aggiorna $k$ volte: $\varphi = \varphi + \nu\frac{\partial}{\partial\varphi}V(\theta,\varphi)$.
+					\item Il generatore si aggiorna $\theta = \theta-\nu\frac{\partial}{\partial\theta}V(\theta,\varphi)$
+				\end{itemize}
+			\end{multicols}
+			Le aspettative nei gradienti con rispetto a $p_{data}$ e a $p_\omega$ sono stimate su mini-batch.
+
+		\subsubsection{Problemi con GAN}
+		\begin{itemize}
+			\item Training stability: i parametri oscillano e non convergono.
+			\item Mode collapse: il generatore potrebbe imparare a perfezionare pochi esempi dal training set e riprodurre solo quegli esempi per vincere sempre.
+			\item Vanishing gradient: se il discriminatore \`e molto brao e lascia il generatore con poco gradiente per imparare.
+		\end{itemize}
+
+		\subsubsection{Altri tipi di GAN}
+		Diversi modelli simili a GAN possono essere costruiti considerando diverse divergenze tra le probabilit\`a e applicando trucchi simili per eliminare la necessit\`a di conoscere la densit\`a esplicitamente:
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item \emph{f-GANS} costruite su f-divergenza.
+				\item \emph{b-GANS} costruite su Bergman divergenza.
+				\item \emph{Wasserstein GAN} utilizzano la Wasserstein metric.
+				\item Altre GAN possono essere derivate utilizzando altre metriche integrali di probabilit\`a.
+				\item \emph{f-GANS} su f-divergenza.
+			\end{itemize}
+		\end{multicols}
+		GAN e VAE possono essere combinate e GAN condizionali esistono che labvorano simile a VAE continual.

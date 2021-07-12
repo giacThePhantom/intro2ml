@@ -248,39 +248,71 @@
 \contentsline {section}{\numberline {12.3}Clustering}{62}{section.12.3}%
 \contentsline {subsection}{\numberline {12.3.1}Task}{62}{subsection.12.3.1}%
 \contentsline {subsection}{\numberline {12.3.2}K-means clustering}{62}{subsection.12.3.2}%
-\contentsline {section}{\numberline {12.4}Density estimation}{62}{section.12.4}%
-\contentsline {subsection}{\numberline {12.4.1}Task}{62}{subsection.12.4.1}%
-\contentsline {subsection}{\numberline {12.4.2}Generative model}{62}{subsection.12.4.2}%
-\contentsline {subsubsection}{\numberline {12.4.2.1}Modelli generativi e discriminativi}{63}{subsubsection.12.4.2.1}%
-\contentsline {subsubsection}{\numberline {12.4.2.2}Tipi di density estimation}{63}{subsubsection.12.4.2.2}%
-\contentsline {paragraph}{\numberline {12.4.2.2.1}Explicit density estimation}{63}{paragraph.12.4.2.2.1}%
-\contentsline {paragraph}{\numberline {12.4.2.2.2}Implicit density estimation}{63}{paragraph.12.4.2.2.2}%
-\contentsline {subsubsection}{\numberline {12.4.2.3}Obiettivo per i modelli generativi}{63}{subsubsection.12.4.2.3}%
-\contentsline {subsubsection}{\numberline {12.4.2.4}Variational AutoEncode (VAE)}{63}{subsubsection.12.4.2.4}%
-\contentsline {subsubsection}{\numberline {12.4.2.5}VAE condizionale}{64}{subsubsection.12.4.2.5}%
-\contentsline {subsubsection}{\numberline {12.4.2.6}Probabilit\`a dei VAE}{64}{subsubsection.12.4.2.6}%
-\contentsline {subsection}{\numberline {12.4.3}Generative adversarial Networks (GAN)}{65}{subsection.12.4.3}%
-\contentsline {subsection}{\numberline {12.4.4}Game theoretic interpretation}{65}{subsection.12.4.4}%
-\contentsline {subsection}{\numberline {12.4.5}Problemi con GAN}{65}{subsection.12.4.5}%
-\contentsline {chapter}{\numberline {13}Reinforcement learning}{66}{chapter.13}%
-\contentsline {section}{\numberline {13.1}Introduzione}{66}{section.13.1}%
-\contentsline {subsection}{\numberline {13.1.1}Policy}{66}{subsection.13.1.1}%
-\contentsline {section}{\numberline {13.2}Markov decision process (MDP)}{66}{section.13.2}%
-\contentsline {subsection}{\numberline {13.2.1}Componenti}{66}{subsection.13.2.1}%
-\contentsline {subsection}{\numberline {13.2.2}Ambienti stocastici}{67}{subsection.13.2.2}%
-\contentsline {subsection}{\numberline {13.2.3}MDP loop}{67}{subsection.13.2.3}%
-\contentsline {subsection}{\numberline {13.2.4}Policy}{67}{subsection.13.2.4}%
-\contentsline {subsubsection}{\numberline {13.2.4.1}Cumulative discounted reward}{67}{subsubsection.13.2.4.1}%
-\contentsline {section}{\numberline {13.3}Confronto tra reinforcement learning e supervised learning}{68}{section.13.3}%
-\contentsline {subsection}{\numberline {13.3.1}Supervised learning loop}{68}{subsection.13.3.1}%
-\contentsline {subsection}{\numberline {13.3.2}Reinforcement learning loop}{68}{subsection.13.3.2}%
-\contentsline {subsection}{\numberline {13.3.3}Differenze fondamentali}{68}{subsection.13.3.3}%
-\contentsline {section}{\numberline {13.4}Metodi di reinforcement learning}{68}{section.13.4}%
-\contentsline {subsection}{\numberline {13.4.1}Value based methods}{69}{subsection.13.4.1}%
-\contentsline {subsubsection}{\numberline {13.4.1.1}Q value function}{69}{subsubsection.13.4.1.1}%
-\contentsline {subsubsection}{\numberline {13.4.1.2}Algoritmo Q-learning}{69}{subsubsection.13.4.1.2}%
-\contentsline {subsubsection}{\numberline {13.4.1.3}Deep Q learning}{70}{subsubsection.13.4.1.3}%
-\contentsline {paragraph}{\numberline {13.4.1.3.1}Problematiche}{70}{paragraph.13.4.1.3.1}%
-\contentsline {subsection}{\numberline {13.4.2}Policy gradient methods PGM}{70}{subsection.13.4.2}%
-\contentsline {subsubsection}{\numberline {13.4.2.1}Reinforce}{71}{subsubsection.13.4.2.1}%
-\contentsline {subsubsection}{\numberline {13.4.2.2}Single step reinforce}{71}{subsubsection.13.4.2.2}%
+\contentsline {subsubsection}{\numberline {12.3.2.1}Distanza}{62}{subsubsection.12.3.2.1}%
+\contentsline {paragraph}{\numberline {12.3.2.1.1}Cosine similarity}{63}{paragraph.12.3.2.1.1}%
+\contentsline {subsubsection}{\numberline {12.3.2.2}Propriet\`a di K-means}{63}{subsubsection.12.3.2.2}%
+\contentsline {paragraph}{\numberline {12.3.2.2.1}Convergenza}{63}{paragraph.12.3.2.2.1}%
+\contentsline {paragraph}{\numberline {12.3.2.2.2}Minimo}{63}{paragraph.12.3.2.2.2}%
+\contentsline {paragraph}{\numberline {12.3.2.2.3}Selezione dei centroidi}{63}{paragraph.12.3.2.2.3}%
+\contentsline {subsection}{\numberline {12.3.3}Problematiche del clustering}{63}{subsection.12.3.3}%
+\contentsline {subsection}{\numberline {12.3.4}Algoritmi di clustering}{63}{subsection.12.3.4}%
+\contentsline {subsubsection}{\numberline {12.3.4.1}Flat algorithms}{63}{subsubsection.12.3.4.1}%
+\contentsline {subsubsection}{\numberline {12.3.4.2}Hierarchical algorithms}{64}{subsubsection.12.3.4.2}%
+\contentsline {subsubsection}{\numberline {12.3.4.3}Hard clustering}{64}{subsubsection.12.3.4.3}%
+\contentsline {subsubsection}{\numberline {12.3.4.4}Soft clustering}{64}{subsubsection.12.3.4.4}%
+\contentsline {subsection}{\numberline {12.3.5}EM clustering}{64}{subsection.12.3.5}%
+\contentsline {subsubsection}{\numberline {12.3.5.1}Mixture of Gaussians}{64}{subsubsection.12.3.5.1}%
+\contentsline {subsubsection}{\numberline {12.3.5.2}Soft cluster poins}{64}{subsubsection.12.3.5.2}%
+\contentsline {subsubsection}{\numberline {12.3.5.3}Ricalcolo dei centri}{64}{subsubsection.12.3.5.3}%
+\contentsline {paragraph}{\numberline {12.3.5.3.1}Fit di una gaussiana}{64}{paragraph.12.3.5.3.1}%
+\contentsline {subsubsection}{\numberline {12.3.5.4}Conclusione}{65}{subsubsection.12.3.5.4}%
+\contentsline {subsection}{\numberline {12.3.6}Altri algoritmi di clustering}{65}{subsection.12.3.6}%
+\contentsline {subsubsection}{\numberline {12.3.6.1}Spectral clustering}{65}{subsubsection.12.3.6.1}%
+\contentsline {subsubsection}{\numberline {12.3.6.2}Clustering gerarchico}{65}{subsubsection.12.3.6.2}%
+\contentsline {section}{\numberline {12.4}Density estimation}{65}{section.12.4}%
+\contentsline {subsection}{\numberline {12.4.1}Task}{65}{subsection.12.4.1}%
+\contentsline {subsection}{\numberline {12.4.2}Generative model}{65}{subsection.12.4.2}%
+\contentsline {subsection}{\numberline {12.4.3}Modelli discriminativi}{65}{subsection.12.4.3}%
+\contentsline {subsection}{\numberline {12.4.4}Tipi di density estimation}{66}{subsection.12.4.4}%
+\contentsline {subsubsection}{\numberline {12.4.4.1}Explicit density estimation}{66}{subsubsection.12.4.4.1}%
+\contentsline {subsubsection}{\numberline {12.4.4.2}Implicit density estimation}{66}{subsubsection.12.4.4.2}%
+\contentsline {subsubsection}{\numberline {12.4.4.3}Obiettivo per i modelli generativi}{66}{subsubsection.12.4.4.3}%
+\contentsline {subsection}{\numberline {12.4.5}Variational AutoEncode (VAE)}{66}{subsection.12.4.5}%
+\contentsline {subsubsection}{\numberline {12.4.5.1}Training}{66}{subsubsection.12.4.5.1}%
+\contentsline {subsubsection}{\numberline {12.4.5.2}Generare dati con il decoder}{67}{subsubsection.12.4.5.2}%
+\contentsline {paragraph}{\numberline {12.4.5.2.1}Training del decoder}{67}{paragraph.12.4.5.2.1}%
+\contentsline {paragraph}{\numberline {12.4.5.2.2}Intrattabilit\`a}{67}{paragraph.12.4.5.2.2}%
+\contentsline {paragraph}{\numberline {12.4.5.2.3}Variational bound}{67}{paragraph.12.4.5.2.3}%
+\contentsline {paragraph}{\numberline {12.4.5.2.4}Training in pratica}{68}{paragraph.12.4.5.2.4}%
+\contentsline {subsubsection}{\numberline {12.4.5.3}VAE condizionale}{68}{subsubsection.12.4.5.3}%
+\contentsline {subsubsection}{\numberline {12.4.5.4}Probabilit\`a dei VAE}{68}{subsubsection.12.4.5.4}%
+\contentsline {subsection}{\numberline {12.4.6}Generative adversarial Networks (GAN)}{68}{subsection.12.4.6}%
+\contentsline {subsubsection}{\numberline {12.4.6.1}Forma equivalente della divergenza JS}{69}{subsubsection.12.4.6.1}%
+\contentsline {subsubsection}{\numberline {12.4.6.2}Obiettivo della GAN}{69}{subsubsection.12.4.6.2}%
+\contentsline {subsubsection}{\numberline {12.4.6.3}Game theoretic interpretation}{70}{subsubsection.12.4.6.3}%
+\contentsline {subsubsection}{\numberline {12.4.6.4}Ottimizzazione}{70}{subsubsection.12.4.6.4}%
+\contentsline {paragraph}{\numberline {12.4.6.4.1}Esempio con vanilla SGD}{70}{paragraph.12.4.6.4.1}%
+\contentsline {subsubsection}{\numberline {12.4.6.5}Problemi con GAN}{70}{subsubsection.12.4.6.5}%
+\contentsline {subsubsection}{\numberline {12.4.6.6}Altri tipi di GAN}{70}{subsubsection.12.4.6.6}%
+\contentsline {chapter}{\numberline {13}Reinforcement learning}{71}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Introduzione}{71}{section.13.1}%
+\contentsline {subsection}{\numberline {13.1.1}Policy}{71}{subsection.13.1.1}%
+\contentsline {section}{\numberline {13.2}Markov decision process (MDP)}{71}{section.13.2}%
+\contentsline {subsection}{\numberline {13.2.1}Componenti}{71}{subsection.13.2.1}%
+\contentsline {subsection}{\numberline {13.2.2}Ambienti stocastici}{72}{subsection.13.2.2}%
+\contentsline {subsection}{\numberline {13.2.3}MDP loop}{72}{subsection.13.2.3}%
+\contentsline {subsection}{\numberline {13.2.4}Policy}{72}{subsection.13.2.4}%
+\contentsline {subsubsection}{\numberline {13.2.4.1}Cumulative discounted reward}{72}{subsubsection.13.2.4.1}%
+\contentsline {section}{\numberline {13.3}Confronto tra reinforcement learning e supervised learning}{73}{section.13.3}%
+\contentsline {subsection}{\numberline {13.3.1}Supervised learning loop}{73}{subsection.13.3.1}%
+\contentsline {subsection}{\numberline {13.3.2}Reinforcement learning loop}{73}{subsection.13.3.2}%
+\contentsline {subsection}{\numberline {13.3.3}Differenze fondamentali}{73}{subsection.13.3.3}%
+\contentsline {section}{\numberline {13.4}Metodi di reinforcement learning}{73}{section.13.4}%
+\contentsline {subsection}{\numberline {13.4.1}Value based methods}{74}{subsection.13.4.1}%
+\contentsline {subsubsection}{\numberline {13.4.1.1}Q value function}{74}{subsubsection.13.4.1.1}%
+\contentsline {subsubsection}{\numberline {13.4.1.2}Algoritmo Q-learning}{74}{subsubsection.13.4.1.2}%
+\contentsline {subsubsection}{\numberline {13.4.1.3}Deep Q learning}{75}{subsubsection.13.4.1.3}%
+\contentsline {paragraph}{\numberline {13.4.1.3.1}Problematiche}{75}{paragraph.13.4.1.3.1}%
+\contentsline {subsection}{\numberline {13.4.2}Policy gradient methods PGM}{75}{subsection.13.4.2}%
+\contentsline {subsubsection}{\numberline {13.4.2.1}Reinforce}{76}{subsubsection.13.4.2.1}%
+\contentsline {subsubsection}{\numberline {13.4.2.2}Single step reinforce}{76}{subsubsection.13.4.2.2}%
