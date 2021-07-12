@@ -128,7 +128,7 @@ Questo ciclo si ripete fino a che la loss non diminuisce in nessuna dimensione.
 
 	\subsection{Gradiente}
 	Il gradiente \`e il vettore delle derivate parziali rispetto a tutte le coordinate dei pesi:
-	$$\nabla L = \biggl[\dfrac{\delta L}{\delta w_1}\cdots\dfrac{\delta L}{\delta w_N}\biggr]$$
+	$$\nabla L = \biggl[\dfrac{\partial L}{\partial w_1}\cdots\dfrac{\partial L}{\partial w_N}\biggr]$$
 	Ogni derivata parziale misura quanto veloce la perdita cambia in una direzione.
 	Quando il gradiente \`e zero la perdita non sta cambiando in nessuna direzione.\\
 	\input{Pseudocodice/09_gradient_descent}

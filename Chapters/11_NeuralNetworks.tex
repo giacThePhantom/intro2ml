@@ -68,7 +68,7 @@ Funzioni attivatrici tradizionali sono non lineari come la sigmoide $h(x) = \fra
 
 \section{Feedforward networks}
 Nelle reti feed forward la funzione $f$ \`e la composizione di multiple funzioni:
-$$f(x) = f^{(n)}(\dots(f^{(1)}*x)\dots)$$
+$$f(x) = f^{(n)}(\dots(f^{(1)}(x)\dots)$$
 L'obiettivo \`e quello di approssimare una funzione sconosciuta ideale $f^*:\mathcal{X}\rightarrow\mathcal{Y}$, in cui il modello ideale \`e $y = f^*(x)$.
 Per queste reti si definisce una mappatura parametrica $y = f(x,\theta)$ e si imparano i parametri per trovare una buona approssimazione di $f^*$ dai sample disponibili.
 L'informazione fluisce dall'input, verso computazioni intermedie e si produce l'ouput.
@@ -95,7 +95,7 @@ Il layer finale viene chiamato layer di output.
 	\end{multicols}
 
 		\subsubsection{Funzione di costo}
-		La funzione di costo dice quanto la rete si composta bene rispetto ai training data:
+		La funzione di costo dice quanto la rete si comporta bene rispetto ai training data:
 		$$\mathcal{L}(w) = distance(f_\theta(x), y)$$
 		Calcola ovvero la discrepanza tra la predizione e la label effettiva,
 		Si possono applicare loss gi\`a viste e tipicamente si converte l'output in probabilit\`a come attraverso softmax.
@@ -134,9 +134,9 @@ Il layer finale viene chiamato layer di output.
 			\end{multicols}
 
 			\paragraph{Sigmoid e Tanh}
-			Questi due tipi di hidden unit riducono il tipo di non linearit\`a restringendo l'outpu ai range $[0,1]$ e $[-1,1]$.
+			Questi due tipi di hidden unit riducono il tipo di non linearit\`a restringendo l'output ai range $[0,1]$ e $[-1,1]$.
 			Si saturano lungo la maggior parte del dominio e sono fortemente sensibili unicamente quando l'input \`e pi\`u vicino a $0$.
-			La saturazione rende l'apprendimento basato sul gradienet pi\`u difficile.
+			La saturazione rende l'apprendimento basato sul gradient pi\`u difficile.
 			\begin{multicols}{2}
 				\begin{itemize}
 					\item Sigmoide: $h(x) = \frac{1}{1+e^{-x}}$.
@@ -149,7 +149,7 @@ Il layer finale viene chiamato layer di output.
 		Un risultato teorico da parte di Cybenko $1989$: reti a $2$-layer con output lineari con del squashing non-linearity nelle hidden-unit possono approssimare ogni funzione continua su dominio compatto ad accuratezza arbitraria.
 		Questo risultato \`e valido anche per funzioni non lineari.
 		Questo implica che per ogni funzione che si cerca di imparare, un grande \emph{MLP} \`e in grado di impararla.
-		Nonostante questo non \`e garantici che l'algoritmo di training sia capace di imparare tale funzione.
+		Nonostante questo non \`e garantito che l'algoritmo di training sia capace di imparare tale funzione.
 
 	\subsection{Backpropagation}
 	La backpropagation \`e il modo in cui la rete impara i propri pesi.
@@ -182,12 +182,12 @@ Il layer finale viene chiamato layer di output.
 		\subsubsection{Backpropagation}
 		L'unit\`a di attivazione generale in una rete multilayer:
 		$$z_t = h\bigl(\sum\limits_jw_{jt}z_j\bigr)$$
-		La forkard propagation calcola per ogni unit\`a $a_t = \sum\limits_j w_{jt}z_j$.
+		La forward propagation calcola per ogni unit\`a $a_t = \sum\limits_j w_{jt}z_j$.
 		Dove $a_t$ \`e l'input della funzione di attivazione di un'unit\`a di livello $t$.
 		Ora
 		$$\frac{\partial L}{\partial w_{jt}} = \frac{\partial L}{\partial a_t}z_j$$
 		Sia $\partial a_t = \delta_t$ e l'unit\`a di output con attivazione lineare $\delta_t = \hat{y} -t$.
-		L'unit\`a hidde $t$ che manda l'output all'unit\`a $S$:
+		L'unit\`a hidden $t$ che manda l'output all'unit\`a $S$:
 		\begin{align*}
 			\delta_t &= \sum\limits_{s\in S} = \sum\limits_{s\in S}\frac{\partial L}{\partial a_s}\frac{\partial a_s}{\partial a_t}=\\
 			&= h'(a_t)\sum\limits_{s\in s} w_{ts}\delta_s
@@ -245,7 +245,7 @@ Il layer finale viene chiamato layer di output.
 	I cambi nei parametri dipendono dal gradiente della loss con rispetto dei pesi della rete.
 	La backpropagation \`e il metodo per computare i gradienti.
 	Si analizzano altri miglioramenti come Stochastic gradient descent.
-	Il gradient descent Nelle reti neurali pu\`o essere calcolato in diversi modi.
+	Il gradient descent nelle reti neurali pu\`o essere calcolato in diversi modi.
 
 		\subsubsection{Batch Gradient Descent (BGD)}
 		In BGD i gradienti sono computati su ogni update per l'intero training con un alto costo computazionale ma garantendo una grande stabilit\`a nella stima del gradiente.
@@ -258,7 +258,7 @@ Il layer finale viene chiamato layer di output.
 		\input{Pseudocodice/11_SDG}
 
 		\subsubsection{Minibatches}
-		Le minibatches risolvono il problema di SDK rispetto ai dati rumorosi.
+		Le minibatches risolvono il problema di SDG rispetto ai dati rumorosi.
 		Il tempo di computazione per aggiornamento non dipende dal numero di esempi di training $N$, permettendo la creazione di minibatches pi\`u grandi che vengono computate parallelamente.
 		Sono tipicamente di dimensione $2^n$ per le propriet\`a di calcolo della GPU.
 
@@ -271,7 +271,7 @@ Il layer finale viene chiamato layer di output.
 		\subsubsection{Adaptive learning rate method}
 		Alcune volte \`e bene usare un learning rate diverso per ogni peso.
 		Un metodo che lo implementa \`e Adagrad o adaptive gradient optimizer.
-		Questo fa downscale di un parametro del modello della radice della somma dei quadrati dei valori storici, in questo modo parametri con una grande derivata parziale hanno learning rate che si abbassano rapidamente
+		Questo fa downscale di un parametro del modello della radice della somma dei quadrati dei valori storici, in questo modo parametri con una grande derivata parziale hanno learning rate che si abbassano rapidamente.
 		Si adatta al learning rate dei parametri svolgendo aggiornamenti minori associati con feature che pi\`u frequenti e grandi per feature meno frequenti.
 		Utile per gestire dati sparsi.\\
 		\input{Pseudocodice/13_Adagrad}
@@ -311,7 +311,7 @@ $$S(i, j) = (I\cdot K)(i,j) = \sum\limits_M\sum\limits_NI(m,n(K(i-m,j-n)$$
 			\item High-level layer imparano pattern globali.
 		\end{itemize}
 	\end{multicols}
-	Tipicamente i layer di CNN trasformano la matrice di input in una predazione della classe di output.
+	Tipicamente i layer di CNN trasformano la matrice di input in una predizione della classe di output.
 	Ci sono tre tipi di operazioni distinte:
 	\begin{multicols}{3}
 		\begin{enumerate}
@@ -352,7 +352,7 @@ $$S(i, j) = (I\cdot K)(i,j) = \sum\limits_M\sum\limits_NI(m,n(K(i-m,j-n)$$
 	Ognuna di esse \`e il risultato di una convoluzione.
 	Lo stesso filtro convoluzionale \`e applicato ad ogni locazione.
 	I pesi sono diversi attraverso le feature maps.
-	Una unit\`a a una particolare locazione sulla griglia pu\`o solo ricever l'input da unit\`a a una locazione simile al livello inferiore.
+	Una unit\`a a una particolare locazione sulla griglia pu\`o solo ricevere l'input da unit\`a a una locazione simile al livello inferiore.
 	Si necessita di dati con labels ed \`e flessibile a molte applicazioni.
 
 \section{Altre reti neurali}
