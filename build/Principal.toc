@@ -262,7 +262,7 @@
 \contentsline {subsubsection}{\numberline {12.3.4.4}Soft clustering}{64}{subsubsection.12.3.4.4}%
 \contentsline {subsection}{\numberline {12.3.5}EM clustering}{64}{subsection.12.3.5}%
 \contentsline {subsubsection}{\numberline {12.3.5.1}Mixture of Gaussians}{64}{subsubsection.12.3.5.1}%
-\contentsline {subsubsection}{\numberline {12.3.5.2}Soft cluster poins}{64}{subsubsection.12.3.5.2}%
+\contentsline {subsubsection}{\numberline {12.3.5.2}Soft cluster points}{64}{subsubsection.12.3.5.2}%
 \contentsline {subsubsection}{\numberline {12.3.5.3}Ricalcolo dei centri}{64}{subsubsection.12.3.5.3}%
 \contentsline {paragraph}{\numberline {12.3.5.3.1}Fit di una gaussiana}{64}{paragraph.12.3.5.3.1}%
 \contentsline {subsubsection}{\numberline {12.3.5.4}Conclusione}{65}{subsubsection.12.3.5.4}%

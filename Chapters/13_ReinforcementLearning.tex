@@ -75,7 +75,7 @@ L'obiettivo \`e trovare una policy, una mappa che ritorna tutte le azioni ottima
 	\subsection{Reinforcement learning loop}
 	\begin{itemize}
 		\item Dallo stato $s_i$ svolgi un azione $a$ determinata dalla policy $\pi(s)$.
-		\item L'ambiente seleziona lo stato successivo $s'$ in base al modello di transiizone $P(s'|s,a)$.
+		\item L'ambiente seleziona lo stato successivo $s'$ in base al modello di transizione $P(s'|s,a)$.
 		\item Osserva $s'$ e la reward $r(s)$, aggiornando la policy.
 	\end{itemize}
 
@@ -83,7 +83,7 @@ L'obiettivo \`e trovare una policy, una mappa che ritorna tutte le azioni ottima
 	\begin{itemize}
 		\item Nel SL i dati non dipendono dall'input precedente, mentre in RL le azioni dell'agente influiscono il prossimo input.
 		\item In SL si ha una loss function che guida il modello ai parametri migliori e si pu\`o differenziare con rispetto ai pesi, mentre in RL la reward guida lo sviluppo del modello, ma non \`e differenziabile rispetto ai paramtri.
-		\item In SL si trova supervisione rispetto ad ogni passo, mentr ein RL le rewards potrebbero essere sparse.
+		\item In SL si trova supervisione rispetto ad ogni passo, mentre in RL le rewards potrebbero essere sparse.
 	\end{itemize}
 
 \section{Metodi di reinforcement learning}
@@ -126,13 +126,13 @@ Per RL si trovano due approcci principali:
 		Per calcolare il valore $Q$ dello stato corrente si deve calcolare il valore $Q$ degli stati vicini e cos\`i via con ricorsione.
 
 		\subsubsection{Algoritmo Q-learning}
-		Lo scopo di questo algoritom \`e che la matrice di value $R$ \`e conosciuta unicamente all'ambiente e l'agente deve impararla con l'esperienza.
+		Lo scopo di questo algoritmo \`e che la matrice di value $R$ \`e conosciuta unicamente all'ambiente e l'agente deve impararla con l'esperienza.
 		L'agente possiede una matrice $Q$ che codifica stato, azione e rewards, ma \`e inizializzata a $0$ e diventa $R$ attraverso l'esperienza.
 		La policy si ottiene attraverso questa matrice.
 		\begin{enumerate}
 			\item Inizializza la matrice $Q$ con zero.
 			\item Seleziona uno stato iniziale casuale.
-			\item Per ogni episodio (insieme di azioni che parte dallo stato iniziale e arriva allo stato finale.
+			\item Per ogni episodio (insieme di azioni che parte dallo stato iniziale e arriva allo stato finale).
 			\item Mentre lo stato non \`e lo stato obiettivo.
 			\item Seleziona una possibile azione casuale per lo stato corrente.
 			\item Utilizzando l'azione considera arrivare allo stato prossimo.
@@ -153,7 +153,7 @@ Per RL si trovano due approcci principali:
 		Per questa ragione viene introdotto un algoritmo di deep $Q$ learning che sfrutta l'idea di approssimare $Q$ utilizzando una funzione parametrica trainata da una NN.
 		Si pu\`o approssimare $Q$ a
 		$$Q^*(s,a) \approx Q_w(s,a)$$
-		In quanto $Q_w$ \`e una funzione dei pesi $w$ si pu\`o trainare una N per approssimare $Q_w$.
+		In quanto $Q_w$ \`e una funzione dei pesi $w$ si pu\`o trainare una NN per approssimare $Q_w$.
 		Ad ogni interazione del training si aggiornano i parametri $w$ del modello per avvicinare $Q$ a $y$:
 		$$y_i(s,a) = \mathbb{E}_{s'\sim P(\cdot|s,a)}[r(s)+y\max_{a'}Q_{w_{i-1}}(s',a')|s,a]$$
 		La loss function
@@ -188,7 +188,7 @@ Per RL si trovano due approcci principali:
 	\end{align*}
 	Si vuole il valore atteso di ritorno di traiettorie: $\tau(s_0,a_0,r_0, \dots, s_n,a_n,r_n)$
 	$$J(\theta) = \int_\tau r(\tau)p(\tau,\theta)d\tau$$
-	Dove $p(\tau,\theta)$ \`e lap robabilit\`a della traiettoria $\tau$ sotto la policy con i parametri $\theta$:
+	Dove $p(\tau,\theta)$ \`e la probabilit\`a della traiettoria $\tau$ sotto la policy con i parametri $\theta$:
 	$$p(\tau,\theta) = \prod\limits_{t\ge 0}\pi_\theta(s_t,a_t)P(s_{t+1}|s_t,a_t)$$
 	Le traiettorie sono una semplficazione, un oggetto che rappresenta stato, azione e reward.
 	In quanto l'integrale \`e di difficile risoluzione si differenzia utilizzando la log-trasformation:
@@ -215,7 +215,7 @@ Per RL si trovano due approcci principali:
 		\begin{enumerate}
 			\item In uno stato $s$ campiona l'azione $a$ utilizzando la policy corrente $\pi_\theta$ e si osserva la reward $r$.
 			\item Stima il gradiente $\nabla_\theta J(\theta)\sim r\nabla_\theta\log\pi_\theta(s,a)$
-			\item Aggiorna i parametri attraverso gradient descent: $\theta = \theta + \eta\nabla_\theta J(\theta)$.
+			\item Aggiorna i parametri attraverso gradient ascent $\theta = \theta + \eta\nabla_\theta J(\theta)$.
 		\end{enumerate}
 		Si nota come $r$ alto aumenta la probabilit\`a dell'azione vista, mentre se \`e basso si abbassa la probabiliit\`a.
 		Si aggiorna il parametri $\theta$ in accordo con il gradiente in quanto si vuole aumentare la reward o gradient ascent.

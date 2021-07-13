@@ -16,7 +16,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 \section{Dimensionality reduction}
 
 	\subsection{Task}
-	Si deve trovare una funzione $f\in Y^X$ che mappa ogni input a grandi dimensioni $x\in X$ a dimensioni minori incorporando $f(x)\in Y$, dove $dim(T)\ll dim(X)$.
+	Si deve trovare una funzione $f\in Y^X$ che mappa ogni input a grandi dimensioni $x\in X$ a dimensioni minori incorporando $f(x)\in Y$, dove $dim(X)\ll dim(X)$.
 	Questa task permette di preservare le informazioni riducendo la dimensione di ogni dato in input.
 	Questo approccio permette di visualizzare i dati, semplificare la loro computazione.
 
@@ -165,9 +165,9 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 
 			\paragraph{Cosine similarity}
 			Per risolvere questo problema si utilizza la cosine similarity:
-			$$sim(x,y( = \frac{X\cdot y}{|x||y|} = \frac{x}{|x|}\cdot\frac{y}{|y|} = \frac{\sum\limits_{i = 1}^n x_iy_i}{\sqrt{\sum\limits_{i = 1}^n x_i^2}\sqrt{\sum\limits_{i = 1}^ny_i^2}}$$
+			$$sim(x,y) = \frac{X\cdot y}{|x||y|} = \frac{x}{|x|}\cdot\frac{y}{|y|} = \frac{\sum\limits_{i = 1}^n x_iy_i}{\sqrt{\sum\limits_{i = 1}^n x_i^2}\sqrt{\sum\limits_{i = 1}^ny_i^2}}$$
 			Questa \`e correlata con l'angolo tra due vettori.
-			Varia tra $o$ e $1$.
+			Varia tra $0$ e $1$.
 			\`E buona per dati di testo e molti altri.
 			Di facile computazione in quanto si possono considerare solo features con valori non zero in entrambi gli esempi.
 			La cosine distance:
@@ -240,7 +240,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 		$$N[x;\mu;\Sigma] = \frac{1}{(2\pi)^{\frac{d}{2}}\sqrt{det(\Sigma)}}e^{[-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu)]}$$
 		Si impara pertanto la media di ogni cluster o suo centro e la matrice di covarianza, ovvero quanto si disperde, la forma del contorno.
 
-		\subsubsection{Soft cluster poins}
+		\subsubsection{Soft cluster points}
 		Si assegna soft ogni punto a ogni cluster calcolando $p(\theta_c|x)$ o la probabilit\`a di ogni punto di appartenere al cluster.
 		Si utilizza l'equazione della Gaussiana per ogni cluster normalizzata per creare una probabilit\`a.
 
@@ -369,7 +369,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 
 			\paragraph{Training in pratica}
 			Viene campionato un sample $x$ da $p_{data}$.
-			QUesto viene passato dal decoder $q_\psi$ che produce una media $\mu_{\omega|x}$ e una covarianza $\Sigma_{\omega|x}$ utilizzati per costruire una gaussiana utilizzata per costruire il regularization term e il sample $\omega$.
+			Questo viene passato dal decoder $q_\psi$ che produce una media $\mu_{\omega|x}$ e una covarianza $\Sigma_{\omega|x}$ utilizzati per costruire una gaussiana utilizzata per costruire il regularization term e il sample $\omega$.
 			$\omega$ \`e l'input del decode $q_\theta$ che produce una media $\mu_{x|\omega}$ e una covarianza $\Sigma_{x|\omega}$, utilizzati per costruire una gaussiana, che insieme ad $x$ costruisce il reconstruction term.
 			Il reconstruction e il regularization term vengono usati per computare il variational lower bound loss, con il secondo come $P_\omega = N(0,1)$, di normale standard e questo viene usato per aggiornare $\theta$ e $\psi$.
 
@@ -380,7 +380,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 		$$q_\phi(\omega|x,y)$$
 		$$q_\theta(\omega|x,y)$$
 		Si definisce i priori condizionati sull'informazione $p_\omega(\omega|y)$.
-		Le VAE condizioneli sono usate per direzionare l'output che si vuole dal generative model, altrimenti l'output seguirebbe solo la distribuzione di probabilit\`a dei dati.
+		Le VAE condizionali sono usate per direzionare l'output che si vuole dal generative model, altrimenti l'output seguirebbe solo la distribuzione di probabilit\`a dei dati.
 
 		\subsubsection{Probabilit\`a dei VAE}
 		\begin{itemize}
@@ -417,7 +417,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 																 &= \log(2) + \frac{1}{2}\max\limits_\varphi\{\mathbb{E}_{x\sim p_{data}}[\log t_\varphi(x)] + \mathbb{E}_{x\sim q_\theta}[\log(1-t_\varphi(x))]\}
 		\end{align*}
 		Si possono ignorare $\frac{1}{2}$ e $\log(2)$ in quanto non cambiano il minimo.
-		Si deve pertanto minimizzare per ottenere il parametro del geenratore $\theta^*$:
+		Si deve pertanto minimizzare per ottenere il parametro del generatore $\theta^*$:
 		$$\theta^*\in arg\min\limits_\theta\max\limits_\varphi\{\mathbb{E}_{x\sim p_{data}}[\log t_\phi(x)] + \mathbb{E}_{x\sim q_\theta}[\log(1-t_\theta(x))]\}$$
 		Anche in questa forma \`e intrattabile in quanto dipende dalla densit\`a specifica di $q_\theta$, ma:
 		\begin{align*}
@@ -441,7 +441,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 		\subsubsection{Ottimizzazione}
 		Il gradiente del obiettivo del GAN rispetto ai parametri del generatore $\theta$ $\frac{\partial}{\partial\theta}\max_\varphi V(\theta,\varphi)$ e richiede la risoluzione del problema di massimizzazione con rispetto al parametro del discriminatore $\varphi$.
 		Questo dovrebbe essere proibitivo computazionalmente.
-		IN pratica si alterna uno step di update per il generatore dopo $k$ update per il discriminatore, senza garanzia di convergenza.
+		In pratica si alterna uno step di update per il generatore dopo $k$ update per il discriminatore, senza garanzia di convergenza.
 
 			\paragraph{Esempio con vanilla SGD}
 			\begin{multicols}{2}
@@ -456,7 +456,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 		\begin{itemize}
 			\item Training stability: i parametri oscillano e non convergono.
 			\item Mode collapse: il generatore potrebbe imparare a perfezionare pochi esempi dal training set e riprodurre solo quegli esempi per vincere sempre.
-			\item Vanishing gradient: se il discriminatore \`e molto brao e lascia il generatore con poco gradiente per imparare.
+			\item Vanishing gradient: se il discriminatore \`e molto bravo e lascia il generatore con poco gradiente per imparare.
 		\end{itemize}
 
 		\subsubsection{Altri tipi di GAN}
@@ -470,4 +470,4 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 				\item \emph{f-GANS} su f-divergenza.
 			\end{itemize}
 		\end{multicols}
-		GAN e VAE possono essere combinate e GAN condizionali esistono che labvorano simile a VAE continual.
+		GAN e VAE possono essere combinate e GAN condizionali esistono che lavorano simile a VAE continual.
