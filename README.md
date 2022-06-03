@@ -1,4 +1,4 @@
-# Fisica
+# Intro2ml
 Riassunto del corso introduction to machine learning tenuto dalla professoressa Elisa Ricci. Università di Trento 2020/2021.
 
 ## Struttura dei file
