@@ -23,13 +23,4 @@ $score = \langle 0,\dots, 0\rangle$\;
 	$score_j = score_j - y$\;
 }
 \Return \Argsort{score}
-$D = []$\;
-\For{$n = 1$ \To $N$}{
-	\For{all $i,j = 1$ to $M$ \And $i\neq j$}{
-		\If{$i$ \Is prefered to $j$ on query $n$}{
-			$D = D\oplus (x_{nij},-1)$
-		}
-	}
-}
-\Return \BinaryTrain{D}
 \end{algorithm}
