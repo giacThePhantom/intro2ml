@@ -28,7 +28,7 @@ Contiene una funzione di predizione $h\in\mathcal{F}_{task}$, tipicamente una co
 Dato un training set $\mathcal{D}_n = \{z_1,\dots, z_n\}$ si deve trovare $f_{t^*}$ dove:
 $$t^*\in arg\min\limits_{t\in\mathcal{T}} E(f_t;\mathcal{D}_n)$$
 Dove $\mathcal{T}$ \`e l'insieme dei decision trees.
-Il problema di ottimizzazione \`e facile se non si impongono constraints, altrimenti potrebbe diventare \emph{NP-hard}.
+Il problema di ottimizzazione \`e facile se non si impongono constraints(es: cercare l'albero più compatto), altrimenti potrebbe diventare \emph{NP-hard}.
 Una soluzione pu\`o essere trovata utilizzando una strategia greedy.
 Pertanto si assume:
 $$E(f_t;\mathcal{D}) = \dfrac{1}{|\mathcal{D}|}\sum\limits_{z\in\mathcal{D}}l(f;z)$$

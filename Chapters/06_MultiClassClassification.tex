@@ -4,13 +4,11 @@
 
 	\subsection{Classificazione binaria}
 	Si \`e definita la classificazione binaria come la task in cui dati:
-	\begin{multicols}{2}
-		\begin{itemize}
-			\item Uno spazio di input $\mathcal{X}$.
-			\item Una distribuzione sconosciuta $\mathcal{D}$ su $\mathcal{X}\times\{-1,+1\}$.
-			\item Un training set $D$ campionato da $\mathcal{D}$
-		\end{itemize}
-	\end{multicols}
+	\begin{itemize}
+		\item Uno spazio di input $\mathcal{X}$.
+		\item Una distribuzione sconosciuta $\mathcal{D}$ su $\mathcal{X}\times\{-1,+1\}$.
+		\item Un training set $D$ campionato da $\mathcal{D}$
+	\end{itemize}
 	Si deve computare una funzione $f$ che minimizza $\mathbb{E}_{(x,y)\sim\mathcal{D}}[f(x)\neq y]$
 
 	\subsection{Classificazione multi classe}
@@ -18,13 +16,11 @@
 	L'obiettivo \`e quello di assegnare una label discreta a degli esempi.
 	La differenza \`e che ora ci sono $k>2$ classi da cui scegliere.
 	Dati pertanto:
-	\begin{multicols}{2}
-		\begin{itemize}
-			\item Uno spazio di input $\mathcal{X}$ e un numero di classi $K$.
-			\item Una distribuzione sconosciuta di $\mathcal{D}$ su $\mathcal{X}\times[K]$.
-			\item Un training set $D$ campionato da $\mathcal{D}$.
-		\end{itemize}
-	\end{multicols}
+	\begin{itemize}
+		\item Uno spazio di input $\mathcal{X}$ e un numero di classi $K$.
+		\item Una distribuzione sconosciuta di $\mathcal{D}$ su $\mathcal{X}\times[K]$.
+		\item Un training set $D$ campionato da $\mathcal{D}$.
+	\end{itemize}
 	Si deve computare una funzione $f$ che minimizza $\mathbb{E}_{(x,y)\sim\mathcal{D}}[f(x)\neq y]$.
 
 		\subsubsection{K nearest neighbours}
