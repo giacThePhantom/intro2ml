@@ -38,13 +38,13 @@ Per un algoritmo di ranking sofisticato si devono incorporare queste osservazion
 	\input{Pseudocodice/15_NaiveRankTest}
 
 \section{Bipartite ranking}
-Gli algoritmi di ranking bipartito risalgono problemi in cui si tenta di predire una risposta binaria.
+Gli algoritmi di ranking bipartito risolvono problemi in cui si tenta di predire una risposta binaria.
 L'obiettivo \`e di assicurare che tutti gli esempi rilevanti si trovano prima di quelli irrilevanti.
 Non si trova un ordinamento tra esempi rilevanti.
 
 
 \section{Ordinamento e $\mathbf{\omega}$-ranking}
-Nonostante la veloce soluzione dell'ordinamento contro la funzione di preference si pu\`o utilizzarla come funzione di sorting.
+Nonostante la veloce soluzione dell'ordinamento con la funzione di preference, si pu\`o utilizzarla come funzione di sorting.
 Si definisce un ranking come una funzione $\sigma$ che mappa gli oggetti alla posizione nella lista di ranking desiderata $(1,\dots,M)$.
 Se $\sigma_u < \sigma_v$ allora $u$ \`e preferito a $v$.
 Dati i dati con ranking osservati $\sigma$ l'obiettivo \`e di imparare a predire i ranking per nuovi oggetti $\sigma^*$.
@@ -55,24 +55,24 @@ Tale funzione deve essere:
 \begin{multicols}{2}
 	\begin{itemize}
 		\item Simmetrica: $w(i,j) = w(j,i)$.
-		\item Monotona: $i<j<l\lor i>j>k \Rightarrow \omega(i,j) \le \omega(i,k)$.
+		\item Monotona: $i<j<k\lor i>j>k \Rightarrow \omega(i,j) \le \omega(i,k)$.
 		\item Soddisfi la disuguaglianza triangolare: $\omega(i,j)+\omega(j,k) \le \omega(i,k)$.
 	\end{itemize}
 \end{multicols}
-Un esempio potrebbe essere:
-$$\omega(i,j) = \begin{cases}1\ if\{i,j\} \le K \land i\neq j\\ 0\ altrimenti\end{cases}$$
+Un esempio, tenendo validi le prime $K$ predizioni, potrebbe essere:
+$$\omega(i,j) = \begin{cases}1\ if\ min\{i,j\} \le K \land i\neq j\\ 0\ altrimenti\end{cases}$$
 Questa viene detta task di $\omega$ ranking.
 Dati:
-\begin{multicols}{2}
-	\begin{itemize}
-		\item Uno spazio di input $\mathcal{X}$.
-		\item Una distribuzione sconosciuta $\mathcal{D}$ su $\mathcal{X}\times\sum_M$.
-		\item Un training set $D$ campionato da $\mathcal{D}$.
-	\end{itemize}
-\end{multicols}
+\begin{itemize}
+	\item Uno spazio di input $\mathcal{X}$.
+	\item Una distribuzione sconosciuta $\mathcal{D}$ su $\mathcal{X}\times\sum_M$.
+	\item Un training set $D$ campionato da $\mathcal{D}$.
+\end{itemize}
 Si deve computare una funzione $f:\mathcal{X}\rightarrow\sum_M$ che minimizzi:
 $$\mathbb{E}_{(\mathcal{X},\sigma)\sim\mathcal{D}}\biggl[\sum\limits_{u\neq v}[\sigma_u < \sigma_v][\hat{\sigma}_v < \hat{\sigma}_u]\omega(\sigma_u,\sigma_v)\biggr]$$
-Dove $\hat{\sigma} = f(x)$.
+Dove $\hat{\sigma} = f(x)$. I passaggi definiti dentro le parentesi quadre possono essere viste come un booleano. Ad esempio se ho che $[\hat{\sigma}_v < \hat{\sigma}_u]$
+è verificato e anche la predizione $[\hat{\sigma}_v < \hat{\sigma}_u]$ è verificata allora ho che la funzione di costo $\omega$ viene sommata alla loss function. 
+Questo perché ho trovato un caso in cui la predizione è diversa dalla ground truth.
 
 	\subsection{Testing}
 	A tempo di testing invece di predirre score e poi ordinare la lista come negli algoritmi prima si utilizza un algoritmo di ordinamento utilizzando la funzione imparata come funzione di ordinamento.
