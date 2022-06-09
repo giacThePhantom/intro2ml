@@ -4,13 +4,11 @@
 
 	\subsection{Classificazione binaria}
 	Si \`e definita la classificazione binaria come la task in cui dati:
-	\begin{multicols}{2}
-		\begin{itemize}
-			\item Uno spazio di input $\mathcal{X}$.
-			\item Una distribuzione sconosciuta $\mathcal{D}$ su $\mathcal{X}\times\{-1,+1\}$.
-			\item Un training set $D$ campionato da $\mathcal{D}$
-		\end{itemize}
-	\end{multicols}
+	\begin{itemize}
+		\item Uno spazio di input $\mathcal{X}$.
+		\item Una distribuzione sconosciuta $\mathcal{D}$ su $\mathcal{X}\times\{-1,+1\}$.
+		\item Un training set $D$ campionato da $\mathcal{D}$
+	\end{itemize}
 	Si deve computare una funzione $f$ che minimizza $\mathbb{E}_{(x,y)\sim\mathcal{D}}[f(x)\neq y]$
 
 	\subsection{Classificazione multi classe}
@@ -18,13 +16,11 @@
 	L'obiettivo \`e quello di assegnare una label discreta a degli esempi.
 	La differenza \`e che ora ci sono $k>2$ classi da cui scegliere.
 	Dati pertanto:
-	\begin{multicols}{2}
-		\begin{itemize}
-			\item Uno spazio di input $\mathcal{X}$ e un numero di classi $K$.
-			\item Una distribuzione sconosciuta di $\mathcal{D}$ su $\mathcal{X}\times[K]$.
-			\item Un training set $D$ campionato da $\mathcal{D}$.
-		\end{itemize}
-	\end{multicols}
+	\begin{itemize}
+		\item Uno spazio di input $\mathcal{X}$ e un numero di classi $K$.
+		\item Una distribuzione sconosciuta di $\mathcal{D}$ su $\mathcal{X}\times[K]$.
+		\item Un training set $D$ campionato da $\mathcal{D}$.
+	\end{itemize}
 	Si deve computare una funzione $f$ che minimizza $\mathbb{E}_{(x,y)\sim\mathcal{D}}[f(x)\neq y]$.
 
 		\subsubsection{K nearest neighbours}
@@ -41,12 +37,10 @@
 
 \section{One versus all \emph{OVA}}
 Nell'approccio \emph{OVA} nel training si definisce per ogni label $L$ un problema binario in cui:
-\begin{multicols}{2}
-	\begin{itemize}
-		\item Tutti gli esempi con la label $L$ sono positivi.
-		\item Tutti gli altri esempi sono negativi.
-	\end{itemize}
-\end{multicols}
+\begin{itemize}
+	\item Tutti gli esempi con la label $L$ sono positivi.
+	\item Tutti gli altri esempi sono negativi.
+\end{itemize}
 In pratica si imparano $L$ diversi modelli di classificazione.
 Si ricordi come il classificatore divide il piano in due semipiani.
 
@@ -54,12 +48,10 @@ Si ricordi come il classificatore divide il piano in due semipiani.
 	In questo caso si formano pertanto delle zone in cui si creano delle ambiguit\`a.
 	Se il classificatore non fornisce confidence e c'\`e ambiguit\`a si sceglie una delle label in conflitto.
 	Nella maggior parte dei casi i classificatori forniscono confidence, allora in questo caso si:
-	\begin{multicols}{2}
-		\begin{itemize}
-			\item Si sceglie il positivo con confidence maggiore.
-			\item Se nessuno \`e positivo si sceglie il negativo con confidence minore.
-		\end{itemize}
-	\end{multicols}
+	\begin{itemize}
+		\item Si sceglie il positivo con confidence maggiore.
+		\item Se nessuno \`e positivo si sceglie il negativo con confidence minore.
+	\end{itemize}
 	La confidence nel perceptron si calcola come distanza dall'iperpiano stabilito dalla prediction.
 
 	\subsection{Algoritmi}
@@ -86,18 +78,16 @@ Dopo aver eseguito tutti i $\frac{K(K-1)}{2}$ classificatori la classe con pi\`u
 	\subsection{\emph{AVA} classification}
 	Per classificare un esempio $x$ lo si classifica per ogni classificatore $F_{ij}$.
 	Per scegliere la classe finale si pu\`o:
-	\begin{multicols}{2}
-		\begin{itemize}
-			\item Considerare la maggioranza.
-			\item Considerare un voto pesato basato sulla confidence:
-				\begin{itemize}
-					\item $y = F_{ij}(x)$.
-					\item $score_j +=y$.
-					\item $score_i -=y$.
-				\end{itemize}
-				Lo score viene cambiato in quanto se $y$ \`e positivo il classificatore lo pensa di tipo $j$, se negativo lo pensa di tipo $i$ e pertanto lo score viene aggiornato di conseguenza.
-		\end{itemize}
-	\end{multicols}
+	\begin{itemize}
+		\item Considerare la maggioranza.
+		\item Considerare un voto pesato basato sulla confidence:
+			\begin{itemize}
+				\item $y = F_{ij}(x)$.
+				\item $score_j +=y$.
+				\item $score_i -=y$.
+			\end{itemize}
+			Lo score viene cambiato in quanto se $y$ \`e positivo il classificatore lo pensa di tipo $j$, se negativo lo pensa di tipo $i$ e pertanto lo score viene aggiornato di conseguenza.
+	\end{itemize}
 
 	\subsection{Algoritmi}
 	\input{Pseudocodice/06_allversusalltrain}

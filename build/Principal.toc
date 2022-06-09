@@ -101,14 +101,14 @@
 \contentsline {section}{\numberline {6.3}All versus all \emph {AVA}}{26}{section.6.3}%
 \contentsline {subsection}{\numberline {6.3.1}\emph {AVA} training}{27}{subsection.6.3.1}%
 \contentsline {subsection}{\numberline {6.3.2}\emph {AVA} classification}{27}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Algoritmi}{27}{subsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.3.3}Algoritmi}{28}{subsection.6.3.3}%
 \contentsline {section}{\numberline {6.4}Confronto tra \emph {OVA} e \emph {AVA}}{28}{section.6.4}%
 \contentsline {subsection}{\numberline {6.4.1}Tempo di training}{28}{subsection.6.4.1}%
 \contentsline {subsection}{\numberline {6.4.2}Tempo di test}{28}{subsection.6.4.2}%
 \contentsline {subsection}{\numberline {6.4.3}Errori}{28}{subsection.6.4.3}%
 \contentsline {section}{\numberline {6.5}Riassunto}{28}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Multiclass evaluation}{28}{section.6.6}%
-\contentsline {subsection}{\numberline {6.6.1}Microaveraging}{28}{subsection.6.6.1}%
+\contentsline {section}{\numberline {6.6}Multiclass evaluation}{29}{section.6.6}%
+\contentsline {subsection}{\numberline {6.6.1}Microaveraging}{29}{subsection.6.6.1}%
 \contentsline {subsection}{\numberline {6.6.2}Macroaveraging}{29}{subsection.6.6.2}%
 \contentsline {subsection}{\numberline {6.6.3}Confusion matrix}{29}{subsection.6.6.3}%
 \contentsline {chapter}{\numberline {7}Ranking}{30}{chapter.7}%
@@ -121,10 +121,10 @@
 \contentsline {subsection}{\numberline {7.4.1}Training}{31}{subsection.7.4.1}%
 \contentsline {subsection}{\numberline {7.4.2}Testing}{31}{subsection.7.4.2}%
 \contentsline {section}{\numberline {7.5}Bipartite ranking}{31}{section.7.5}%
-\contentsline {section}{\numberline {7.6}Ordinamento e $\mathbf {\omega }$-ranking}{32}{section.7.6}%
+\contentsline {section}{\numberline {7.6}Ordinamento e $\mathbf {\omega }$-ranking}{31}{section.7.6}%
 \contentsline {subsection}{\numberline {7.6.1}Testing}{32}{subsection.7.6.1}%
-\contentsline {subsection}{\numberline {7.6.2}Implementazione}{33}{subsection.7.6.2}%
-\contentsline {subsubsection}{\numberline {7.6.2.1}Algoritmo di train}{33}{subsubsection.7.6.2.1}%
+\contentsline {subsection}{\numberline {7.6.2}Implementazione}{32}{subsection.7.6.2}%
+\contentsline {subsubsection}{\numberline {7.6.2.1}Algoritmo di train}{32}{subsubsection.7.6.2.1}%
 \contentsline {subsubsection}{\numberline {7.6.2.2}Algoritmo di test}{33}{subsubsection.7.6.2.2}%
 \contentsline {chapter}{\numberline {8}Gradient descent}{34}{chapter.8}%
 \contentsline {section}{\numberline {8.1}Model based machine learning}{34}{section.8.1}%
