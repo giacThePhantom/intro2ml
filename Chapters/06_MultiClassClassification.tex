@@ -41,11 +41,29 @@ Nell'approccio \emph{OVA} nel training si definisce per ogni label $L$ un proble
 	\item Tutti gli esempi con la label $L$ sono positivi.
 	\item Tutti gli altri esempi sono negativi.
 \end{itemize}
+
+
+\begin{figure}
+	\centering
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{imgs/chapter6/img0}
+		\caption{Esempio OVA}
+		\label{fig:chapter06-00}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{imgs/chapter6/img1}
+		\caption{Esempio OVA. Le frecce indicano il lato positivo della linea}
+		\label{fig:chapter06-01}
+	\end{minipage}
+\end{figure}
+
 In pratica si imparano $L$ diversi modelli di classificazione.
 Si ricordi come il classificatore divide il piano in due semipiani.
 
 	\subsection{Ambiguit\`a}
-	In questo caso si formano pertanto delle zone in cui si creano delle ambiguit\`a.
+	In questo caso si formano pertanto delle zone in cui si creano delle ambiguit\`a. Nella figura \ref{fig:chapter06-01} \`e possibile che un esempio si trovi nel lato positivo di due linee contemporaneamente.
 	Se il classificatore non fornisce confidence e c'\`e ambiguit\`a si sceglie una delle label in conflitto.
 	Nella maggior parte dei casi i classificatori forniscono confidence, allora in questo caso si:
 	\begin{itemize}
@@ -56,6 +74,9 @@ Si ricordi come il classificatore divide il piano in due semipiani.
 
 	\subsection{Algoritmi}
 	\input{Pseudocodice/03_oneversusalltrain}
+	
+	Con $k$ categorie si avranno $k$ modelli.
+	
 	\input{Pseudocodice/04_oneversusalltest}
 
 \section{All versus all \emph{AVA}}
@@ -68,7 +89,23 @@ Questo classificatore riceve tutti gli esempi della classe $i$ come positivi e t
 Quando arriva un punto di test si valuta su tutti i classificatori $F_{ij}$.
 Ogni volta che $F_{ij}$ predice positivo la classe $i$ prende un voto, altrimenti lo prende $j$.
 Dopo aver eseguito tutti i $\frac{K(K-1)}{2}$ classificatori la classe con pi\`u voti decide la label.
-
+	
+	\begin{figure}
+		\centering
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{imgs/chapter6/img2}
+			\caption{Esempio \emph{AVA}}
+			\label{fig:chapter06-02}
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{imgs/chapter6/img3}
+			\caption{Esempio \emph{AVA}}
+			\label{fig:chapter06-03}
+		\end{minipage}
+	\end{figure}
+	La maggioranza dice \emph{orange}, dunque assegneremo la label \emph{orange} \ref{fig:chapter06-03}.
 	\subsection{\emph{AVA} training}
 	Per ogni coppia di label si addestra un classificatore che le distingue:\\
 	\input{Pseudocodice/05_allversusalltrainingpseudo}
@@ -102,13 +139,13 @@ Dopo aver eseguito tutti i $\frac{K(K-1)}{2}$ classificatori la classe con pi\`u
 	Avendo \emph{AVA} pi\`u classificatori \`e tipicamente pi\`u lenta.
 
 	\subsection{Errori}
-	\emph{AVA} fa training con data sets pi\`u bilanciata, ma avendo pi\`u classificatori i test tendono ad avere pi\`u possiblit\`a di errori.
+	\emph{AVA} fa training con data sets pi\`u bilanciati, ma avendo pi\`u classificatori i test tendono ad avere pi\`u possiblit\`a di errori.
 
 \section{Riassunto}
 Se vengono usati classificatori binari viene tipicamente utilizzata  \emph{OVA}, altrimenti si usa un classificatore che permette label multiple come \emph{DT} o \emph{K-NN}, nonostante altri metodi pi\`u sofisticati siano meglio.
 
 \section{Multiclass evaluation}
-Per computare l'accuratezza nella predizione di una classe $c$ si pu\`o usare la misura di predizione $Pr=\frac{TP}{TP+FP}$ dove $TP$ sono le predizioni corrette e $FP$ le predizioni scorrette.
+Per computare l'accuratezza nella predizione di una classe $c$ si pu\`o usare la misura di predizione $Pr=\frac{TP}{TP+FP}$ dove $TP$ sono le predizioni corrette e $FP$ le predizioni scorrette \ref{fig:chapter06-04}.
 
 	\subsection{Microaveraging}
 	Nel microaveraging si fa la media sugli esempi.
@@ -119,6 +156,13 @@ Per computare l'accuratezza nella predizione di una classe $c$ si pu\`o usare la
 	Nel macroaveraging si calcola lo score di valutazione o accuratezza per ogni label e poi si fa la media tra le label.
 	Questo in quanto d\`a pi\`u enfasi a label pi\`u rare e permette un'altra dimensione di analisi.
 	$$Pr=\dfrac{\sum\limits_{c\in C}Pr_c}{|C|}$$
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.6\linewidth]{imgs/chapter6/img4}
+		\caption{Multiclass evaluation}
+		\label{fig:chapter06-04}
+	\end{figure}
 
 	\subsection{Confusion matrix}
 	La confusion matrix \`e una matrice in cui $(i, j)$ rappresenta il numero di esempi con label $i$ predetti avere label $j$.
