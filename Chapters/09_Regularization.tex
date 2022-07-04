@@ -15,7 +15,7 @@ Tipicamente non si vogliono pesi molto grandi in quanto un piccolo cambio in una
 Si potrebbe anche preferire pesi di $0$ per features che non sono utili.
 
 	\subsection{Regolarizzatori comuni}
-
+		Nota che tutti questi regolarizzatori sono funzioni convesse, e quindi facilmente minimizzabili.
 		\subsubsection{Somma dei pesi}
 		Il regolarizzatore somma dei pesi penalizza di pi\`u valori piccoli e si calcola come:
 		$$r(w,b)=\sum\limits_{w_j}|w_j|$$
@@ -23,13 +23,15 @@ Si potrebbe anche preferire pesi di $0$ per features che non sono utili.
 
 		\subsubsection{Somma quadratica dei pesi}
 		La somma quadratica dei pesi penalizza di pi\`u valori grandi e si calcola come:
-		$$r(w,b)=\sqrt{\sum\limits_{w_j}|w_j|^2}$$
-		Si dice anche $2$-norm.
+		$$r(w,b)=\sqrt{\sum\limits_{w_j}w_j^2} =||w||$$
+		Si dice anche $2$-norm. Tipicamente si preferisce utilizzare:
+		$$\sum\limits_{w_j}w_j^2 =||w||^2$$
+		Per eliminare la radice.
 
 		\subsubsection{$P$-norm}
 		Si intende per $p$-norm:
 		$$r(w,b)=\sqrt[p]{\sum\limits_{w_j}|w_j|^p}=||w||^p$$
-		Valori pi\`u piccoli di $p$ $<2$ incoraggiano vettori pi\`u sparsi, mentre valori pi\`u grandi scoraggiano pesi pi\`u grandi creando pertanto vettori con pesi pi\`u simili.
+		Valori pi\`u piccoli di $p$ $<2$ incoraggiano vettori pi\`u sparsi, mentre valori pi\`u grandi scoraggiano pesi pi\`u grandi creando pertanto vettori con pesi pi\`u simili. Attenzione che con $p$ $<1$ la funzione diventa non convessa e quindi difficile da trattare.
 
 \section{Gradient descent e regolarizzazione}
 Si nota come se scelto un modello e dimostrato che $loss+regularizer$ \`e una funzione convessa si pu\`o ancora utilizzare il gradient descent.
