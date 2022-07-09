@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.19)  4 JUL 2022 17:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.19)  9 JUL 2022 15:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -812,7 +812,7 @@ Capitolo 2.
 <imgs/chapter2/img0.png, id=1097, 619.56468pt x 457.71pt>
 File: imgs/chapter2/img0.png Graphic file (type png)
 <use imgs/chapter2/img0.png>
-Package pdftex.def Info: imgs/chapter2/img0.png  used on input line 32.
+Package pdftex.def Info: imgs/chapter2/img0.png  used on input line 35.
 (pdftex.def)             Requested size: 173.44534pt x 128.12999pt.
 [8
 
@@ -820,69 +820,69 @@ Package pdftex.def Info: imgs/chapter2/img0.png  used on input line 32.
 <imgs/chapter2/img1.png, id=1104, 216.81pt x 331.99031pt>
 File: imgs/chapter2/img1.png Graphic file (type png)
 <use imgs/chapter2/img1.png>
-Package pdftex.def Info: imgs/chapter2/img1.png  used on input line 61.
+Package pdftex.def Info: imgs/chapter2/img1.png  used on input line 65.
 (pdftex.def)             Requested size: 86.72267pt x 132.79376pt.
 <imgs/chapter2/img2.png, id=1106, 273.27094pt x 173.89969pt>
 File: imgs/chapter2/img2.png Graphic file (type png)
 <use imgs/chapter2/img2.png>
-Package pdftex.def Info: imgs/chapter2/img2.png  used on input line 67.
+Package pdftex.def Info: imgs/chapter2/img2.png  used on input line 71.
 (pdftex.def)             Requested size: 216.81pt x 137.97096pt.
  [9 <./imgs/chapter2/img0.png>]
 <imgs/chapter2/img3.png, id=1119, 280.79906pt x 185.19188pt>
 File: imgs/chapter2/img3.png Graphic file (type png)
 <use imgs/chapter2/img3.png>
-Package pdftex.def Info: imgs/chapter2/img3.png  used on input line 100.
+Package pdftex.def Info: imgs/chapter2/img3.png  used on input line 105.
 (pdftex.def)             Requested size: 216.81pt x 142.98813pt.
 <imgs/chapter2/img4.png, id=1120, 429.85594pt x 300.3722pt>
 File: imgs/chapter2/img4.png Graphic file (type png)
 <use imgs/chapter2/img4.png>
-Package pdftex.def Info: imgs/chapter2/img4.png  used on input line 106.
+Package pdftex.def Info: imgs/chapter2/img4.png  used on input line 111.
 (pdftex.def)             Requested size: 216.81pt x 151.50113pt.
  [10 <./imgs/chapter2/img1.png> <./imgs/chapter2/img2.png>]
 <imgs/chapter2/img5.png, id=1132, 788.9475pt x 369.63094pt>
 File: imgs/chapter2/img5.png Graphic file (type png)
 <use imgs/chapter2/img5.png>
-Package pdftex.def Info: imgs/chapter2/img5.png  used on input line 127.
+Package pdftex.def Info: imgs/chapter2/img5.png  used on input line 135.
 (pdftex.def)             Requested size: 216.81pt x 101.57831pt.
 <imgs/chapter2/img6.png, id=1133, 1053.9375pt x 595.47469pt>
 File: imgs/chapter2/img6.png Graphic file (type png)
 <use imgs/chapter2/img6.png>
-Package pdftex.def Info: imgs/chapter2/img6.png  used on input line 133.
+Package pdftex.def Info: imgs/chapter2/img6.png  used on input line 141.
 (pdftex.def)             Requested size: 216.81pt x 122.49106pt.
  [11 <./imgs/chapter2/img3.png> <./imgs/chapter2/img4.png> <./imgs/chapter2/img
 5.png> <./imgs/chapter2/img6.png>]
 <imgs/chapter2/img11.png, id=1145, 562.35094pt x 445.665pt>
 File: imgs/chapter2/img11.png Graphic file (type png)
 <use imgs/chapter2/img11.png>
-Package pdftex.def Info: imgs/chapter2/img11.png  used on input line 152.
+Package pdftex.def Info: imgs/chapter2/img11.png  used on input line 160.
 (pdftex.def)             Requested size: 260.17464pt x 206.18483pt.
  [12 <./imgs/chapter2/img11.png>]
 <imgs/chapter2/img7.png, id=1154, 948.54375pt x 439.6425pt>
 File: imgs/chapter2/img7.png Graphic file (type png)
 <use imgs/chapter2/img7.png>
-Package pdftex.def Info: imgs/chapter2/img7.png  used on input line 183.
+Package pdftex.def Info: imgs/chapter2/img7.png  used on input line 191.
 (pdftex.def)             Requested size: 260.17464pt x 120.59012pt.
  [13 <./imgs/chapter2/img7.png>] [14] [15]
 <imgs/chapter2/img9.png, id=1189, 551.81157pt x 393.72093pt>
 File: imgs/chapter2/img9.png Graphic file (type png)
 <use imgs/chapter2/img9.png>
-Package pdftex.def Info: imgs/chapter2/img9.png  used on input line 316.
+Package pdftex.def Info: imgs/chapter2/img9.png  used on input line 324.
 (pdftex.def)             Requested size: 216.81pt x 154.69801pt.
 <imgs/chapter2/img10.png, id=1190, 563.85657pt x 395.22656pt>
 File: imgs/chapter2/img10.png Graphic file (type png)
 <use imgs/chapter2/img10.png>
-Package pdftex.def Info: imgs/chapter2/img10.png  used on input line 322.
+Package pdftex.def Info: imgs/chapter2/img10.png  used on input line 330.
 (pdftex.def)             Requested size: 216.81pt x 151.96669pt.
  [16 <./imgs/chapter2/img9.png> <./imgs/chapter2/img10.png>]
 <imgs/chapter2/img12.png, id=1198, 1077.27469pt x 493.845pt>
 File: imgs/chapter2/img12.png Graphic file (type png)
 <use imgs/chapter2/img12.png>
-Package pdftex.def Info: imgs/chapter2/img12.png  used on input line 348.
+Package pdftex.def Info: imgs/chapter2/img12.png  used on input line 357.
 (pdftex.def)             Requested size: 260.17464pt x 119.27122pt.
 <imgs/chapter2/img8.png, id=1200, 1099.85907pt x 286.06876pt>
 File: imgs/chapter2/img8.png Graphic file (type png)
 <use imgs/chapter2/img8.png>
-Package pdftex.def Info: imgs/chapter2/img8.png  used on input line 360.
+Package pdftex.def Info: imgs/chapter2/img8.png  used on input line 369.
 (pdftex.def)             Requested size: 260.17464pt x 67.66702pt.
 ) (Chapters/03_KNN.tex [17 <./imgs/chapter2/img12.png> <./imgs/chapter2/img8.pn
 g>]
@@ -890,45 +890,45 @@ Capitolo 3.
 <imgs/chapter3/img2.png, id=1209, 458.46281pt x 153.57375pt>
 File: imgs/chapter3/img2.png Graphic file (type png)
 <use imgs/chapter3/img2.png>
-Package pdftex.def Info: imgs/chapter3/img2.png  used on input line 28.
+Package pdftex.def Info: imgs/chapter3/img2.png  used on input line 30.
 (pdftex.def)             Requested size: 260.17464pt x 87.15598pt.
 [18
 
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 50.
+(hyperref)                removing `math shift' on input line 54.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 50.
+(hyperref)                removing `math shift' on input line 54.
 
 <imgs/chapter3/img1.png, id=1216, 813.79031pt x 251.43938pt>
 File: imgs/chapter3/img1.png Graphic file (type png)
 <use imgs/chapter3/img1.png>
-Package pdftex.def Info: imgs/chapter3/img1.png  used on input line 62.
+Package pdftex.def Info: imgs/chapter3/img1.png  used on input line 66.
 (pdftex.def)             Requested size: 260.17464pt x 80.3855pt.
 [19 <./imgs/chapter3/img2.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 67.
+(hyperref)                removing `math shift' on input line 71.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 67.
+(hyperref)                removing `math shift' on input line 71.
 
 <imgs/chapter3/img0.png, id=1225, 907.13907pt x 246.9225pt>
 File: imgs/chapter3/img0.png Graphic file (type png)
 <use imgs/chapter3/img0.png>
-Package pdftex.def Info: imgs/chapter3/img0.png  used on input line 74.
+Package pdftex.def Info: imgs/chapter3/img0.png  used on input line 78.
 (pdftex.def)             Requested size: 260.17464pt x 70.81822pt.
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 79.
+(hyperref)                removing `math shift' on input line 83.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 79.
+(hyperref)                removing `math shift' on input line 83.
 
 [20 <./imgs/chapter3/img1.png> <./imgs/chapter3/img0.png>])
 (Chapters/04_ModelliLineari.tex [21]
@@ -936,7 +936,7 @@ Capitolo 4.
 <imgs/chapter4/img0.png, id=1241, 524.71031pt x 216.05719pt>
 File: imgs/chapter4/img0.png Graphic file (type png)
 <use imgs/chapter4/img0.png>
-Package pdftex.def Info: imgs/chapter4/img0.png  used on input line 30.
+Package pdftex.def Info: imgs/chapter4/img0.png  used on input line 31.
 (pdftex.def)             Requested size: 260.17464pt x 107.13489pt.
 [22
 
@@ -944,18 +944,18 @@ Package pdftex.def Info: imgs/chapter4/img0.png  used on input line 30.
 <imgs/chapter4/img2.png, id=1249, 517.18219pt x 311.66437pt>
 File: imgs/chapter4/img2.png Graphic file (type png)
 <use imgs/chapter4/img2.png>
-Package pdftex.def Info: imgs/chapter4/img2.png  used on input line 56.
+Package pdftex.def Info: imgs/chapter4/img2.png  used on input line 62.
 (pdftex.def)             Requested size: 216.81pt x 130.6556pt.
 <imgs/chapter4/img3.png, id=1250, 518.6878pt x 313.17pt>
 File: imgs/chapter4/img3.png Graphic file (type png)
 <use imgs/chapter4/img3.png>
-Package pdftex.def Info: imgs/chapter4/img3.png  used on input line 62.
+Package pdftex.def Info: imgs/chapter4/img3.png  used on input line 68.
 (pdftex.def)             Requested size: 216.81pt x 130.9045pt.
  [23 <./imgs/chapter4/img0.png>]
 <imgs/chapter4/img1.png, id=1257, 488.57532pt x 143.03438pt>
 File: imgs/chapter4/img1.png Graphic file (type png)
 <use imgs/chapter4/img1.png>
-Package pdftex.def Info: imgs/chapter4/img1.png  used on input line 83.
+Package pdftex.def Info: imgs/chapter4/img1.png  used on input line 90.
 (pdftex.def)             Requested size: 260.17464pt x 76.16795pt.
  (Pseudocodice/01_perceptron.tex
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 1
@@ -970,7 +970,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
  been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.104 	\subsection
+l.111 	\subsection
                   {Storia del perceptron}]) (Chapters/05_DecisionTrees.tex
 [26]
 Capitolo 5.
@@ -985,7 +985,7 @@ File: imgs/chapter5/img1.png Graphic file (type png)
 Package pdftex.def Info: imgs/chapter5/img1.png  used on input line 23.
 (pdftex.def)             Requested size: 303.53267pt x 173.06436pt.
 
-Overfull \hbox (7.24347pt too wide) in paragraph at lines 42--44
+Overfull \hbox (7.24347pt too wide) in paragraph at lines 43--45
 \T1/cmr/m/n/10 I de-ci-sion tree di-vi-do-no lo spa-zio del-le fea-tu-re in (ip
 er)-rettangoli (con-si-de-ria-mo il ca-so n-dimensionale),
  []
@@ -996,18 +996,18 @@ er)-rettangoli (con-si-de-ria-mo il ca-so n-dimensionale),
 <imgs/chapter5/img2.png, id=1295, 323.70938pt x 288.3272pt>
 File: imgs/chapter5/img2.png Graphic file (type png)
 <use imgs/chapter5/img2.png>
-Package pdftex.def Info: imgs/chapter5/img2.png  used on input line 62.
+Package pdftex.def Info: imgs/chapter5/img2.png  used on input line 64.
 (pdftex.def)             Requested size: 173.44534pt x 154.48889pt.
  [28 <./imgs/chapter5/img0.png> <./imgs/chapter5/img1.png>]
 <imgs/chapter5/img3.png, id=1305, 170.88844pt x 173.89969pt>
 File: imgs/chapter5/img3.png Graphic file (type png)
 <use imgs/chapter5/img3.png>
-Package pdftex.def Info: imgs/chapter5/img3.png  used on input line 85.
+Package pdftex.def Info: imgs/chapter5/img3.png  used on input line 87.
 (pdftex.def)             Requested size: 130.08731pt x 132.38802pt.
 <imgs/chapter5/img4.png, id=1306, 227.34938pt x 271.76532pt>
 File: imgs/chapter5/img4.png Graphic file (type png)
 <use imgs/chapter5/img4.png>
-Package pdftex.def Info: imgs/chapter5/img4.png  used on input line 91.
+Package pdftex.def Info: imgs/chapter5/img4.png  used on input line 93.
 (pdftex.def)             Requested size: 130.08731pt x 155.50497pt.
  [29 <./imgs/chapter5/img2.png> <./imgs/chapter5/img3.png> <./imgs/chapter5/img
 4.png>]
@@ -1020,29 +1020,29 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.1638pt}.
 
 [30]
-Underfull \hbox (badness 5954) in paragraph at lines 144--145
+Underfull \hbox (badness 5954) in paragraph at lines 147--148
 []\T1/cmr/m/n/10 Le fun-zio-ni di split sa-ran-no a una
  []
 
 <imgs/chapter5/img9.png, id=1322, 414.04688pt x 353.82187pt>
 File: imgs/chapter5/img9.png Graphic file (type png)
 <use imgs/chapter5/img9.png>
-Package pdftex.def Info: imgs/chapter5/img9.png  used on input line 154.
+Package pdftex.def Info: imgs/chapter5/img9.png  used on input line 160.
 (pdftex.def)             Requested size: 138.75679pt x 118.57559pt.
 <imgs/chapter5/img10.png, id=1323, 1030.60031pt x 469.00218pt>
 File: imgs/chapter5/img10.png Graphic file (type png)
 <use imgs/chapter5/img10.png>
-Package pdftex.def Info: imgs/chapter5/img10.png  used on input line 160.
+Package pdftex.def Info: imgs/chapter5/img10.png  used on input line 166.
 (pdftex.def)             Requested size: 260.17464pt x 118.39528pt.
 <imgs/chapter5/img11.png, id=1324, 1093.83656pt x 483.30562pt>
 File: imgs/chapter5/img11.png Graphic file (type png)
 <use imgs/chapter5/img11.png>
-Package pdftex.def Info: imgs/chapter5/img11.png  used on input line 170.
+Package pdftex.def Info: imgs/chapter5/img11.png  used on input line 176.
 (pdftex.def)             Requested size: 216.81pt x 95.79657pt.
 <imgs/chapter5/img5.png, id=1325, 590.205pt x 258.9675pt>
 File: imgs/chapter5/img5.png Graphic file (type png)
 <use imgs/chapter5/img5.png>
-Package pdftex.def Info: imgs/chapter5/img5.png  used on input line 176.
+Package pdftex.def Info: imgs/chapter5/img5.png  used on input line 182.
 (pdftex.def)             Requested size: 216.81pt x 95.12889pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1056,7 +1056,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <imgs/chapter5/img6.png, id=1335, 512.66531pt x 172.39406pt>
 File: imgs/chapter5/img6.png Graphic file (type png)
 <use imgs/chapter5/img6.png>
-Package pdftex.def Info: imgs/chapter5/img6.png  used on input line 194.
+Package pdftex.def Info: imgs/chapter5/img6.png  used on input line 200.
 (pdftex.def)             Requested size: 260.17464pt x 87.48839pt.
 
 
@@ -1072,12 +1072,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <imgs/chapter5/img7.png, id=1349, 382.42876pt x 222.07968pt>
 File: imgs/chapter5/img7.png Graphic file (type png)
 <use imgs/chapter5/img7.png>
-Package pdftex.def Info: imgs/chapter5/img7.png  used on input line 258.
+Package pdftex.def Info: imgs/chapter5/img7.png  used on input line 265.
 (pdftex.def)             Requested size: 216.81pt x 125.90222pt.
 <imgs/chapter5/img8.png, id=1350, 742.27313pt x 414.04688pt>
 File: imgs/chapter5/img8.png Graphic file (type png)
 <use imgs/chapter5/img8.png>
-Package pdftex.def Info: imgs/chapter5/img8.png  used on input line 264.
+Package pdftex.def Info: imgs/chapter5/img8.png  used on input line 271.
 (pdftex.def)             Requested size: 216.81pt x 120.93605pt.
 ) (Chapters/06_MultiClassClassification.tex [34 <./imgs/chapter5/img7.png> <./i
 mgs/chapter5/img8.png>]
@@ -1113,12 +1113,12 @@ ng> <./imgs/chapter6/img1.png>]
 <imgs/chapter6/img2.png, id=1376, 596.2275pt x 265.74281pt>
 File: imgs/chapter6/img2.png Graphic file (type png)
 <use imgs/chapter6/img2.png>
-Package pdftex.def Info: imgs/chapter6/img2.png  used on input line 97.
+Package pdftex.def Info: imgs/chapter6/img2.png  used on input line 98.
 (pdftex.def)             Requested size: 173.44865pt x 77.30673pt.
 <imgs/chapter6/img3.png, id=1377, 532.23843pt x 256.70906pt>
 File: imgs/chapter6/img3.png Graphic file (type png)
 <use imgs/chapter6/img3.png>
-Package pdftex.def Info: imgs/chapter6/img3.png  used on input line 103.
+Package pdftex.def Info: imgs/chapter6/img3.png  used on input line 104.
 (pdftex.def)             Requested size: 173.44865pt x 83.65663pt.
  (Pseudocodice/05_allversusalltrainingpseudo.tex
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
@@ -1144,7 +1144,7 @@ l.14 ...ion{\protect\Ava{all $f_{ij}$, $\hat{x}$}}
 <imgs/chapter6/img4.png, id=1395, 548.80031pt x 274.02374pt>
 File: imgs/chapter6/img4.png Graphic file (type png)
 <use imgs/chapter6/img4.png>
-Package pdftex.def Info: imgs/chapter6/img4.png  used on input line 162.
+Package pdftex.def Info: imgs/chapter6/img4.png  used on input line 163.
 (pdftex.def)             Requested size: 260.17464pt x 129.91174pt.
 )
 (Chapters/07_Ranking.tex [39 <./imgs/chapter6/img4.png>] [40]
@@ -1215,17 +1215,17 @@ a-zio-ne vet-to-ria-le si rap-pre-sen-ta un esem-pio $\OML/cmm/m/it/10 f[]; []
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 42.
+(hyperref)                removing `math shift' on input line 43.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 42.
+(hyperref)                removing `math shift' on input line 43.
 
 [47]
 <imgs/chapter8/img0.png, id=1454, 523.9575pt x 261.22594pt>
 File: imgs/chapter8/img0.png Graphic file (type png)
 <use imgs/chapter8/img0.png>
-Package pdftex.def Info: imgs/chapter8/img0.png  used on input line 90.
+Package pdftex.def Info: imgs/chapter8/img0.png  used on input line 93.
 (pdftex.def)             Requested size: 260.17464pt x 129.71579pt.
  [48 <./imgs/chapter8/img0.png>] [49]
 (Pseudocodice/08_perceptron_gradient_descent.tex
@@ -1237,11 +1237,11 @@ l.12 \caption{\protect\Perceptron{}}
                                     )
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 146.
+(hyperref)                removing `math shift' on input line 151.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 146.
+(hyperref)                removing `math shift' on input line 151.
 
 (Pseudocodice/09_gradient_descent.tex
 pdfTeX warning (ext4): destination with the same identifier (name{algocf.}) has
@@ -1253,12 +1253,12 @@ l.13 ...nt{$\mathcal{F}$, $K$, $\eta_1$, $\dots$}}
 <imgs/chapter8/img1.jpg, id=1478, 994.68387pt x 559.50967pt>
 File: imgs/chapter8/img1.jpg Graphic file (type jpg)
 <use imgs/chapter8/img1.jpg>
-Package pdftex.def Info: imgs/chapter8/img1.jpg  used on input line 168.
+Package pdftex.def Info: imgs/chapter8/img1.jpg  used on input line 173.
 (pdftex.def)             Requested size: 216.81pt x 121.94849pt.
 <imgs/chapter8/img2.jpg, id=1479, 994.68387pt x 559.50967pt>
 File: imgs/chapter8/img2.jpg Graphic file (type jpg)
 <use imgs/chapter8/img2.jpg>
-Package pdftex.def Info: imgs/chapter8/img2.jpg  used on input line 174.
+Package pdftex.def Info: imgs/chapter8/img2.jpg  used on input line 179.
 (pdftex.def)             Requested size: 216.81pt x 121.94849pt.
 )
 (Chapters/09_Regularization.tex [51 <./imgs/chapter8/img1.jpg> <./imgs/chapter8
@@ -1269,11 +1269,11 @@ Capitolo 9.
 ]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 50.
+(hyperref)                removing `math shift' on input line 52.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 50.
+(hyperref)                removing `math shift' on input line 52.
 
 [53]) (Chapters/10_SVM.tex [54]
 Capitolo 10.
@@ -1283,19 +1283,19 @@ Capitolo 10.
 <imgs/chapter10/img0.png, id=1505, 465.99094pt x 234.1247pt>
 File: imgs/chapter10/img0.png Graphic file (type png)
 <use imgs/chapter10/img0.png>
-Package pdftex.def Info: imgs/chapter10/img0.png  used on input line 35.
+Package pdftex.def Info: imgs/chapter10/img0.png  used on input line 37.
 (pdftex.def)             Requested size: 260.17464pt x 130.7231pt.
  [56 <./imgs/chapter10/img0.png>]
 <imgs/chapter10/img1.png, id=1511, 575.14874pt x 204.01219pt>
 File: imgs/chapter10/img1.png Graphic file (type png)
 <use imgs/chapter10/img1.png>
-Package pdftex.def Info: imgs/chapter10/img1.png  used on input line 83.
+Package pdftex.def Info: imgs/chapter10/img1.png  used on input line 88.
 (pdftex.def)             Requested size: 260.17464pt x 92.29025pt.
  [57 <./imgs/chapter10/img1.png>] [58]
 <imgs/chapter10/img2.png, id=1523, 928.97063pt x 291.33844pt>
 File: imgs/chapter10/img2.png Graphic file (type png)
 <use imgs/chapter10/img2.png>
-Package pdftex.def Info: imgs/chapter10/img2.png  used on input line 153.
+Package pdftex.def Info: imgs/chapter10/img2.png  used on input line 159.
 (pdftex.def)             Requested size: 260.17464pt x 81.59642pt.
 
 [59]) (Chapters/11_NeuralNetworks.tex [60 <./imgs/chapter10/img2.png>]
@@ -1311,21 +1311,21 @@ Package pdftex.def Info: imgs/chapter11/img0.png  used on input line 17.
 <imgs/chapter11/img1.png, id=1549, 523.20468pt x 150.5625pt>
 File: imgs/chapter11/img1.png Graphic file (type png)
 <use imgs/chapter11/img1.png>
-Package pdftex.def Info: imgs/chapter11/img1.png  used on input line 41.
+Package pdftex.def Info: imgs/chapter11/img1.png  used on input line 42.
 (pdftex.def)             Requested size: 216.81pt x 62.39037pt.
 <imgs/chapter11/img2.png, id=1550, 310.15875pt x 140.02313pt>
 File: imgs/chapter11/img2.png Graphic file (type png)
 <use imgs/chapter11/img2.png>
-Package pdftex.def Info: imgs/chapter11/img2.png  used on input line 47.
+Package pdftex.def Info: imgs/chapter11/img2.png  used on input line 48.
 (pdftex.def)             Requested size: 151.76633pt x 68.51578pt.
  [62 <./imgs/chapter11/img1.png> <./imgs/chapter11/img2.png>]
 <imgs/chapter11/img3.png, id=1562, 234.1247pt x 169.38281pt>
 File: imgs/chapter11/img3.png Graphic file (type png)
 <use imgs/chapter11/img3.png>
-Package pdftex.def Info: imgs/chapter11/img3.png  used on input line 73.
+Package pdftex.def Info: imgs/chapter11/img3.png  used on input line 74.
 (pdftex.def)             Requested size: 173.44534pt x 125.48862pt.
 
-Overfull \hbox (41.54675pt too wide) in paragraph at lines 78--79
+Overfull \hbox (41.54675pt too wide) in paragraph at lines 79--80
 []\T1/cmr/m/n/10 Il lear-ning di-ven-ta un pro-ble-ma di ot-ti-miz-za-zio-ne, i
 n cui da-ti i trai-ning sam-ples $\OML/cmm/m/it/10 T \OT1/cmr/m/n/10 = \OMS/cms
 y/m/n/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; y[]\OT1/cmr/m/n/10 )\OML/cmm/m
@@ -1337,41 +1337,41 @@ msy/m/n/10 g$
 <imgs/chapter11/img4.png, id=1571, 204.01219pt x 105.39375pt>
 File: imgs/chapter11/img4.png Graphic file (type png)
 <use imgs/chapter11/img4.png>
-Package pdftex.def Info: imgs/chapter11/img4.png  used on input line 112.
+Package pdftex.def Info: imgs/chapter11/img4.png  used on input line 114.
 (pdftex.def)             Requested size: 173.44865pt x 89.60922pt.
 <imgs/chapter11/img5.png, id=1572, 530.73282pt x 158.09062pt>
 File: imgs/chapter11/img5.png Graphic file (type png)
 <use imgs/chapter11/img5.png>
-Package pdftex.def Info: imgs/chapter11/img5.png  used on input line 118.
+Package pdftex.def Info: imgs/chapter11/img5.png  used on input line 120.
 (pdftex.def)             Requested size: 216.81pt x 64.58116pt.
  [64 <./imgs/chapter11/img4.png> <./imgs/chapter11/img5.png>]
 <imgs/chapter11/img6.png, id=1582, 479.54156pt x 201.75375pt>
 File: imgs/chapter11/img6.png Graphic file (type png)
 <use imgs/chapter11/img6.png>
-Package pdftex.def Info: imgs/chapter11/img6.png  used on input line 157.
+Package pdftex.def Info: imgs/chapter11/img6.png  used on input line 161.
 (pdftex.def)             Requested size: 260.17464pt x 109.46259pt.
  [65 <./imgs/chapter11/img6.png>]
 <imgs/chapter11/img7.png, id=1595, 519.44063pt x 106.89937pt>
 File: imgs/chapter11/img7.png Graphic file (type png)
 <use imgs/chapter11/img7.png>
-Package pdftex.def Info: imgs/chapter11/img7.png  used on input line 193.
+Package pdftex.def Info: imgs/chapter11/img7.png  used on input line 197.
 (pdftex.def)             Requested size: 346.89731pt x 71.39056pt.
 <imgs/chapter11/img8.png, id=1597, 390.70969pt x 115.93312pt>
 File: imgs/chapter11/img8.png Graphic file (type png)
 <use imgs/chapter11/img8.png>
-Package pdftex.def Info: imgs/chapter11/img8.png  used on input line 210.
+Package pdftex.def Info: imgs/chapter11/img8.png  used on input line 214.
 (pdftex.def)             Requested size: 260.17464pt x 77.20422pt.
  [66 <./imgs/chapter11/img7.png> <./imgs/chapter11/img8.png>]
 <imgs/chapter11/img9.png, id=1612, 429.10312pt x 176.91093pt>
 File: imgs/chapter11/img9.png Graphic file (type png)
 <use imgs/chapter11/img9.png>
-Package pdftex.def Info: imgs/chapter11/img9.png  used on input line 244.
+Package pdftex.def Info: imgs/chapter11/img9.png  used on input line 248.
 (pdftex.def)             Requested size: 260.17464pt x 107.26494pt.
  [67 <./imgs/chapter11/img9.png>] [68]
 <imgs/chapter11/img14.png, id=1632, 408.02437pt x 192.72pt>
 File: imgs/chapter11/img14.png Graphic file (type png)
 <use imgs/chapter11/img14.png>
-Package pdftex.def Info: imgs/chapter11/img14.png  used on input line 301.
+Package pdftex.def Info: imgs/chapter11/img14.png  used on input line 307.
 (pdftex.def)             Requested size: 260.17464pt x 122.89339pt.
 
 (Pseudocodice/10_BGD.tex
@@ -1384,7 +1384,7 @@ l.14 \caption{\protect\GradientDescent}
 <imgs/chapter11/img10.png, id=1634, 281.55188pt x 200.24812pt>
 File: imgs/chapter11/img10.png Graphic file (type png)
 <use imgs/chapter11/img10.png>
-Package pdftex.def Info: imgs/chapter11/img10.png  used on input line 339.
+Package pdftex.def Info: imgs/chapter11/img10.png  used on input line 338.
 (pdftex.def)             Requested size: 260.17464pt x 185.0555pt.
  [69 <./imgs/chapter11/img14.png>]
 (Pseudocodice/11_SDG.tex
@@ -1397,7 +1397,7 @@ l.14 \caption{\protect\GradientDescent}
 <imgs/chapter11/img11.png, id=1643, 429.85594pt x 207.77625pt>
 File: imgs/chapter11/img11.png Graphic file (type png)
 <use imgs/chapter11/img11.png>
-Package pdftex.def Info: imgs/chapter11/img11.png  used on input line 352.
+Package pdftex.def Info: imgs/chapter11/img11.png  used on input line 351.
 (pdftex.def)             Requested size: 260.17464pt x 125.76048pt.
  [70 <./imgs/chapter11/img10.png>]
 (Pseudocodice/12_SDG_momentum.tex
@@ -1428,23 +1428,23 @@ Package pdftex.def Info: imgs/chapter11/img18.png  used on input line 432.
 <imgs/chapter11/img13.png, id=1686, 475.7775pt x 319.94531pt>
 File: imgs/chapter11/img13.png Graphic file (type png)
 <use imgs/chapter11/img13.png>
-Package pdftex.def Info: imgs/chapter11/img13.png  used on input line 488.
+Package pdftex.def Info: imgs/chapter11/img13.png  used on input line 492.
 (pdftex.def)             Requested size: 173.44865pt x 116.63992pt.
 <imgs/chapter11/img17.png, id=1687, 904.1278pt x 346.29375pt>
 File: imgs/chapter11/img17.png Graphic file (type png)
 <use imgs/chapter11/img17.png>
-Package pdftex.def Info: imgs/chapter11/img17.png  used on input line 494.
+Package pdftex.def Info: imgs/chapter11/img17.png  used on input line 498.
 (pdftex.def)             Requested size: 216.81pt x 83.03821pt.
  [74]
 <imgs/chapter11/img15.png, id=1697, 617.30624pt x 301.125pt>
 File: imgs/chapter11/img15.png Graphic file (type png)
 <use imgs/chapter11/img15.png>
-Package pdftex.def Info: imgs/chapter11/img15.png  used on input line 532.
+Package pdftex.def Info: imgs/chapter11/img15.png  used on input line 537.
 (pdftex.def)             Requested size: 216.81pt x 105.7583pt.
 <imgs/chapter11/img16.png, id=1698, 568.37344pt x 277.78781pt>
 File: imgs/chapter11/img16.png Graphic file (type png)
 <use imgs/chapter11/img16.png>
-Package pdftex.def Info: imgs/chapter11/img16.png  used on input line 538.
+Package pdftex.def Info: imgs/chapter11/img16.png  used on input line 543.
 (pdftex.def)             Requested size: 216.81pt x 105.96312pt.
 )
 (Chapters/12_UnsupervisedLearning.tex [75 <./imgs/chapter11/img13.png> <./imgs/
@@ -1456,118 +1456,118 @@ Capitolo 12.
 <imgs/chapter12/img0.png, id=1710, 523.9575pt x 168.63pt>
 File: imgs/chapter12/img0.png Graphic file (type png)
 <use imgs/chapter12/img0.png>
-Package pdftex.def Info: imgs/chapter12/img0.png  used on input line 31.
+Package pdftex.def Info: imgs/chapter12/img0.png  used on input line 32.
 (pdftex.def)             Requested size: 260.17464pt x 83.73584pt.
 <imgs/chapter12/img1.png, id=1712, 300.3722pt x 249.93375pt>
 File: imgs/chapter12/img1.png Graphic file (type png)
 <use imgs/chapter12/img1.png>
-Package pdftex.def Info: imgs/chapter12/img1.png  used on input line 46.
+Package pdftex.def Info: imgs/chapter12/img1.png  used on input line 47.
 (pdftex.def)             Requested size: 130.08731pt x 108.2474pt.
 <imgs/chapter12/img2.png, id=1713, 538.26094pt x 255.20343pt>
 File: imgs/chapter12/img2.png Graphic file (type png)
 <use imgs/chapter12/img2.png>
-Package pdftex.def Info: imgs/chapter12/img2.png  used on input line 52.
+Package pdftex.def Info: imgs/chapter12/img2.png  used on input line 53.
 (pdftex.def)             Requested size: 216.81pt x 102.79607pt.
  [77 <./imgs/chapter12/img0.png> <./imgs/chapter12/img1.png> <./imgs/chapter12/
 img2.png>]
 <imgs/chapter12/img3.png, id=1727, 569.87906pt x 259.7203pt>
 File: imgs/chapter12/img3.png Graphic file (type png)
 <use imgs/chapter12/img3.png>
-Package pdftex.def Info: imgs/chapter12/img3.png  used on input line 81.
+Package pdftex.def Info: imgs/chapter12/img3.png  used on input line 87.
 (pdftex.def)             Requested size: 260.17464pt x 118.57318pt.
 <imgs/chapter12/img4.png, id=1728, 368.87813pt x 237.13594pt>
 File: imgs/chapter12/img4.png Graphic file (type png)
 <use imgs/chapter12/img4.png>
-Package pdftex.def Info: imgs/chapter12/img4.png  used on input line 87.
+Package pdftex.def Info: imgs/chapter12/img4.png  used on input line 93.
 (pdftex.def)             Requested size: 173.44534pt x 111.50093pt.
  [78 <./imgs/chapter12/img3.png> <./imgs/chapter12/img4.png>]
 [79]
 <imgs/chapter12/img5.png, id=1752, 480.29437pt x 249.93375pt>
 File: imgs/chapter12/img5.png Graphic file (type png)
 <use imgs/chapter12/img5.png>
-Package pdftex.def Info: imgs/chapter12/img5.png  used on input line 183.
+Package pdftex.def Info: imgs/chapter12/img5.png  used on input line 189.
 (pdftex.def)             Requested size: 216.81pt x 112.8238pt.
 <imgs/chapter12/img6.png, id=1753, 551.81157pt x 191.21437pt>
 File: imgs/chapter12/img6.png Graphic file (type png)
 <use imgs/chapter12/img6.png>
-Package pdftex.def Info: imgs/chapter12/img6.png  used on input line 189.
+Package pdftex.def Info: imgs/chapter12/img6.png  used on input line 195.
 (pdftex.def)             Requested size: 216.81pt x 75.13057pt.
  [80]
 <imgs/chapter12/img7.png, id=1764, 539.01375pt x 203.25937pt>
 File: imgs/chapter12/img7.png Graphic file (type png)
 <use imgs/chapter12/img7.png>
-Package pdftex.def Info: imgs/chapter12/img7.png  used on input line 199.
+Package pdftex.def Info: imgs/chapter12/img7.png  used on input line 205.
 (pdftex.def)             Requested size: 216.81pt x 81.75821pt.
 <imgs/chapter12/img8.png, id=1765, 572.1375pt x 249.18094pt>
 File: imgs/chapter12/img8.png Graphic file (type png)
 <use imgs/chapter12/img8.png>
-Package pdftex.def Info: imgs/chapter12/img8.png  used on input line 205.
+Package pdftex.def Info: imgs/chapter12/img8.png  used on input line 211.
 (pdftex.def)             Requested size: 216.81pt x 94.42738pt.
 <imgs/chapter12/img9.png, id=1766, 441.90094pt x 223.58531pt>
 File: imgs/chapter12/img9.png Graphic file (type png)
 <use imgs/chapter12/img9.png>
-Package pdftex.def Info: imgs/chapter12/img9.png  used on input line 213.
+Package pdftex.def Info: imgs/chapter12/img9.png  used on input line 219.
 (pdftex.def)             Requested size: 260.17464pt x 131.64465pt.
  [81 <./imgs/chapter12/img5.png> <./imgs/chapter12/img6.png> <./imgs/chapter12/
 img7.png> <./imgs/chapter12/img8.png> <./imgs/chapter12/img9.png>]
 <imgs/chapter12/img10.png, id=1782, 360.59718pt x 155.83218pt>
 File: imgs/chapter12/img10.png Graphic file (type png)
 <use imgs/chapter12/img10.png>
-Package pdftex.def Info: imgs/chapter12/img10.png  used on input line 232.
+Package pdftex.def Info: imgs/chapter12/img10.png  used on input line 238.
 (pdftex.def)             Requested size: 260.17464pt x 112.43448pt.
 
 [82 <./imgs/chapter12/img10.png>]
 <imgs/chapter12/img11.png, id=1791, 361.35pt x 324.46219pt>
 File: imgs/chapter12/img11.png Graphic file (type png)
 <use imgs/chapter12/img11.png>
-Package pdftex.def Info: imgs/chapter12/img11.png  used on input line 263.
+Package pdftex.def Info: imgs/chapter12/img11.png  used on input line 272.
 (pdftex.def)             Requested size: 260.17464pt x 233.61754pt.
  [83] [84 <./imgs/chapter12/img11.png>]
 <imgs/chapter12/img12.png, id=1810, 373.395pt x 195.73125pt>
 File: imgs/chapter12/img12.png Graphic file (type png)
 <use imgs/chapter12/img12.png>
-Package pdftex.def Info: imgs/chapter12/img12.png  used on input line 349.
+Package pdftex.def Info: imgs/chapter12/img12.png  used on input line 358.
 (pdftex.def)             Requested size: 346.89731pt x 181.84897pt.
 
 [85] [86 <./imgs/chapter12/img12.png>] [87]
 <imgs/chapter12/img18.png, id=1838, 374.14781pt x 305.64188pt>
 File: imgs/chapter12/img18.png Graphic file (type png)
 <use imgs/chapter12/img18.png>
-Package pdftex.def Info: imgs/chapter12/img18.png  used on input line 426.
+Package pdftex.def Info: imgs/chapter12/img18.png  used on input line 437.
 (pdftex.def)             Requested size: 151.76633pt x 123.98015pt.
 <imgs/chapter12/img19.png, id=1839, 922.94812pt x 173.89969pt>
 File: imgs/chapter12/img19.png Graphic file (type png)
 <use imgs/chapter12/img19.png>
-Package pdftex.def Info: imgs/chapter12/img19.png  used on input line 432.
+Package pdftex.def Info: imgs/chapter12/img19.png  used on input line 443.
 (pdftex.def)             Requested size: 216.81pt x 40.8505pt.
  [88 <./imgs/chapter12/img18.png> <./imgs/chapter12/img19.png>]
 <imgs/chapter12/img13.png, id=1851, 599.99156pt x 253.69781pt>
 File: imgs/chapter12/img13.png Graphic file (type png)
 <use imgs/chapter12/img13.png>
-Package pdftex.def Info: imgs/chapter12/img13.png  used on input line 466.
+Package pdftex.def Info: imgs/chapter12/img13.png  used on input line 477.
 (pdftex.def)             Requested size: 260.17464pt x 110.01312pt.
  [89 <./imgs/chapter12/img13.png>]
 <imgs/chapter12/img14.png, id=1862, 511.15968pt x 273.27094pt>
 File: imgs/chapter12/img14.png Graphic file (type png)
 <use imgs/chapter12/img14.png>
-Package pdftex.def Info: imgs/chapter12/img14.png  used on input line 519.
+Package pdftex.def Info: imgs/chapter12/img14.png  used on input line 530.
 (pdftex.def)             Requested size: 346.89731pt x 185.45482pt.
  [90]
 <imgs/chapter12/img15.png, id=1874, 526.96875pt x 134.00063pt>
 File: imgs/chapter12/img15.png Graphic file (type png)
 <use imgs/chapter12/img15.png>
-Package pdftex.def Info: imgs/chapter12/img15.png  used on input line 543.
+Package pdftex.def Info: imgs/chapter12/img15.png  used on input line 555.
 (pdftex.def)             Requested size: 260.17464pt x 66.1618pt.
  [91 <./imgs/chapter12/img14.png> <./imgs/chapter12/img15.png>] [92]
 <imgs/chapter12/img16.png, id=1889, 587.94656pt x 272.51813pt>
 File: imgs/chapter12/img16.png Graphic file (type png)
 <use imgs/chapter12/img16.png>
-Package pdftex.def Info: imgs/chapter12/img16.png  used on input line 598.
+Package pdftex.def Info: imgs/chapter12/img16.png  used on input line 610.
 (pdftex.def)             Requested size: 216.81pt x 100.4933pt.
 <imgs/chapter12/img17.png, id=1890, 587.19376pt x 152.82094pt>
 File: imgs/chapter12/img17.png Graphic file (type png)
 <use imgs/chapter12/img17.png>
-Package pdftex.def Info: imgs/chapter12/img17.png  used on input line 604.
+Package pdftex.def Info: imgs/chapter12/img17.png  used on input line 616.
 (pdftex.def)             Requested size: 216.81pt x 56.42625pt.
  [93 <./imgs/chapter12/img16.png> <./imgs/chapter12/img17.png>]) (Chapters/13_R
 einforcementLearning.tex [94]
@@ -1597,7 +1597,7 @@ Here is how much of TeX's memory you used:
  40329 multiletter control sequences out of 15000+600000
  497704 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 77i,19n,80p,990b,1079s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 77i,19n,80p,484b,1079s stack positions out of 10000i,1000n,20000p,200000b,80000s
  <C:\Users\Ivan\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0
 900.pk> <C:\Users\Ivan\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\
 ectt1000.pk> <C:\Users\Ivan\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
@@ -1630,7 +1630,7 @@ KTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><E:/Programmi/MiKTeX/fonts/type1/
 public/amsfonts/cm/cmsy9.pfb><E:/Programmi/MiKTeX/fonts/type1/public/amsfonts/s
 ymbols/msbm10.pfb><E:/Programmi/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm
 7.pfb>
-Output written on Principal.pdf (102 pages, 6681021 bytes).
+Output written on Principal.pdf (102 pages, 6681125 bytes).
 PDF statistics:
  2730 PDF objects out of 2984 (max. 8388607)
  545 named destinations out of 1000 (max. 500000)
