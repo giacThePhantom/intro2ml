@@ -1,16 +1,18 @@
 \chapter{Support vector machines}
 
 \section{Introduzione}
-Le support vector machines permettono di trovare l'iperpiano ottimo che separa i training data. Il training nelle SVM avviene in modalità online.
+Le support vector machines permettono di trovare l'iperpiano ottimo che separa i training data. 
+Il training nelle SVM avviene in modalità online.
 Si nota come fino ad ora c'era una grande variabilit\`a nell'iperpiano che il classificatore lineare trova cominciando da diversi punti nell'iperspazio.
 Inoltre quando i dati non sono linearmente separabili questa variabilit\`a aumenta grandemente.
 
 	\subsection{Considerazioni su perceptron e gradient descent}
 	Come visto il perceptron se i dati sono linearmente separabili trova un qualche iperpiano che li separa, che non \`e necessariamente il migliore, altrimenti continuer\`a ad aggiustarsi iterando attraverso gli esempi e l'iperpiano dipender\`a dall'ultimo esempio visto.
 	Il gradient descent invece trova l'iperpiano che minimizza $loss+regularization$ in entrambi i casi.
-
+	
 	\subsection{Idea delle support vector machines}
-	Le support vector machines cercano di trovare il migliore iperpiano separa i dati. Per migliore intendiamo quello con il margine pi\`u grande.
+	Le support vector machines cercano di trovare il migliore iperpiano separa i dati. 
+	Per migliore intendiamo quello con il margine pi\`u grande.
 	Per definirlo vengono introdotti i margini di un iperpiano.
 
 \section{Margini}
@@ -22,7 +24,7 @@ Il fatto che il modello trovato da una SVM ha il maggior margine possibile aumen
 	I support vectors sono i data points pi\`u vicini al margine che separa i dati.
 	Per $n$ dimensioni ci saranno almeno $n+1$ support vectors.
 	Il fatto di massimizzare il margine implica che solamente i support vector contano a tempo di inferenza e tutti gli altri punti possono essere ignorati, perch\`e tramite quelli \`e definito l'iperpiano.
-
+	
 	\subsection{Calcolare il margine}
 	Il margine pu\`o essere pertanto calcolato come la distanza dal support vector.
 	La distanza di un punto $x$ da un'iperpiano viene calcolata come $d(x) = \frac{wx+b}{||w||}$.
@@ -55,7 +57,8 @@ L'errore viene tenuto basso dal fatto di avere tutti i data point al di fuori da
 	$$||w||^2 = \sum\limits_{j\in I}|w_j|^2$$
 	Soggetto a $y_i(wx_i+b) \ge 1$.
 	Questo \`e lo stesso problema con il vantaggio che \`e una funzione convessa con lo stesso minimo della norma di $w$.
-	In questo modo diventa un problema di ottimizzazione quadratica, di risoluzione semplice. Utilizzando questo regolarizzatore diventa difficile utilizzare SVM per fare feature selection, perché per ignorare una feature, il suo peso deve essere 0, ma il regolarizzatore utilizzato penalizza valori grandi, e difficilmente avremo pesi che raggiungono 0.
+	In questo modo diventa un problema di ottimizzazione quadratica, di risoluzione semplice.
+	Utilizzando questo regolarizzatore diventa difficile utilizzare SVM per fare feature selection, perché per ignorare una feature, il suo peso deve essere 0, ma il regolarizzatore utilizzato penalizza valori grandi, e difficilmente avremo pesi che raggiungono 0.
 
 \section{Soft margin classification}
 La soft margin classification permette di usare SVM quando i punti non sono linearmente separabili.
@@ -70,8 +73,10 @@ La somma di $\zeta_i$ misura la tolleranza agli errori.
 Si nota come:
 \begin{multicols}{2}
 	\begin{itemize}
-		\item Piccoli valori di $\mathcal{C}$ permettono pi\`u errori che consistono in un margine pi\`u grande. Con un margine troppo grande andremo in underfitting.
-		\item Grandi valori di $\mathcal{C}$ danno agli errori di classificazione pi\`u peso restringendo il margine. Con un margine troppo piccolo andremo in overfitting.
+		\item Piccoli valori di $\mathcal{C}$ permettono pi\`u errori che consistono in un margine pi\`u grande. 
+		Con un margine troppo grande andremo in underfitting.
+		\item Grandi valori di $\mathcal{C}$ danno agli errori di classificazione pi\`u peso restringendo il margine. 
+		Con un margine troppo piccolo andremo in overfitting.
 		\item $\mathcal{C} = \infty$ impone tutti i costraint e riduce a un hard margin.
 	\end{itemize}
 \end{multicols}
@@ -98,7 +103,8 @@ Si nota come questo \`e ancora un problema di ottimizzazione quadratica con cost
 	La nuova funzione obiettivo pertanto sar\`a:
 	$$\min_{w,b}||w||^2+\mathcal{C}\sum_i\max(0,1-y_i(wx_i+b))$$
 	Che pu\`o essere considerata come un problema di gradient descent con Hinge loss function e regolarizzatore $||w||^2$.
-	La soluzione a questo problema trova pertanto l'iperpiano con il margine pi\`u grande possible permettendo un soft margin. Il vantaggio di utilizzare soft-margin SVM rispetto a qulle hard-margin \`e che con quelle soft-margin abbiamo la garanzia di trovare una soluzione anche nel caso i dati non siano linearmente separabili, mentre in quelle hard-margin la regione all'interno dei margini \`e sempre vuota.
+	La soluzione a questo problema trova pertanto l'iperpiano con il margine pi\`u grande possible permettendo un soft margin. 
+	Il vantaggio di utilizzare soft-margin SVM rispetto a qulle hard-margin \`e che con quelle soft-margin abbiamo la garanzia di trovare una soluzione anche nel caso i dati non siano linearmente separabili, mentre in quelle hard-margin la regione all'interno dei margini \`e sempre vuota.
 
 \section{Dati non linearmente separabile}
 Per separare i dati non linearmente separabili si possono utilizzare spazi con dimensioni maggiori.
@@ -131,10 +137,10 @@ In quanto $x$ compare solo nel dot product nella funzione di predizione e di ott
 	Si nota come $x_i$ con non zero $a_i$ sono support vectors.
 	Pertanto la predizione dipende solo dai support vectors.
 	Con entrambi gli approcci si impara un iperpiano che separa i datapoints e in entrambi solo i data points rilevanti per la prediction function sono i support vector.
-
+	
 	\subsection{Identificare i support vector}
 	I support vector sono identificati dagli algoritmi di ottimizzazione quadratica come i training point con non zero lagrangian multipliers $a_i$ in quanto i training point appaiono unicamente all'interno prodotti interni, pertanto non li necessito ma solo i loro dot-product.
-
+	
 	\subsection{Utilizzo di SVM in maniera non lineare}
 	Se i dati non sono linearmente separabili si possono portare a uno spazio a dimensioni maggiori rendendoli linearmente separabili.
 	Lo spazio delle features originali pu\`o essere sempre mappato a uno spazio di features con dimensione maggiore dove il training set \`e separabile.
@@ -154,22 +160,22 @@ In quanto $x$ compare solo nel dot product nella funzione di predizione e di ott
 			\caption{Kernel function}
 			\label{fig:chapter10-02}
 		\end{figure}
-	
+		
 		Ogni kernel ha un iperparametro a parte la lineare.
 		\begin{itemize}
 			\item Linear: $K(x_i,x_j) = x_i^Tx_j$
 			\item Polinomial of power $p$: $K(x_i, x_j) = (1+x_i^Tx_j)^p$.
 			\item Gaussian o radial-basis: $K(x_i, x_j) = e^{\frac{|x_i - x_j|^2}{2\sigma^2}}$.
-				In questo caso ogni punto \`e mappato a una funzione gaussiana e $\phi(x)$ ha infinite dimensioni.
-				La combinazione delle funzioni per i support vectors \`e il separatore.
+			In questo caso ogni punto \`e mappato a una funzione gaussiana e $\phi(x)$ ha infinite dimensioni.
+			La combinazione delle funzioni per i support vectors \`e il separatore.
 		\end{itemize}
 		Lo spazio a maggiore dimensioni ha una dimensionalit\`a $d$ intrinseca ma il separatore lineare in esso corrisponde a un separatore non lineare nello spazio originale.
-
-			\paragraph{Teorema di Mercer}
-			\begin{itemize}
-				\item Ogni funzione simmetrica semi positiva \`e un kernel.
-				\item Le funzioni semi-positive simmetriche corrispondono a una matrice di Gram semi-positiva definita
-			\end{itemize}
+		
+		\paragraph{Teorema di Mercer}
+		\begin{itemize}
+			\item Ogni funzione simmetrica semi positiva \`e un kernel.
+			\item Le funzioni semi-positive simmetriche corrispondono a una matrice di Gram semi-positiva definita
+		\end{itemize}
 
 		\subsubsection{Soluzione del problema scelto il kernel}
 		Una volta scelto il kernel il problema diventa trovare $a_1,\dots,a_n$ tali che:

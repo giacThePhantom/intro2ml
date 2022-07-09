@@ -21,7 +21,7 @@ Si deve insegnare a un modello che quando riceve un insieme di esempi li fitti n
 	Data una query $q$ e due campioni $x_i$ e $x_j$ il classificatore predice se $x_i$ deve essere preferito a $x_j$ rispetto alla query $q$.
 	Il classificatore prende pertanto due campioni e d\`a in output $1$ se il primo \`e pi\`u alto o $-1$ se \`e pi\`u basso.
 	In questo modo si ottiene una funzione di ordinamento atomica che si pu\`o estendere a diversi esempi.
-
+	
 		\subsubsection{Perceptron}
 		Per implementare questo algoritmo si pu\`o utilizzare il perceptron creando il vettore delle feature combinate dei due esempi:
 		$$f'_i = a_i -b_i$$
@@ -40,7 +40,7 @@ Per un algoritmo di ranking sofisticato si devono incorporare queste osservazion
 
 	\subsection{Training}
 	\input{Pseudocodice/14_NaiveRankTrain}
-
+	
 	\subsection{Testing}
 	\input{Pseudocodice/15_NaiveRankTest}
 
@@ -85,14 +85,16 @@ Questo perché ho trovato un caso in cui la predizione è diversa dalla ground t
 	A tempo di testing invece di predirre score e poi ordinare la lista come negli algoritmi prima si utilizza un algoritmo di ordinamento utilizzando la funzione imparata come funzione di ordinamento.
 	In pratica ad ogni passo si sceglie un pivot $p$ e ogni oggetto $u$ viene confrontato con $p$ utilizzando la funzione imparata e ordinato a destra o a sinistra.
 	La differenza \`e che qua la funzione di comparazione \`e probabilistica.
-
+	
 	\subsection{Implementazione}
-
+	
 		\subsubsection{Algoritmo di train}
 		\input{Pseudocodice/16_OmegaRankTrain}
-
+		
 		\subsubsection{Algoritmo di test}
-		A tempo di test, al posto di prevedere gli score e poi ordinare la lista, utilizziamo l'algoritmo quicksort, utilizzando la funzione imparata come funzione di comparazione. Nella pratica ad ogni passo un pivot $p$ \`e scelto, ogni oggetto $u$ \`e confrontato con $p$ utilizzando la funzione e ordinato a destra o sinistra. La differenza tra questo algoritmo e quicksort \`e che la funzione di comparazione \`e probabilistica.
+		A tempo di test, al posto di prevedere gli score e poi ordinare la lista, utilizziamo l'algoritmo quicksort, utilizzando la funzione imparata come funzione di comparazione. 
+		Nella pratica ad ogni passo un pivot $p$ \`e scelto, ogni oggetto $u$ \`e confrontato con $p$ utilizzando la funzione e ordinato a destra o sinistra. 
+		La differenza tra questo algoritmo e quicksort \`e che la funzione di comparazione \`e probabilistica.
 		\input{Pseudocodice/17_OmegaRankTest}
 \section{Riassunto}
 
