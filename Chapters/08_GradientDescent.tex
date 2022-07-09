@@ -18,23 +18,24 @@ Infine si sviluppa un algoritmo di learning che deve cercare di minimizzare il c
 	Si deve scegliere il criterio da ottimizzare.
 
 		\subsubsection{Notazioni}
-
-			\paragraph{Funzione indicatrice}
-			Una funzione indicatrice trasforma valori di \emph{Vero} e \emph{Falso} in numeri e li conteggia.
-			$$1[x]=\begin{cases}1&\mathbf{if}\ x = True\\
-										  	0&\textbf{if}\ x = False
-				 	\end{cases}$$
-
-			\paragraph{Dot-product}
-			Utilizzando una notazione vettoriale si rappresenta un esempio $f_1,\dots,f_m$ come un vettore singolo $\overrightarrow{x}$ in cui $j$ indicizza la feature e $i$ indicizza un dataset di esempi.
-			Si possono rappresentare anche i pesi $w_1,\dots,w_m$ come un vettore $\overrightarrow{w}$.
-			Il dot-product tra due vettori $a$ e $b$ viene definito come:
-			$$a\cdot b = \sum\limits_{j=1}^ma_jb_j$$
-
+		
+		\paragraph{Funzione indicatrice}
+		Una funzione indicatrice trasforma valori di \emph{Vero} e \emph{Falso} in numeri e li conteggia.
+		$$1[x]=\begin{cases}1&\mathbf{if}\ x = True\\
+			0&\textbf{if}\ x = False
+		\end{cases}$$
+		
+		\paragraph{Dot-product}
+		Utilizzando una notazione vettoriale si rappresenta un esempio $f_1,\dots,f_m$ come un vettore singolo $\overrightarrow{x}$ in cui $j$ indicizza la feature e $i$ indicizza un dataset di esempi.
+		Si possono rappresentare anche i pesi $w_1,\dots,w_m$ come un vettore $\overrightarrow{w}$.
+		Il dot-product tra due vettori $a$ e $b$ viene definito come:
+		$$a\cdot b = \sum\limits_{j=1}^ma_jb_j$$
+		
 		\subsubsection{Funzione obiettivo}
 		Il criterio da ottimizzare o funzione obiettivo pu\`o essere:
 		$$\sum\limits_{i=1}^n1[y_i(w\cdot x_i+b)\le 0]$$
-		A parole questa funzione conta quante volte la predizione \`e diversa dalla verit\`a. Si devono pertanto trovare $w$ e $b$ tali che minimizzano questa funzione, ovvero:
+		A parole questa funzione conta quante volte la predizione \`e diversa dalla verit\`a. 
+		Si devono pertanto trovare $w$ e $b$ tali che minimizzano questa funzione, ovvero:
 		$$argmin_{w,b}\sum\limits_{i=1}^n1[y_i(w\cdot x_i+b)\le 0]$$
 
 \section{Loss functions}
@@ -50,28 +51,30 @@ Infine si sviluppa un algoritmo di learning che deve cercare di minimizzare il c
 		Si nota come a ogni feature aggiunta si aggiunge una nuova dimensione allo spazio.
 		Per il minimo si cercano $w$ e $b$ che minimizzano la perdita.
 		Questo \`e un problema \emph{NP-hard}.
-		Sue difficolt\`a comprendono il fatto che piccoli cambi in ogni $w$ possono portare a grandi cambi nella perdita in quanto il cambio non \`e continuo. Inoltre trovare il minimo \`e complicato perch\`e non \`e differenziabile.
+		Sue difficolt\`a comprendono il fatto che piccoli cambi in ogni $w$ possono portare a grandi cambi nella perdita in quanto il cambio non \`e continuo. 
+		Inoltre trovare il minimo \`e complicato perch\`e non \`e differenziabile.
 		Ci possono essere molti minimi locali.
 		Ad ogni punto non si hanno informazioni che direzionano verso il minimo.
 		Pertanto si nota come una loss function ideale sia continua e differenziabile in modo da avere un'indicazione verso la direzione di minimizzazione e un unico minimo, dunque unici $b$ e $w$.
-
-			\paragraph{Loss function ideale}
-			Una loss function ideale dovrebbe essere:
-			\begin{itemize}
-				\item Continua in modo da ottenere informazioni riguardo la direzione della minimizzazione.
-				\item Avere un solo minimo.
-				\item Misurare la distanza tra la predizione reale e quella predetta.
-			\end{itemize}
+		
+		\paragraph{Loss function ideale}
+		Una loss function ideale dovrebbe essere:
+		\begin{itemize}
+			\item Continua in modo da ottenere informazioni riguardo la direzione della minimizzazione.
+			\item Avere un solo minimo.
+			\item Misurare la distanza tra la predizione reale e quella predetta.
+		\end{itemize}
 
 	\subsection{Funzioni convesse}
 	In una funzione convessa il segmento tra qualsiasi due punti della funzione si trova al di sopra della funzione.
 
 	\subsection{Surrogate loss function}
 	Per molte applicazioni si vuole minimizzare la loss $0/1$.
-	Una surrogate loss function \`e una loss function che fornisce un limite superiore alla loss function attuale. Dunque abbassando la surrogate loss stiamo abbassando anche la loss.
+	Una surrogate loss function \`e una loss function che fornisce un limite superiore alla loss function attuale. 
+	Dunque abbassando la surrogate loss stiamo abbassando anche la loss.
 	Si vuole identificare un surrogato convesso della loss function in modo da facilitarne la minimizzazione.
 	Chiave a una loss function \`e come verifica la differenza tra la label $y$ effettiva e la predizione $y'$.
-
+	
 		\subsubsection{Alcune surrogate loss function}
 		
 		Rappresentazione grafica in figura \ref{fig:chapter08-00}.
@@ -84,27 +87,28 @@ Infine si sviluppa un algoritmo di learning che deve cercare di minimizzare il c
 				\item \emph{Squared loss}: $l(y,y')=(y-y')^2$.
 			\end{itemize}
 		\end{multicols}
-	
+		
 		\begin{figure}
 			\centering
 			\includegraphics[width=0.6\linewidth]{imgs/chapter8/img0}
 			\caption{Surrogate loss functions}
 			\label{fig:chapter08-00}
 		\end{figure}
-	
-	\subsubsection{Model-based machine learning}
-	\begin{itemize}
-		\item Prendi un modello 
-		$$0=\sum\limits_{i=1}^m{w_i f_i}$$
-		\item Scegli un criterio da ottimizzare, utilizzando una surrogate convex loss function:
-		$$\sum\limits_{i=1}^n{exp(-y_i (w\cdot x_i+b))}$$
-		\item Sviluppa un algoritmo di learning, che trovi $w$ e $b$ che minimizzano la surrogate loss: 
-		$$argmin_{w,b}\sum\limits_{i=1}^n{exp(-y_i (w\cdot x_i+b))}$$
-	\end{itemize}
+
+		\subsubsection{Model-based machine learning}
+		\begin{itemize}
+			\item Prendi un modello 
+			$$0=\sum\limits_{i=1}^m{w_i f_i}$$
+			\item Scegli un criterio da ottimizzare, utilizzando una surrogate convex loss function:
+			$$\sum\limits_{i=1}^n{exp(-y_i (w\cdot x_i+b))}$$
+			\item Sviluppa un algoritmo di learning, che trovi $w$ e $b$ che minimizzano la surrogate loss: 
+			$$argmin_{w,b}\sum\limits_{i=1}^n{exp(-y_i (w\cdot x_i+b))}$$
+		\end{itemize}
 
 \section{Gradient descent}
 Il gradient descent \`e un modo per trovare il minimo locale o globale di una funzione: le derivate parziali danno un slope o direzione dove muoversi in tale dimensione.
-Questo approccio consiste di scegliere un punto di partenza e a ripetizione di: scegliere una dimensione e muoversi di una piccola quantit\`a verso il minimo utilizzando la derivata. Questo algoritmo viene utilizzato per minimizzare la loss function.
+Questo approccio consiste di scegliere un punto di partenza e a ripetizione di: scegliere una dimensione e muoversi di una piccola quantit\`a verso il minimo utilizzando la derivata. 
+Questo algoritmo viene utilizzato per minimizzare la loss function.
 Pertanto si:
 \begin{itemize}
 	\item Sceglie un punto di inizio $w$.
@@ -116,20 +120,21 @@ Questo ciclo si ripete fino a che la loss non diminuisce in nessuna dimensione.
 	\subsection{Spostamento in direzione della minimizzazione dell'errore}
 	Il movimento in direzione della minimizzazione dell'errore \`e pertanto:
 	$$w_j = w_j - \eta \dfrac{d}{dw_i}loss(w)$$
-	Dove $\eta$ \`e il learning rate, \`e un iperparametro che regola di quanto muoversi nella direzione del minimo, e quindi quanto \`e aggressivo il training, tipicamente cambia nel corso del training. Notiamo che viene fatta una sottrazione perch\`e intendiamo andare verso il minimo della funzione.
+	Dove $\eta$ \`e il learning rate, \`e un iperparametro che regola di quanto muoversi nella direzione del minimo, e quindi quanto \`e aggressivo il training, tipicamente cambia nel corso del training.
+	Notiamo che viene fatta una sottrazione perch\`e intendiamo andare verso il minimo della funzione.
 
 		\subsubsection{Calcolo dello spostamento per la loss function esponenziale}
 		Si deve pertanto calcolare la loss su tutto il training set:
 		\begin{align*}
 			\dfrac{d}{dw_j}loss &=\dfrac{d}{dw_j}\sum\limits_{i=1}^n\exp(-y_i(w\cdot x_i + b))=\\
-												 &=\sum\limits_{i=1}^n\dfrac{d}{dw_j}[-y_i(w\cdot x_i+b)]\exp(-y_i(w\cdot x_i+b))\\
+			&=\sum\limits_{i=1}^n\dfrac{d}{dw_j}[-y_i(w\cdot x_i+b)]\exp(-y_i(w\cdot x_i+b))\\
 		\end{align*}
 		Si consideri pertanto ora:
 		\begin{align*}
 			\dfrac{d}{dw_j}[-y_i(w\cdot x_i + b)]&=-\dfrac{d}{dw_j}[y_i(w\cdot x_i + b)]=\\
-																		&=-\dfrac{d}{dw_j}y_i(\sum_{j=1}^{m}w_jx_{ij}+b)=\\
-																		&=-\dfrac{d}{dw_j}y_i(w_1x_{i1}+\cdots+w_mx_{im}+b)=\\
-																		&=-y_ix_{ij}
+			&=-\dfrac{d}{dw_j}y_i(\sum_{j=1}^{m}w_jx_{ij}+b)=\\
+			&=-\dfrac{d}{dw_j}y_i(w_1x_{i1}+\cdots+w_mx_{im}+b)=\\
+			&=-y_ix_{ij}
 		\end{align*}
 		Si nota pertanto come:
 		$$\dfrac{d}{dw_j}loss=\sum\limits_{i=1}^n-y_ix_{ij}\exp(-y_i(w\cdot x_i+b))$$
@@ -146,7 +151,7 @@ Questo ciclo si ripete fino a che la loss non diminuisce in nessuna dimensione.
 	\subsection{Costante $\mathbf{c}$}
 	Nella costante $c$ se label e predizione hanno lo stesso segno quando gli elementi predetti aumentano gli aggiornamenti diventano minori.
 	Se invece sono diversi pi\`u diversi lo sono, maggiore l'aggiornamento.
-
+	
 	\subsection{Gradiente}
 	Il gradiente \`e il vettore delle derivate parziali rispetto a tutte le dimensioni:
 	$$\nabla L = \biggl[\dfrac{\partial L}{\partial w_1}\cdots\dfrac{\partial L}{\partial w_N}\biggr]$$

@@ -4,23 +4,24 @@
 \`E stato visto come il perceptron pu\`o imparare un modello lineare utilizzando la funzione attivatrice e il peso degli input.
 Funzioni attivatrici tradizionali sono non lineari come la sigmoide $h(x) = \frac{1}{1+e^{-x}}$ e la tangente iperbolica $h(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}$, mentre funzioni attivatrici pi\`u moderne sono la rectified linear unit \emph{ReLU}: $h(x) = \max(0,x)$ e la Leaky ReLU $h(x) = \max(\alpha x,x)$ con $\alpha$ costante piccola.
 
-	\subsection{Perceptron}
-	Il perceptron si pu\`o considerare come un neurone artificiale, una funzione non lineare parametrizzata con un range di output ristretto:
-	$$\hat{y} = h\bigl(\sum\limits_i\theta_ix_i\bigr) = h(\theta^Tx)$$
+\subsection{Perceptron}
+Il perceptron si pu\`o considerare come un neurone artificiale, una funzione non lineare parametrizzata con un range di output ristretto:
+$$\hat{y} = h\bigl(\sum\limits_i\theta_ix_i\bigr) = h(\theta^Tx)$$
 
-		\subsubsection{Rosemblatt}
-		Nel $1958$ Rosemblatt considera il perceptron \ref{fig:chapter11-00} come una macchina per la classificazione lineare: si imparano i pesi e si considera il bias: un peso per input, si moltiplicano i pesi con gli input rispettivi e si aggiunge il bias.
-		Se il risultato \`e pi\`u grande di una threshold si ritorna $1$, altrimenti $0$.
-	
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.6\linewidth]{imgs/chapter11/img0}
-		\caption{Perceptron}
-		\label{fig:chapter11-00}
-	\end{figure}
+\subsubsection{Rosemblatt}
+Nel $1958$ Rosemblatt considera il perceptron \ref{fig:chapter11-00} come una macchina per la classificazione lineare: si imparano i pesi e si considera il bias: un peso per input, si moltiplicano i pesi con gli input rispettivi e si aggiunge il bias.
+Se il risultato \`e pi\`u grande di una threshold si ritorna $1$, altrimenti $0$.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/chapter11/img0}
+	\caption{Perceptron}
+	\label{fig:chapter11-00}
+\end{figure}
 
 	\subsection{Multi layer perceptron}
-	Il perceptron presenta diverse limitazioni: non \`e in grado di risolvere problemi non linearmente separabili come quello dello \emph{XOR}. Per capire cosa intendiamo quando diciamo che \emph{XOR} non \`e un problema linearmente separabile guarda la figura \ref{fig:chapter11-01}.
+	Il perceptron presenta diverse limitazioni: non \`e in grado di risolvere problemi non linearmente separabili come quello dello \emph{XOR}. 
+	Per capire cosa intendiamo quando diciamo che \emph{XOR} non \`e un problema linearmente separabile guarda la figura \ref{fig:chapter11-01}.
 	Per superare questo problema Minsky e Papert nel $1969$ sviluppano il multi-layer perceptron \emph{MLP}.
 	Questi sono neuroni artificiali densamente connessi che realizzano composizioni di funzioni non lineari utilizzati per la classificazione e regressioni.
 	Sono composti da un input layer, diversi hidden layer e un output layer.
@@ -33,7 +34,7 @@ Funzioni attivatrici tradizionali sono non lineari come la sigmoide $h(x) = \fra
 		\begin{itemize}
 			\item[$(1)$] $z_j = \sum\limits_i\theta^{(1)}_{i,j}x_i + \theta_{0,j}^{(1)}$.
 			\item[$(2)$] $\hat{y}_k = h\bigl(\sum\limits_i\theta^{(2)}_{i,j}h(z_i)+\theta^{(2)}_{0,j}i\bigr)$.
-			\end{itemize}
+		\end{itemize}
 		\begin{figure}
 			\centering
 			\begin{minipage}{.5\textwidth}
@@ -78,7 +79,7 @@ Funzioni attivatrici tradizionali sono non lineari come la sigmoide $h(x) = \fra
 		Il learning diventa un problema di ottimizzazione, in cui dati i training samples $T=\{(x_1,y_1),\dots,(x_N,y_N)\}$ si devono aggiustare tutti i pesi della rete $\Theta$ in modo che una funzione di costo sia minimizzata:
 		$$\min_\Theta\sum\limits_i L(y_i, f(x_i,\Theta))$$
 		Si deve pertanto scegliere la loss function, aggiornare i pesi di ogni layer con il gradient descent e usare la backpropagation del segnale di errore per computare il gradiente efficientemente.
-
+		
 		\subsubsection{CNN e LSTM}
 		La backpropagation permette importanti sviluppi nel campo come le convolutional neural networks e le recurrent long-short term memory networks negli anni $90$.
 
@@ -92,7 +93,7 @@ Funzioni attivatrici tradizionali sono non lineari come la sigmoide $h(x) = \fra
 	\subsection{Deep learning revolution}
 	Nel $2006$ si utilizza un nuovo modo per inizializzare i pesi: ogni layer viene trainato singolarmente attraverso unupervised training come contrastive divergence e i pesi si sistemano con un round di supervised learning.
 	Nasce cos\`i alexnet, una rete CNN simile a LeNet ma trainata con due GPU e con migliorie tecniche come ReLU, dropout e data augmentation.
-
+	
 	\subsection{Caratteristiche del deep learning}
 	Si nota come il deep learning, a differenza del machine learning tradizionale non richiede la creazione di feature a tavolino: la loro estrazione avviene infatti negli hidden layers.
 	Si nota pertanto come una rete neurale \`e una composizione di moduli, funzioni connesse gerarchicamente con parametri $\Theta$.
@@ -104,7 +105,8 @@ L'obiettivo \`e quello di approssimare una funzione sconosciuta ideale $f^*:\mat
 Per queste reti si definisce una mappatura parametrica $y = f(x,\theta)$ e si imparano i parametri per trovare una buona approssimazione di $f^*$ dai sample disponibili.
 L'informazione fluisce dall'input, verso computazioni intermedie e si produce l'ouput.
 La composizione delle funzioni pu\`o essere descritta come un \emph{DAG}, in cui la profondit\`a \`e il massimo $i$ nella catena di composizione delle funzioni.
-Il layer finale viene chiamato layer di output. La rete neurale in figura \ref{fig:chapter11-04} ha una profondit\`a di 3.
+Il layer finale viene chiamato layer di output. 
+La rete neurale in figura \ref{fig:chapter11-04} ha una profondit\`a di 3.
 \begin{figure}
 	\centering
 	\begin{minipage}{.5\textwidth}
@@ -127,9 +129,10 @@ Il layer finale viene chiamato layer di output. La rete neurale in figura \ref{f
 	Per il training si deve ottimizzare $\theta$ per portare $f(x,\theta)$ il pi\`u vicino possibile a $f^*(x)$.
 	Questa viene valutata a diverse istanze di $x$ di training data, che specifica solamente l'output dei layer finali.
 	L'output dei layer intermedi non viene specificato, da cui il nome hidden layers.
-	Questo \`e simile a progettare una macchina basata su gradient descent: il problema diventa non convesso e non c'\`e garanzia di convergenza. Ci sono molti minimi locali, e molto probabilmente finiremo in un minimo locale in fase di training. Per questo \`e importante inizializzare i pesi di una NN con valori random, piccoli e uniformemente distribuiti e per esempio fare training di 10 NN diverse e vedere quale \`e la migliore sul training set.
+	Questo \`e simile a progettare una macchina basata su gradient descent: il problema diventa non convesso e non c'\`e garanzia di convergenza. Ci sono molti minimi locali, e molto probabilmente finiremo in un minimo locale in fase di training. 
+	Per questo \`e importante inizializzare i pesi di una NN con valori random, piccoli e uniformemente distribuiti e per esempio fare training di 10 NN diverse e vedere quale \`e la migliore sul training set.
 	In particolare per applicare il gradient descent si deve specificare un modello, una funzione di costo e la rappresentazione dell'output.
-
+	
 	\subsection{Scelte di modellamento}
 	Per modellare una feedforward network si devono scegliere:
 	\begin{multicols}{2}
@@ -146,71 +149,72 @@ Il layer finale viene chiamato layer di output. La rete neurale in figura \ref{f
 		La funzione di costo dice quanto la rete si comporta bene rispetto ai training data:
 		$$\mathcal{L}(w) = distance(f_\theta(x), y)$$
 		Calcola ovvero la discrepanza tra la predizione e la label effettiva,
-		Si possono applicare loss gi\`a viste e tipicamente si converte l'output in probabilit\`a come attraverso softmax. Alcune funzioni di costo si adattano bene a problemi di classificazione altre a problemi di regression \ref{fig:chapter11-05}.
-	
-			\paragraph{Cross-entropy}
-			La cross-entropy loss \`e la loss function pi\`u comune applicata con softmax \ref{fig:chapter11-06}:
-			$$\mathcal{L}_i = -\sum\limits_ky_y\log(S(l_k)) = -\log(S(l))$$
-			
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.6\linewidth]{imgs/chapter11/img6}
-				\caption{Cost function: Cross-Entropy}
-				\label{fig:chapter11-06}
-			\end{figure}
-		
+		Si possono applicare loss gi\`a viste e tipicamente si converte l'output in probabilit\`a come attraverso softmax. 
+		Alcune funzioni di costo si adattano bene a problemi di classificazione altre a problemi di regression \ref{fig:chapter11-05}.
+
+\paragraph{Cross-entropy}
+La cross-entropy loss \`e la loss function pi\`u comune applicata con softmax \ref{fig:chapter11-06}:
+$$\mathcal{L}_i = -\sum\limits_ky_y\log(S(l_k)) = -\log(S(l))$$
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{imgs/chapter11/img6}
+	\caption{Cost function: Cross-Entropy}
+	\label{fig:chapter11-06}
+\end{figure}
+
 		\subsubsection{Output layers}
 		Si nota come la scelta della loss function sia correlata alla scelta dell'unit\`a di output.
 
-			\paragraph{Linear}
-			Data una feature $h$ un unit\`a di un layer di output lineari d\`a:
-			$$\hat{y} = W^Th+b$$
-			Questi unit\`a non si saturano (mantiene il gradiente lontano da $0$), offrono poca difficolt\`a agli algoritmi basati sull'ottimizzazione del gradiente.
-			Si nota come un output del modello vicino a $0$ \`e problematico.
-			Utilizzata spesso nei problemi di regressione.
-
-			\paragraph{Softmax}
-			Softmax permette di produrre probabilit\`a normalizzate nell'output layer, pertanto produce:
-			$$S(l_i) = \frac{e^{l_i}}{\sum\limits_ke^{l_k}}$$
-			Utilizzata spesso in problemi di classificazione.
+		\paragraph{Linear}
+		Data una feature $h$ un unit\`a di un layer di output lineari d\`a:
+		$$\hat{y} = W^Th+b$$
+		Questi unit\`a non si saturano (mantiene il gradiente lontano da $0$), offrono poca difficolt\`a agli algoritmi basati sull'ottimizzazione del gradiente.
+		Si nota come un output del modello vicino a $0$ \`e problematico.
+		Utilizzata spesso nei problemi di regressione.
+		
+		\paragraph{Softmax}
+		Softmax permette di produrre probabilit\`a normalizzate nell'output layer, pertanto produce:
+		$$S(l_i) = \frac{e^{l_i}}{\sum\limits_ke^{l_k}}$$
+		Utilizzata spesso in problemi di classificazione.
 		\subsubsection{Hidden units}
 		All'interno di una hidden unit si accetta un input $x$, si computa una trasformazione affine: $z = w^Tx+b$, si applica element-wise una funzione non lineare $h(z)$ e si ottiene l'output $h(z)$.
 		La scelta da compiere si basa su quale $h$ (funzione di attivazione) utilizzare.
 
-			\paragraph{Rectified linear units (RELU)}
-			Una RELU presenta un gradiente di $0$ o $1$, facile da ottimizzare simile alle unit\`a linari.
-			D\`a gradienti grandi e consistenti quando attiva, ma non \`e sempre differenziabile, risolvibile attraverso una derivata da un lato a $z=0$.
-			Ne esistono diverse varianti che risolvono il problema che l'unit\`a muore quando il gradiente \`e $0$ \ref{fig:chapter11-07}:
-			\begin{multicols}{2}
-				\begin{itemize}
-					\item ReLu: $y_i = 0$ per $x < 0$ o $y_i = x_i$ per $x >0$.
-					\item Leaky Relu: $y_i = a_ix_i$ per $x < 0$ o $y_i = x_i$ per $x >0$.
-					\item Randomized Leaky Relu: $y_{ji} = a_{ji}x_{ji}$ per $x < 0$ o $y_{ji} = x_{j}i$ per $x >0$.
-				\end{itemize}
-			\end{multicols}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.8\linewidth]{imgs/chapter11/img7}
-				\caption{Funzione di costo}
-				\label{fig:chapter11-07}
-			\end{figure}
-
-			\paragraph{Sigmoid e Tanh}
-			Questi due tipi di hidden unit riducono il tipo di non linearit\`a restringendo l'output ai range $[0,1]$ e $[-1,1]$.
-			Si saturano lungo la maggior parte del dominio e sono fortemente sensibili unicamente quando l'input \`e pi\`u vicino a $0$ \ref{fig:chapter11-08}.
-			La saturazione rende l'apprendimento basato sul gradient pi\`u difficile.
-			\begin{multicols}{2}
-				\begin{itemize}
-					\item Sigmoide: $h(x) = \frac{1}{1+e^{-x}}$.
-					\item Tangente iperbolica: $h(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}$.
-				\end{itemize}
-			\end{multicols}
-			\begin{figure}
-				\centering
-				\includegraphics[width=0.6\linewidth]{imgs/chapter11/img8}
-				\caption{Sigmoid e Tanh}
-				\label{fig:chapter11-08}
-			\end{figure}
+		\paragraph{Rectified linear units (RELU)}
+		Una RELU presenta un gradiente di $0$ o $1$, facile da ottimizzare simile alle unit\`a linari.
+		D\`a gradienti grandi e consistenti quando attiva, ma non \`e sempre differenziabile, risolvibile attraverso una derivata da un lato a $z=0$.
+		Ne esistono diverse varianti che risolvono il problema che l'unit\`a muore quando il gradiente \`e $0$ \ref{fig:chapter11-07}:
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item ReLu: $y_i = 0$ per $x < 0$ o $y_i = x_i$ per $x >0$.
+				\item Leaky Relu: $y_i = a_ix_i$ per $x < 0$ o $y_i = x_i$ per $x >0$.
+				\item Randomized Leaky Relu: $y_{ji} = a_{ji}x_{ji}$ per $x < 0$ o $y_{ji} = x_{j}i$ per $x >0$.
+			\end{itemize}
+		\end{multicols}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{imgs/chapter11/img7}
+			\caption{Funzione di costo}
+			\label{fig:chapter11-07}
+		\end{figure}
+		
+		\paragraph{Sigmoid e Tanh}
+		Questi due tipi di hidden unit riducono il tipo di non linearit\`a restringendo l'output ai range $[0,1]$ e $[-1,1]$.
+		Si saturano lungo la maggior parte del dominio e sono fortemente sensibili unicamente quando l'input \`e pi\`u vicino a $0$ \ref{fig:chapter11-08}.
+		La saturazione rende l'apprendimento basato sul gradient pi\`u difficile.
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item Sigmoide: $h(x) = \frac{1}{1+e^{-x}}$.
+				\item Tangente iperbolica: $h(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}$.
+			\end{itemize}
+		\end{multicols}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.6\linewidth]{imgs/chapter11/img8}
+			\caption{Sigmoid e Tanh}
+			\label{fig:chapter11-08}
+		\end{figure}
 
 		\subsubsection{Architettura}
 		La decisione rispetto alla profondit\`a e larghezza di una rete neurale si basa principalmente su risultati empirici.
@@ -245,15 +249,17 @@ Il layer finale viene chiamato layer di output. La rete neurale in figura \ref{f
 			\caption{Operazione di feedforward}
 			\label{fig:chapter11-09}
 		\end{figure}
-
+		
 		\subsubsection{Computare l'errore e train}
 		L'errore della rete sul training set:
 		$$L(X;w) = \sum\limits_{i=1}^N\frac{1}{2}(y_i-\hat{y}(x_i;w))^2$$
-		Non ha una soluzione di forma causa, si utilizza il gradient descent. Nota come stiamo utilizzando l'errore quadratico, e non c'\`e un regolarizzatore, che utilizzavamo per ridurre il problema dell'overfitting. Nelle NN il problema dell'overfitting si risolve facendo early stopping, ossia fermiamo il training prima di andare in overfitting.
+		Non ha una soluzione di forma causa, si utilizza il gradient descent. 
+		Nota come stiamo utilizzando l'errore quadratico, e non c'\`e un regolarizzatore, che utilizzavamo per ridurre il problema dell'overfitting. 
+		Nelle NN il problema dell'overfitting si risolve facendo early stopping, ossia fermiamo il training prima di andare in overfitting.
 		Si deve calcolare la derivata di $L$ su un singolo esempio.
 		Si pu\`o considerare un modello lineare semplice con output $\hat{y} = \sum\limits_jw_jx_{ij}$:
 		$$\frac{\partial L(X_i)}{\partial w_j} = (\hat{y}_i -y_i)x_{ij}$$
-
+		
 		\subsubsection{Backpropagation}
 		L'unit\`a di attivazione generale in una rete multilayer:
 		$$z_t = h\bigl(\sum\limits_jw_{jt}z_j\bigr)$$
@@ -267,7 +273,7 @@ Il layer finale viene chiamato layer di output. La rete neurale in figura \ref{f
 			\delta_t &= \sum\limits_{s\in S} = \sum\limits_{s\in S}\frac{\partial L}{\partial a_s}\frac{\partial a_s}{\partial a_t}=\\
 			&= h'(a_t)\sum\limits_{s\in s} w_{ts}\delta_s
 		\end{align*}
-
+		
 		\subsubsection{Esempio}
 		Sia l'output $f(a) = a$ e l'hidden: $h(a) = tanh(a) = \frac{e^a-e^{-a}}{e^a+e^{-a}}$, ora $h'(a) = 1-h(a)^2$.
 		Dato $x$, il feedforward inputs:
@@ -302,20 +308,13 @@ Il layer finale viene chiamato layer di output. La rete neurale in figura \ref{f
 			\caption{La rete}
 			\label{fig:chapter11-14}
 		\end{figure}
-
-			\paragraph{Output multidimensionale}
-			Per l'output multidmensionale la loss sull'esempio \`e:
-			$$\frac{1}{2}\sum\limits_{k = 1}^K(y_k-\hat{y}_k)^2$$
-			Per ogni unit\`a di output: $\delta_k = y_k - \hat{y}_k$.
-			Per l'unit\`a hidden $j$:
-			$$\delta_j = (1-z_j)^2\sum\limits_{k=1}^Lw_{jk}^{(2)}\delta_k$$
-
-
-
-
-
-
-
+		
+		\paragraph{Output multidimensionale}
+		Per l'output multidmensionale la loss sull'esempio \`e:
+		$$\frac{1}{2}\sum\limits_{k = 1}^K(y_k-\hat{y}_k)^2$$
+		Per ogni unit\`a di output: $\delta_k = y_k - \hat{y}_k$.
+		Per l'unit\`a hidden $j$:
+		$$\delta_j = (1-z_j)^2\sum\limits_{k=1}^Lw_{jk}^{(2)}\delta_k$$
 
 	\subsection{Scelta di un ottimizzatore}
 	Il gradient \`e il vettore delle derivate parziali con rispetto di tutte le coordinate dei pesi:
@@ -340,7 +339,7 @@ Il layer finale viene chiamato layer di output. La rete neurale in figura \ref{f
 			\caption{Batch Gradient Descent (BGD)}
 			\label{fig:chapter11-10}
 		\end{figure}
-
+		
 		\subsubsection{Stochastic gradient descent (SGD)}
 		In SDG si computa il gradiente solo su un campione scelto casualmente e non sull'intero training set in modo da ottenere performance migliori.
 		Il learning rate cambia ad ogni passo, tipicamente decade linearmente \ref{fig:chapter11-11}.
@@ -353,18 +352,19 @@ Il layer finale viene chiamato layer di output. La rete neurale in figura \ref{f
 			\caption{BGD vs SGD}
 			\label{fig:chapter11-11}
 		\end{figure}
-	
+		
 		\subsubsection{Mini-batch gradient descent}
 		Le minibatches risolvono il problema di SDG rispetto ai dati rumorosi.
 		Il tempo di computazione per aggiornamento non dipende dal numero di esempi di training $N$, permettendo la creazione di minibatches pi\`u grandi che vengono computate parallelamente.
 		Sono tipicamente di dimensione $2^n$ per le propriet\`a di calcolo della GPU.
-
+		
 		\subsubsection{Momento}
 		Un problema di BGD e SGD \`e il fatto che minimizzano l'errore in molto tempo.
 		Una soluzione diversa \`e data dalla tecnica del momento, che introduce un vettore velocit\`a $v$ di aggiornamenti, una media con decay esponenziale per i gradienti utilizzato per aggiornare i pesi.
-		Introduce un vettore momento che regola il trade-off tra il gradiente allo step corrente e quelle vecchie. In particolare si utilizza una media mobile pesata dei gradienti passati, in cui i gradienti nel passato recente hanno pi\`u importanza di quelli nel passato lontano che sommata al gradiente calcolato in un punto aiuta a superare i punti sella, dove altrimenti il gradiente sarebbe zero e la fase di training si allungherebbe notevolmente, o si fermerebbe. \\
+		Introduce un vettore momento che regola il trade-off tra il gradiente allo step corrente e quelle vecchie. 
+		In particolare si utilizza una media mobile pesata dei gradienti passati, in cui i gradienti nel passato recente hanno pi\`u importanza di quelli nel passato lontano che sommata al gradiente calcolato in un punto aiuta a superare i punti sella, dove altrimenti il gradiente sarebbe zero e la fase di training si allungherebbe notevolmente, o si fermerebbe. \\
 		\input{Pseudocodice/12_SDG_momentum}
-
+		
 		\subsubsection{Adaptive learning rate method}
 		Alcune volte \`e bene usare un learning rate diverso per ogni peso.
 		Un metodo che lo implementa \`e Adagrad o adaptive gradient optimizer.
@@ -399,7 +399,7 @@ $$S(i, j) = (I\cdot K)(i,j) = \sum\limits_M\sum\limits_NI(m,n(K(i-m,j-n)$$
 	Pu\`o esser utilizzato per lisciare, rendere pi\`u nitida un'immagine.
 	Si nota come quest'operazione \`e commutativa.
 	Esistono kernel specializzati nella estrazione dei bordi, oppure kernel per l'estrazione di linee verticali, orizzontali, e molti altri.
-
+	
 	\subsection{Architettura}
 	Le CNN sono pertanto delle feedforward neural networks con una struttura di connettivit\`a specializzata.
 	Impilano diversi layer di feature extractors:
@@ -418,38 +418,40 @@ $$S(i, j) = (I\cdot K)(i,j) = \sum\limits_M\sum\limits_NI(m,n(K(i-m,j-n)$$
 			\item Pooling. In figura \ref{fig:chapter11-12} un esempio di max-pooling.
 		\end{enumerate}
 	\end{multicols}
-
-\begin{figure}
-	\centering
-	\begin{minipage}{.5\textwidth}
+	
+	\begin{figure}
 		\centering
-		\includegraphics[width=0.8\linewidth]{imgs/chapter11/img12}
-		\caption{Max-pooling}
-		\label{fig:chapter11-12}		
-	\end{minipage}%
-	\begin{minipage}{.5\textwidth}
-		\centering
-		\includegraphics[width=0.8\linewidth]{imgs/chapter11/img18}
-		\caption{Convolutional layer}
-		\label{fig:chapter11-18}
-	\end{minipage}
-\end{figure}
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{imgs/chapter11/img12}
+			\caption{Max-pooling}
+			\label{fig:chapter11-12}		
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=0.8\linewidth]{imgs/chapter11/img18}
+			\caption{Convolutional layer}
+			\label{fig:chapter11-18}
+		\end{minipage}
+	\end{figure}
 
 		\subsubsection{Convolutional layers}
 		I convolutional layers \ref{fig:chapter11-18} sono il nucleo di una CNN, consistono di un insieme di filtri, ognuno dei quali copre una piccola porzione spaziale dei dati di input o campo recettivo.
 		Ogni filtro viene convoluto attraverso la dimensione dei dati di input, producendo una mappa di feature multidimensionale.
-		La rete \textbf{impara} i filtri che si attivano quando trovano uno specifico tipo di feature a una certa posizione spaziale nell'input. In una CNN ci sono tre tipi di layer: convoluzionali, pooling e fully connected. Tipicamente si comincia da un layer convoluzionale, che \`e seguito da uno di max-pooling, poi un'altro convoluzionale, un'altro di max-pooling, ..., i layer finali sono sempre fully-connected.
-	
+		La rete \textbf{impara} i filtri che si attivano quando trovano uno specifico tipo di feature a una certa posizione spaziale nell'input. 
+		In una CNN ci sono tre tipi di layer: convoluzionali, pooling e fully connected. 
+		Tipicamente si comincia da un layer convoluzionale, che \`e seguito da uno di max-pooling, poi un'altro convoluzionale, un'altro di max-pooling, ..., i layer finali sono sempre fully-connected.
+		
 		\subsubsection{Non linearity}
 		La non linearity aumenta la non linearity dell'intera architettura senza avere effetto sui campi recettivi del livello di convolution.
 		$$y_{i,j} = f(a_{i.l})$$
 		Per esempio $f(a) = [a]_+$ o $f(a) = sigmoid(a)$.
-
+		
 		\subsubsection{Pooling}
 		Il pooling riduce la dimensione spaziale della rappresentazione riducendo la quantit\`a di parametri e la computazione della rete, controllando l'overffitting.
 		$$x_{i,j} = \max\limits_{|k|<\tau, |l|<\tau}y_i - k_{ij} - l$$
 		Inoltre fornisce invarianza rispetto alle traslazioni.
-
+		
 		\subsubsection{Esempi di architetture}
 		\begin{multicols}{2}
 			\begin{itemize}
@@ -473,13 +475,15 @@ $$S(i, j) = (I\cdot K)(i,j) = \sum\limits_M\sum\limits_NI(m,n(K(i-m,j-n)$$
 Esistono diversi modelli di reti neurali per diverse necessit\`a.
 In particolare fino ad ora si \`e discusso su problemi di predizione in cui si hanno input e output di dimensione fissa.
 Ci sono casi di sequential prediction tasks in cui l'input o l'output sono sequenze di lunghezza variabile.
-Si usano per esempio nella predizione dei frame video. Questi si risolvono attraverso recurrent neural networks.
+Si usano per esempio nella predizione dei frame video. 
+Questi si risolvono attraverso recurrent neural networks.
 
 	\subsection{Recurrent neural networks}
 	Nelle recurrent networks input precedenti vengono utilizzati per influenzare le decisioni su input successivi.
 	Questo si ottiene attraverso dei layer ricorsivi, in cui la rappresentazione nascosta al tempo $t$:
 	$$h_t = f_w(x_t, h_{t-1})$$
-	Si nota come la funzione di $W$ dipende sia dall'input $t$ che dallo stato precedente. Per una rappresentazione grafica osserva la figura \ref{fig:chapter11-13}.
+	Si nota come la funzione di $W$ dipende sia dall'input $t$ che dallo stato precedente. 
+	Per una rappresentazione grafica osserva la figura \ref{fig:chapter11-13}.
 	
 	\begin{figure}
 		\centering
@@ -507,9 +511,9 @@ Si usano per esempio nella predizione dei frame video. Questi si risolvono attra
 			\item Many-to-many.
 		\end{itemize}
 	\end{multicols}
-
+	
 	Le RNN hanno applicazioni per esempio nel campo del language processing in cui si chiede al modello di generare del testo.
-
+	
 	\subsection{Autoencoders}
 	Gli autoencoders sono un esempio di unsupervised learning.
 	Sono simili a feedforward neural networks.
@@ -523,8 +527,9 @@ Si usano per esempio nella predizione dei frame video. Questi si risolvono attra
 	$z$ nel mezzo \`e pi\`u piccolo di $x$: si svolge una dimensionality reduction \ref{fig:chapter11-15}.
 	Le feature dovrebbero catturare fattori significativi di variazioni nel dato.
 	Un esempio per capire la differenza tra output e input \`e la L2 loss function $||x-\hat{x}||^2$.
-	Dopo il training si scarta il decoder e l'encoder pu\`o essere utilizzato per inizializzare un modello supervised che permette un fine-tuning insieme al classificatore. Quest'ultimo avr\`a prestazioni migliori in quanto andr\`a ad operare su dati di minore dimensione \ref{fig:chapter11-16}. 
-
+	Dopo il training si scarta il decoder e l'encoder pu\`o essere utilizzato per inizializzare un modello supervised che permette un fine-tuning insieme al classificatore. 
+	Quest'ultimo avr\`a prestazioni migliori in quanto andr\`a ad operare su dati di minore dimensione \ref{fig:chapter11-16}. 
+	
 	\begin{figure}
 		\centering
 		\begin{minipage}{.5\textwidth}

@@ -4,41 +4,45 @@
 Il machine learning permette ai computer di acquisire conoscenza attraverso algoritmi che imparano e inferiscono dai dati.
 Tale conoscenza viene rappresentata da un modello, che sulla base di esempi passati, imparerà a fare previsioni sui dati futuri.
 
-\subsection{Processo di learning}
-Si individua un processo di learning:
-\begin{multicols}{2}
-	\begin{itemize}
-		\item Acquisizione di dati dal mondo reale attraverso sensori.
-		\item Preprocessamento dei dati: eliminazione del rumore, estrazione delle features e normalizzazione.
-		\item Riduzione di dimensionalit\`a attraverso selezione e proiezione di features.
-		\item Learning del modello: classification, regression, clustering e description.
-		\item Test del modello attraverso cross-validation e bootstrap.
-		\item Analisi dei risultati.
-	\end{itemize}
-\end{multicols}
+	\subsection{Processo di learning}
+	Si individua un processo di learning:
+	\begin{multicols}{2}
+		\begin{itemize}
+			\item Acquisizione di dati dal mondo reale attraverso sensori.
+			\item Preprocessamento dei dati: eliminazione del rumore, estrazione delle features e normalizzazione.
+			\item Riduzione di dimensionalit\`a attraverso selezione e proiezione di features.
+			\item Learning del modello: classification, regression, clustering e description.
+			\item Test del modello attraverso cross-validation e bootstrap.
+			\item Analisi dei risultati.
+		\end{itemize}
+	\end{multicols}
 
 \section{Dati}
 I dati disponibili ad un algoritmo di machine learning sono tipicamente un insieme di esempi.
 Questi esempi sono tipicamente rappresentati come un array di features, caratteristiche dei dati di interesse per lo studio in atto, attraverso le feature il modello vede i dati.
 
-\subsection{Training, validation e test set}
-In particolare per questi algoritmi si assume sempre che il training, validation e il test set siano distribuiti secondo variabili indipendenti e identicamente distribuite (\emph{i.i.d}).
-La distribuzione $P_{data}$ \`e tipicamente sconosciuta ma si pu\`o campionare, attraverso un modello probabilistico di learning. Tipicamente il validation set \`e campionato dall'insieme di training.
-In particolare la distribuzione di probabilit\`a di coppie di esempio e label viene detta data generating distribution e sia il training data che il test set sono generati basandosi su di essa.
-
-Nota che non ci si può aspettare di ottenere buone performance da un modello di machine learning se i dati in ingresso non sono buoni. Supponiamo di voler creare un modello che classifica foto di cani e gatti, i dati di training contengono 98 esempi di gatti e 2 cani. Il modello imparerà a fornire la risposta che la foto contiene un gatto sbagliando solamente nel 2\% dei casi. In fase di testing per\`o questo errore pu\`o essere molto pi\`u alto.
-\begin{figure}
-	\centering
-	\includegraphics[width=0.4\linewidth]{imgs/chapter2/img0}
-	\caption{Machine Learning Pipeline}
-	\label{fig:chapter02-00}
-\end{figure}
+	\subsection{Training, validation e test set}
+	In particolare per questi algoritmi si assume sempre che il training, validation e il test set siano distribuiti secondo variabili indipendenti e identicamente distribuite (\emph{i.i.d}).
+	La distribuzione $P_{data}$ \`e tipicamente sconosciuta ma si pu\`o campionare, attraverso un modello probabilistico di learning. Tipicamente il validation set \`e campionato dall'insieme di training.
+	In particolare la distribuzione di probabilit\`a di coppie di esempio e label viene detta data generating distribution e sia il training data che il test set sono generati basandosi su di essa.
+	
+	Nota che non ci si può aspettare di ottenere buone performance da un modello di machine learning se i dati in ingresso non sono buoni. 
+	Supponiamo di voler creare un modello che classifica foto di cani e gatti, i dati di training contengono 98 esempi di gatti e 2 cani. 
+	Il modello imparerà a fornire la risposta che la foto contiene un gatto sbagliando solamente nel 2\% dei casi. 
+	In fase di testing per\`o questo errore pu\`o essere molto pi\`u alto.
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.4\linewidth]{imgs/chapter2/img0}
+		\caption{Machine Learning Pipeline}
+		\label{fig:chapter02-00}
+	\end{figure}
 \section{Task}
 Si intende per task una rappresentazione del tipo di predizione che viene svolta per risolvere un problema su dei dati.
 Viene identificata con un insieme di funzioni che possono potenzialmente risolverla.
 In generale consiste di una funzione che assegna ogni input $x\in\mathcal{X}$ a un output $y\in\mathcal{Y}$:
 $$f:\mathcal{X}\rightarrow\mathcal{Y}\qquad\mathcal{F}_{task}\subset\mathcal{Y^X}$$
-La natura di $\mathcal{X},\mathcal{Y}, \mathcal{F}_{task}$ dipende dal tipo di task. Ad esempio, in un problema di classificazione Y è un insieme di etichette, in un problema di regressione è un numero reale.
+La natura di $\mathcal{X},\mathcal{Y}, \mathcal{F}_{task}$ dipende dal tipo di task. 
+Ad esempio, in un problema di classificazione Y è un insieme di etichette, in un problema di regressione è un numero reale.
 
 \section{Modello}
 Un modello \ref{fig:chapter02-01} \`e un programma per risolvere un problema.
@@ -79,7 +83,8 @@ Pertanto:
 $$f^*\in arg\min\limits_{f\in\mathcal{F}_{task}}E(f;P_{data})$$
 
 \subsection{Target feasible}
-Si deve restringere il focus sul trovare funzioni che possono essere implementate e valutate in maniera trattabile. Questa funzione potrebbe però non essere essere quella ottimale.
+Si deve restringere il focus sul trovare funzioni che possono essere implementate e valutate in maniera trattabile. 
+Questa funzione potrebbe però non essere essere quella ottimale.
 Si definisce pertanto uno spazio di ipotesi del modello $\mathcal{H}\subset\mathcal{F}_{task}$ e si cerca la soluzione all'interno di quello spazio:
 $$f^*_{\mathcal{H}}\in arg\min\limits_{f\in\mathcal{H}} E(f;P_{data})$$
 Si noti come questa funzione non possa essere computata correttamente in quanto $P_{data}$ \`e sconosciuta. \ref{fig:chapter02-03}
@@ -117,7 +122,10 @@ Si nota pertanto come l'algoritmo di learning \ref{fig:chapter02-05} risolve il 
 $$f^*_\mathcal{H}(\mathcal{D}_n)$$
 
 \subsection{Riassunto}
-Vorremmo operare sulla curva rossa \ref{fig:chapter02-06}, ma non possiamo farlo perch\`e non conosciamo $P_{data}$. Possiamo operare solo sulla curva verde. Successivamente dobbiamo restringere la ricerca allo spazio delle ipotesi $\mathcal{H}$ perch\`e $\mathcal{F}_{task}$ \`e troppo grande. Ci sono poi dei minimi locali che ci portano ad ottenere risultati molto elevati rispetto all'ottimo.
+Vorremmo operare sulla curva rossa \ref{fig:chapter02-06}, ma non possiamo farlo perch\`e non conosciamo $P_{data}$. 
+Possiamo operare solo sulla curva verde. 
+Successivamente dobbiamo restringere la ricerca allo spazio delle ipotesi $\mathcal{H}$ perch\`e $\mathcal{F}_{task}$ \`e troppo grande.
+Ci sono poi dei minimi locali che ci portano ad ottenere risultati molto elevati rispetto all'ottimo.
 
 
 \begin{figure}
@@ -283,81 +291,82 @@ Tutti i punti mappati sullo stesso indice formano un cluster.
 	\end{itemize}
 \end{multicols}
 
-\subsubsection{Dimensionality reduction}
-Nella dimensionality reduction si tenta di ridurre il numero di variabili sotto considerazione ottenendo un insieme di variabili principali.
+	\subsubsection{Dimensionality reduction}
+	Nella dimensionality reduction si tenta di ridurre il numero di variabili sotto considerazione ottenendo un insieme di variabili principali.
 
-\paragraph{Task}
-Si deve trovare una funzione $f\in\mathcal{Y}^\mathcal{X}$ che mappa ogni input di molte dimensioni $x\in\mathcal{X}$ a un output a dimensione minore $f(x)\in\mathcal{Y}$, dove $dim(\mathcal{Y})\ll dim(\mathcal{X})$
+		\paragraph{Task}
+		Si deve trovare una funzione $f\in\mathcal{Y}^\mathcal{X}$ che mappa ogni input di molte dimensioni $x\in\mathcal{X}$ a un output a dimensione minore $f(x)\in\mathcal{Y}$, dove $dim(\mathcal{Y})\ll dim(\mathcal{X})$
 
-\subsection{Reinforcement learning}
-Nel reinforcement learning un agente impara dall'ambiente interagendo con esso e ricevendo premi per lo svolgimento di azioni particolari.
-In particolare, data una sequenza di esempi o stati e una reward dopo il completamento di tale sequenza si impara a predirre l'azione da svolgere per uno stato o esempio individuale.
+	\subsection{Reinforcement learning}
+	Nel reinforcement learning un agente impara dall'ambiente interagendo con esso e ricevendo premi per lo svolgimento di azioni particolari.
+	In particolare, data una sequenza di esempi o stati e una reward dopo il completamento di tale sequenza si impara a predirre l'azione da svolgere per uno stato o esempio individuale.
 
 \section{Polynomial curve fitting}
 
-\subsection{Dati}
-L'insieme dei dati $\mathcal{D}_n$ consiste di coppie:
-$$\mathcal{D}_n = \{(x_1, y_1),\dots,(x_n,y_n)\}$$
-I dati sono generati dalla funzione $\sin(2\pi x)$ con del rumore.
-Il training set consiste di $10$ punti: $n = 10$. \ref{fig:chapter02-09}
+	\subsection{Dati}
+	L'insieme dei dati $\mathcal{D}_n$ consiste di coppie:
+	$$\mathcal{D}_n = \{(x_1, y_1),\dots,(x_n,y_n)\}$$
+	I dati sono generati dalla funzione $\sin(2\pi x)$ con del rumore.
+	Il training set consiste di $10$ punti: $n = 10$. \ref{fig:chapter02-09}
 
-\subsection{Modello e spazio di ipotesi}
-Il modello per il Polynomial curve fitting \ref{fig:chapter02-10} \`e:
-$$f_w(x) = \sum\limits_{j = 0}^M w_jx^j$$
-\`E parametrico, dove i parametri sono $\{w_0,\dots, w_m\}$.
-Lo spazio di ipotesi per $M\in\mathbb{N}$ fissato \`e:
-$$\mathcal{H}_M = \{f_w:w\in\mathbb{R}^M\}$$
+	\subsection{Modello e spazio di ipotesi}
+	Il modello per il Polynomial curve fitting \ref{fig:chapter02-10} \`e:
+	$$f_w(x) = \sum\limits_{j = 0}^M w_jx^j$$
+	\`E parametrico, dove i parametri sono $\{w_0,\dots, w_m\}$.
+	Lo spazio di ipotesi per $M\in\mathbb{N}$ fissato \`e:
+	$$\mathcal{H}_M = \{f_w:w\in\mathbb{R}^M\}$$
 
 
-\begin{figure}
-	\centering
-	\begin{minipage}{.5\textwidth}
+	\begin{figure}
 		\centering
-		\includegraphics[width=1\linewidth]{imgs/chapter2/img9}
-		\caption{Polynomial curve fitting}
-		\label{fig:chapter02-09}
-	\end{minipage}%
-	\begin{minipage}{.5\textwidth}
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=1\linewidth]{imgs/chapter2/img9}
+			\caption{Polynomial curve fitting}
+			\label{fig:chapter02-09}
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=1\linewidth]{imgs/chapter2/img10}
+			\caption{Polynomial curve fitting}
+			\label{fig:chapter02-10}
+		\end{minipage}
+	\end{figure}
+
+
+
+	\subsection{Error function}
+	La funzione di errore per il polynomial curve fitting consiste della media tra le distanze quadratiche tra la predizione effettuata e l'effettiva label.
+	La pointwise loss:
+	$$l(f;(x_i,y_i)) = [f(x_i) - y_i]^2$$
+	La funzione di errore \`e pertanto:
+	$$E(f;\mathcal{D}_n) = \mathbb{E}(l(f;(x_i,y_i))) = \frac{1}{n}\sum\limits_{i=1}^n[f(x_i)-y_i]^2$$
+
+	\subsection{Funzione obiettivo}
+	Si ricordi che la funzione obiettivo \`e:
+	$$f^*_{\mathcal{H}_M}(\mathcal{D}_n)\in\arg\min\limits_{f\in\mathcal{H}_M}E(f;\mathcal{D}_n)$$
+	Equivalente rispetto a $f_{w^*}$ dove:
+	$$w^*\in\arg\min\limits_{w\in\mathbb{R}^M}\frac{1}{n}\sum\limits_{i=1}^n[f_w(x_i)-y_i]^2$$
+	A parole: trovare i pesi che minimizzano l'errore. 
+	Si noti come questa richieda la risoluzione di un sistema lineare di equazioni.
+	Il cambiamento di $M$ influisce grandemente sull'accuratezza della predizione, andando a determinare casi di overfitting o underfitting \ref{fig:chapter02-12}.
+	Con questo caso particolare si trova la soluzione migliore con $M=3$.
+	
+	\begin{figure}
 		\centering
-		\includegraphics[width=1\linewidth]{imgs/chapter2/img10}
-		\caption{Polynomial curve fitting}
-		\label{fig:chapter02-10}
-	\end{minipage}
-\end{figure}
-
-
-
-\subsection{Error function}
-La funzione di errore per il polynomial curve fitting consiste della media tra le distanze quadratiche tra la predizione effettuata e l'effettiva label.
-La pointwise loss:
-$$l(f;(x_i,y_i)) = [f(x_i) - y_i]^2$$
-La funzione di errore \`e pertanto:
-$$E(f;\mathcal{D}_n) = \mathbb{E}(l(f;(x_i,y_i))) = \frac{1}{n}\sum\limits_{i=1}^n[f(x_i)-y_i]^2$$
-
-\subsection{Funzione obiettivo}
-Si ricordi che la funzione obiettivo \`e:
-$$f^*_{\mathcal{H}_M}(\mathcal{D}_n)\in\arg\min\limits_{f\in\mathcal{H}_M}E(f;\mathcal{D}_n)$$
-Equivalente rispetto a $f_{w^*}$ dove:
-$$w^*\in\arg\min\limits_{w\in\mathbb{R}^M}\frac{1}{n}\sum\limits_{i=1}^n[f_w(x_i)-y_i]^2$$
-A parole: trovare i pesi che minimizzano l'errore. Si noti come questa richieda la risoluzione di un sistema lineare di equazioni.
-Il cambiamento di $M$ influisce grandemente sull'accuratezza della predizione, andando a determinare casi di overfitting o underfitting \ref{fig:chapter02-12}.
-Con questo caso particolare si trova la soluzione migliore con $M=3$.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.6\linewidth]{imgs/chapter2/img12}
-	\caption{Overfitting e underfitting nel Polynomial curve fitting}
-	\label{fig:chapter02-12}
-\end{figure}
-
-\subsection{Regolarizzazione}
-Il polynomial curve fitting \ref{fig:chapter02-8} si regolarizza penalizzando i polinomi con grandi coefficienti:
-$$E_{reg}(f_w;\mathcal{D}_n) = \frac{1}{n}\sum\limits_{i=1}^n[f_w(x_i)-y_i]^2 + \frac{\lambda}{n}||w||^2$$
-Dove $||w||^2 = \sum\limits_{i = 1}^n w_i^2$.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.6\linewidth]{imgs/chapter2/img8}
-	\caption{Regolarizzazione nel Polynomial Curve Fitting}
-	\label{fig:chapter02-8}
-\end{figure}
+		\includegraphics[width=0.6\linewidth]{imgs/chapter2/img12}
+		\caption{Overfitting e underfitting nel Polynomial curve fitting}
+		\label{fig:chapter02-12}
+	\end{figure}
+	
+	\subsection{Regolarizzazione}
+	Il polynomial curve fitting \ref{fig:chapter02-8} si regolarizza penalizzando i polinomi con grandi coefficienti:
+	$$E_{reg}(f_w;\mathcal{D}_n) = \frac{1}{n}\sum\limits_{i=1}^n[f_w(x_i)-y_i]^2 + \frac{\lambda}{n}||w||^2$$
+	Dove $||w||^2 = \sum\limits_{i = 1}^n w_i^2$.
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.6\linewidth]{imgs/chapter2/img8}
+		\caption{Regolarizzazione nel Polynomial Curve Fitting}
+		\label{fig:chapter02-8}
+	\end{figure}
