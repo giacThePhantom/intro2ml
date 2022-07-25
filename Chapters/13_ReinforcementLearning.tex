@@ -12,12 +12,12 @@ Questa idea viene presa dalle strategie di animali:
 
 	\subsection{Policy}
 	L'agente tenta di imparare una policy o un mapping da stati a azioni in modo da massimizzare la reward data dall'ambiente.
-
-\section{Markov decision process (MDP)}
-MDP utilizza l'assuzione di Markov in cui uno stato al tempo $t$ dipende solo dallo stato precedente $s(t-1)$ e dall'azione precedente $a(t-1)$ per trovare una policy.
-Questo utilizza l'equazione di Bellman e la programmazione dinamica.
-L'obiettivo \`e trovare una policy, una mappa che ritorna tutte le azioni ottimali di ogni stato sul nostro ambiente.
-
+	
+	\section{Markov decision process (MDP)}
+	MDP utilizza l'assuzione di Markov in cui uno stato al tempo $t$ dipende solo dallo stato precedente $s(t-1)$ e dall'azione precedente $a(t-1)$ per trovare una policy.
+	Questo utilizza l'equazione di Bellman e la programmazione dinamica.
+	L'obiettivo \`e trovare una policy, una mappa che ritorna tutte le azioni ottimali di ogni stato sul nostro ambiente.
+	
 	\subsection{Componenti}
 	\begin{itemize}
 		\item Stati $s_i$ che iniziano con uno stato $s_0$.
@@ -29,22 +29,38 @@ L'obiettivo \`e trovare una policy, una mappa che ritorna tutte le azioni ottima
 	Si nota come una MDP \`e definita dalla tupla $(S, A, R, P, y)$, dove $S$ \`e l'insieme degli stati possibili, $A$ l'insieme delle azioni possibili, $R$ la distribuzione delle reward dato uno stato, $P$ la probabilit\`a di transizione o la distribuzione rispetto al prossimo stato dato $(stato, azione)$ e $y$ il discount factor.
 	La reward viene utilizzata per ottenere la policy migliore.
 	L'obiettivo \`e pertanto di trovare la policy ottimale.
-
+	
 	\subsection{Ambienti stocastici}
 	MDP viene utilizzata tipicamente negli ambienti stocastici, pertanto lo stato a tempo $t+1$ non \`e deterministico quando si conosce lo stato $s_t$ e l'azione $a_t:s_{t+1}$ viene estratta dalla probabilit\`a di transizione e deriva da un processo stocastico.
-
+	
+	\begin{figure}
+		\centering
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=0.7\linewidth]{imgs/chapter13/img0}
+			\caption{Reinforcement learning}
+			\label{fig:chapter13-00}
+		\end{minipage}%
+		\begin{minipage}{.5\textwidth}
+			\centering
+			\includegraphics[width=1\linewidth]{imgs/chapter13/img1}
+			\caption{Esempi di ambienti}
+			\label{fig:chapter13-01}
+		\end{minipage}
+	\end{figure}
+	
 	\subsection{MDP loop}
 	\begin{itemize}
 		\item A tempo $t=0$ l'ambiente si campiona nello stato iniziale $s_0\sim p(s_0)$.
 		\item Si ripete:
-			\begin{itemize}
-				\item L'agente seleziona l'azione $a_i$.
-				\item L'ambiente campiona la reward $r_t\sim R(\cdot|s_t, a_t)$.
-				\item L'ambiente campiona il prossimo stato $s_{t+1}\sim P(\cdot|s_t, a_t)$
-				\item L'agente riceve la reward $r_t$ e lo stato successivo $s_{t+1}$.
-			\end{itemize}
+		\begin{itemize}
+			\item L'agente seleziona l'azione $a_i$.
+			\item L'ambiente campiona la reward $r_t\sim R(\cdot|s_t, a_t)$.
+			\item L'ambiente campiona il prossimo stato $s_{t+1}\sim P(\cdot|s_t, a_t)$
+			\item L'agente riceve la reward $r_t$ e lo stato successivo $s_{t+1}$.
+		\end{itemize}
 	\end{itemize}
-
+	
 	\subsection{Policy}
 	La policy $\pi(s)$ \`e la funzione da $S$ ad $A$ che specifica quale azione prendere in ogni stato.
 	Si deve trovare la policy $\pi^*$ che massimizza cumulative discounted rewards.
@@ -59,7 +75,7 @@ L'obiettivo \`e trovare una policy, una mappa che ritorna tutte le azioni ottima
 		Quella discounted \`e una cumulative reward che d\`a un peso a diverse reward in base al tempo dello step:
 		$$\sum\limits_{t\ge 0} y^tr(s_t)\qquad\ where\ 0 < y\le 1$$
 		Il discount factor \`e un modo di pesare l'importanza dei primi passi o dei passi futuri in accordo con il valore di $y^t$.
-		Minore \`e minore l'importanza di reward future e l'agente tende a concentrarsi su azioni che portano a reward immediate.
+		Minore \`e il discount factor \`e minore l'importanza di reward future e l'agente tende a concentrarsi su azioni che portano a reward immediate.
 		Questa strategia aiuta gli algoritmi a convergere.
 
 \section{Confronto tra reinforcement learning e supervised learning}
@@ -71,18 +87,18 @@ L'obiettivo \`e trovare una policy, una mappa che ritorna tutte le azioni ottima
 		\item Osserva l'output obiettivo $y_i$ e loss $l(w, x_i, y_i)$.
 		\item Aggiorna $w$ per ridurre la loss con SGD: $w = w -\eta\nabla l(w, x_i, y_i)$.
 	\end{itemize}
-
+	
 	\subsection{Reinforcement learning loop}
 	\begin{itemize}
 		\item Dallo stato $s_i$ svolgi un azione $a$ determinata dalla policy $\pi(s)$.
 		\item L'ambiente seleziona lo stato successivo $s'$ in base al modello di transizione $P(s'|s,a)$.
 		\item Osserva $s'$ e la reward $r(s)$, aggiornando la policy.
 	\end{itemize}
-
+	
 	\subsection{Differenze fondamentali}
 	\begin{itemize}
 		\item Nel SL i dati non dipendono dall'input precedente, mentre in RL le azioni dell'agente influiscono il prossimo input.
-		\item In SL si ha una loss function che guida il modello ai parametri migliori e si pu\`o differenziare con rispetto ai pesi, mentre in RL la reward guida lo sviluppo del modello, ma non \`e differenziabile rispetto ai paramtri.
+		\item In SL si ha una loss function che guida il modello ai parametri migliori e si pu\`o differenziare con rispetto ai pesi, mentre in RL la reward guida lo sviluppo del modello, ma non \`e differenziabile rispetto ai paramatri.
 		\item In SL si trova supervisione rispetto ad ogni passo, mentre in RL le rewards potrebbero essere sparse.
 	\end{itemize}
 
@@ -90,16 +106,16 @@ L'obiettivo \`e trovare una policy, una mappa che ritorna tutte le azioni ottima
 Per RL si trovano due approcci principali:
 \begin{itemize}
 	\item Metodi basati sul valore: una value function $V(s)$ viene introdotta e l'agente vuole masssimizzarla.
-		La value di ogni stato \`e la quanit\`a totale di reward un agente pu\`o aspettarsi di collezionare rispetto al futuro cominciando da uno stato dato.
-	\item Metodo basato sulla policy: si definisce una policy da ottimizzare correttamente, questa definisce come l'agente si comporta nella forma di distribuzione di probabilit\`a tra le azioni da svolgere in uno stato dato.
-		Una policy stocastica d\`a la distribuzione di probabilit\`a su azioni diverse: $\pi_\theta(s,a)\approx P(a|s)$.
-
+	La value di ogni stato \`e la quanit\`a totale di reward un agente pu\`o aspettarsi di collezionare rispetto al futuro cominciando da uno stato dato.
+	\item Metodo basato sulla policy: si definisce una policy da ottimizzare direttamente, questa definisce come l'agente si comporta nella forma di distribuzione di probabilit\`a tra le azioni da svolgere in uno stato dato.
+	Una policy stocastica d\`a la distribuzione di probabilit\`a su azioni diverse: $\pi_\theta(s,a)\approx P(a|s)$.
+	
 \end{itemize}
 
 	\subsection{Value based methods}
 	La funzione di value \`e una funzione dello stato con rispetto a una certa policy $\pi$.
 	Ritorna la quantit\`a totale di reward che l'agente pu\`o aspettarsi da uno stato particolare a tutti gli stati possibili a partire da quello.
-	Atraverso la value si pu\`o trovare una policy.
+	Attraverso la value si pu\`o trovare una policy.
 	La value function $V$ di uno stato con rispetto a una policy $\pi$ \`e l'aspettata cumulative reward di seguire tale policy cominciando in $s$:
 	$$V^\pi(s) = \mathbb{E}\biggl[\sum\limits_{t\ge 0} y^tr(s_t)|s_0 = s,\pi\biggr]$$
 	Con $a_t = \pi(s_t), s_{t+1}\sim P(\cdot|s_t, a_t)$.
@@ -120,11 +136,11 @@ Per RL si trovano due approcci principali:
 		La formula risultate della $Q$ value function \`e nella formula di un'equazione di Bellman:
 		\begin{align*}
 			Q^*(s,a) &= r(s) + y\sum\limits_{s'}P(s'|s,a)\max_{a'}Q^*(s',a')\\
-							 &=\mathbb{E}_{s'\sim P(\cdot|s,a)}[r(s)+y\max_{a'}Q^*(s',a')|s,a]
+			&=\mathbb{E}_{s'\sim P(\cdot|s,a)}[r(s)+y\max_{a'}Q^*(s',a')|s,a]
 		\end{align*}
 		Se il valore ottimale della coppia stato azione per il prossimo passo $Q^*(s',a')$ sono conosciuti allora la strategia ottima \`e svolgere l'azione che massimizza il valore atteso.
 		Per calcolare il valore $Q$ dello stato corrente si deve calcolare il valore $Q$ degli stati vicini e cos\`i via con ricorsione.
-
+		
 		\subsubsection{Algoritmo Q-learning}
 		Lo scopo di questo algoritmo \`e che la matrice di value $R$ \`e conosciuta unicamente all'ambiente e l'agente deve impararla con l'esperienza.
 		L'agente possiede una matrice $Q$ che codifica stato, azione e rewards, ma \`e inizializzata a $0$ e diventa $R$ attraverso l'esperienza.
@@ -164,33 +180,33 @@ Per RL si trovano due approcci principali:
 		Aggiornamento del gradiente:
 		\begin{align*}
 			\nabla_{w_i}L(w_i) &= \mathbb{E}_{s,a\sim\rho}[(y_i(s,a) - Q_{w_i}(s,a))\nabla_{w_i}Q_{w_i}(s,a)]=\\
-								  &= \mathbb{E}_{s,a\sim\rho,s'}[(r(s) + y\max_{a'}Q_{w_{i-1}}(s',a')-Q_{w_i}(s,a))\nabla_{w_i}Q_{w_i}(s,a)]
+			&= \mathbb{E}_{s,a\sim\rho,s'}[(r(s) + y\max_{a'}Q_{w_{i-1}}(s',a')-Q_{w_i}(s,a))\nabla_{w_i}Q_{w_i}(s,a)]
 		\end{align*}
-		Attraverso il training SGD si sostituisce il valore atteso campionando l'esperienza $s,a,s'$ utilizzando la distribuzione di comportamento e il modello di transizione.
-
-			\paragraph{Problematiche}
-			Il training \`e prono all'instabilit\`a e a differenza del supervised learning i target si muovono.
-			Esperienze successive sono correlate e dipendenti dalla policy che pu\`o cambiare rapidamente con piccoli cambi nei parametri, portando a un cambio drastico nella distribuzione dei dati.
-			Per risolverli si pu\`o fare freezing sulla target Q network per aumentare la stabilit\`a della rete e utilizzare un experience replay: un buffer per salvare esperienze e campionare da quello in modo da seguire una strategia greedy che permette un trade-off tra exploitation ed esploration.
+		Attraverso il training SGD si sostituisce il valore atteso campionando l'esperienza $(s,a,s')$ utilizzando la distribuzione di comportamento e il modello di transizione.
+		
+		\paragraph{Problematiche}
+		Il training \`e prono all'instabilit\`a e a differenza del supervised learning i target si muovono.
+		Esperienze successive sono correlate e dipendenti dalla policy che pu\`o cambiare rapidamente con piccoli cambi nei parametri, portando a un cambio drastico nella distribuzione dei dati.
+		Per risolverli si pu\`o fare freezing sulla target Q network per aumentare la stabilit\`a della rete e utilizzare un experience replay: un buffer per salvare esperienze e campionare da quello in modo da seguire una strategia greedy che permette un trade-off tra exploitation ed esploration.
 
 	\subsection{Policy gradient methods PGM}
 	L'obiettivo dei PGM \`e di definire parametri che influenzano la policy $\pi$ e di impararli direttamente.
 	Questa \`e la soluzione pi\`u semplice nel caso in cui si abbia uno spazio degli stati grande e continuo.
 	L'idea \`e di utilizzare deep neural network per imparare la policy.
 	Si deve pertanto imparare una funzione che ritorna la distribuzione di probabilit\`a di azioni rispetto allo stato corrente:
-	$$\pi_\theta(s,a)\approx P(s)$$
+	$$\pi_\theta(s,a)\approx P(a|s)$$
 	Si noti come questa ha un significato diverso rispetto ai value-based method: \`e una probabilit\`a di azioni rispetto agli stati, non una funzione da azioni a stati.
 	In questo caso non si hanno le labels in modo da dare feedback alla NN attraverso backpropagation e viene usata la reward.
 	Si devono pertanto trovare i migliori parametri $\theta$ della policy per massimizzare la reward aspettata attraverso gradient descent:
 	\begin{align*}
 		J(\theta) &= \mathbb{E}\biggl[\sum\limits_{t\ge 0}y^tr_t|\pi_\theta\biggr]\\
-	  		 &=\mathbb{E}_\tau[r(t)]
+		&=\mathbb{E}_\tau[r(t)]
 	\end{align*}
 	Si vuole il valore atteso di ritorno di traiettorie: $\tau(s_0,a_0,r_0, \dots, s_n,a_n,r_n)$
 	$$J(\theta) = \int_\tau r(\tau)p(\tau,\theta)d\tau$$
 	Dove $p(\tau,\theta)$ \`e la probabilit\`a della traiettoria $\tau$ sotto la policy con i parametri $\theta$:
 	$$p(\tau,\theta) = \prod\limits_{t\ge 0}\pi_\theta(s_t,a_t)P(s_{t+1}|s_t,a_t)$$
-	Le traiettorie sono una semplficazione, un oggetto che rappresenta stato, azione e reward.
+	Le traiettorie sono una semplificazione, un oggetto che rappresenta stato, azione e reward.
 	In quanto l'integrale \`e di difficile risoluzione si differenzia utilizzando la log-trasformation:
 	$$\nabla_\theta J(\theta) =\mathbb{E}_\tau[r(t)\nabla_\theta\log p(\tau,\theta)]$$
 	Dove
@@ -209,7 +225,7 @@ Per RL si trovano due approcci principali:
 			\item Stima il gradiente di policy $\nabla_\theta J(\theta)$.
 			\item Aggiorna i parametri attraverso gradient ascent $\theta = \theta + \eta\nabla_\theta J(\theta)$.
 		\end{enumerate}
-
+		
 		\subsubsection{Single step reinforce}
 		Single step reinforce \`e una variante del reinforce che stima il gradiente unicamente su uno step e non sull'intera traiettoria:
 		\begin{enumerate}
@@ -217,5 +233,5 @@ Per RL si trovano due approcci principali:
 			\item Stima il gradiente $\nabla_\theta J(\theta)\sim r\nabla_\theta\log\pi_\theta(s,a)$
 			\item Aggiorna i parametri attraverso gradient ascent $\theta = \theta + \eta\nabla_\theta J(\theta)$.
 		\end{enumerate}
-		Si nota come $r$ alto aumenta la probabilit\`a dell'azione vista, mentre se \`e basso si abbassa la probabiliit\`a.
+		Si nota come $r$ alto aumenta la probabilit\`a dell'azione vista, mentre se \`e basso si abbassa la probabilit\`a.
 		Si aggiorna il parametri $\theta$ in accordo con il gradiente in quanto si vuole aumentare la reward o gradient ascent.

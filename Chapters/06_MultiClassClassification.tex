@@ -10,7 +10,7 @@
 		\item Un training set $D$ campionato da $\mathcal{D}$
 	\end{itemize}
 	Si deve computare una funzione $f$ che minimizza $\mathbb{E}_{(x,y)\sim\mathcal{D}}[f(x)\neq y]$
-
+	
 	\subsection{Classificazione multi classe}
 	La classificazione multiclasse \`e l'estensione naturale della classificazione binaria.
 	L'obiettivo \`e quello di assegnare una label discreta a degli esempi.
@@ -22,14 +22,14 @@
 		\item Un training set $D$ campionato da $\mathcal{D}$.
 	\end{itemize}
 	Si deve computare una funzione $f$ che minimizza $\mathbb{E}_{(x,y)\sim\mathcal{D}}[f(x)\neq y]$.
-
+	
 		\subsubsection{K nearest neighbours}
 		Si noti come una \emph{K-NN} per classificare un esempio $d$ trova i $k$ vicini di $d$ e sceglie la label in presenza maggiore tra i $k$ vicini pi\`u prossimi.
 		Non necessita pertanto di cambi algoritmici nel caso della multi class classification.
-
+		
 		\subsubsection{Decision tree}
 		I decision tree non richiedono cambi algoritmici per la multi class classification.
-
+	
 	\subsection{Approccio black box alla multi class classification}
 	Dato un classificatore binario questo si pu\`o usare per risolvere il problema della multiclass classification.
 	Si noti come un perceptron oltre al risultato pu\`o anche dare un punteggio di confidenza.
@@ -41,11 +41,30 @@ Nell'approccio \emph{OVA} nel training si definisce per ogni label $L$ un proble
 	\item Tutti gli esempi con la label $L$ sono positivi.
 	\item Tutti gli altri esempi sono negativi.
 \end{itemize}
+
+
+\begin{figure}
+	\centering
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{imgs/chapter6/img0}
+		\caption{Esempio OVA}
+		\label{fig:chapter06-00}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{imgs/chapter6/img1}
+		\caption{Esempio OVA. Le frecce indicano il lato positivo della linea}
+		\label{fig:chapter06-01}
+	\end{minipage}
+\end{figure}
+
 In pratica si imparano $L$ diversi modelli di classificazione.
 Si ricordi come il classificatore divide il piano in due semipiani.
 
 	\subsection{Ambiguit\`a}
-	In questo caso si formano pertanto delle zone in cui si creano delle ambiguit\`a.
+	In questo caso si formano pertanto delle zone in cui si creano delle ambiguit\`a. 
+	Nella figura \ref{fig:chapter06-01} \`e possibile che un esempio si trovi nel lato positivo di due linee contemporaneamente.
 	Se il classificatore non fornisce confidence e c'\`e ambiguit\`a si sceglie una delle label in conflitto.
 	Nella maggior parte dei casi i classificatori forniscono confidence, allora in questo caso si:
 	\begin{itemize}
@@ -53,9 +72,12 @@ Si ricordi come il classificatore divide il piano in due semipiani.
 		\item Se nessuno \`e positivo si sceglie il negativo con confidence minore.
 	\end{itemize}
 	La confidence nel perceptron si calcola come distanza dall'iperpiano stabilito dalla prediction.
-
+	
 	\subsection{Algoritmi}
 	\input{Pseudocodice/03_oneversusalltrain}
+	
+	Con $k$ categorie si avranno $k$ modelli.
+	
 	\input{Pseudocodice/04_oneversusalltest}
 
 \section{All versus all \emph{AVA}}
@@ -69,6 +91,22 @@ Quando arriva un punto di test si valuta su tutti i classificatori $F_{ij}$.
 Ogni volta che $F_{ij}$ predice positivo la classe $i$ prende un voto, altrimenti lo prende $j$.
 Dopo aver eseguito tutti i $\frac{K(K-1)}{2}$ classificatori la classe con pi\`u voti decide la label.
 
+\begin{figure}
+	\centering
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{imgs/chapter6/img2}
+		\caption{Esempio \emph{AVA}}
+		\label{fig:chapter06-02}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.8\linewidth]{imgs/chapter6/img3}
+		\caption{Esempio \emph{AVA}}
+		\label{fig:chapter06-03}
+	\end{minipage}
+\end{figure}
+La maggioranza dice \emph{orange}, dunque assegneremo la label \emph{orange} \ref{fig:chapter06-03}.
 	\subsection{\emph{AVA} training}
 	Per ogni coppia di label si addestra un classificatore che le distingue:\\
 	\input{Pseudocodice/05_allversusalltrainingpseudo}
@@ -81,45 +119,52 @@ Dopo aver eseguito tutti i $\frac{K(K-1)}{2}$ classificatori la classe con pi\`u
 	\begin{itemize}
 		\item Considerare la maggioranza.
 		\item Considerare un voto pesato basato sulla confidence:
-			\begin{itemize}
-				\item $y = F_{ij}(x)$.
-				\item $score_j +=y$.
-				\item $score_i -=y$.
-			\end{itemize}
-			Lo score viene cambiato in quanto se $y$ \`e positivo il classificatore lo pensa di tipo $j$, se negativo lo pensa di tipo $i$ e pertanto lo score viene aggiornato di conseguenza.
+		\begin{itemize}
+			\item $y = F_{ij}(x)$.
+			\item $score_j +=y$.
+			\item $score_i -=y$.
+		\end{itemize}
+		Lo score viene cambiato in quanto se $y$ \`e positivo il classificatore lo pensa di tipo $j$, se negativo lo pensa di tipo $i$ e pertanto lo score viene aggiornato di conseguenza.
 	\end{itemize}
-
+	
 	\subsection{Algoritmi}
 	\input{Pseudocodice/06_allversusalltrain}
 	\input{Pseudocodice/07_allversusalltest}
-
-\section{Confronto tra \emph{OVA} e \emph{AVA}}
-
+	
+	\section{Confronto tra \emph{OVA} e \emph{AVA}}
+	
 	\subsection{Tempo di training}
 	\emph{AVA} impara pi\`u classificatori ma il training set \`e molto pi\`u piccolo pertanto tende ad essere pi\`u veloce se le label sono equamente bilanciate.
-
+	
 	\subsection{Tempo di test}
 	Avendo \emph{AVA} pi\`u classificatori \`e tipicamente pi\`u lenta.
-
+	
 	\subsection{Errori}
-	\emph{AVA} fa training con data sets pi\`u bilanciata, ma avendo pi\`u classificatori i test tendono ad avere pi\`u possiblit\`a di errori.
+	\emph{AVA} fa training con data sets pi\`u bilanciati, ma avendo pi\`u classificatori i test tendono ad avere pi\`u possiblit\`a di errori.
 
 \section{Riassunto}
 Se vengono usati classificatori binari viene tipicamente utilizzata  \emph{OVA}, altrimenti si usa un classificatore che permette label multiple come \emph{DT} o \emph{K-NN}, nonostante altri metodi pi\`u sofisticati siano meglio.
 
 \section{Multiclass evaluation}
-Per computare l'accuratezza nella predizione di una classe $c$ si pu\`o usare la misura di predizione $Pr=\frac{TP}{TP+FP}$ dove $TP$ sono le predizioni corrette e $FP$ le predizioni scorrette.
+Per computare l'accuratezza nella predizione di una classe $c$ si pu\`o usare la misura di predizione $Pr=\frac{TP}{TP+FP}$ dove $TP$ sono le predizioni corrette e $FP$ le predizioni scorrette \ref{fig:chapter06-04}.
 
 	\subsection{Microaveraging}
 	Nel microaveraging si fa la media sugli esempi.
 	Considerando $n$ classi si calcola come:
 	$$Pr=\dfrac{\sum\limits_{i=1}^nTP_{c_i}}{\sum\limits_{i=1}^n(TP_{c_i}+FP_{c_i})}$$
-
+	
 	\subsection{Macroaveraging}
 	Nel macroaveraging si calcola lo score di valutazione o accuratezza per ogni label e poi si fa la media tra le label.
 	Questo in quanto d\`a pi\`u enfasi a label pi\`u rare e permette un'altra dimensione di analisi.
 	$$Pr=\dfrac{\sum\limits_{c\in C}Pr_c}{|C|}$$
-
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.6\linewidth]{imgs/chapter6/img4}
+		\caption{Multiclass evaluation}
+		\label{fig:chapter06-04}
+	\end{figure}
+	
 	\subsection{Confusion matrix}
 	La confusion matrix \`e una matrice in cui $(i, j)$ rappresenta il numero di esempi con label $i$ predetti avere label $j$.
 	Viene spesso espressa come percentuale.
