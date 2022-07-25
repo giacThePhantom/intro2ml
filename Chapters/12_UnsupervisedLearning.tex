@@ -322,7 +322,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 	\begin{multicols}{2}
 		\begin{itemize}
 			\item Rappresentazione di un esempio per il cluster.
-			\item Simiglianza e distanza tra esempi.
+			\item Somiglianza e distanza tra esempi.
 			\item Clustering piatto o gerarchico.
 			\item Numero di cluster fisso o data driven.
 		\end{itemize}
@@ -331,7 +331,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 	\subsection{Algoritmi di clustering}
 
 		\subsubsection{Flat algorithms}
-		Tipicamente iniziano con un partizionamento causale parziale che viene raffinato iterativamente.
+		Tipicamente iniziano con un partizionamento casuale parziale che viene raffinato iterativamente.
 		Sono per esempio K means, model based e spectral.
 		
 		\subsubsection{Hierarchical algorithms}
@@ -368,7 +368,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 		Si impara pertanto la media di ogni cluster o suo centro e la matrice di covarianza, ovvero quanto si disperde, la forma del contorno.
 		
 		\subsubsection{Soft cluster points}
-		Si assegna soft ogni punto a ogni cluster calcolando $p(\theta_c|x)$ o la probabilit\`a di ogni punto di appartenere al cluster.
+		Si assegna ogni punto a ogni cluster in maniera soft, calcolando $p(\theta_c|x)$ o la probabilit\`a di ogni punto di appartenere al cluster.
 		Si utilizza l'equazione della Gaussiana per ogni cluster normalizzata per creare una probabilit\`a.
 		
 		\subsubsection{Ricalcolo dei centri}

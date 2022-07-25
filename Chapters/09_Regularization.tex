@@ -9,7 +9,7 @@ Questo problema viene risolto attraverso la regolarizzazione.
 \section{Regolarizzatori}
 I regolarizzatori sono criteri addizionali alla loss function in modo da evitare overfitting.
 Prova a mantenere i parametri regolari o normali.
-\`E un bias sul modello che forza che il learning preferisca certi tipi di pesi rispetto agli altri.
+\`E un bias sul modello che forza il learning a preferire certi tipi di pesi rispetto ad altri.
 $$argmin_{w,b}\sum\limits_{i=1}^nloss(yy')+\lambda regularizer(w,b)$$
 Tipicamente non si vogliono pesi molto grandi in quanto un piccolo cambio in una feature potrebbe causare un cambio nella predizione.
 Si potrebbe anche preferire pesi di $0$ per features che non sono utili.

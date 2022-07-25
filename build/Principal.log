@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.3) (preloaded format=pdflatex 2022.6.19)  9 JUL 2022 15:14
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.6.18)  13 JUN 2022 10:24
+>>>>>>> Stashed changes
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1591,6 +1595,7 @@ Package rerunfilecheck Info: File `Principal.out' has not changed.
 (rerunfilecheck)             Checksum: 90AFED22B73A08F80C54226DBEBD78EB;33054.
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< Updated upstream
  22881 strings out of 478354
  428650 string characters out of 2848846
  728050 words of memory out of 3000000
@@ -1635,4 +1640,48 @@ PDF statistics:
  2730 PDF objects out of 2984 (max. 8388607)
  545 named destinations out of 1000 (max. 500000)
  2098 words of extra memory for PDF output out of 10000 (max. 10000000)
+=======
+ 16971 strings out of 483099
+ 298648 string characters out of 5964234
+ 594908 words of memory out of 5000000
+ 31178 multiletter control sequences out of 15000+600000
+ 560765 words of font info for 98 fonts, out of 8000000 for 9000
+ 59 hyphenation exceptions out of 8191
+ 44i,19n,47p,816b,892s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/lollixzc/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1440.
+600pk> </home/lollixzc/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1
+000.600pk> </home/lollixzc/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/e
+cbi1200.600pk> </home/lollixzc/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/
+ec/tcrm1000.600pk> </home/lollixzc/.texlive2019/texmf-var/fonts/pk/ljfour/jknap
+pen/ec/ecbx1200.600pk> </home/lollixzc/.texlive2019/texmf-var/fonts/pk/ljfour/j
+knappen/ec/ecbx1440.600pk> </home/lollixzc/.texlive2019/texmf-var/fonts/pk/ljfo
+ur/jknappen/ec/ecbx2074.600pk> </home/lollixzc/.texlive2019/texmf-var/fonts/pk/
+ljfour/jknappen/ec/ecti1000.600pk> </home/lollixzc/.texlive2019/texmf-var/fonts
+/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/lollixzc/.texlive2019/texmf-var/f
+onts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/lollixzc/.texlive2019/texmf-v
+ar/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/lollixzc/.texlive2019/tex
+mf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/lollixzc/.texlive2019
+/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2488.600pk></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/symbols/msbm7.pfb>
+Output written on ./build/Principal.pdf (78 pages, 534794 bytes).
+PDF statistics:
+ 2160 PDF objects out of 2487 (max. 8388607)
+ 1586 compressed objects within 16 object streams
+ 437 named destinations out of 1000 (max. 500000)
+ 1561 words of extra memory for PDF output out of 10000 (max. 10000000)
+>>>>>>> Stashed changes
 
