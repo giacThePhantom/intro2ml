@@ -18,19 +18,19 @@ Infine si sviluppa un algoritmo di learning che deve cercare di minimizzare il c
 	Si deve scegliere il criterio da ottimizzare.
 
 		\subsubsection{Notazioni}
-		
-		\paragraph{Funzione indicatrice}
-		Una funzione indicatrice trasforma valori di \emph{Vero} e \emph{Falso} in numeri e li conteggia.
-		$$1[x]=\begin{cases}1&\mathbf{if}\ x = True\\
-			0&\textbf{if}\ x = False
-		\end{cases}$$
-		
-		\paragraph{Dot-product}
-		Utilizzando una notazione vettoriale si rappresenta un esempio $f_1,\dots,f_m$ come un vettore singolo $\overrightarrow{x}$ in cui $j$ indicizza la feature e $i$ indicizza un dataset di esempi.
-		Si possono rappresentare anche i pesi $w_1,\dots,w_m$ come un vettore $\overrightarrow{w}$.
-		Il dot-product tra due vettori $a$ e $b$ viene definito come:
-		$$a\cdot b = \sum\limits_{j=1}^ma_jb_j$$
-		
+
+			\paragraph{Funzione indicatrice}
+			Una funzione indicatrice trasforma valori di \emph{Vero} e \emph{Falso} in numeri e li conteggia.
+			$$1[x]=\begin{cases}1&\mathbf{if}\ x = True\\
+										  	0&\textbf{if}\ x = False
+				 	\end{cases}$$
+
+			\paragraph{Dot-product}
+			Utilizzando una notazione vettoriale si rappresenta un esempio $f_1,\dots,f_m$ come un vettore singolo $\overrightarrow{x}$ in cui $j$ \textbf{indicizza la feature} e $i$ \textbf{indicizza un dataset di esempi}.
+			Si possono rappresentare anche i pesi $w_1,\dots,w_m$ come un vettore $\overrightarrow{w}$.
+			Il dot-product tra due vettori $a$ e $b$ viene definito come:
+			$$a\cdot b = \sum\limits_{j=1}^ma_jb_j$$
+
 		\subsubsection{Funzione obiettivo}
 		Il criterio da ottimizzare o funzione obiettivo pu\`o essere:
 		$$\sum\limits_{i=1}^n1[y_i(w\cdot x_i+b)\le 0]$$
