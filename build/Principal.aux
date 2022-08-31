@@ -4,10 +4,13 @@
 \@nameuse{bbl@beforestart}
 \providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
 \HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
 \global\let\oldnewlabel\newlabel
 \gdef\newlabel#1#2{\newlabelxx{#1}#2}
 \gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
 \AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
 \let\newlabel\oldnewlabel
 \fi}
 \fi}
@@ -337,7 +340,7 @@
 \newlabel{fig:chapter10-01}{{10.2}{57}{Il significato dell'iperparametro $\mathcal {C}$\relax }{figure.caption.31}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {10.4}Soft margin classification}{57}{section.10.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {10.4.1}Risolvere il problema delle SVM}{58}{subsection.10.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {10.5}Dati non linearmente separabile}{58}{section.10.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.5}Dati non linearmente separabili}{58}{section.10.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {10.5.1}Soft margin classifier}{59}{subsection.10.5.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {10.5.2}Identificare i support vector}{59}{subsection.10.5.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {10.5.3}Utilizzo di SVM in maniera non lineare}{59}{subsection.10.5.3}\protected@file@percent }

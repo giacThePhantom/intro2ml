@@ -106,21 +106,21 @@ Si nota come questo \`e ancora un problema di ottimizzazione quadratica con cost
 	La soluzione a questo problema trova pertanto l'iperpiano con il margine pi\`u grande possible permettendo un soft margin. 
 	Il vantaggio di utilizzare soft-margin SVM rispetto a qulle hard-margin \`e che con quelle soft-margin abbiamo la garanzia di trovare una soluzione anche nel caso i dati non siano linearmente separabili, mentre in quelle hard-margin la regione all'interno dei margini \`e sempre vuota.
 
-\section{Dati non linearmente separabile}
+\section{Dati non linearmente separabili}
 Per separare i dati non linearmente separabili si possono utilizzare spazi con dimensioni maggiori.
 Prima si tentava di risolvere un problema di ottimizzazione quadratica soggetto a un'insieme di costraint lineari.
 Questo \`e il problema primario delle SVM.
 Si pu\`o riscrivere questo problema nella forma di un dual problem.
 Si noti come i problemi di ottimizzazione quadratica sono una classe ben conosciuta di problemi di programmazione per cui esistono diversi algoritmi non banali.
-Una possibile soluzione coinvolge costruire un dual problem dove un moltiplicatore di Lagrange $a_i$ \`e associato con ogni costraint di ineguaglianza nel problema originario.
+Una possibile soluzione consiste nel costruire un dual problem dove un moltiplicatore di Lagrange $a_i$ \`e associato con ogni costraint di ineguaglianza nel problema originario.
 Si deve pertanto trovare $a_1,\dots,a_n$ tale che:
-$$Q(a) = \sum a_i - \frac{1}{2}\sum\sum a_ia_jy_iy_jx_i^Tx_j$$
+$$Q(a) = \sum_i a_i - \frac{1}{2}\sum_i\sum_j a_ia_jy_iy_jx_i^Tx_j$$
 \`e massimizzato e $\sum a_iy_i = 0$ e $a_i\ge 0\forall a_i$.
 Il problema \`e pertanto massimizzare $Q(a)$, un problema di ottimizzazione quadratico con un paio di costraint lineari.
 Un buon risolutore scalabile \`e $SM)$.
 Una volta risolto il dual problem e ottenuto tutti i valori di $a_i$ posso computare $w$ e $b$:
-$$w=\sum a_iy_ix_i$$
-$$b = y_k - \sum a_iy_ix^Tx_k$$
+$$w=\sum_i a_iy_ix_i$$
+$$b = y_k - \sum_i a_iy_ix^Tx_k$$
 Per ogni $a_k>0$.
 Pertanto la funzione classificatrice \`e:
 $$f(x) = \sum(a_iy_ix_i^Tx)+b$$
