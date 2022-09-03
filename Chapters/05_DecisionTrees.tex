@@ -115,7 +115,7 @@ La strategia di crescita dell'albero partiziona ricorsivamente il training set e
 	\subsection{Split selection}
 	Tipicamente la migliore funzione di split viene data in termini di minimizzazione dell'impurit\`a dello split, ma altre volte nella massimizzazione del guadagno di informazioni:
 	$$\Delta_\phi(\mathcal{D})=I(\mathcal{D})-I_\phi(\mathcal{D})$$
-	Essendo $\Delta_\phi(\mathcal{D})\ge 0$ per ogni $\phi\in\{L,R\}^{\mathcal{X}}$ e ogni training set $\mathcal{D}\subset\mathcal{X}\times\mathcal{Y}$, l'impurit\`a non aumentera mai per ogni split scelto casualmente. 
+	Essendo $\Delta_\phi(\mathcal{D})\ge 0$ per ogni $\phi\in\{L,R\}^{\mathcal{X}}$ e ogni training set $\mathcal{D}\subset\mathcal{X}\times\mathcal{Y}$, l'impurit\`a non aumenter\`a mai per ogni split scelto casualmente. 
 	$\Delta_\phi(\mathcal{D})$ \`e chiamato anche \emph{information gain}.
 	
 	\subsection{Predizione delle foglie}

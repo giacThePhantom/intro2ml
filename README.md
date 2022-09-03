@@ -7,7 +7,7 @@ file prefix.tex contiene tutti i pacchetti utilizzati (e molti altri per comodit
 di scrittura più semplice.
 
 ## Creare il pdf
-Dopo aver clonato la repository basta spostarsi all'interno e digitare il comando "pdflatex -output-directory=./build Principal.tex". Eseguire il comando
+Dopo aver clonato la repository basta spostarsi all'interno e digitare il comando `pdflatex -output-directory=./build Principal.tex`. Eseguire il comando
 sempre due volte. Stamperà un gran numero di warnings, ma di quelli non ce ne preoccupiamo.
 
 ## Disclaimer
