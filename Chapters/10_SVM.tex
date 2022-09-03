@@ -11,7 +11,7 @@ Inoltre quando i dati non sono linearmente separabili questa variabilit\`a aumen
 	Il gradient descent invece trova l'iperpiano che minimizza $loss+regularization$ in entrambi i casi.
 	
 	\subsection{Idea delle support vector machines}
-	Le support vector machines cercano di trovare il migliore iperpiano separa i dati. 
+	Le support vector machines cercano di trovare il migliore iperpiano che separa i dati.
 	Per migliore intendiamo quello con il margine pi\`u grande.
 	Per definirlo vengono introdotti i margini di un iperpiano.
 
@@ -62,7 +62,7 @@ L'errore viene tenuto basso dal fatto di avere tutti i data point al di fuori da
 
 \section{Soft margin classification}
 La soft margin classification permette di usare SVM quando i punti non sono linearmente separabili.
-Quando qualche dato non \`e linearmente separabile non si riescono a soddisfare i due costraint necessari per train le SVM e pertanto si necessita di modificare la funzione obiettivo.
+Quando qualche dato non \`e linearmente separabile non si riescono a soddisfare i due constraint necessari per train le SVM e pertanto si necessita di modificare la funzione obiettivo.
 Per farlo si permette al modello di fare delle predizione sbagliate, ma si aggiunge alla funzione obiettivo una penalit\`a per ogni esempio classificato erroneamente.
 Queste sono dette slack penalties e sono usate per ottenere un modello che accetta con una certa tolleranza errori di classificazione.
 La funzione da ottimizzare diventa pertanto:
@@ -77,12 +77,12 @@ Si nota come:
 		Con un margine troppo grande andremo in underfitting.
 		\item Grandi valori di $\mathcal{C}$ danno agli errori di classificazione pi\`u peso restringendo il margine. 
 		Con un margine troppo piccolo andremo in overfitting.
-		\item $\mathcal{C} = \infty$ impone tutti i costraint e riduce a un hard margin.
+		\item $\mathcal{C} = \infty$ impone tutti i constraint e riduce a un hard margin.
 	\end{itemize}
 \end{multicols}
 I valori di $\zeta_i$ sono imparati insieme a $w$ e $b$.
 $\mathcal{C}$ \`e un iperparametro per controllare l'overfitting, noi siamo interessati a trovare il miglior $\mathcal{C}$ per il training set.
-Si nota come questo \`e ancora un problema di ottimizzazione quadratica con costraint lineari, ma il numero di calcoli con un training set medio grande \`e molto elevato.
+Si nota come questo \`e ancora un problema di ottimizzazione quadratica con constraint lineari, ma il numero di calcoli con un training set medio grande \`e molto elevato.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\linewidth]{imgs/chapter10/img1}
@@ -99,7 +99,7 @@ Si nota come questo \`e ancora un problema di ottimizzazione quadratica con cost
 	Si riassume la formula in:
 	$$\zeta_i = \max(0,1-yy')$$	
 	Che si nota che \`e la hinge loss function.
-	Trasformando la funzione obiettivo di un SVM in una funzione di hinge loss si trasforma il problema in uncostrained in quanto entrami i costraint sono tenuti in considerazione dalla funzione.
+	Trasformando la funzione obiettivo di un SVM in una funzione di hinge loss si trasforma il problema in uncostrained in quanto entrami i constraint sono tenuti in considerazione dalla funzione.
 	La nuova funzione obiettivo pertanto sar\`a:
 	$$\min_{w,b}||w||^2+\mathcal{C}\sum_i\max(0,1-y_i(wx_i+b))$$
 	Che pu\`o essere considerata come un problema di gradient descent con Hinge loss function e regolarizzatore $||w||^2$.
@@ -108,15 +108,15 @@ Si nota come questo \`e ancora un problema di ottimizzazione quadratica con cost
 
 \section{Dati non linearmente separabili}
 Per separare i dati non linearmente separabili si possono utilizzare spazi con dimensioni maggiori.
-Prima si tentava di risolvere un problema di ottimizzazione quadratica soggetto a un'insieme di costraint lineari.
+Prima si tentava di risolvere un problema di ottimizzazione quadratica soggetto a un'insieme di constraint lineari.
 Questo \`e il problema primario delle SVM.
 Si pu\`o riscrivere questo problema nella forma di un dual problem.
 Si noti come i problemi di ottimizzazione quadratica sono una classe ben conosciuta di problemi di programmazione per cui esistono diversi algoritmi non banali.
-Una possibile soluzione consiste nel costruire un dual problem dove un moltiplicatore di Lagrange $a_i$ \`e associato con ogni costraint di ineguaglianza nel problema originario.
+Una possibile soluzione consiste nel costruire un dual problem dove un moltiplicatore di Lagrange $a_i$ \`e associato con ogni constraint di ineguaglianza nel problema originario.
 Si deve pertanto trovare $a_1,\dots,a_n$ tale che:
 $$Q(a) = \sum_i a_i - \frac{1}{2}\sum_i\sum_j a_ia_jy_iy_jx_i^Tx_j$$
 \`e massimizzato e $\sum a_iy_i = 0$ e $a_i\ge 0\forall a_i$.
-Il problema \`e pertanto massimizzare $Q(a)$, un problema di ottimizzazione quadratico con un paio di costraint lineari.
+Il problema \`e pertanto massimizzare $Q(a)$, un problema di ottimizzazione quadratico con un paio di constraint lineari.
 Un buon risolutore scalabile \`e $SM)$.
 Una volta risolto il dual problem e ottenuto tutti i valori di $a_i$ posso computare $w$ e $b$:
 $$w=\sum_i a_iy_ix_i$$

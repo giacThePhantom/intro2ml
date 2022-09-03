@@ -1,8 +1,2 @@
-Principal.aux
-/Principal.pdf
-Principal.log
-Principal.fls
-Principal.out
-Principal.toc
-Principal.sync*
-Principal.fdb*
+build
+!build/Principal.pdf

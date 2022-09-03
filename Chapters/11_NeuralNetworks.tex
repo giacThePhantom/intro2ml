@@ -182,7 +182,7 @@ $$\mathcal{L}_i = -\sum\limits_ky_y\log(S(l_k)) = -\log(S(l))$$
 		La scelta da compiere si basa su quale $h$ (funzione di attivazione) utilizzare.
 
 		\paragraph{Rectified linear units (RELU)}
-		Una RELU presenta un gradiente di $0$ o $1$, facile da ottimizzare simile alle unit\`a linari.
+		Una RELU presenta un gradiente di $0$ o $1$, facile da ottimizzare simile alle unit\`a lineari.
 		D\`a gradienti grandi e consistenti quando attiva, ma non \`e sempre differenziabile, risolvibile attraverso una derivata da un lato a $z=0$.
 		Ne esistono diverse varianti che risolvono il problema che l'unit\`a muore quando il gradiente \`e $0$ \ref{fig:chapter11-07}:
 		\begin{multicols}{2}
@@ -340,8 +340,8 @@ $$\mathcal{L}_i = -\sum\limits_ky_y\log(S(l_k)) = -\log(S(l))$$
 			\label{fig:chapter11-10}
 		\end{figure}
 		
-		\subsubsection{Stochastic gradient descent (SGD)}
-		In SDG si computa il gradiente solo su un campione scelto casualmente e non sull'intero training set in modo da ottenere performance migliori.
+		\subsubsection{Stochastic Gradient Descent (SGD)}
+		In SGD si computa il gradiente solo su un campione scelto casualmente e non sull'intero training set in modo da ottenere performance migliori.
 		Il learning rate cambia ad ogni passo, tipicamente decade linearmente \ref{fig:chapter11-11}.
 		
 		\input{Pseudocodice/11_SDG}
@@ -522,7 +522,7 @@ Questi si risolvono attraverso recurrent neural networks.
 	Tutto quello che si trova fino alla met\`a \`e l'encoder, quello dopo il decoder.
 	La rete si addestra attraverso backpropagation e l'errore \`e la differenza tra l'output e l'input.
 	Possono essere costruiti simmetricamente anche rispetto ai pesi.
-	Lo scopo \`e pertanto impara una rappresentazione a meno dimensioni del training data.
+	Lo scopo \`e pertanto imparare una rappresentazione a meno dimensioni del training data.
 	L'encoder \`e passato da essere un linear + nonlinearity come sigmoid, a un deep, fully connected a ReLu con CNN.
 	$z$ nel mezzo \`e pi\`u piccolo di $x$: si svolge una dimensionality reduction \ref{fig:chapter11-15}.
 	Le feature dovrebbero catturare fattori significativi di variazioni nel dato.
