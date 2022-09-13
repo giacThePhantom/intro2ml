@@ -22,7 +22,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 	Questa task permette di preservare le informazioni riducendo la dimensione di ogni dato in input.
 	Questo approccio permette di visualizzare i dati, semplificare la loro computazione.
 	Riduce il problema del \emph{curse of dimensionality}.
-	\subsection{Principal component anlaysis}
+	\subsection{Principal Component Analysis}
 	In questo meccanismo di dimensionality reduction la conoscenza implicita messa nell'algoritmo \`e che la varianza \`e un indicatore di ricchezza di informazioni dati da una dimensione.
 	PCA trova una trasformazione ottimale nel sistema di coordinate tale che perdere delle dimensioni nelle nuove coordinante porta la pi\`u piccola riduzione nella varianza dei dati.
 	PCA in particolare  perde l'asse con la varianza minore perdendo meno informazioni possibile.
@@ -110,7 +110,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 		Il first principal component \`e la direzione dove la maggior parte della varianza \`e conservata.
 		Si deve risolvere il problema di massimizzazione della varianza:
 		$$w_1\in arg\max\{w^TCw:w^Tw=1\}$$
-		Si devono fare costraints su $w_1$ altrimenti crescerebbero all'infinito.
+		Si devono fare constraints su $w_1$ altrimenti crescerebbero all'infinito.
 		La varianza di PCA \`e il valore del pi\`u grande eigenvalue della matrice $C$ di covarianza, la prima componente principale \`e il corrispondente vettore $w_1$.
 		Il maggiore eigenvalue di $C$ \`e la varianza lungo il first principal component e il first principal component $w_1$ \`e il corrispondente eigenvector.
 		
@@ -274,7 +274,7 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 		\label{fig:chapter12-11}
 	\end{figure}
 	
-	Questo algoritmo ha una convergenza garantita in quanto migliora strettamente la assignment di cluster e siccome sono finiti a un certo punto converge per forza.
+	Questo algoritmo ha una convergenza garantita in quanto migliora strettamente l'assegnazione ad un cluster e, siccome i dati sono finiti, a un certo punto converge per forza.
 	Non \`e comunque garantito trovi il minimo in quanto \`e un problema NP-hard anche sul piano, troveremo un minimo locale.
 	\`E sensibile alla scala delle features: in alcuni casi avremo bisogno di una funzione di normalizzazione delle features.
 
@@ -344,21 +344,30 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 		Nel soft clustering ogni esempio pu\`o appartenere a pi\`u di un cluster.
 		\`E pertanto probalistico.
 
-	\subsection{EM clustering}
+	\subsection{Expectation Maximization (EK) clustering}
 	Si nota come il K-means clustering assume sempre dei cluster circolari.
 	Per questo EM clustering assume che i dati vengano da un'insieme di gaussiane: sono cos\`i ellittici.
 	Ogni dato viene assegnato a un cluster con una certa probabilit\`a: soft clustering.
-	\`E molto simile a un alto livello a K-means: itera tra assigning points e ricalcolando i centri dei cluster.
+	\`E molto simile ad alto livello a K-means: itera tra assigning points e ricalcolando i centri dei cluster.
 	Le differenze principali sono che si assumano cluster ellittici e che sia un algoritmo di soft-clustering.
-	Pertanto si inizia con dei centri di cluster iniziale, successivamente si assegnano soft points ad ogni cluster calcolando $p(\theta_c|x)$ la probabilit\`a che ognuno di essi appartenga a un cluster \ref{fig:chapter12-12}.
-	Si ricalcolano i centri del cluster con nuovi parametri $\theta_c$, la massima probabilit\`a dei centri dati il corrente soft clustering.
-	I centri ottengono una contribuzione pesata dai punti.
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.8\linewidth]{imgs/chapter12/img12}
-		\caption{Esempio}
-		\label{fig:chapter12-12}
-	\end{figure}
+	
+	Pertanto i passi da seguire sono i seguenti:
+	\begin{itemize}
+		\item si inizia con dei centri di cluster iniziale a caso
+		\item si iterano i seguenti punti fino alla convergenza \ref{fig:chapter12-12}
+		\begin{itemize}
+			\item si assegnano soft points ad ogni cluster calcolando $p(\theta_c|x)$, cio\`e la probabilit\`a che ognuno di essi appartenga a un cluster
+			\item si ricalcolano i centri del cluster con nuovi parametri $\theta_c$, la massima probabilit\`a dei centri, dato il corrente soft clustering
+			\item i centri ottengono una contribuzione pesata dai punti
+		\end{itemize}
+
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.8\linewidth]{imgs/chapter12/img12}
+			\caption{Esempio}
+			\label{fig:chapter12-12}
+		\end{figure}
+	\end{itemize}
 
 		\subsubsection{Mixture of Gaussians}
 		In una dimensione una gaussiana:
@@ -407,7 +416,8 @@ In quanto non si hanno osservazioni riguardo i target si deve introdurre un mode
 	I generative model risolvono la task della density estimation.
 	Sono modelli statistici della distribuzione dei dati sull'input $p_x$ o di una joint distribution sulla coppia di input label $p_{XY}$ dipendente dalla disponibilit\`a dei dati obiettivo.
 	La loro abilit\`a principale \`e di generare nuovi dati dalle distribuzioni osservate. 
-	Immagine di aver allenato un modello fornendo una grande quantit'a di immagini di gatti, ad un certo punto il modello avr'a imparato cosa rende un gatto, un gatto, per esempio la forma, il colore, e dato in input un immagine con solo rumore casuale, generare un gatto simile a quelli visti in precedenza.
+	Si può pensare ad un modello allenato fornendo una grande quantità di immagini di gatti per far riconoscere le features di questo animale, per esempio la forma o il colore.
+	Fornendo in seguito in input un'immagine con solo rumore casuale, il modello riuscirebbe a generare una foto di un gatto simile a quelli "imparati" in precedenza.
 	
 	\subsection{Modelli discriminativi}
 	I modelli discriminativi sono modelli statistici della distribuzione di probabilit\`a condizionale $p_{Y|X}$ del target dato l'input.
