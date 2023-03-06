@@ -6,6 +6,9 @@ Il file latex Principal.tex deve contenere unicamente input al prefisso e ai cap
 file prefix.tex contiene tutti i pacchetti utilizzati (e molti altri per comodità) e delle macro che potrebbero rendere il lavoro
 di scrittura più semplice.
 
+## Pacchetti da installare
+Per creare il pdf si dovranno installare i seguenti pacchetti da apt-get o simili (a seconda della vostra distribuzione linux) `texlive-latex-base texlive-latex-extra texlive-science texlive-lang-italian`
+
 ## Creare il pdf
 Dopo aver clonato la repository basta spostarsi all'interno e digitare il comando `pdflatex -output-directory=./build Principal.tex`. Eseguire il comando
 sempre due volte. Stamperà un gran numero di warnings, ma di quelli non ce ne preoccupiamo.
